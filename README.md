@@ -1,12 +1,12 @@
-PowerEnJoy
-========
-Software Engineering 2 [@PoliMi](http://polimi.it "Politecnico di Milano")
---------
-Authors: Piantella, Scrocca, Vendra
+#PowerEnJoy#
+##Software Engineering 2 [@PoliMi](http://polimi.it "Politecnico di Milano")##
 
+Authors: Piantella, Scrocca, Vendra
+***
 ###Project goal and approach###
 The objective of this project is to apply in practice what we learn during lectures with the purpose of becoming  confident  with  software engineering  practices  and  able  to  address  new  software engineering issues in a rigorous way.
 The project includes five assignments:
+
 1. The preparation of a **Requirement Analysis and Specification Document (RASD)** for the problem described.
 2. The definition of the **Design Document (DD)** for the system considered in point 1 above.
 3. A **testing-related activity** focusing on the same project considered in point 1 and 2 above.
@@ -25,6 +25,7 @@ We are to develop a digital management system for a car-sharing service that exc
 * The set of safe areas for parking cars is pre-defined by the management system.
 
 In addition to the functionality above, the system should incentivize the virtuous behaviors of the users. Specifically:
+
 1. If the system detects the user took at least two other passengers onto the car, the system applies a discount of 10% on the last ride.
 2. If a car is left with no more than 50% of the battery empty, the system applies a discount of 20% on the last ride.
 3. If a car is left at special parking areas where they can be recharged and the user takes care of plugging the car into the power grid, the system applies a discount of 30% on the last ride.

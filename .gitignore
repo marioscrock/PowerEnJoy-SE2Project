@@ -1,5 +1,7 @@
 #LaTeX
 *.aux
+*.bbl
+*.blg
 *.glo
 *.idx
 *.log
@@ -21,6 +23,8 @@
 *.mtc
 *.mtc1
 *.out
+#Temporary PDF
+rasd/RASD-main.pdf
 *.synctex.gz
 
 # ignore DS_Store and files starting with ._ (for Mac)

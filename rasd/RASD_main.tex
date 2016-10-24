@@ -3,7 +3,19 @@
 \usepackage[english]{babel}
 \usepackage{enumitem}	%enumerate
 \usepackage{fancyhdr}	%intestazioni e piè pagina
-\pagestyle{fancy}
+\fancypagestyle{SE2}{% Software Engineering 2 Project Page Style
+	\pagestyle{fancy}	
+	%\fancyhead[LE,RO]{\slshape\rightmark}
+	%\fancyhead[LO,RE]{\slshape\leftmark}
+	%\fancyhead[L,R]{\slshape\rightmark}
+	\cfoot{} % get rid of the page number 
+	\fancyfoot[L]{\emph{PowerEnJoy}: \textbf{R}equirement \textbf{A}nalysis and \textbf{S}pecifications \textbf{D}ocument}
+	\fancyfoot[R]{\thepage}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{SE2}
+%\pagestyle{fancy}
 \usepackage{graphicx}	%immagini
 \usepackage[colorinlistoftodos]{todonotes}	%todo
 %numeri romani maiuscoli

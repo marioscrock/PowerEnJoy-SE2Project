@@ -2,16 +2,19 @@
 \subsection{Purpose of this document}
 The purpose of a \textbf{R}equirement \textbf{A}nalysis and \textbf{S}pecifications \textbf{D}ocument is the process of discovering the purpose for which a software system was intended, by identifying stakeholders and their needs, and documenting these in a form that is amenable to analysis, communication, and subsequent implementation. \todo{Citation} It is also concerned with the relationship of software's factors such as goals, functions and constrains to precise specifications of software behavior, and to their evolution over time and across software families.
 
-	\subsection{Actual system}
+\subsection{Actual system}
 The system we are to develop is brand new, there is no previous system.
-\subsection{The problem}
-PowerEnJoy is a car-sharing service that exclusively employs electric cars; the system we are going to develop will provide the functionalities normally provided by car-sharing services, such as allowing the user to register to the system in order to access it, showing the cars available near a given location, and allowing a user to reserve a car before picking it up. When picking up a car, the user will be able to tell the system that he/she is nearby and the system will unlock the car. As soon as the engine ignites, the system starts charging the user for a given amount of money per minute; a screen located inside the car will show said amount of money to the user. When the user reaches a predefined safe area, and exits the car, the system will stop charging the user and will lock the car. The system will incentivize virtuous behaviours of the users: if a user took at least 2 passengers on his last ride, the system will apply a 10\% discount on that ride; if a car was left with more than 50\% of the battery, the system will apply a 20\% discount on the last ride; if a user leaves the car in a special parking area, and plugs the car in into the power grid, the system will apply a 30\% discount on the last ride; if a car is left at more than 3Km from the nearest charging station, or with less than 20\% battery left, the system will charge 30\% more on the cost of the last ride. Moreover the user will be able to enable a "money saving option" in which, once he enters the destination, the system will provide information about charging stations where the user can leave the car in order to get a discount. In this case the stations are determined by the system in order to maintain a uniform distribution of cars around the city.
+
+\subsection{Scope}
+PowerEnJoy is a car-sharing service that exclusively employs electric cars; we are going to develop a web-based software system that will provide the functionalities normally provided by car-sharing services, such as allowing the user to register to the system in order to access it, showing the cars available near a given location and allowing a user to reserve a car before picking it up.
+A screen located inside the car will show in real time the ride amount of money to the user. When the user reaches a predefined safe area and exits the car, the system will stop charging the user and will lock the car. The system will provide information about charging station location where the car can be plugged after the ride and incentivize virtuous behaviours of the users with discounts.
+
 \subsection{Glossary}
 	\subsubsection{Definitions}
 	\begin{itemize}
 		\item System: the PowerEnJoy software we are to develop
 		\item Company: the company we are developing the system for
-		\item Guest \emph{or} Guest user: person who access the system as non logged-in user
+		\item Guest \emph{or} Guest user: person who access the system as non logged user
 		\item Logged user \emph{or} Authenticated user: authenticated person who is interfacing with the system
 		\item Car: an electric car owned by the company
 		\item Charging station: place where cars owned by the company can be charged using a provided plug

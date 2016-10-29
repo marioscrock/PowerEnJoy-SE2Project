@@ -1,0 +1,11 @@
+DISCUSSION on requirements
+- REQUIREMENT NO implementation/Solution comes later -> for now domain assumption (es. if there are people in the car)
+- Macchine vengono portate in carica se l'user è stato "sanzionato", discount sono sulla carica totale, nessuno prenderebbe un auto già scarica, qualcuno deve uscire a mettere la macchina in carica
+- User needs a driving license/ method of payment to register
+- Define what a safe area is (2 kind: must specify two names | one is the one with recharging stations/ the other just a safe area to leave the car)
+- Se user entra e basta -> scegliamo noi, massimizzare profitto customer
+- If car parked in unsafe area, assumption we can rely on someone brings the car in a safe area
+- Assumptions: user inserts correct datas/ no care about damage, incidents 
+- Payments: external system to interact with 
+- Discounts are cumulative? you choose!
+- Users has a limited time to plug the car| Maintenance guy wait for that time before plug the car to avoid assign discunts to the user

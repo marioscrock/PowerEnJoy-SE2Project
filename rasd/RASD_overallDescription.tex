@@ -21,8 +21,26 @@
 
 %	\paragraph{Car} All cars have an integrated GPS system that continuously provides its position to our system-to-be. 
 	
-	
-	
+\subsubsection{Cars}
+		\todo{System must be able to talk back to cars(e.g. for position wrt safe areas)}All cars have modules that continuously provide to our system:
+	\begin{itemize}
+		\item GPS position
+		\item engine status (on/off)
+		\item number of passengers
+		\item battery level (percentage)
+		\item charging status (in charge/not in charge)
+		\item door locking status (locked/unlocked)
+	\end{itemize}	
+	The overall status of a car can be represented by an FSA
+	\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.5]{CarFSA}
+			\caption{
+				\label{fig:carFSA} 
+				Car statuses
+			}
+		\end{figure}
+		
 \subsubsection{User interfaces}\todo{where should user interface be mentioned? complete this}
 	There are two main user interfaces: what we call here "application" and the car.\\
 	Using the application users can:
@@ -49,9 +67,6 @@
 
 
 	\todo{is this the right place?}In order to use all feature of our system a user must be registered. All guest users can register to our system providing some relevant information about themselves (such as name, surname, phone number, driving license, payment details etc.). A registered user can reserve one\todo{Only one at a time! Check reqs} available car for 1 hour, in this period of time he can reach the car he reserved and once he is nearby...
-
-\subsubsection{Hardware interfaces}
-	\todo{System must be able to talk back to cars(e.g. for position wrt safe areas)}All cars have an integrated GPS module that continuously provides its position to our system.
 
 \subsubsection{Software interfaces}
 	Databases and DBMSs are clearly required in order to store data about users, cars, charging stations, safe areas etc.

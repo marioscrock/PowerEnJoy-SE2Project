@@ -55,17 +55,34 @@
 
 \subsubsection{Software interfaces}
 	Databases and DBMSs are clearly required in order to store data about users, cars, charging stations, safe areas etc.
-	As mentioned before (see Section \ref{sec:systemInterfaces}) the system need to use external APIs and to expose interfaces in order to interact with other systems.
 	
+	As mentioned before (see Section \ref{sec:systemInterfaces}) the system needs to use external APIs and to expose interfaces in order to interact with other systems.
+	
+\subsection{Product functions}
+	\todo{See goals?}The system will:
+	\begin{enumerate}[label=\textbf{F\arabic*.}]
+		\item Function 1
+	\end{enumerate}
+
+\subsection{User characteristics}
+	Users can use our system when they want to rent a car.\\
+	Necessary conditions for the user in order to use the system are:
+	\begin{itemize}
+		\item He must be able to use a smartphone
+		\item He must be in the age of majority
+		\item He must have a proper valid driving license
+		\item He must be able to drive a car (i.d. he must be in both physical and mental health)
+	\end{itemize}
+	These conditions are approved by users during the registration to the system.
+
 \subsection{Domain assumption}
 	We assume that these assumptions hold true in the domain of our system 
-	\begin{itemize}
-		\item GPS position is supposed to be accurate w.r.t. the defined areas
+	\begin{enumerate}[label=\textbf{DA\arabic*}]
+		\item GPS position is supposed to be accurate
 		\item GPS position and status of all cars is always available
-		\item The user who reserves the car, will always be the person who drives it
+		\item The user who reserves the car will always be the person who drives it
 		\item Users are legally allowed to drive cars (i.d. users have a proper driving license)
 		\item Charging stations are always working and continuously monitored by the system
-		\item Every time a user enters a car he ignites the engine
-		\item All the data provided by users is correct and reliable
-		\item 
-	\end{itemize}
+		\item \todo{removed?}Every time a user enters a car he ignites the engine
+		\item All data provided by users are correct and reliable
+	\end{enumerate}

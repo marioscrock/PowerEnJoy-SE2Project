@@ -6,16 +6,36 @@ The following requirements are derived in order to fulfill the specified goal.
 	\begin{description}
 		\item[G1] Allow users to register to the system
 		\begin{description}
-			\item[R1] Dado
-			\item[R2] Mario
+			\item[R1] The system must require to the user an username and a password to identify the user uniquely
+			\item[R2] The system must check the username inserted by the user doesn't belong to another user already registered to the system 
+			\item[R3] The system must require to the user driving license ID code in the registration phase
+			\item[R4] The system must check if the driving license ID code inserted by the user is a valid an proper driving license
+			\item[R5] The system must require to the user payments informations in the registration phase
+			\item[R6] The system must check payments informations inserted by the user are valid
+			\item[R7] The system must \todo{?} require to the user an email address
+			\item[R8] The system must check if the email address inserted by the user is valid
+			\item[R9] The system must \todo{?} require to the user information about its domicile
 		\end{description}
 		\item[G2] Allow registered users to authenticate to the system
+		\begin{description}
+			\item[R1] The system must require to the user his username and password to authenticate to the system
+			\item[R2] The system must be able to check if username and password (paired together) correspond to a user correctly registered to the service
+			\item[R3] The system must allow access to the services provided by the system only to authenticated users 
+			\item[R4] The system must not allow a banned user to access the system
+			\item[R5] The system must provide informations about how to contact PowerEnJoy customer service to a banned user who tries to authenticate to the system
+		\end{description}
 		\item[G3] Provide authenticated users with the position of available cars
+		\begin{description}
+			\item[R1] The system must be able to know the exact position of each car
+			\item[R2] The system must be able to know the current state of each car
+			\item[R3] The system must be able to show a map with the position of available cars
+			\item[R4] \todo{... to be continued}
+		\end{description}
 		\item[G4] Notify PowerEnJoy maintenance operators with a list of not available cars 
 		\item[G5] Provide PowerEnJoy maintenance operators with a way to handle not available cars, under a special maintenance condition
 		\item[G6] Provide PowerEnJoy customer service with a way to ban users in order to prevent them from reserving or using other cars, and enable them to use the service again
 		\item[G7] Ban a user from the service when the payment transaction for his last ride was unsuccessful and notify PowerEnJoy customer service of the missing payment
-		\item[G8] Allow a user to reserve a car, if available, and hold this reservation for an hour
+		\item[G8] Allow a user to reserve a car, if available, and hold this reservation for an hour	
 		\item[G9] Charge the user for 1\euro\ in case the car he reserved hasn't been used after an hour from the reservation
 		\item[G10] Allow a user to perform a complete rent, reserving a car, using it and leaving it terminating the rent in a safe area with the payment procedure related to aforementioned rent
 		\item[G11] Calculate and charge the user for the amount of money he has to pay for his last ride, also considering the various discounts and/or fees applicable based on the ride

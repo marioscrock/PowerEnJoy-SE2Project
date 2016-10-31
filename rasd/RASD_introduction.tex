@@ -9,21 +9,20 @@ The system we are to develop is brand new, there is no previous system.
 PowerEnJoy is a car-sharing service that exclusively employs electric cars; we are going to develop a web-based software system that will provide the functionalities normally provided by car-sharing services, such as allowing the user to register to the system in order to access it, showing the cars available near a given location and allowing a user to reserve a car before picking it up.
 A screen located inside the car will show in real time the ride amount of money to the user. When the user reaches a predefined safe area and exits the car, the system will stop charging the user and will lock the car. The system will provide information about charging station location where the car can be plugged after the ride and incentivize virtuous behaviours of the users with discounts.
 	\subsubsection{Goals}
-	\begin{description}
-		\item[G1] Allow users to register to the system
-		\item[G2] Allow \todo{aggiungere glossary}registered users to authenticate to the system
-		\item[G3] Provide authenticated users with the position of available cars
-		\item[G4] Notify PowerEnJoy maintenance operators with a list of not available cars 
-		\item[G5] Provide PowerEnJoy maintenance operators with a way to handle not available cars, under a special maintenance condition \todo{da definire nel glossario la maintenance condition}
-		\item[G6] Provide PowerEnJoy customer service with a way to ban\todo{glossary} users in order to prevent them from reserving or using other cars, and enable them to use the service again
-		\item[G7] Ban a user from the service when the payment transaction for his last ride was unsuccessful and notify PowerEnJoy customer service of the missing payment
-		\item[G8] Allow a user to reserve a car, if available, and hold this reservation for an hour
-		\item[G9] Charge the user for 1\euro\ in case the car he reserved hasn't been used after an hour from the reservation
-		\item[G10] Allow a user to perform a complete rent, reserving a car, using it and leaving it terminating the rent in a safe area with the payment procedure related to aforementioned rent \todo{se l'utente non parcheggia in una safe area gli viene notificato e la macchina viene bloccata lo stesso. inoltre gli viene addebitata una fee fissa piu una componente dipendente dalla distanza dalla safe area più vicina}
-		\item[G11] Calculate and charge the user for the amount of money he has to pay for his last ride, also considering the various discounts and/or fees applicable based on the ride
-		\item[G12] Allow the user to enable a money saving option which provides the user with a destination charging station to get a discount
-	\end{description}
-
+	\begin{enumerate}[label=\textbf{G\arabic*}]
+		\item \label{goal:register} Allow users to register to the system
+		\item \label{goal:login}Allow \todo{aggiungere glossary}registered users to authenticate to the system
+		\item \label{goal:position}Provide authenticated users with the position of available cars
+		\item \label{goal:notifyMaintenance}Notify maintenance office with a list of not available cars 
+		\item \label{goal:maintenance}Provide maintenance office with a way to handle not available cars, under a special maintenance condition \todo{da definire nel glossario la maintenance condition}
+		\item \label{goal:banUnbanUsers}Provide customer service with a way to ban\todo{glossary} users in order to prevent them from reserving or using other cars, and enable them to use the service again
+		\item \label{goal:banPaymentFailed}Ban a user from the service when the payment transaction for his last ride was unsuccessful and notify PowerEnJoy customer service of the missing payment
+		\item \label{goal:carReservation} Allow a user to reserve a car, if available, and hold this reservation for an hour
+		\item \label{goal:reservationFee}Charge the user for 1\euro\ in case the car he reserved hasn't been used after an hour from the reservation
+		\item \label{goal:completeRent}Allow a user to perform a complete rent, reserving a car, using it and leaving it terminating the rent in a safe area with the payment procedure related to aforementioned rent \todo{se l'utente non parcheggia in una safe area gli viene notificato e la macchina viene bloccata lo stesso. inoltre gli viene addebitata una fee fissa piu una componente dipendente dalla distanza dalla safe area più vicina}
+		\item \label{goal:calculateCost}Calculate and charge the user for the amount of money he has to pay for his last ride, also considering the various discounts and/or fees applicable based on the ride
+		\item \label{goal:moneySavingOption}Allow the user to enable a money saving option which provides the user with a destination charging station to get a discount
+	\end{enumerate}
 
 \subsection{Glossary}
 	\subsubsection{Definitions}

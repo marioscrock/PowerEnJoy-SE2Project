@@ -12,13 +12,13 @@
 			}
 		\end{figure}
 	\paragraph{Payments}
-	When a payment is required (e.g. when a user ends his rent) a request with all the details needed to complete the payment (i.d. name and surname of the user, due amount, credit card number etc.) is sent to an external payments system. Once the external system has completed the payment, it gives to our system a feedback of the payment process status so that we can take appropriate action.
+	When a payment is required (e.g. when a user ends his rent) the system sends a request with all the details needed to complete the payment (i.d. name and surname of the user, due amount, credit card number etc.) to an external payment handling system. Once the external system completes the payment process, it sends our system the payment outcome so that the system can take appropriate action.
 	
-	\paragraph{Customer care} Every time it is required a customer care service operator can contact a user. Customer care service operators can request and view all user details, their rent and payments history. Such operators can also ban or unban users from using the system, mark cars as not available and, in general, provide assistance to users during the rent.
+	\paragraph{Customer care} Every time it is required a customer care service operator can contact a user. Customer care service operators can request and see all user details, their rents and payments history. Such operators can also ban or unban users from the system, mark cars as not available and, in general, provide assistance to users.
 
-	\paragraph{Maintenance} Every time maintenance for a car is required an external pool of maintenance operators is notified with GPS position of the car and a brief description of the problem.
+	\paragraph{Maintenance} Every time a car requires maintenance, the system notifies an external pool of maintenance operators, providing  GPS position of the car and a brief description of the problem.
 
-	\paragraph{Map} GPS positions from cars and safe areas are displayed to all users, customer care operators and maintenance operators on a constantly updated map using an external reliable Geographic Information System.
+	\paragraph{Map} GPS positions of cars and safe areas are displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external Geographic Information System.
 
 	\paragraph{Cars}\label{sec:cars}All cars have modules that continuously provide communications between them and our system about:
 	\begin{itemize}
@@ -103,4 +103,5 @@ All vehicles have an embedded external software system, which is able to display
 		\item Charging stations are always working and continuously monitored by the system
 		\item \todo{removed?}Every time a user enters a car he ignites the engine
 		\item All data provided by users are correct and reliable
+		\item All vehicles have an embedded software system, which is able to display information it receives from our system
 	\end{enumerate}

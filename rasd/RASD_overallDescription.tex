@@ -19,10 +19,7 @@
 
 	\paragraph{Map} GPS positions from cars and safe areas are displayed to all users, customer care operators and maintenance operators on a constantly updated map using an external reliable Geographic Information System.
 
-%	\paragraph{Car} All cars have an integrated GPS system that continuously provides its position to our system-to-be. 
-	
-\subsubsection{Cars}
-		\todo{System must be able to talk back to cars(e.g. for position wrt safe areas)}All cars have modules that continuously provide to our system:
+	\paragraph{Cars}All cars have modules that continuously provide to our system:
 	\begin{itemize}
 		\item GPS position
 		\item engine status (on/off)
@@ -41,9 +38,8 @@
 			}
 		\end{figure}
 		
-\subsubsection{User interfaces}\todo{where should user interface be mentioned? complete this}
-	There are two main user interfaces: what we call here "application" and the car.\\
-	Using the application users can:
+\subsubsection{User interfaces}
+	Using the interfaces of the system users can:\todo{move car to system interface}
 	\begin{enumerate}
 		\item Register and log-in to the system
 		\item On the map they can view the position of
@@ -53,6 +49,7 @@
 				\item available cars (with their current battery level)
 				\item charging stations
 			\end{enumerate}
+		\item Reserve a car
 		\item Ask the customer care service for assistance 
 	\end{enumerate}
 	Using the interface in the car users can:
@@ -66,7 +63,7 @@
 	\end{enumerate}			
 
 
-	\todo{is this the right place?}In order to use all feature of our system a user must be registered. All guest users can register to our system providing some relevant information about themselves (such as name, surname, phone number, driving license, payment details etc.). A registered user can reserve one\todo{Only one at a time! Check reqs} available car for 1 hour, in this period of time he can reach the car he reserved and once he is nearby...
+	\todo{Move elsewhere}In order to use all feature of our system a user must be registered. All guest users can register to our system providing some relevant information about themselves (such as name, surname, phone number, driving license, payment details etc.). A registered user can reserve one\todo{Only one at a time! Check reqs} available car for 1 hour, in this period of time he can reach the car he reserved and once he is nearby...
 
 \subsubsection{Software interfaces}
 	Databases and DBMSs are clearly required in order to store data about users, cars, charging stations, safe areas etc.

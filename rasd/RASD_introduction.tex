@@ -11,12 +11,12 @@ A screen located inside the car will show in real time the ride amount of money 
 	\subsubsection{Goals}
 	\begin{enumerate}[label=\textbf{G\arabic*}]
 		\item \label{goal:register} Allow users to register to the system
-		\item \label{goal:login}Allow \todo{aggiungere glossary}registered users to authenticate to the system
+		\item \label{goal:login}Allow registered users to authenticate to the system
 		\item \label{goal:position}Provide authenticated users with the position of available cars
 		\item \label{goal:notifyMaintenance}Notify maintenance office with a list of not available cars 
 		\item \label{goal:maintenance}Provide the maintenance office with a way to notify the system when a car must be inserted or removed from the list on unavailable cars.
-		\item \label{goal:banUnbanUsers}Provide customer service with a way to ban\todo{glossary} users in order to prevent them from reserving or using other cars, and enable them to use the service again
-		\item \label{goal:banPaymentFailed}Ban a user from the service when the payment transaction for his last ride was unsuccessful and notify PowerEnJoy customer service of the missing payment
+		\item \label{goal:banUnbanUsers}Provide customer service with a way to ban users in order to prevent them from reserving or using other cars, and enable them to use the service again
+		\item \label{goal:banPaymentFailed}Ban a user from the service when the payment transaction for his last ride was unsuccessful and notify customer service of the missing payment
 		\item \label{goal:carReservation} Allow a user to reserve a car, if available, and hold this reservation for an hour
 		\item \label{goal:reservationFee}Charge the user for 1\euro\ in case the car he reserved hasn't been used after an hour from the reservation
 		\item \label{goal:completeRent}Allow a user to perform a complete rent, reserving a car, using it and leaving it terminating the rent in a safe area with the payment procedure related to aforementioned rent \todo{se l'utente non parcheggia in una safe area gli viene notificato e la macchina viene bloccata lo stesso. inoltre gli viene addebitata una fee fissa piu una componente dipendente dalla distanza dalla safe area più vicina}
@@ -51,6 +51,7 @@ A screen located inside the car will show in real time the ride amount of money 
 		\item [API:] Application Programming Interface
 		\item [GPS:] Global Position System
 		\item [DBMS:] Data Base Management System
+		\item [FSM:] Finite-State Machine
 	\end{description}
 \subsubsection{Abbreviations}
 	\begin{description}

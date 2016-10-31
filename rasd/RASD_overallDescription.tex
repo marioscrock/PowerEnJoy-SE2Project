@@ -1,6 +1,7 @@
 \section{Overall description}
 \subsection{Product perspective}
-	\subsubsection{System interfaces}\label{sec:systemInterfaces}
+	\subsubsection{System interfaces}
+	\label{sec:systemInterfaces}
 		The system we are to develop will have some external interfaces (represented in Figure \ref{fig:systemInterfaces}) to accomplish the goals stated in section 1.3.1\todo{reference?}.
 		\begin{figure}[h]
 			\centering
@@ -19,14 +20,17 @@
 
 	\paragraph{Map} GPS positions from cars and safe areas are displayed to all users, customer care operators and maintenance operators on a constantly updated map using an external reliable Geographic Information System.
 
-	\paragraph{Cars}All cars have modules that continuously provide to our system:
+	\paragraph{Cars}\label{sec:cars}All cars have modules that continuously provide communications between them and our system about:
 	\begin{itemize}
 		\item GPS position
+		\item safe areas
 		\item engine status (on/off)
 		\item number of passengers
 		\item battery level (percentage)
 		\item charging status (in charge/not in charge)
 		\item door locking status (locked/unlocked)
+		\item car status (see \autoref{fig:carFSA})
+		\item current time
 	\end{itemize}	
 	The overall status of a car can be represented by an FSA
 	\begin{figure}[h]
@@ -52,24 +56,26 @@
 		\item Reserve a car
 		\item Ask the customer care service for assistance 
 	\end{enumerate}
-	Using the interface in the car users can:
-	\begin{enumerate}
-		\item Start the engine
-		\item View the real time battery level
-		\item View their real time GPS position
-		\item View their position w.r.t safe areas
-		\item Terminate the rent\todo{through an interface? Must be so by definition!}
-		\item Ask the customer care service for assistance
-	\end{enumerate}			
+%	Using the interface in the car users can:
+%	\begin{enumerate}
+%		\item Start the engine
+%		\item View the real time battery level
+%		\item View their real time GPS position
+%		\item View their position w.r.t safe areas
+%		\item Terminate the rent\todo{through an interface? Must be so by definition!}
+%		\item Ask the customer care service for assistance
+%	\end{enumerate}			
 
 
 	\todo{Move elsewhere}In order to use all feature of our system a user must be registered. All guest users can register to our system providing some relevant information about themselves (such as name, surname, phone number, driving license, payment details etc.). A registered user can reserve one\todo{Only one at a time! Check reqs} available car for 1 hour, in this period of time he can reach the car he reserved and once he is nearby...
 
 \subsubsection{Software interfaces}
-	Databases and DBMSs are clearly required in order to store data about users, cars, charging stations, safe areas etc.
-	
-	As mentioned before (see Section \ref{sec:systemInterfaces}) the system needs to use external APIs and to expose interfaces in order to interact with other systems.
-	
+Databases and DBMSs are clearly required in order to store data about users, cars, charging stations, safe areas etc.
+
+As mentioned before (see \autoref{sec:systemInterfaces}) the system needs to use external APIs and to expose interfaces in order to interact with other systems.
+
+All vehicles have an embedded external software system, which is able to display all information described in \hyperref[sec:cars]{cars section}.
+
 \subsection{Product functions}
 	\todo{See goals?}The system will:
 	\begin{enumerate}[label=\textbf{F\arabic*.}]

@@ -292,7 +292,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFYGv8oDS1buc4="
 									},
-									"name": "Additional fees calculation",
+									"name": "Additional fees application",
 									"ownedElements": [
 										{
 											"_type": "UMLExtend",
@@ -420,7 +420,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFYGv8oDS1buc4="
 									},
-									"name": "Tag a cars as not available",
+									"name": "Tag a car as not available",
 									"visibility": "public",
 									"isAbstract": false,
 									"isFinalSpecialization": false,
@@ -444,7 +444,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFYGv8oDS1buc4="
 									},
-									"name": "Tag cars as available",
+									"name": "Tag a car as available",
 									"ownedElements": [
 										{
 											"_type": "UMLAssociation",
@@ -6326,7 +6326,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "Additional fees calculation",
+											"text": "Additional fees application",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -12660,7 +12660,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "Tag a cars as not available",
+											"text": "Tag a car as not available",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -13978,7 +13978,7 @@
 											"height": 26,
 											"autoResize": false,
 											"underline": false,
-											"text": "Tag cars as available",
+											"text": "Tag a car as available",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},

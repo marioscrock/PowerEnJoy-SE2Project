@@ -42,8 +42,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				\item At each time the system must pair a car with one and only one state; possible
   				states are \emph{Available}, \emph{Not Available}, \emph{Reserved}, \emph{In Use}
    				\item The system must be aware the current state of each car
-   				\item The system must log an history of the states of each car \todo{? quanto
-   				tempo}
+   				\item The system must log an history of all rents and payments \todo{spostare}
    				\item The system must be able to know the exact amount of time the car has been in
    				the current state
    				\item The system must be able to show a map with the position of \emph{Available}
@@ -54,7 +53,7 @@ The following requirements are derived in order to fulfill the specified goals.
    				position
   			\end{enumerate}
 		\item \ref{goal:notifyMaintenance}\ Notify maintenance office with a list of not available
-		cars
+		cars\todo{aggiungere informazioni su GPS}
 			\begin{enumerate}[resume*]
    				\item The system must be able to retrieve the current battery level of each car
    				\item If a specific car state is set as \emph{Not Available} the system must 
@@ -64,12 +63,11 @@ The following requirements are derived in order to fulfill the specified goals.
    				\item The system must offer an API to retrieve the list of cars marked as \emph{Not
    				Available}
   			\end{enumerate}
-		\item \ref{goal:maintenance}\ Provide the maintenance office with a way to notify the
-		system when a car must be inserted or removed \todo{Quindi anche maintenance possono settare una macchina a non available?} from the list on unavailable cars
+		\item \ref{goal:needMaintenance}\ Provide the maintenance office with a way to notify the system when a car is available again and provide the customer service with a way to mark a car as unavailable
 			\begin{enumerate}[resume*]
    				\item The system must be able to set a specific car state to \emph{Available} in order 
    				to allow users to rent the aforementioned car
-   				\item The system must offer an access restricted API \todo{assumption?} that allows
+   				\item The system must offer an access restricted API \todo{write glossary restricted access API} that allows
    				to set the state of a specific car as \emph{Available} or \emph{Not Available}
   			\end{enumerate}
   		\item \ref{goal:usersHistory}\ Provide a way to show each user's rent and payment history
@@ -79,8 +77,7 @@ The following requirements are derived in order to fulfill the specified goals.
   		\item \ref{goal:banUnbanUsers}\ Provide customer service with a way to ban users in order
   		prevent them from reserving or using other cars, and enable them to use the service again
   			\begin{enumerate}[resume*]
-  				\item The system must allow to customer service to access users data \todo{altro goal? accesso read e write sul db? porzione?}
-  				\item The system must be able to mark and unmark a user as \emph{banned} \todo{aggiungere informazioni su come fare/indicare motivo?}
+  				\item The system must be able to mark and unmark a user as \emph{banned} \todo{aggiungere informazioni su motivo}
   				\item The system must not allow a \emph{banned} user to access the system
   				\item The system should provide information about how to contact customer care
    				\item The system must only provide information about how to contact customer
@@ -88,7 +85,7 @@ The following requirements are derived in order to fulfill the specified goals.
    				\item The system must offer an access restricted API that allows to set the state of a
    				specific user as \emph{banned} or \emph{not banned}
    			\end{enumerate}
- 	  	\item \ref{goal:carReservation}\ Allow a user to reserve a car, if available, and hold this
+ 	  	\item \ref{goal:carReservation}\ Allow a user to reserve a car, if available, and hold that
  	  	reservation for an hour
  	  		\begin{enumerate}[resume*]
  	  			\item The system must allow a user to select a specific car in order to reserve it 
@@ -102,11 +99,10 @@ The following requirements are derived in order to fulfill the specified goals.
  	  			must set the state of the aforementioned car to \emph{Available}
  	  			\item The system must not allow a user to make multiple reservations at the same time
    			\end{enumerate}
-  		\item \ref{goal:reservationFee}\ Charge the user for 1\euro\ in case the car he reserved hasn't
-  		been used after an hour from the reservation
+  		\item \ref{goal:reservationFee}\ Charge the user for 1\euro\ in case he hasn't used the car he reserved after an hour from such reservation
   			\begin{enumerate}[resume*]
   				\item The system must be able to carry out a payment procedure based on payment
-  				information provided by the user and on a specific amount of money\todo{mi fermerei qui, ma rivediamolo insieme (Moro)} the system needs to charge the user of
+  				information provided by the user and on a specific amount of money
   				\item The system must be able to know if a payment procedure is successful or
   				unsuccessful
   				\item The system must ban a user (set to \emph{banned} user) if a
@@ -117,9 +113,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				the car he reserved has been set as \emph{Reserved} paired with the aforementioned
   				user for one hour
    			\end{enumerate}
-  		\item \ref{goal:completeRent}\ Allow a user to perform a complete rent, reserving a car,
-  		using it and leaving it terminating the rent in a safe area with the payment procedure
-  		related to aforementioned rent
+  		\item \ref{goal:completeRent}\ Allow a user to perform a complete rent: reserving a car, using it and leaving it terminating the rent in a safe area, accomplishing the payment procedure related to aforementioned rent
   			\begin{enumerate}[resume*]
   			 	\item When the state of a specific car is set to \emph{In Use}, the car must be
  	  			uniquely paired with the user who is using the car
@@ -166,9 +160,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				plugs
   				\item The system must be able to know how many passengers are there on a car	
    			\end{enumerate}
-  		\item \ref{goal:calculateCost}\ Calculate and charge the user for the amount of money he
-  		has to pay for his last ride, also considering the various discounts and/or fees applicable
-  		based on the ride
+  		\item \ref{goal:calculateCost}\ Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride
   			\begin{enumerate}[resume*]
   			    \item The system must not cumulate the discounts but must apply only the one with the
   			    highest percentage.
@@ -198,8 +190,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				the system must charge to the user paired with the \emph{In Use} state of the 
   				aforementioned car the 30\% more on the last ride. 
    			\end{enumerate}
-  		\item \ref{goal:moneySavingOption}\ Allow the user to enable a \emph{money saving option} \todo{glossario?} which
-  		provides the user with a destination charging station to get a discount
+  		\item \ref{goal:moneySavingOption}\ Allow the user to enable a money saving option which provides him with a charging station as destination of the ride to get a discount on the cost of the aforementioned ride
   			\begin{enumerate}[resume*]
   				\item The system must allow the user to enable the \emph{money saving option}
   				\item If the  \emph{money saving option} is enabled the system must allow the user

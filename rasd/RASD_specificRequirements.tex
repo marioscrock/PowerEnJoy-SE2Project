@@ -75,8 +75,10 @@ The following requirements are derived in order to fulfill the specified goals.
   		\item \ref{goal:banUnbanUsers}\ Provide customer service with a way to ban users in order
   		prevent them from reserving or using other cars, and enable them to use the service again
   			\begin{enumerate}[resume*]
-  				\item The system must be able to mark and unmark a user as \emph{banned}
+  				\item The system must allow to customer service to access users data \todo{altro goal? accesso read e write sul db? porzione?}
+  				\item The system must be able to mark and unmark a user as \emph{banned} \todo{aggiungere informazioni su come fare/indicare motivo?}
   				\item The system must not allow a \emph{banned} user to access the system
+  				\item The system should provide information about how to contact customer care
    				\item The system must only provide information about how to contact customer
    				service to a \emph{banned} user
    				\item The system must offer an access restricted API that allows to set the state of a
@@ -152,9 +154,12 @@ The following requirements are derived in order to fulfill the specified goals.
   				system must show him, via the car display, if the aforementioned car position is or
   				isn't inside a safe area
   				\item The system must be able to know the position of all charging stations
+  				\item The system must be able to know the state of all charging stations: how many
+  				cars are plugged to the station and how many plugs are free \todo{charging station deve comunicare con noi!}
   				\item The system must be able to know if a car is plugged in a specific charging
   				station
-  				\item The system must be able to uniquely identify a charging station
+  				\item The system must be able to uniquely identify a charging station and the related
+  				plugs
   				\item The system must be able to know how many passengers are there on a car	
    			\end{enumerate}
   		\item \ref{goal:calculateCost}\ Calculate and charge the user for the amount of money he
@@ -189,14 +194,24 @@ The following requirements are derived in order to fulfill the specified goals.
   				the system must charge to the user paired with the \emph{In Use} state of the 
   				aforementioned car the 30\% more on the last ride. 
    			\end{enumerate}
-  		\item \ref{goal:moneySavingOption}\ Allow the user to enable a money saving option which
+  		\item \ref{goal:moneySavingOption}\ Allow the user to enable a \emph{money saving option} \todo{glossario?} which
   		provides the user with a destination charging station to get a discount
   			\begin{enumerate}[resume*]
-  				\item
-   			\end{enumerate}
-  		\item \ref{goal:contactCustomerCare}\ Allow all users to contact the customer care service
-  			\begin{enumerate}[resume*]
-  				\item
+  				\item The system must allow the user to enable the \emph{money saving option}
+  				\item If the  \emph{money saving option} is enabled the system must allow the user
+  				to insert his final destination and provide him information about a station where to
+  				leave the car to get a discount
+  				\item The system must be able to determine the station suggested to the user by the
+  				\emph{money saving option} in order to ensure a uniform distribution of cars in the
+  				city
+  				\item The system must be able to determine the station suggested to the user by the
+  				\emph{money saving option} taking into account the destination of the user and
+  				the availability of power plugs at the selected station
+  				\item When the timer activated locking a \emph{In Use} car expires if the system
+  				detects the car as plugged into the power grid of the charging station determined by
+  				the \emph{money saving option} the system must apply to the user paired with the
+  				\emph{In Use} state of the aforementioned car a discount of the cost of
+  				the current ride		
    			\end{enumerate}
   	\end{description}
 

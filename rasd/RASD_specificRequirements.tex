@@ -28,7 +28,7 @@ The following requirements are derived in order to fulfill the specified goals.
   			\end{enumerate}
 		\item \ref{goal:login}\ Allow registered users to authenticate to the system
 			\begin{enumerate}[resume*]
-  				\item he system must require the user to insert his username and password to
+  				\item The system must require the user to insert his username and password to
   				authenticate to the system
    				\item The system must be able to check if the username and password pair
    				correspond to a user correctly registered to the system
@@ -42,7 +42,6 @@ The following requirements are derived in order to fulfill the specified goals.
   				\item At each time the system must pair a car with one and only one state; possible
   				states are \emph{Available}, \emph{Not Available}, \emph{Reserved}, \emph{In Use}
    				\item The system must be aware the current state of each car
-   				\item The system must log an history of all rents and payments \todo{spostare}
    				\item The system must be able to know the exact amount of time the car has been in
    				the current state
    				\item The system must be able to show a map with the position of \emph{Available}
@@ -53,7 +52,7 @@ The following requirements are derived in order to fulfill the specified goals.
    				position
   			\end{enumerate}
 		\item \ref{goal:notifyMaintenance}\ Notify maintenance office with a list of not available
-		cars\todo{aggiungere informazioni su GPS}
+		cars
 			\begin{enumerate}[resume*]
    				\item The system must be able to retrieve the current battery level of each car
    				\item If a specific car state is set as \emph{Not Available} the system must 
@@ -61,25 +60,39 @@ The following requirements are derived in order to fulfill the specified goals.
    				\item If a specific car state is set as \emph{Not Available}, the car must be paired
    				with a brief description of why the car is not available
    				\item The system must offer an API to retrieve the list of cars marked as \emph{Not
-   				Available}
+   				Available} along with the current position of each car (\emph{GPS coordinates})
   			\end{enumerate}
-		\item \ref{goal:needMaintenance}\ Provide the maintenance office with a way to notify the system when a car is available again and provide the customer service with a way to mark a car as unavailable
+		\item \ref{goal:maintenanceDone}\ Provide the maintenance office with a way to notify the system when a car is available again
 			\begin{enumerate}[resume*]
    				\item The system must be able to set a specific car state to \emph{Available} in order 
-   				to allow users to rent the aforementioned car
-   				\item The system must offer an access restricted API \todo{write glossary restricted access API} that allows
-   				to set the state of a specific car as \emph{Available} or \emph{Not Available}
+   				to allow users to reserve and rent the aforementioned car
+   				\item The system must offer an access restricted API
+   				to set the state of a specific car as \emph{Available}
   			\end{enumerate}
+  		\item \ref{goal:needMaintenance} Provide the user with a way to contact customer service to report a damaged car
+  		\begin{enumerate}[resume*]
+  			\item The system should provide information about how to contact customer care
+  			service
+   			\item The system must offer an access restricted API to set the state of a specific car as
+   			\emph{Not Available}	
+  		\end{enumerate}
   		\item \ref{goal:usersHistory}\ Provide a way to show each user's rent and payment history
   			\begin{enumerate}[resume*]
-  				\item
+  				\item The system must log an history of all rents and payments
+  				\item User's rents history must include expired reservations  without complete the rent
+  				\item Each record on the payment history of a user must include the amount charged,
+  				the discounts/additional fees applied and informations about the rent its related to
+  				\item User's payment history must include not completed payment procedures
+  				\item The system must be able to show to the user his own history of rents and
+  				payments
   			\end{enumerate}
   		\item \ref{goal:banUnbanUsers}\ Provide customer service with a way to ban users in order
   		prevent them from reserving or using other cars, and enable them to use the service again
   			\begin{enumerate}[resume*]
-  				\item The system must be able to mark and unmark a user as \emph{banned} \todo{aggiungere informazioni su motivo}
+  				\item The system must be able to mark and unmark a user as \emph{banned} 
+  				\item The system must require a brief description of reasons marking a user as
+  				\emph{banned}
   				\item The system must not allow a \emph{banned} user to access the system
-  				\item The system should provide information about how to contact customer care
    				\item The system must only provide information about how to contact customer
    				service to a \emph{banned} user
    				\item The system must offer an access restricted API that allows to set the state of a
@@ -108,21 +121,22 @@ The following requirements are derived in order to fulfill the specified goals.
   				\item The system must ban a user (set to \emph{banned} user) if a
   				payment procedure was unsuccessful and notify him via email that he has to
   				contact customer service
+  				\item At each time a user can be paired with one single state of one single car.
   				\item The system must charge the user for 1\euro\ (through a payment procedure) if
-  				(he reserved a car, and the reservation lasted more than an hour)\todo{proposta}
   				the car he reserved has been set as \emph{Reserved} paired with the aforementioned
   				user for one hour
    			\end{enumerate}
   		\item \ref{goal:completeRent}\ Allow a user to perform a complete rent: reserving a car, using it and leaving it terminating the rent in a safe area, accomplishing the payment procedure related to aforementioned rent
   			\begin{enumerate}[resume*]
-  			 	\item When the state of a specific car is set to \emph{In Use}, the car must be
- 	  			uniquely paired with the user who is using the car
   				\item The system must be able to lock and unlock each car
   				\item The system must be able to know the current motor state of each car
   				(\emph{on} or \emph{off})
   				\item The system must be able to know the current percentage of battery of each car
-  				\item The system must be able to unlock a car when the position of the user paired with the
+  				\item The system must be able to unlock a car when the position of the user paired
+  				with the
   				\emph{Reserved} state of the car is at most 5 meters away from the position the car
+  				\item When the state of a specific car is set to \emph{In Use}, the car must be
+ 	  			uniquely paired with the user who is using the car
   				\item The system can set the state of a \emph{Reserved} car to \emph{In Use} i.f.f.
   				the user paired with the \emph{Reserved} state of the car has unlocked the car and he
   				has ignited the car engine
@@ -134,9 +148,6 @@ The following requirements are derived in order to fulfill the specified goals.
   				amount
   				\item When the timer activated locking a \emph{In Use} car expires the system must
   				set the state of the aforementioned car from \emph{In Use} to \emph{Available}
-  				(When the timer, which starts as soon as the car is locked by the system, expires the
-  				system must set the state of the aforementioned car from \emph{In Use} to
-  				\emph{Available})\todo{proposta}
   				\item The system must set the state of a car from \emph{Available}
   				to \emph{Not Available} if battery percentage is lower than 20\%  stating that reason
   				as description
@@ -153,25 +164,25 @@ The following requirements are derived in order to fulfill the specified goals.
   				isn't inside a safe area
   				\item The system must be able to know the position of all charging stations
   				\item The system must be able to know the state of all charging stations: how many
-  				cars are plugged to the station and how many plugs are free \todo{charging station deve comunicare con noi!}
+  				cars are plugged to the station
   				\item The system must be able to know if a car is plugged in a specific charging
   				station
   				\item The system must be able to uniquely identify a charging station and the related
   				plugs
-  				\item The system must be able to know how many passengers are there on a car	
    			\end{enumerate}
   		\item \ref{goal:calculateCost}\ Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride
   			\begin{enumerate}[resume*]
-  			    \item The system must not cumulate the discounts but must apply only the one with the
-  			    highest percentage.
+  			    \item The system must not cumulate the discounts but must apply only the one with
+  			    the highest percentage.
+  			    \item The system must be able to know how many passengers are there on a car	
   				\item If locking an \emph{In Use} car the system detects that the car position is not
-  				inside a safe area, the system must charge the user paired with the \emph{In Use} state
-  				of the aforementioned car for the cost of the ride plus an additional fee; that fee is
-  				composed by a fixed amount plus a variable amount proportional to the distance of the
-  				car form the nearest safe area
+  				inside a safe area, the system must charge the user paired with the \emph{In Use}
+  				state of the aforementioned car for the cost of the ride plus an additional fee; that fee
+  				is composed by a fixed amount plus a variable amount proportional to the distance of
+  				the car form the nearest safe area
   				\item If a car is located outside the set of safe areas and its state is not \emph{In
-  				Use} the system must set the car state to \emph{Not Available}  stating that reason as
-  				description
+  				Use} the system must set the car state to \emph{Not Available} stating that reason
+  				as description
   				\item If during the time a car is set as \emph{In Use} the system detects more than
   				one passengers into the car, the system must apply to the user paired with the
   				\emph{In Use} state of the aforementioned car a discount of 10\% of the cost of
@@ -205,7 +216,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				\item When the timer activated locking a \emph{In Use} car expires if the system
   				detects the car as plugged into the power grid of the charging station determined by
   				the \emph{money saving option} the system must apply to the user paired with the
-  				\emph{In Use} state of the aforementioned car a discount of the cost of
+  				\emph{In Use} state of the aforementioned car a discount on the cost of
   				the current ride		
    			\end{enumerate}
   	\end{description}

@@ -66,14 +66,14 @@ The following requirements are derived in order to fulfill the specified goals.
 			\begin{enumerate}[resume*]
    				\item The system must be able to set a specific car state to \emph{Available} in order 
    				to allow users to reserve and rent the aforementioned car
-   				\item The system must offer an access restricted API
+   				\item The system must offer an restricted access API
    				to set the state of a specific car as \emph{Available}
   			\end{enumerate}
   		\item \ref{goal:needMaintenance} Provide the user with a way to contact customer service to report a damaged car
   		\begin{enumerate}[resume*]
   			\item The system should provide information about how to contact customer care
   			service
-   			\item The system must offer an access restricted API to set the state of a specific car as
+   			\item The system must offer an restricted access API to set the state of a specific car as
    			\emph{Not Available}	
   		\end{enumerate}
   		\item \ref{goal:usersHistory}\ Provide a way to show each user's rent and payment history
@@ -96,9 +96,9 @@ The following requirements are derived in order to fulfill the specified goals.
   				provide him information about how to contact customer service 
   				\item The system must allow customer service to access users' information and
   				history \todo{?}
-  				\item The system must offer an access restricted API that allows to manage payments
+  				\item The system must offer an restricted access API that allows to manage payments
   				of a user \todo{?}
-   				\item The system must offer an access restricted API that allows to set the state of a
+   				\item The system must offer an restricted access API that allows to set the state of a
    				specific user as \emph{banned} or \emph{not banned}
    			\end{enumerate}
  	  	\item \ref{goal:carReservation}\ Allow a user to reserve a car, if available, and hold that
@@ -232,7 +232,7 @@ The following requirements are derived in order to fulfill the specified goals.
 	System must be available 24 hours a day.
 	\subsubsection{Security}
 	Data must be protected during transmission.
-	Access Restricted APIs must verify the user who tries to use them.
+	Restricted access APIs must verify the user who tries to use them.
 	\subsubsection{Maintainability}
 	\subsubsection{Portability}
 	The system must be also accessible by mobile platforms (iOS and Android).

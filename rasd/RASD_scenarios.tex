@@ -25,18 +25,18 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 \subsection{Use cases description}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
-\textbf{Name} & Authentication \\
+\textbf{Name} & \textbf{Authentication} \\
 \midrule
 \textbf{Actors} &  Registered user \\
 \midrule
 \textbf{Entry conditions} & The user must know his username and password \\
 \midrule
 \textbf{Flow of events} & 
-\begin{itemize}
+\begin{enumerate}
 	\item The user inserts his username and password in the appropriate form and submit it
 	\item The system validates the inserted credential
 	\item The system checks if the user is banned
-\end{itemize} \\
+\end{enumerate} \\
 \midrule
 \textbf{Exit conditions} & If the credential validation is successful the user is not banned he is granted the proper privileges\\
 \midrule
@@ -50,23 +50,23 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
-\textbf{Name} & Car reservation \\
+\textbf{Name} & \textbf{Car reservation} \\
 \midrule
 \textbf{Actors} &  Registered user \\
 \midrule
-\textbf{Entry conditions} & The user must be logged in. \\
+\textbf{Entry conditions} & The user must be logged in \\
 \midrule
 \textbf{Flow of events} & 
-\begin{itemize}
+\begin{enumerate}
 	\item The user chooses if he wants to use his GPS position or insert a different one manually
-		\subitem - The system retrieves the user's  GPS position
-		\subitem - The user inserts a position
+		\subitem a. The system retrieves the user's  GPS position
+		\subitem b. The user inserts a position
 	\item The system retrieves the position of all available cars
 	\item The system shows a map with all available cars near the position indicated by the user
 	\item The user selects a car he wants to reserve
 	\item The system show the user informations about car battery percentage
 	\item The user confirms he wants to reserve that car
-\end{itemize} \\
+\end{enumerate} \\
 \midrule
 \textbf{Exit conditions} & The system set the state of the car as \emph{Reserved} paired with the user who made the reservation\\
 \midrule
@@ -74,6 +74,36 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 \begin{itemize}
 	\item If the position inserted by the user is not correct an error message is displayed
 	\item If the user doesn't want to reserve a car he can leave at anytime
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Car unlock} \\
+\midrule
+\textbf{Actors} &  Registered user \\
+\midrule
+\textbf{Entry conditions} & 
+\begin{itemize}
+	\item The user must be logged in
+	\item The user should have done a reservation for a car
+\end{itemize} \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The user select the unlock button to ask the system to unlock the car
+	\item The system checks if the user credentials corresponds to the credential of the user paired with the \emph{Reserved} state of the car
+	\item The system checks if the user's position is at most 5 meters away from the position the car he reserved
+	\item The system unlocks the car
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The car is unlocked and the user may enter it\\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If the user credentials doesn't correspond to the credential of the user paired with the \emph{Reserved} state of the car the system displays an error message
+	\item If the position of the user is not at most 5 meters away from the position the car he reserved the system displays an error message
 \end{itemize} \\
 \bottomrule
 \end{tabular}

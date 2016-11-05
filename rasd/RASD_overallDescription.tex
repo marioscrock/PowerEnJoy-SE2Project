@@ -16,8 +16,9 @@
 	
 	\paragraph{Customer care} Every time it is required a customer care service operator can contact a user. Customer care service operators can request and see all user details, their rents and payments history. Such operators can also ban or unban users from the system, mark cars as not available and, in general, provide assistance to users.
 
-	\paragraph{Maintenance} Every time a car requires maintenance, the system notifies an external pool of maintenance operators, providing  GPS position of the car and a brief description of the problem.
-
+	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} providing their GPS position and a brief description of the problem. The maintenance service takes care of reaching those cars, unlock the doors, \todo{in UseCase expand lock/unlock proc.} fix the fault, re-lock the doors and finally tag them as \emph{available} using the aforementioned API provided by the system.
+	
+	
 	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external Geographic Information System.
 
 	\paragraph{Cars}\label{sec:cars}All cars have modules that continuously provide communications between them and our system about:

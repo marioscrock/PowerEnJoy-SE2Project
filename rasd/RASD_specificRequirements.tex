@@ -54,34 +54,37 @@ The following requirements are derived in order to fulfill the specified goals.
 		\item \ref{goal:notifyMaintenance}\ Notify maintenance service with a list of not available
 		cars
 			\begin{enumerate}[resume*]
-   				\item The system must be able to retrieve the current battery level of each car
-   				\item If a specific car state is set as \emph{Not Available} the system must 
-   				prevent users from reserving or renting the aforementioned car
-   				\item If a specific car state is set as \emph{Not Available}, the car must be paired
-   				with a brief description of why the car is not available
-   				\item The system must offer an API to retrieve the list of cars marked as \emph{Not
-   				Available} along with the current position of each car (\emph{GPS coordinates})
+   				\item The system must be able to retrieve the current battery level of
+   				each car
+   				\item If the state of a specific car is set to \emph{Not Available} the
+   				system must prevent users from reserving or renting the aforementioned car
+   				\item If the state of a specific car is set to \emph{Not Available}, the
+   				car must be paired with a brief description of why the car is not
+   				available
+   				\item The system must offer an API to retrieve the list of cars marked as
+   				\emph{Not Available} along with the current position of each car
+   				(\emph{GPS coordinates})
   			\end{enumerate}
 		\item \ref{goal:maintenanceDone}\ Provide the maintenance service with a way to notify the system when a car is available again
 			\begin{enumerate}[resume*]
    				\item The system must be able to set a specific car state to \emph{Available} in order 
    				to allow users to reserve and rent the aforementioned car
-   				\item The system must offer an restricted access API
-   				to set the state of a specific car as \emph{Available}
+   				\item The system must offer a restricted access API to set the state of a
+   				specific car as \emph{Available}
   			\end{enumerate}
   		\item \ref{goal:needMaintenance} Provide the user with a way to contact customer service to report a damaged car
   		\begin{enumerate}[resume*]
-  			\item The system should provide information about how to contact customer care
+  			\item The system must provide information about how to contact customer care
   			service
-   			\item The system must allow the customer service to set the state of a specific car as
-   			\emph{Not Available}	
+   			\item The system must allow the customer service to set the state of a
+   			specific car to \emph{Not Available}	
   		\end{enumerate}
   		\item \ref{goal:usersHistory}\ Provide a way to show each user's rent and payment history
   			\begin{enumerate}[resume*]
   				\item The system must log an history of all rents and payments
-  				\item User's rents history must include expired reservations without complete the rent
-  				\item Each record on the payment history of a user must include the amount charged,
-  				the discounts/additional fees applied and informations about the rent its related to
+  				\item User's rents history must include expired reservations in which the rent was not completed
+  				\item Each record in the payment history of a user, which refers to a ride, must include the ride cost and 
+  				the discounts or additional fees applied
   				\item User's payment history must include not completed payment procedures
   				\item The system must be able to show to the user his own history of rents and
   				payments
@@ -90,17 +93,17 @@ The following requirements are derived in order to fulfill the specified goals.
   		prevent them from reserving or using other cars, and enable them to use the service again
   			\begin{enumerate}[resume*]
   				\item The system must be able to mark and unmark a user as \emph{banned} 
-  				\item The system must require a brief description of reasons marking a user as
+  				\item The system must require a brief description of the reasons why the user is being marked as 
   				\emph{banned}
   				\item The system must not allow a \emph{banned} user to access the system but only
   				provide him information about how to contact customer service 
   				\item The system must allow customer service to access users' information and
   				history
-  				\item The system must allow the customer service to manage payments
-  				of a user: to mark uncompleted ones as completed, to instantiate new payment
+  				\item The system must allow the customer service to manage the payments
+  				of a user: customer service must be able to mark uncompleted ones as completed, to instantiate new payment
   				procedures and to delete pending procedures
    				\item The system must allow the customer service to set the state of a
-   				specific user as \emph{banned} or \emph{not banned}
+   				specific user to \emph{banned} or \emph{not banned}
    			\end{enumerate}
  	  	\item \ref{goal:carReservation}\ Allow a user to reserve a car, if available, and hold that
  	  	reservation for an hour
@@ -146,10 +149,10 @@ The following requirements are derived in order to fulfill the specified goals.
   				has ignited the car engine
   				\item The system must lock a car if no passengers are detected in the car and the car
   				engine is \emph{off}
-  				\item When locking  an \emph{In Use} car, the system must be able to activate a
-  				timer; only when that timer expires the system must calculate the cost of the last ride
-  				performed by the car and charge the user (through a payment procedure) of the
-  				calculated amount
+  				\item When locking  an \emph{In Use} car, the system must be able to activate a timer;
+  				only when that timer expires the system must calculate the cost of the last ride
+  				performed by the car and charge the user (through a payment procedure) of the calculated
+  				amount
   				\item When the timer activated locking a \emph{In Use} car expires the system must
   				set the state of the aforementioned car from \emph{In Use} to \emph{Available}
   				\item The system must set the state of a car from \emph{Available}

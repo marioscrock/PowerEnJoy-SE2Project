@@ -51,7 +51,7 @@ The following requirements are derived in order to fulfill the specified goals.
    				\item The system must be able to calculate the distance of each car from a given
    				position
   			\end{enumerate}
-		\item \ref{goal:notifyMaintenance}\ Notify maintenance office with a list of not available
+		\item \ref{goal:notifyMaintenance}\ Notify maintenance service with a list of not available
 		cars
 			\begin{enumerate}[resume*]
    				\item The system must be able to retrieve the current battery level of each car
@@ -62,24 +62,24 @@ The following requirements are derived in order to fulfill the specified goals.
    				\item The system must offer an API to retrieve the list of cars marked as \emph{Not
    				Available} along with the current position of each car (\emph{GPS coordinates})
   			\end{enumerate}
-		\item \ref{goal:maintenanceDone}\ Provide the maintenance office with a way to notify the system when a car is available again
+		\item \ref{goal:maintenanceDone}\ Provide the maintenance service with a way to notify the system when a car is available again
 			\begin{enumerate}[resume*]
    				\item The system must be able to set a specific car state to \emph{Available} in order 
    				to allow users to reserve and rent the aforementioned car
-   				\item The system must offer an access restricted API
+   				\item The system must offer an restricted access API
    				to set the state of a specific car as \emph{Available}
   			\end{enumerate}
   		\item \ref{goal:needMaintenance} Provide the user with a way to contact customer service to report a damaged car
   		\begin{enumerate}[resume*]
   			\item The system should provide information about how to contact customer care
   			service
-   			\item The system must offer an access restricted API to set the state of a specific car as
+   			\item The system must allow the customer service to set the state of a specific car as
    			\emph{Not Available}	
   		\end{enumerate}
   		\item \ref{goal:usersHistory}\ Provide a way to show each user's rent and payment history
   			\begin{enumerate}[resume*]
   				\item The system must log an history of all rents and payments
-  				\item User's rents history must include expired reservations  without complete the rent
+  				\item User's rents history must include expired reservations without complete the rent
   				\item Each record on the payment history of a user must include the amount charged,
   				the discounts/additional fees applied and informations about the rent its related to
   				\item User's payment history must include not completed payment procedures
@@ -95,10 +95,11 @@ The following requirements are derived in order to fulfill the specified goals.
   				\item The system must not allow a \emph{banned} user to access the system but only
   				provide him information about how to contact customer service 
   				\item The system must allow customer service to access users' information and
-  				history \todo{?}
-  				\item The system must offer an access restricted API that allows to manage payments
-  				of a user \todo{?}
-   				\item The system must offer an access restricted API that allows to set the state of a
+  				history
+  				\item The system must allow the customer service to manage payments
+  				of a user: to mark uncompleted ones as completed, to instantiate new payment
+  				procedures and to delete pending procedures
+   				\item The system must allow the customer service to set the state of a
    				specific user as \emph{banned} or \emph{not banned}
    			\end{enumerate}
  	  	\item \ref{goal:carReservation}\ Allow a user to reserve a car, if available, and hold that
@@ -232,7 +233,7 @@ The following requirements are derived in order to fulfill the specified goals.
 	System must be available 24 hours a day.
 	\subsubsection{Security}
 	Data must be protected during transmission.
-	Access Restricted APIs must verify the user who tries to use them.
+	Restricted access APIs must verify the user who tries to use them.
 	\subsubsection{Maintainability}
 	\subsubsection{Portability}
 	The system must be also accessible by mobile platforms (iOS and Android).

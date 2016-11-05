@@ -134,11 +134,51 @@ If the position inserted by the user is not correct an error message is displaye
 \end{enumerate} \\
 \midrule
 \textbf{Exit conditions} & 
-The user is charged of the correct amount for the ride and at anytime could perform another rent\\
+The user is charged of the correct amount for the ride and at anytime could perform another rent, the car is avaible again\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
 	\item If the user doesn't unlocks the car up to one hour after the reservation, it is charged of 1\euro\, the car state is set as \emph{Available} and the user is notified by email his reservation is expired
+	\item ...
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Payment procedure} \\
+\midrule
+\textbf{Actors} &  Registered user\\
+\midrule
+\textbf{Entry conditions} & 
+\begin{itemize}
+	\item The user must be logged in
+	\item The user must have completed a rent
+\end{itemize} \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The timer activated by the system locking the car expires
+	\item The system checks if the car position is or not inside a safe area
+	\item The system checks if the car has detected more then one passenger during the rent
+	\item The system checks the car battery percentage
+	\item The system checks if the car is plugged on a charging station
+	\item The system checks the distance of the car from the nearest charging station
+	\item The system calculates the cost of the ride based on the rent time
+	\item The system determines the applicable discounts/extra fee applying it to the cost of the ride
+	\item The system starts a payment procedure with user's payment information using
+	an external service
+	\item The system logs data about the rent and the payment
+	\item The system waits a response from the external payment service
+    \item The system notifies through email the user about the result of the payment procedure and on discount/extra fees applied
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & 
+The user is charged of the correct amount for the ride\\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If the payment procedure is not correctly completed, the user is banned, the payment suspended and the user is informed through mail to contact the customer service
 	\item ...
 \end{itemize} \\
 \bottomrule

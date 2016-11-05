@@ -43,7 +43,7 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 \textbf{Exceptions} & 
 \begin{itemize}
 	\item If the credential validation failed an error message is displayed
-	\item If the credential validation is successful and the user is banned a message providing assistance is displayed
+	\item If the credential validation is successful and the user is banned a message providing assistance is displayed and the system doesn't allows the user to access to the system
 \end{itemize} \\
 \bottomrule
 \end{tabular}
@@ -71,10 +71,7 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 \textbf{Exit conditions} & The system set the state of the car as \emph{Reserved} paired with the user who made the reservation\\
 \midrule
 \textbf{Exceptions} & 
-\begin{itemize}
-	\item If the position inserted by the user is not correct an error message is displayed
-	\item If the user doesn't want to reserve a car he can leave at anytime
-\end{itemize} \\
+If the position inserted by the user is not correct an error message is displayed \\
 \bottomrule
 \end{tabular}
 
@@ -104,6 +101,45 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 \begin{itemize}
 	\item If the user credentials doesn't correspond to the credential of the user paired with the \emph{Reserved} state of the car the system displays an error message
 	\item If the position of the user is not at most 5 meters away from the position the car he reserved the system displays an error message
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Car Rent} \\
+\midrule
+\textbf{Actors} &  Registered user \\
+\midrule
+\textbf{Entry conditions} & 
+\begin{itemize}
+	\item The user must be logged in
+\end{itemize} \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item \emph{Car reservation}
+	\item \emph{Car unlock}
+	\item The user ignites the car enigne
+	\item The system must set the state of the \emph{Reserved} car to \emph{In Use} paired
+	with the same user
+	\item During the rent the user is informed about the current charge and if it is or not inside a
+	safe aerea
+	\item The user leaves the auto turning off the engine
+	\item The system locks the car
+    \item The system activates a timer to allow the user to plug the car into a power grid if it is
+    near one of them
+	\item When the timer expires: \emph{Payment procedure}
+	\item The system sets the car as \emph{Available}
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & 
+The user is charged of the correct amount for the ride and at anytime could perform another rent\\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If the user doesn't unlocks the car up to one hour after the reservation, it is charged of 1\euro\, the car state is set as \emph{Available} and the user is notified by email his reservation is expired
+	\item ...
 \end{itemize} \\
 \bottomrule
 \end{tabular}

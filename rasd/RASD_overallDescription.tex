@@ -16,7 +16,7 @@
 	
 	\paragraph{Customer care} Every time it is required, a PowerEnJoy customer care service operator can interact with a user. Customer care service operators can request and see all user details, their rents and payments history. Such operators can also ban or unban users from the system, mark cars as not available and, in general, provide assistance to users.
 
-	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} providing their GPS position and a brief description of the problem. The maintenance service takes care of reaching those cars, unlock the doors, \todo{in UseCase expand lock/unlock proc.} fix the fault, re-lock the doors and finally tag them as \emph{available} using the aforementioned API provided by the system.
+	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provide their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, \todo{in UseCase expand lock/unlock proc.} fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned API provided by the system.
 	
 	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external Geographic Information System.
 
@@ -51,7 +51,7 @@
 		\item number of passengers
 		\item battery level (percentage)
 		\item current time
-		\item amount owned until now
+		\item amount owed until now
 	\end{itemize}
 
 	The overall status of a car can be represented by an FSM \todo{da spostare nei grafi sezione 3}
@@ -96,7 +96,7 @@ Databases and DBMSs are clearly required in order to store data about users, car
 
 As mentioned before (see \autoref{sec:systemInterfaces}) the system needs to use external APIs and to expose interfaces in order to interact with other systems.
 
-All vehicles have an embedded external software system, which is able to display all information described in \hyperref[sec:cars]{cars section}.
+All vehicles have an embedded external software system, which is able to display all information described in \hyperref[sec:cars]{cars section}. Such system provides, among other functionalities, a secure way to unlock the doors of the car: it has a command which returns a software key to the system, such key can then be sent to the maintenance operators\todo{sarebbe sensato che si trovasse nella stessa lista delle macchine che non funzionano, insieme alla posizione e alla descrizione del problema}, which with a smartphone client of the car embedded system and the key, are able to unlock the car, without needing to interact with our system.
 
 \subsection{Product functions}
 	\todo{See goals?}The system will:

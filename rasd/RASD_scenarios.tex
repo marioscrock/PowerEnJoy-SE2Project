@@ -52,13 +52,14 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 \bottomrule
 \end{tabular}
 
+\todo{Car reservation punto 2: retrieves->refresh, punto 5 unire a punto 3}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car reservation} \\
 \midrule
 \textbf{Actors} &  Logged user \\
 \midrule
-\textbf{Entry conditions} & \\
+\textbf{Entry conditions} & The user must not have already a reservation active \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
@@ -67,12 +68,12 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 		\subitem b. The user inserts a position
 	\item The system retrieves the position of all available cars
 	\item The system shows a map with all available cars near the position indicated by the user
-	\item The user selects a car he wants to reserve
-	\item The system show the user informations about car battery percentage
+	\item The user selects the car he wants to reserve
+	\item The system show the user information about car battery percentage
 	\item The user confirms he wants to reserve that car
-\end{enumerate} \\
+\end{enumerate}\\
 \midrule
-\textbf{Exit conditions} & The system set the state of the car as \emph{Reserved} paired with the user who made the reservation\\
+\textbf{Exit conditions} & The system set the state of the chosen car as \emph{Reserved} paired with the user who made the reservation\\
 \midrule
 \textbf{Exceptions} & 
 If the position inserted by the user is not correct an error message is displayed \\
@@ -105,6 +106,7 @@ If the position inserted by the user is not correct an error message is displaye
 \bottomrule
 \end{tabular}
 
+\todo{Car Rent: corsivo=UC||Glossary ? Perchè specificare notifica EMAIL?}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car Rent} \\
@@ -118,7 +120,7 @@ If the position inserted by the user is not correct an error message is displaye
 	\item \emph{Car reservation}
 	\item \emph{Car unlock}
 	\item The user ignites the car engine
-	\item The system must set the state of the \emph{Reserved} car to \emph{In Use} paired
+	\item The system sets the state of the \emph{Reserved} car to \emph{In Use} paired
 	with the same user
 	\item During the rent the user is informed about the current charge and if it is or not inside a
 	safe area
@@ -135,12 +137,12 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the user doesn't unlocks the car up to one hour after the reservation, it is charged of 1\euro\, the car state is set as \emph{Available} and the user is notified by email his reservation is expired
+	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro , the car state is set as \emph{Available} and the user is notified by email his reservation is expired
 	\item ...
 \end{itemize} \\
 \bottomrule
 \end{tabular}
-
+\todo{Payment proc: evento 1 non è entry condition?}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Payment procedure} \\
@@ -153,7 +155,7 @@ The user must have completed a rent shutting off the engine and exiting the car 
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The timer activated by the system locking the car expires
-	\item The system checks if the car position is or not inside a safe area
+	\item The system checks if the car position is or is not inside a safe area
 	\item The system checks if the car has detected more then one passenger during the rent
 	\item The system checks the car battery percentage
 	\item The system checks if the car is plugged on a charging station
@@ -162,8 +164,8 @@ The user must have completed a rent shutting off the engine and exiting the car 
 	\item The system determines the applicable discounts/extra fee applying it to the cost of the ride
 	\item The system starts a payment procedure with user's payment information using
 	an external service
-	\item The system logs data about the rent and the payment
 	\item The system waits a response from the external payment service
+	\item The system logs data about the rent and the payment
     \item The system notifies through email the user about the result of the payment procedure and on discount/extra fees applied
 \end{enumerate} \\
 \midrule
@@ -185,7 +187,7 @@ The user is charged of the correct amount for the ride\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the payment procedure is not correctly completed, the user is banned, the payment suspended and the user is informed through mail to contact the customer service
+	\item If the payment procedure is not correctly completed because of insufficient credit the user is banned, rent information is stored, the payment suspended and the user is informed through mail to contact the customer service.  
 	\item ...
 \end{itemize} \\
 \bottomrule

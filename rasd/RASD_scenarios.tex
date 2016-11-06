@@ -15,7 +15,7 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 
 \subsection{Scenario 4}
 \label{scenario:4}
-Dino reserves a car, he reaches it and unlock the doors. He starts driving but after few minutes the engine stops and a warning icon lights up in the dashboard. He contact the customer care service that suggests him to reserve a different car which is nearby, the customer care operator then tags the first car as not available specifying a brief description of the fault. The maintenance service is now aware of the problem and they take care of resolving the issue: a maintenance operator is sent to the car, he unlock it \todo{how he unlocks the car?} and fix it. When the car is fully functional he tags it as available using a restricted access API of our system.
+Dino reserves a car, he reaches it and unlock the doors. He starts driving but after few minutes the engine stops and a warning icon lights up in the dashboard. He contacts the customer care service that suggests him to reserve a different car which is nearby, the customer care operator then tags the first car as not available specifying a brief description of the fault. The maintenance service is now aware of the problem and they take care of resolving the issue: a maintenance operator is sent to the car, he unlock it \todo{how he unlocks the car?} and fix it. When the car is fully functional he tags it as available using a restricted access API of our system.
 
 \newpage\subsection{Use case diagram}
 \begin{figure}[h]
@@ -86,7 +86,37 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 \bottomrule
 \end{tabular}
 
-\todo{Car reservation punto 2: retrieves->refresh, punto 5 unire a punto 3}
+\newpage
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{View cars on the map} \\
+\midrule
+\textbf{Actors} &  Logged user \\
+\midrule
+\textbf{Entry conditions} & \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The user chooses if he wants to use his GPS position or insert a different one manually
+		\subitem a. The system retrieves the user's GPS position
+		\subitem b. The user inserts a position
+	\item The system retrieves the position of all available cars and their battery level percentage
+	\item The system shows a map with all available cars near the position indicated by the user
+	\item The user can click on a car on the map to see its battery level percentage
+\end{enumerate}\\
+\midrule
+\textbf{Exit conditions} & The user can navigate a map with all available cars near the position indicated by him\\
+\midrule
+\textbf{Exceptions} & 
+If the position inserted by the user is not correct an error message is displayed \\
+\bottomrule
+\end{tabular}
+
+\bigskip
+\bigskip
+
+\todo{Car reservation punto 2: retrieves->refresh}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car reservation} \\
@@ -97,20 +127,14 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
-	\item The user chooses if he wants to use his GPS position or insert a different one manually
-		\subitem a. The system retrieves the user's  GPS position
-		\subitem b. The user inserts a position
-	\item The system retrieves the position of all available cars
-	\item The system shows a map with all available cars near the position indicated by the user
+	\item \emph{View cars on the map}
 	\item The user selects the car he wants to reserve
-	\item The system shows the user information about car battery percentage
 	\item The user confirms he wants to reserve that car
 \end{enumerate}\\
 \midrule
 \textbf{Exit conditions} & The system set the state of the chosen car as \emph{Reserved} paired with the user who made the reservation\\
 \midrule
-\textbf{Exceptions} & 
-If the position inserted by the user is not correct an error message is displayed \\
+\textbf{Exceptions} &  \\
 \bottomrule
 \end{tabular}
 

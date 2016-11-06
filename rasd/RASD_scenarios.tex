@@ -69,7 +69,7 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 	\item The system retrieves the position of all available cars
 	\item The system shows a map with all available cars near the position indicated by the user
 	\item The user selects the car he wants to reserve
-	\item The system show the user information about car battery percentage
+	\item The system shows the user information about car battery percentage
 	\item The user confirms he wants to reserve that car
 \end{enumerate}\\
 \midrule
@@ -106,7 +106,7 @@ If the position inserted by the user is not correct an error message is displaye
 \bottomrule
 \end{tabular}
 
-\todo{Car Rent: corsivo=UC||Glossary ? Perchè specificare notifica EMAIL?}
+\todo{Car Rent: corsivo=UC || Glossary ? Perchè specificare notifica EMAIL?}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car Rent} \\
@@ -205,8 +205,8 @@ The user should have enabled the \emph{money saving option} \\
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item \emph{Car Reservation}
-	\item The system asks to the user to insert his destination
-	\item The user insert his destination
+	\item The system asks the user to insert his destination
+	\item The user inserts his destination
 	\item The system searches for charging stations near the destination position inserted by the
 	user with available plugs
 	\item The system choose a charging station in order to ensure a uniform distribution of cars in
@@ -215,11 +215,18 @@ The user should have enabled the \emph{money saving option} \\
 	\item \emph{Car Rent} (\emph{Car Reservation} already done)
 \end{enumerate} \\
 \midrule
-\textbf{Exit conditions} & \\
+\textbf{Exit conditions} &
+\begin{itemize}
+	\item If the user has left the car plugged in the charging station suggested by the
+	\emph{money saving option} he has obtained the correct discount
+	\item The user can  anytime ìperform another rent
+	\item Car is again available
+\end{itemize} \\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item
+	\item If the user doesn't leave the car in the charging station suggested by the
+	\emph{money saving option} he doesn't obtain the related discount
 	\item ...
 \end{itemize} \\
 \bottomrule

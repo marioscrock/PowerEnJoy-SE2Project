@@ -167,6 +167,19 @@ The user must have completed a rent shutting off the engine and exiting the car 
     \item The system notifies through email the user about the result of the payment procedure and on discount/extra fees applied
 \end{enumerate} \\
 \midrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\midrule
+\textbf{Alternative flow} & 
+Flow of events as specified upon from \emph{1} to \emph{7}
+\begin{enumerate}[label=8 \alph*.]
+	\item The system detects the user has enabled the \emph{money saving option}
+	\item The system checks if the car is currently on charge on the charge station determined by the system at the begin of the rent
+	\item The system determines the applicable discounts/extra fee applying it to the cost of the ride eventually also taking in account the \emph{money saving option} discount if the car is currently on charge on the charge station determined by the system at the begin of the rent
+\end{enumerate}
+Flow of events as specified upon from \emph{9} to \emph{12} \\
+\midrule
 \textbf{Exit conditions} & 
 The user is charged of the correct amount for the ride\\
 \midrule
@@ -197,7 +210,7 @@ The user should have enabled the \emph{money saving option} \\
 	\item The system choose a charging station in order to ensure a uniform distribution of cars in
 	the city and taking in account the destination of the user
 	\item The system informs the user about the charging station to reach in order to obtain the discount
-	\item \emph{Car Rent}
+	\item \emph{Car Rent} (\emph{Car Reservation} already done)
 \end{enumerate} \\
 \midrule
 \textbf{Exit conditions} & \\

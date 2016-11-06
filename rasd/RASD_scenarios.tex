@@ -59,7 +59,7 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 \midrule
 \textbf{Actors} &  Logged user \\
 \midrule
-\textbf{Entry conditions} & The user must not have a reservation active \\
+\textbf{Entry conditions} & The user must not have already a reservation active \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
@@ -84,13 +84,9 @@ If the position inserted by the user is not correct an error message is displaye
 \toprule
 \textbf{Name} & \textbf{Car unlock} \\
 \midrule
-\textbf{Actors} &  Registered user \\
+\textbf{Actors} &  Logged user \\
 \midrule
-\textbf{Entry conditions} & 
-\begin{itemize}
-	\item The user must be logged in
-	\item The user should have done a reservation for a car
-\end{itemize} \\
+\textbf{Entry conditions} & The user should have done a reservation for a car \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
@@ -114,22 +110,19 @@ If the position inserted by the user is not correct an error message is displaye
 \toprule
 \textbf{Name} & \textbf{Car Rent} \\
 \midrule
-\textbf{Actors} &  Registered user \\
+\textbf{Actors} &  Logged user \\
 \midrule
-\textbf{Entry conditions} & 
-\begin{itemize}
-	\item The user must be logged in
-\end{itemize} \\
+\textbf{Entry conditions} & \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item \emph{Car reservation}
 	\item \emph{Car unlock}
-	\item The user ignites the car enigne
+	\item The user ignites the car engine
 	\item The system must set the state of the \emph{Reserved} car to \emph{In Use} paired
 	with the same user
 	\item During the rent the user is informed about the current charge and if it is or not inside a
-	safe aerea
+	safe area
 	\item The user leaves the auto turning off the engine
 	\item The system locks the car
     \item The system activates a timer to allow the user to plug the car into a power grid if it is
@@ -139,7 +132,7 @@ If the position inserted by the user is not correct an error message is displaye
 \end{enumerate} \\
 \midrule
 \textbf{Exit conditions} & 
-The user is charged of the correct amount for the ride and at anytime could perform another rent, the car is avaible again\\
+The user is charged of the correct amount for the ride and at anytime could perform another rent, the car is available again\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
@@ -153,13 +146,10 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \toprule
 \textbf{Name} & \textbf{Payment procedure} \\
 \midrule
-\textbf{Actors} &  Registered user\\
+\textbf{Actors} &  Logged user\\
 \midrule
 \textbf{Entry conditions} & 
-\begin{itemize}
-	\item The user must be logged in
-	\item The user must have completed a rent
-\end{itemize} \\
+The user must have completed a rent shutting off the engine and exiting the car \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
@@ -184,6 +174,38 @@ The user is charged of the correct amount for the ride\\
 \textbf{Exceptions} & 
 \begin{itemize}
 	\item If the payment procedure is not correctly completed, the user is banned, the payment suspended and the user is informed through mail to contact the customer service
+	\item ...
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Money saving option} \\
+\midrule
+\textbf{Actors} &  Logged user\\
+\midrule
+\textbf{Entry conditions} & 
+The user should have enabled the \emph{money saving option} \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item \emph{Car Reservation}
+	\item The system asks to the user to insert his destination
+	\item The user insert his destination
+	\item The system searches for charging stations near the destination position inserted by the
+	user with available plugs
+	\item The system choose a charging station in order to ensure a uniform distribution of cars in
+	the city and taking in account the destination of the user
+	\item The system informs the user about the charging station to reach in order to obtain the discount
+	\item \emph{Car Rent}
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & \\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item
 	\item ...
 \end{itemize} \\
 \bottomrule

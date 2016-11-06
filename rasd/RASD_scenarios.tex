@@ -27,6 +27,40 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 			}
 		\end{figure}
 \subsection{Use cases description}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Registration} \\
+\midrule
+\textbf{Actors} & Non registered user \\
+\midrule
+\textbf{Entry conditions} & \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The user asks the system to register to its services
+	\item The system shows the appropriate form to fill to register to the system
+	\item The user inserts an username to be uniquely identified by the system
+	\item The user inserts his own email address
+	\item The user inserts his name, surname, birth date and place and current domicile
+	\item The user inserts his driving license ID code and expiring date
+	\item The user inserts payment information
+	\item The user confirms data inserted are correct e submit the form
+	\item The system sends an email to the user with a unique link to verify the email address inserted by the user really belongs to him
+	\item The user clicking on the link received confirms his email address
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The user is notified by mail the registration procedure is correctly completed and he is provided with a password bound to his username to access the system\\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If the username inserted by the user is already used by another user, the system displays an error message asking the user to insert another username
+	\item If the user doesn't receive the link sent to him by mail needs to complete the form again with a correct email address
+	\item If the user notices to have entered wrong informations he could edit them at the end of the process of registration in his personal page
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Authentication} \\
@@ -209,7 +243,7 @@ The user should have enabled the \emph{money saving option} \\
 	\item The user inserts his destination
 	\item The system searches for charging stations near the destination position inserted by the
 	user with available plugs
-	\item The system choose a charging station in order to ensure a uniform distribution of cars in
+	\item The system chooses a charging station in order to ensure a uniform distribution of cars in
 	the city and taking in account the destination of the user
 	\item The system informs the user about the charging station to reach in order to obtain the discount
 	\item \emph{Car Rent} (\emph{Car Reservation} already done)

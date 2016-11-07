@@ -200,7 +200,6 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \end{itemize} \\
 \bottomrule
 \end{tabular}
-\todo{Payment proc: evento 1 non è entry condition?}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Payment procedure} \\
@@ -208,11 +207,10 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \textbf{Actors} &  Logged user\\
 \midrule
 \textbf{Entry conditions} & 
-The user must have completed a rent shutting off the engine and exiting the car \\
+The user must have completed a rent shutting off the engine and exiting the car. The timer activated by the system locking the car expires. \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
-	\item The timer activated by the system locking the car expires
 	\item The system checks if the car position is or is not inside a safe area
 	\item The system checks if the car has detected more then one passenger during the rent
 	\item The system checks the car battery percentage

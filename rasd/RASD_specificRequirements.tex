@@ -130,18 +130,16 @@ The following requirements are derived in order to fulfill the specified goals.
   				contact customer service
   				\item At each time a user can be paired with one single state of one single car.
   				\item The system must charge the user 1\euro\ (through a payment procedure) if
-  				the car he reserved \emph{Reserved} was paired with the aforementioned
+  				he reserved a car, and the state \emph{Reserved} of that car was paired with the aforementioned
   				user for more than one hour
    			\end{enumerate}
-  		\item \ref{goal:completeRent}\ Allow a user to perform a complete rent: reserving a car, using it and leaving it terminating the rent in a safe area, accomplishing the payment procedure related to aforementioned rent
+  		\item \ref{goal:completeRent}\ Allow a user to perform a complete rent: reserving a car, using it and leaving it terminating the rent in a safe area, concluding successfully the payment procedure related to the aforementioned rent
   			\begin{enumerate}[resume*]
   				\item The system must be able to lock and unlock each car
-  				\item The system must be able to know the current motor state of each car
+  				\item The system must be able to know the current engine state of each car
   				(\emph{on} or \emph{off})
   				\item The system must be able to know the current percentage of battery of each car
-  				\item The system must be able to unlock a car when the position of the user paired
-  				with the
-  				\emph{Reserved} state of the car is at most 5 meters away from the position the car
+  				\item The system must be able to unlock a car when the position of the user paired	with the \emph{Reserved} state of the car is at most 5 meters away from the position the car\todo{incluso in quello che dice che deve essere in grado di chiudere e aprire la macchina? (Aggiungerei solo che l'utente deve essere in grado di comunicare al sistema che si trova a meno di 5 metri dalla macchina)}
   				\item When the state of a specific car is set to \emph{In Use}, the car must be
  	  			uniquely paired with the user who is using the car
   				\item The system can set the state of a \emph{Reserved} car to \emph{In Use} i.f.f.
@@ -153,12 +151,11 @@ The following requirements are derived in order to fulfill the specified goals.
   				only when that timer expires the system must calculate the cost of the last ride
   				performed by the car and charge the user (through a payment procedure) of the calculated
   				amount
-  				\item When the timer activated locking a \emph{In Use} car expires the system must
+  				\item When the timer that was activated while locking an \emph{In Use} car expires the system must
   				set the state of the aforementioned car from \emph{In Use} to \emph{Available}
   				\item The system must set the state of a car from \emph{Available}
-  				to \emph{Not Available} if battery percentage is lower than 20\% and the
-  				aforementioned car is not plugged in any charging station stating that reason as
-  				description
+  				to \emph{Not Available} if battery percentage is lower than 20\%  stating that reason
+  				as description
   				\item The system must calculate the base cost of a ride proportionally to the time
   				the car has been used by the aforementioned user (paired as \emph{In Use} with the
   				user)
@@ -171,11 +168,11 @@ The following requirements are derived in order to fulfill the specified goals.
   				system must show him, via the car display, if the aforementioned car position is or
   				isn't inside a safe area
   				\item The system must be able to know the position of all charging stations
-  				\item The system must be able to know the state of all charging stations: how many
+  				\item \todo{Va tolto?} The system must be able to know the state of all charging stations: how many
   				cars are plugged to the station
   				\item The system must be able to know if a car is plugged in a specific charging
   				station
-  				\item The system must be able to uniquely identify a charging station and the related
+  				\item \todo{Va tolto?} The system must be able to uniquely identify a charging station and the related
   				plugs
    			\end{enumerate}
   		\item \ref{goal:calculateCost}\ Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride

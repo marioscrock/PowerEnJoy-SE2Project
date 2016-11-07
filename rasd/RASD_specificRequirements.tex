@@ -115,7 +115,7 @@ The following requirements are derived in order to fulfill the specified goals.
  	  			uniquely paired with the user who made the reservation for the aforementioned car, for
  	  			the duration of the reservation
  	  			\item A car set to \emph{Reserved} remains in this state exactly one hour after the user
- 	  			made the reservation; after that time the reservation expires and the system
+ 	  			made the reservation, if the user doesn't pick it up before; after that time the reservation expires and the system
  	  			must set the state of the aforementioned car to \emph{Available}
  	  			\item The system must not allow a user to make multiple reservations at the same time
    			\end{enumerate}
@@ -129,9 +129,9 @@ The following requirements are derived in order to fulfill the specified goals.
   				payment procedure was unsuccessful and notify him via email that he has to
   				contact customer service
   				\item At each time a user can be paired with one single state of one single car.
-  				\item The system must charge the user for 1\euro\ (through a payment procedure) if
-  				the car he reserved has been set as \emph{Reserved} paired with the aforementioned
-  				user for one hour
+  				\item The system must charge the user 1\euro\ (through a payment procedure) if
+  				the car he reserved \emph{Reserved} was paired with the aforementioned
+  				user for more than one hour
    			\end{enumerate}
   		\item \ref{goal:completeRent}\ Allow a user to perform a complete rent: reserving a car, using it and leaving it terminating the rent in a safe area, accomplishing the payment procedure related to aforementioned rent
   			\begin{enumerate}[resume*]

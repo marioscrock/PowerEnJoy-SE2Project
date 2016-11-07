@@ -1,6 +1,7 @@
 open util/boolean
 
 sig Car{
+	carID: one Int,
 	batteryLevel: one BatteryLevelPercentage,
 	status: one CarStatus,
 	usedBy: lone LoggedUser,
@@ -11,6 +12,7 @@ sig Car{
 }{
 	numberOfPassengers >= 0
 	numberOfPassengers <=5 //Assuming 5 seats per car
+	carID > 0
 }
 
 abstract sig User{}
@@ -85,6 +87,12 @@ fact InUseCarNotOnCharge{
 }
 
 //Add facts about engineOn and OnCharge?
+
+/* REQUIREMENTS */
+// G3 - R13
+fact uniqueCarID{
+	no disjoint c1,c2:Car | c1.carID = c2.carID
+}
 
 pred show{}
 run show for 4

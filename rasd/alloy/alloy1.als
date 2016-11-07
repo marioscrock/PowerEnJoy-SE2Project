@@ -1,9 +1,13 @@
+open util/boolean
+
 sig Car{
 	batteryLevel: one BatteryLevelPercentage,
 	status: one CarStatus,
 	usedBy: lone LoggedUser,
 	reservedBy: lone LoggedUser,
 	numberOfPassengers: Int,
+    onCharge: one Bool,
+	engineOn: one Bool
 }{
 	numberOfPassengers >= 0
 	numberOfPassengers <=5 //Assuming 5 seats per car
@@ -61,7 +65,7 @@ fact InUseStatusMustBePairedWithOneUser{
 }
 
 fact CarWithBatteryPercentageLower20FullNotAvailable{
-	all c:Car | c.batteryLevel = Lower20Full implies c.status = NotAvailable
+	all c:Car | (c.batteryLevel = Lower20Full and c.onCharge = False) implies c.status = NotAvailable
 }
 
 fact PassengersOnlyOnInUseCars{
@@ -71,6 +75,16 @@ fact PassengersOnlyOnInUseCars{
 fact AtLeastOnePassengerOnInUseCars{
 	no c:Car | c.status = InUse and c.numberOfPassengers =0
 }
+
+fact OnlyInUseCarEngineOn{
+	all c:Car | c.engineOn = True <=> c.status = InUse
+}
+
+fact InUseCarNotOnCharge{
+	all c:Car | c.status = InUse implies c.onCharge = False
+}
+
+//Add facts about engineOn and OnCharge?
 
 pred show{}
 run show for 4

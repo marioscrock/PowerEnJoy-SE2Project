@@ -317,7 +317,60 @@ The user should have enabled the \emph{money saving option} \\
 \begin{itemize}
 	\item If the user doesn't leave the car in the charging station suggested by the
 	\emph{money saving option} he doesn't obtain the related discount
-	\item ...
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Visualization of not available cars} \\
+\midrule
+\textbf{Actors} &  Maintenance service system\\
+\midrule
+\textbf{Entry conditions} & Maintenance service system must know the encrypted password to be identified by the system\\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The maintenance service system asks for the list of car with state set as \emph{Not Available} sending the request
+	paired with the encrypted password
+	\item The system checks the encrypted password
+	\item The system retrieves the list of car with state set as \emph{Not Available} along with the identifier used by the system to identify each car, the GPS position of each car, the description of the problem of each car and the software key to access each car
+	\item The system sends the information to the maintenance service system
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The maintenance service system receives the list of cars with state set as \emph{Not Available} \\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If encrypted password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Tag a car as available} \\
+\midrule
+\textbf{Actors} &  Maintenance service system\\
+\midrule
+\textbf{Entry conditions} & Maintenance service system must know the encrypted password to be identified by the system\\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The maintenance service system asks to tag a car as Available sending the car identifier
+	paired with the encrypted password
+	\item The system checks the encrypted password
+	\item The system checks the identifier sent corresponds to a car with state set as \emph{Not Available}
+	\item The system set the state of the car identified by the aforementioned identifier as \emph{Available}
+	\item The system sends to the maintenance service system a confirmation message the car has been tagged as \emph{Available}
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The car state is set as \emph{Available} \\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If encrypted password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+	\item If car identifier sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
 \end{itemize} \\
 \bottomrule
 \end{tabular}

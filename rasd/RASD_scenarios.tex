@@ -48,9 +48,10 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 	\item The user confirms data inserted are correct e submit the form
 	\item The system sends an email to the user with a unique link to verify the email address inserted by the user really belongs to him
 	\item The user clicking on the link received confirms his email address
+	\item The user is notified by mail the registration procedure is correctly completed
 \end{enumerate} \\
 \midrule
-\textbf{Exit conditions} & The user is notified by mail the registration procedure is correctly completed and he is provided with a password bound to his username to access the system\\
+\textbf{Exit conditions} & The user is provided with a password bound to his username to access the system\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
@@ -136,6 +137,30 @@ If the position inserted by the user is not correct an error message is displaye
 \bottomrule
 \end{tabular}
 
+\bigskip
+\bigskip
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Car reservation} \\
+\midrule
+\textbf{Actors} &  Logged user \\
+\midrule
+\textbf{Entry conditions} & The user must not have already a reservation active \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item \textbf{View cars on the map}
+	\item The user selects the car he wants to reserve
+	\item The user confirms he wants to reserve that car
+\end{enumerate}\\
+\midrule
+\textbf{Exit conditions} & The system set the state of the chosen car as \emph{Reserved} paired with the user who made the reservation\\
+\midrule
+\textbf{Exceptions} &  \\
+\bottomrule
+\end{tabular}
+
 \newpage
 
 \begin{figure}[h]
@@ -148,28 +173,6 @@ If the position inserted by the user is not correct an error message is displaye
 		\end{figure}
 
 \newpage
-
-\todo{Car reservation punto 2: retrieves->refresh}
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
-\toprule
-\textbf{Name} & \textbf{Car reservation} \\
-\midrule
-\textbf{Actors} &  Logged user \\
-\midrule
-\textbf{Entry conditions} & The user must not have already a reservation active \\
-\midrule
-\textbf{Flow of events} & 
-\begin{enumerate}
-	\item \emph{View cars on the map}
-	\item The user selects the car he wants to reserve
-	\item The user confirms he wants to reserve that car
-\end{enumerate}\\
-\midrule
-\textbf{Exit conditions} & The system set the state of the chosen car as \emph{Reserved} paired with the user who made the reservation\\
-\midrule
-\textbf{Exceptions} &  \\
-\bottomrule
-\end{tabular}
 
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
@@ -197,19 +200,18 @@ If the position inserted by the user is not correct an error message is displaye
 \bottomrule
 \end{tabular}
 
-\todo{Car Rent: corsivo=UC || Glossary ? Perchè specificare notifica EMAIL?}
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car Rent} \\
 \midrule
 \textbf{Actors} &  Logged user \\
 \midrule
-\textbf{Entry conditions} & \\
+\textbf{Entry conditions} & 
+The user is paired with the \emph{Reserved} state of a car\\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
-	\item \emph{Car reservation}
-	\item \emph{Car unlock}
+	\item \textbf{Car unlock}
 	\item The user ignites the car engine
 	\item The system sets the state of the \emph{Reserved} car to \emph{In Use} paired
 	with the same user
@@ -219,7 +221,7 @@ If the position inserted by the user is not correct an error message is displaye
 	\item The system locks the car
     \item The system activates a timer to allow the user to plug the car into a power grid if it is
     near one of them
-	\item When the timer expires: \emph{Payment procedure}
+	\item When the timer expires: \textbf{Rent payment}
 	\item The system sets the car as \emph{Available}
 \end{enumerate} \\
 \midrule
@@ -228,14 +230,14 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro , the car state is set as \emph{Available} and the user is notified by email his reservation is expired
-	\item ...
+	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro , the car state is set as \emph{Available} and the user is notified his reservation is expired
 \end{itemize} \\
 \bottomrule
 \end{tabular}
+
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
-\textbf{Name} & \textbf{Payment procedure} \\
+\textbf{Name} & \textbf{Rent payment} \\
 \midrule
 \textbf{Actors} &  Logged user\\
 \midrule
@@ -255,7 +257,7 @@ The user must have completed a rent shutting off the engine and exiting the car.
 	an external service
 	\item The system waits a response from the external payment service
 	\item The system logs data about the rent and the payment
-    \item The system notifies through email the user about the result of the payment procedure and on discount/extra fees applied
+    \item The system notifies the user about the result of the payment procedure and on discount/extra fees applied
 \end{enumerate} \\
 \midrule
 \end{tabular}
@@ -276,7 +278,7 @@ The user is charged of the correct amount for the ride\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the payment procedure is not correctly completed because of insufficient credit the user is banned, rent information is stored, the payment suspended and the user is informed through mail to contact the customer service.  
+	\item If the payment procedure is not correctly completed because of insufficient credit the user is banned, rent information is stored, the payment suspended and the user is informed to contact the customer service.  
 	\item ...
 \end{itemize} \\
 \bottomrule
@@ -293,7 +295,7 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
-	\item \emph{Car Reservation}
+	\item \textbf{Car Reservation}
 	\item The system asks the user to insert his destination
 	\item The user inserts his destination
 	\item The system searches for charging stations near the destination position inserted by the
@@ -301,7 +303,7 @@ The user should have enabled the \emph{money saving option} \\
 	\item The system chooses a charging station in order to ensure a uniform distribution of cars in
 	the city and taking in account the destination of the user
 	\item The system informs the user about the charging station to reach in order to obtain the discount
-	\item \emph{Car Rent} (\emph{Car Reservation} already done)
+	\item \textbf{Car Rent} (\textbf{Car Reservation} already done)
 \end{enumerate} \\
 \midrule
 \textbf{Exit conditions} &

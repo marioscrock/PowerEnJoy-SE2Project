@@ -111,6 +111,7 @@ The following requirements are derived in order to fulfill the specified goals.
  	  			\item The system must allow a user to select a specific car in order to reserve it 
  	  			(i.f.f its current state is \emph{Available}), and set to \emph{Reserved} the state of
  	  			the aforementioned car
+ 	  			\item At each time a user can be paired with one single state of one single car
  	  			\item When the state of a specific car is set to \emph{Reserved}, the car must be
  	  			uniquely paired with the user who made the reservation for the aforementioned car, for
  	  			the duration of the reservation
@@ -126,9 +127,8 @@ The following requirements are derived in order to fulfill the specified goals.
   				\item The system must be able to know if a payment procedure is successful or
   				unsuccessful
   				\item The system must ban a user (set to \emph{banned} user) if a
-  				payment procedure was unsuccessful and notify him via email that he has to
+  				payment procedure was unsuccessful and notify him that he has to
   				contact customer service
-  				\item At each time a user can be paired with one single state of one single car.
   				\item The system must charge the user 1\euro\ (through a payment procedure) if
   				he reserved a car, and the state \emph{Reserved} of that car was paired with the aforementioned
   				user for more than one hour
@@ -139,7 +139,10 @@ The following requirements are derived in order to fulfill the specified goals.
   				\item The system must be able to know the current engine state of each car
   				(\emph{on} or \emph{off})
   				\item The system must be able to know the current percentage of battery of each car
-  				\item The system must be able to unlock a car when the position of the user paired	with the \emph{Reserved} state of the car is at most 5 meters away from the position the car\todo{incluso in quello che dice che deve essere in grado di chiudere e aprire la macchina? (Aggiungerei solo che l'utente deve essere in grado di comunicare al sistema che si trova a meno di 5 metri dalla macchina)}
+  				\item The system must be able to compute the distance between the GPS position of
+  				the user paired	with the \emph{Reserved} state of the car and the GPS position of the
+  				aforementioned car
+  				\item The system must allow the user to ask to unlock the car
   				\item When the state of a specific car is set to \emph{In Use}, the car must be
  	  			uniquely paired with the user who is using the car
   				\item The system can set the state of a \emph{Reserved} car to \emph{In Use} i.f.f.
@@ -168,12 +171,8 @@ The following requirements are derived in order to fulfill the specified goals.
   				system must show him, via the car display, if the aforementioned car position is or
   				isn't inside a safe area
   				\item The system must be able to know the position of all charging stations
-  				\item \todo{Va tolto?} The system must be able to know the state of all charging stations: how many
-  				cars are plugged to the station
   				\item The system must be able to know if a car is plugged in a specific charging
   				station
-  				\item \todo{Va tolto?} The system must be able to uniquely identify a charging station and the related
-  				plugs
    			\end{enumerate}
   		\item \ref{goal:calculateCost}\ Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride
   			\begin{enumerate}[resume*]

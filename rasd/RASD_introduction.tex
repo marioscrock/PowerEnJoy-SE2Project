@@ -10,19 +10,19 @@ PowerEnJoy is a car-sharing service that exclusively employs electric cars; we a
 A screen located inside the car will show in real time the ride amount of money to the user. When the user reaches a predefined safe area and exits the car, the system will stop charging the user and will lock the car. The system will provide information about charging station location where the car can be plugged after the ride and incentivize virtuous behaviours of the users with discounts.
 	\subsubsection{Goals}
 	\begin{enumerate}[label=\textbf{G\arabic*}]
-		\item \label{goal:register} Allow users to register to the system
+		\item \label{goal:register} Allow \emph{guest} users to register to the system
 		\item \label{goal:login}Allow registered users to authenticate to the system
-		\item \label{goal:position}Provide authenticated users with the position of available cars
+		\item \label{goal:position}Provide logged users with the position of available cars
 		\item \label{goal:notifyMaintenance} Notify maintenance service with a list of not available cars 
 		\item \label{goal:maintenanceDone} Provide the maintenance service with a way to notify the system when a car is available again 
-		\item \label{goal:needMaintenance} Provide the user with a way to contact customer service to report a damaged car
-		\item \label{goal:usersHistory} Provide a way to show to the user his rent and payment history and make these information accessible also to the customer service
-		\item \label{goal:banUnbanUsers}Provide customer service with a way to ban users in order to prevent them from reserving or using other cars, and enable them to use the service again
-		\item \label{goal:carReservation} Allow a user to reserve a car, if available, and hold that reservation for an hour
-		\item \label{goal:reservationFee}Charge the user for 1\euro\ in case he hasn't used the car he reserved after an hour from such reservation
-		\item \label{goal:completeRent}Allow a user to perform a complete rent: reserving a car, using it and leaving it terminating the rent, accomplishing the payment procedure related to aforementioned rent
-		\item \label{goal:calculateCost}Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride
-		\item \label{goal:moneySavingOption}Allow the user to enable a money saving option which provides him with a charging station as destination of the ride to get a discount on the cost of the aforementioned ride
+		\item \label{goal:needMaintenance} Provide logged users with a way to contact customer service to report a damaged car
+		\item \label{goal:usersHistory} Provide a way to show to a logged user his rent and payment history and make these information accessible also to the customer service
+		\item \label{goal:banUnbanUsers} Provide customer service with a way to ban registered users in order to prevent them from reserving or using other cars, and enable them to use the service again
+		\item \label{goal:carReservation} Allow a logged user to reserve a car, if available, and hold that reservation for an hour
+		\item \label{goal:reservationFee} Charge a user for 1\euro\ in case he hasn't used the car he reserved after an hour from such reservation
+		\item \label{goal:completeRent} Allow a logged user to perform a complete rent: reserving a car, using it and leaving it terminating the rent, accomplishing the payment procedure related to aforementioned rent
+		\item \label{goal:calculateCost} Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride
+		\item \label{goal:moneySavingOption}Allow a logged user to enable a money saving option which provides him with a charging station as destination of the ride to get a discount on the cost of the aforementioned ride
 	\end{enumerate}
 
 \subsection{Glossary}
@@ -32,7 +32,7 @@ A screen located inside the car will show in real time the ride amount of money 
 		\item[Company:] the company we are developing the system for
 		\item[Guest \emph{or} Guest user:] person who access the system as non logged user
 		\item[Logged user \emph{or} Authenticated user:] authenticated person who is interfacing with the system
-		\item[User:] logged user
+		\item[User:] guest user or logged user
 		\item[Banned user:] a user that can not use the system, he can only contact the customer care service
 		\item[Registration:]  interaction between a non registered user and the system in which the user, providing all of the information required by the system for the creation of an account, receives from the system the credentials needed to authenticate to the system
 		\item[Authentication \emph{or} Login:] interaction between guests and the system that grants authenticated user's privileges to a guest user

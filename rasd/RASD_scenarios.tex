@@ -322,7 +322,7 @@ The user should have enabled the \emph{money saving option} \\
 \begin{itemize}
 	\item If the user has left the car plugged in the charging station suggested by the
 	\emph{money saving option} he has obtained the correct discount
-	\item The user can  anytime ìperform another rent
+	\item The user can any time perform another rent
 	\item Car is again available
 \end{itemize} \\
 \midrule
@@ -340,13 +340,13 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Actors} &  Maintenance service system\\
 \midrule
-\textbf{Entry conditions} & Maintenance service system must know the encrypted password to be identified by the system\\
+\textbf{Entry conditions} & Maintenance service system must know the password to be identified by the system\\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The maintenance service system asks for the list of car with state set as \emph{Not Available} sending the request
-	paired with the encrypted password
-	\item The system checks the encrypted password
+	paired with the  password
+	\item The system checks the password
 	\item The system retrieves the list of car with state set as \emph{Not Available} along with the identifier used by the system to identify each car, the GPS position of each car, the description of the problem of each car and the software key to access each car
 	\item The system sends the information to the maintenance service system
 \end{enumerate} \\
@@ -355,7 +355,7 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If encrypted password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+	\item If the password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
 \end{itemize} \\
 \bottomrule
 \end{tabular}
@@ -366,13 +366,13 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Actors} &  Maintenance service system\\
 \midrule
-\textbf{Entry conditions} & Maintenance service system must know the encrypted password to be identified by the system\\
+\textbf{Entry conditions} & Maintenance service system must know the password to be identified by the system\\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The maintenance service system asks to tag a car as Available sending the car identifier
-	paired with the encrypted password
-	\item The system checks the encrypted password
+	paired with the password
+	\item The system checks the password sent by the maintenance service
 	\item The system checks the identifier sent corresponds to a car with state set as \emph{Not Available}
 	\item The system set the state of the car identified by the aforementioned identifier as \emph{Available}
 	\item The system sends to the maintenance service system a confirmation message the car has been tagged as \emph{Available}
@@ -382,8 +382,65 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If encrypted password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+	\item If the password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
 	\item If car identifier sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\todo{inizializzare nuovi pagamenti va gestito/ se a parte precisiamo in sezione 2? | Insieme a user's information? Include? | customer care operator in use case diagram? | Entry condition, accesso da terminale particolare??}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{View user information} \\
+\midrule
+\textbf{Actors} &  Customer care operator\\
+\midrule
+\textbf{Entry conditions} & Customer care operator must be connected to the system through??\\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The customer care operator inserts the username of a registered user
+	\item The system checks if the username corresponds to a user registered to the system
+	\item The system retrieves user's data: name, surname, birth date and place, current domicile
+	and driving license information 
+	\item The system retrieves the list of user's payments
+	\item The system filters the list selecting the unsuccessful payments
+	\item The system shows to the customer care operator the info about the user and the list of unsuccessful payments
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The customer care operator can view the information and the unsuccessful payments of the user \\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If the username inserted by the customer car operator is not recognized, the system shows an error message
+\end{itemize} \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Ban or enable user account} \\
+\midrule
+\textbf{Actors} &  Customer care\\
+\midrule
+\textbf{Entry conditions} & \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The customer care operator inserts the username of a registered user
+	\item \textbf{View user information}
+	\item The customer care asks to ban or to enable the registered user paired with the inserted
+	username
+	\item The system checks if the username corresponds to a user registered to the system
+	\item The system marks or unmarks the user paired with the username as \emph{banned}
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The state of the user is updated \\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If the username inserted by the customer car operator is not recognized, the system shows an error message
 \end{itemize} \\
 \bottomrule
 \end{tabular}

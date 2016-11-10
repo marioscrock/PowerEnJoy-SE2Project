@@ -180,24 +180,37 @@ If the position inserted by the user is not correct an error message is displaye
 \midrule
 \textbf{Actors} &  Logged user \\
 \midrule
-\textbf{Entry conditions} & The user should have done a reservation for a car \\
+\textbf{Entry conditions} & The user reserved car \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
-	\item The user select the unlock button to ask the system to unlock the car
-	\item The system checks if the user's position is at most 5 meters away from the position the car he reserved
+	\item The user asks the system to unlock the car he reserved
+	\item The system checks if the user's position is at most 5 meters away from the position of the car he reserved
 	\item The system unlocks the car
+	\item The system sends a message to the user, confirming that the car is unlocked
 \end{enumerate} \\
 \midrule
-\textbf{Exit conditions} & The car is unlocked and the user may enter it\\
+\textbf{Exit conditions} & The car is unlocked and the user can pick it up\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the user credentials doesn't correspond to the credential of the user paired with the \emph{Reserved} state of the car the system displays an error message
-	\item If the position of the user is not at most 5 meters away from the position the car he reserved the system displays an error message
+	\item If the position of the user is not at most 5 meters away from the position of the car he reserved the system displays an error message
 \end{itemize} \\
 \bottomrule
 \end{tabular}
+
+\newpage
+
+\begin{figure}[h]
+			\centering
+			\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarUnlock.png}
+			\caption{
+				\label{fig:carUnlockSequence} 
+				Car unlock sequence diagram
+			}
+		\end{figure}
+
+\newpage
 
 \begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule

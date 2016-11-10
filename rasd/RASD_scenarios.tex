@@ -16,19 +16,26 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 \subsection{Scenario 4}
 \label{scenario:4}
 Dino reserves a car, he reaches it and unlock the doors. He starts driving but after few minutes the engine stops and a warning icon lights up in the dashboard. He contacts the customer care service that suggests him to reserve a different car which is nearby, the customer care operator then tags the first car as not available specifying a brief description of the fault. The maintenance service is now aware of the problem and they take care of resolving the issue: a maintenance operator is sent to the car, he unlock it \todo{how he unlocks the car?} and fix it. When the car is fully functional he tags it as available using a restricted access API of our system.
+\clearpage
+\subsection{Use case diagram}
+%\begin{center}
+%  \includegraphics[width=0.9\textwidth]{useCase}
+%  \captionof{figure}{Use case diagram}
+%  \label{fig:useCase}
+%\end{center}
 
-\newpage\subsection{Use case diagram}
-\begin{figure}[h]
-			\centering
-			\includegraphics[width=0.9\textwidth]{useCase}
-			\caption{
-				\label{fig:useCase} 
-				Use case diagram
-			}
-		\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{useCase}
+	\caption{
+		\label{fig:useCase} 
+		Use case diagram
+	}
+\end{figure}
+\clearpage
+
 \subsection{Use cases description}
-
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Registration} \\
 \midrule
@@ -60,21 +67,21 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 	\item If the user notices to have entered wrong informations he could edit them at the end of the process of registration in his personal page
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdRegistration.png}
+	\caption{
+		\label{fig:registrationSequence} 
+		Registration sequence diagram
+	}
+\end{figure}
 
-\begin{figure}[h]
-			\centering
-			\includegraphics [width=\textwidth]{/diagrams/Sequence/sdRegistration.png}
-			\caption{
-				\label{fig:registrationSequence} 
-				Registration sequence diagram
-			}
-		\end{figure}
-		
-\newpage
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+%///////////////////////////////////////////////////////////
+\clearpage
+
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Authentication} \\
 \midrule
@@ -97,22 +104,22 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 	\item If the credential validation is successful and the user is banned a message providing assistance is displayed and the system doesn't allows the user to access to the system
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\newpage
 
-\begin{figure}[h]
-			\centering
-			\includegraphics [width=\textwidth]{/diagrams/Sequence/sdLogin.png}
-			\caption{
-				\label{fig:authSequence} 
-				Authentication sequence diagram
-			}
-		\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdLogin.png}
+	\caption{
+		\label{fig:authSequence} 
+		Authentication sequence diagram
+	}
+\end{figure}
 
-\newpage
+%///////////////////////////////////////////////////////////
+\clearpage
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{View cars on the map} \\
 \midrule
@@ -135,12 +142,12 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 \textbf{Exceptions} & 
 If the position inserted by the user is not correct an error message is displayed \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\bigskip
-\bigskip
+%///////////////////////////////////////////////////////////
+\clearpage
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car reservation} \\
 \midrule
@@ -159,22 +166,22 @@ If the position inserted by the user is not correct an error message is displaye
 \midrule
 \textbf{Exceptions} &  If the user has already reserved a car, the system shows an error message and doesn't allow him to reserve another car \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\newpage
 
-\begin{figure}[h]
-			\centering
-			\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarMapVisualization.png}
-			\caption{
-				\label{fig:carsMapSequence} 
-				View cars on the map sequence diagram
-			}
-		\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarMapVisualization.png}
+	\caption{
+		\label{fig:carsMapSequence} 
+		View cars on the map sequence diagram
+	}
+\end{figure}
 
-\newpage
+%///////////////////////////////////////////////////////////
+\clearpage
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car unlock} \\
 \midrule
@@ -197,22 +204,22 @@ If the position inserted by the user is not correct an error message is displaye
 	\item If the position of the user is not at most 5 meters away from the position of the car he reserved the system displays an error message
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\newpage
 
-\begin{figure}[h]
-			\centering
-			\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarUnlock.png}
-			\caption{
-				\label{fig:carUnlockSequence} 
-				Car unlock sequence diagram
-			}
-		\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarUnlock.png}
+	\caption{
+		\label{fig:carUnlockSequence} 
+		Car unlock sequence diagram
+	}
+\end{figure}
 
-\newpage
+%///////////////////////////////////////////////////////////
+\clearpage
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Car Rent} \\
 \midrule
@@ -245,9 +252,12 @@ The user is charged of the correct amount for the ride and at anytime could perf
 	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro , the car state is set as \emph{Available} and the user is notified his reservation is expired
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+%///////////////////////////////////////////////////////////
+\clearpage
+
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Rent payment} \\
 \midrule
@@ -272,10 +282,6 @@ The user must have completed a rent shutting off the engine and exiting the car.
     \item The system notifies the user about the result of the payment procedure and on discount/extra fees applied
 \end{enumerate} \\
 \midrule
-\end{tabular}
-
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
-\midrule
 \textbf{Alternative flow} & 
 Flow of events as specified upon from \emph{1} to \emph{7}
 \begin{enumerate}[label=8 \alph*.]
@@ -291,12 +297,14 @@ The user is charged of the correct amount for the ride\\
 \textbf{Exceptions} & 
 \begin{itemize}
 	\item If the payment procedure is not correctly completed because of insufficient credit the user is banned, rent information is stored, the payment suspended and the user is informed to contact the customer service.  
-	\item ...
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+%///////////////////////////////////////////////////////////
+\clearpage
+
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Money saving option} \\
 \midrule
@@ -332,9 +340,12 @@ The user should have enabled the \emph{money saving option} \\
 	\emph{money saving option} he doesn't obtain the related discount
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+%///////////////////////////////////////////////////////////
+\clearpage
+
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Visualization of not available cars} \\
 \midrule
@@ -358,9 +369,12 @@ The user should have enabled the \emph{money saving option} \\
 	\item If the password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+%///////////////////////////////////////////////////////////
+\clearpage
+
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Tag a car as available} \\
 \midrule
@@ -386,11 +400,14 @@ The user should have enabled the \emph{money saving option} \\
 	\item If car identifier sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
 \todo{inizializzare nuovi pagamenti va gestito/ se a parte precisiamo in sezione 2? | Insieme a user's information? Include? | customer care operator in use case diagram? | Entry condition, accesso da terminale particolare??}
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+%///////////////////////////////////////////////////////////
+\clearpage
+
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{View user information} \\
 \midrule
@@ -416,9 +433,12 @@ The user should have enabled the \emph{money saving option} \\
 	\item If the username inserted by the customer car operator is not recognized, the system shows an error message
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 
-\begin{tabular}{p{0.25\linewidth}p{0.75\linewidth}}
+%///////////////////////////////////////////////////////////
+\clearpage
+
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
 \textbf{Name} & \textbf{Ban or enable user account} \\
 \midrule
@@ -443,4 +463,4 @@ The user should have enabled the \emph{money saving option} \\
 	\item If the username inserted by the customer car operator is not recognized, the system shows an error message
 \end{itemize} \\
 \bottomrule
-\end{tabular}
+\end{longtable}

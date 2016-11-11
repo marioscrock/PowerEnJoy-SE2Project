@@ -64,8 +64,7 @@ The following requirements are derived in order to fulfill the specified goals.
    				\item The system must offer a restricted access API to retrieve the list of cars marked
    				as \emph{Not Available} along with the identifier used by the system to identify each
    				car, the description of the problem paired with the current position of each car
-   				(\emph{GPS coordinates}) and a software key \todo{ref to interactions section ?
-   				glossary?} to access each car
+   				(\emph{GPS coordinates}) and a software key to access each car
   			\end{enumerate}
 		\item \ref{goal:maintenanceDone}\ Provide the maintenance service with a way to notify the system when a car is available again
 			\begin{enumerate}[resume*]
@@ -100,10 +99,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				provide him information about how to contact customer service 
   				\item The system must allow customer service to access users' information (name,
   				surname, birth date and place, current domicile, driving license information) and
-  				unsuccesful payments \todo{manage the payments
-  				of a user: customer service must be able to mark uncompleted ones as completed, to
-  				instantiate new payment
-  				procedures and to delete pending procedures}
+  				unsuccessful payments
    				\item The system must allow the customer service to set the state of a
    				specific user to \emph{banned} or \emph{not banned}
    			\end{enumerate}
@@ -137,8 +133,6 @@ The following requirements are derived in order to fulfill the specified goals.
    			\end{enumerate}
   		\item \ref{goal:completeRent}\ Allow a logged user to perform a complete rent: reserving a car, using it and leaving it terminating the rent, concluding successfully the payment procedure related to the aforementioned rent
   			\begin{enumerate}[resume*]
-  				\item The system must automatically mark as \emph{banned} a user which driving
-  				license has expired \todo{english help!}
   				\item The system must be able to lock and unlock each car
   				\item The system must be able to know the current engine state of each car
   				(\emph{on} or \emph{off})

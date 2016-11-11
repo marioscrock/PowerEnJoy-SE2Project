@@ -49,22 +49,25 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 	\item The user asks the system to register to its services
 	\item The system shows the appropriate form to fill to register to the system
 	\item The user inserts an username to be uniquely identified by the system
+	\item The system checks the username to be unique
 	\item The user inserts his own email address
+	\item The system checks the email to be unique
 	\item The user inserts his name, surname, birth date and place and current domicile
 	\item The user inserts his driving license ID code and expiring date
 	\item The user inserts payment information
 	\item The user confirms data inserted are correct e submit the form
 	\item The system sends an email to the user with a unique link to verify the email address inserted by the user really belongs to him
 	\item The user clicking on the link received confirms his email address
-	\item The user is notified by mail the registration procedure is correctly completed
+	\item The user is notified by mail the registration procedure is correctly completed and
+	provided with a password bound to his username to access the system
 \end{enumerate} \\
 \midrule
-\textbf{Exit conditions} & The user is provided with a password bound to his username to access the system\\
+\textbf{Exit conditions} & The user is able to authenticate to the system as \emph{registered} user with its own credentials\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
 	\item If the username inserted by the user is already used by another user, the system displays an error message asking the user to insert another username
-	\item If the user doesn't receive the link sent to him by mail needs to complete the form again with a correct email address
+	\item If the mail inserted by the user is already used by another user, the system displays an error message asking the user to insert another mail
 	\item If the user notices to have entered wrong informations he could edit them at the end of the process of registration in his personal page
 \end{itemize} \\
 \bottomrule
@@ -135,7 +138,7 @@ Dino reserves a car, he reaches it and unlock the doors. He starts driving but a
 	\item The user chooses if he wants to use his GPS position or insert a different one manually
 		\subitem a. The system retrieves the user's GPS position
 		\subitem b. The user inserts a position
-	\item The system retrieves the position of all available cars and their battery level percentage
+	\item The system retrieves the position of all \emph{Available} cars and their battery level percentage
 	\item The system shows a map with all available cars near the position indicated by the user
 	\item The user can click on a car on the map to see its battery level percentage
 \end{enumerate}\\
@@ -147,6 +150,15 @@ If the position inserted by the user is not correct an error message is displaye
 \bottomrule
 \caption{\emph{View cars on the map} use case description}
 \end{longtable}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarMapVisualization.png}
+	\caption{
+		\label{fig:carsMapSequence} 
+		View cars on the map sequence diagram
+	}
+\end{figure}
 
 %///////////////////////////////////////////////////////////
 \clearpage
@@ -172,16 +184,6 @@ If the position inserted by the user is not correct an error message is displaye
 \bottomrule
 \caption{\emph{Car reservation} use case description}
 \end{longtable}
-
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarMapVisualization.png}
-	\caption{
-		\label{fig:carsMapSequence} 
-		View cars on the map sequence diagram
-	}
-\end{figure}
 
 %///////////////////////////////////////////////////////////
 \clearpage
@@ -245,8 +247,8 @@ The user is paired with the \emph{Reserved} state of a car\\
 	\item The system locks the car
     \item The system activates a timer to allow the user to plug the car into a power grid if it is
     near one of them
-    \item The system sets the car as \emph{Available}
-	\item When the timer expires: \textbf{Rent payment}
+    \item When the timer expires: The system sets the car as \emph{Available}
+    \item \textbf{Rent payment}
 \end{enumerate} \\
 \midrule
 \textbf{Exit conditions} & 
@@ -302,7 +304,7 @@ The user is charged of the correct amount for the ride\\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the payment procedure is not correctly completed because of insufficient credit the user is banned, rent information is stored, the payment suspended and the user is informed to contact the customer service.  
+	\item If the payment procedure is not correctly completed the user is banned, rent information is stored, the payment suspended and the user is informed to contact the customer service.  
 \end{itemize} \\
 \bottomrule
 \caption{\emph{Rent payment} use case description}
@@ -412,8 +414,6 @@ The user should have enabled the \emph{money saving option} \\
 \caption{\emph{Tag a car as not available} use case description}
 \end{longtable}
 
-\todo{inizializzare nuovi pagamenti va gestito/ se a parte precisiamo in sezione 2? | Insieme a user's information? Include? | customer care operator in use case diagram? | Entry condition, accesso da terminale particolare??}
-
 %///////////////////////////////////////////////////////////
 \clearpage
 \subsubsection{View user information}
@@ -448,13 +448,12 @@ The user should have enabled the \emph{money saving option} \\
 
 %///////////////////////////////////////////////////////////
 \clearpage
-\subsubsection{Ban or enable user account}
-\todo{Enable VS unban}
+\subsubsection{Mark or unmark a user as banned}
 \begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
-\textbf{Name} & \textbf{Ban or enable user account} \\
+\textbf{Name} & \textbf{Mark or unmark a user as banned} \\
 \midrule
-\textbf{Actors} &  Customer care\\
+\textbf{Actors} &  Customer care operator\\
 \midrule
 \textbf{Entry conditions} & \\
 \midrule
@@ -475,5 +474,36 @@ The user should have enabled the \emph{money saving option} \\
 	\item If the username inserted by the customer car operator is not recognized, the system shows an error message
 \end{itemize} \\
 \bottomrule
-\caption{\emph{Ban or enable} use case description}
+\caption{\emph{Mark or unmark a user as banned} use case description}
+\end{longtable}
+
+%///////////////////////////////////////////////////////////
+\clearpage
+\subsubsection{Tag a car as not available}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{Tag a car as not available} \\
+\midrule
+\textbf{Actors} &  Customer care operator\\
+\midrule
+\textbf{Entry conditions} & \\
+\midrule
+\textbf{Flow of events} & 
+\begin{enumerate}
+	\item The customer care operator inserts the identifier of the car
+	\item The customer care operator asks to mark the car as \emph{Not Available}
+	\item The customer care operator inserts a brief description of why the car state must be set as \emph{Not Available}
+	\item The system checks the car identifier
+	\item The system set the state of the car identified by the aforementioned identifier as \emph{Not Available} paired with the description
+	\item The system shows a confirmation message the car has been tagged as \emph{Not Available}
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The state of the car is setted as \emph{Not Available}\\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If car identifier sent by the customer care operator is not recognized, the system displays an error message
+\end{itemize} \\
+\bottomrule
+\caption{\emph{Tag a car as not available} use case description}
 \end{longtable}

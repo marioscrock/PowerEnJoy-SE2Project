@@ -102,7 +102,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				provide him information about how to contact customer service 
   				\item The system must allow customer service to access users' information (name,
   				surname, birth date and place, current domicile, driving license information) and
-  				unsuccessful payments
+  				users' rents and payments histories
    				\item The system must allow the customer service to set the state of a
    				specific user to \emph{banned} or \emph{not banned}
    			\end{enumerate}
@@ -130,8 +130,9 @@ The following requirements are derived in order to fulfill the specified goals.
   				payment procedure was unsuccessful and notify him that he has to
   				contact customer service
   				\item The system must charge the user 1\euro\ (through a payment procedure) if
-  				he reserved a car, and the state \emph{Reserved} of that car was paired with the aforementioned
-  				user for more than one hour
+  				he reserved a car and the state \emph{Reserved} of that car was paired with the
+  				aforementioned user for more than one hour and notify the user the reservation has
+  				expired
    			\end{enumerate}
   		\item \ref{goal:completeRent}\ Allow a logged user to perform a complete rent: reserving a car, using it and leaving it terminating the rent, concluding successfully the payment procedure related to the aforementioned rent
   			\begin{enumerate}[resume*]
@@ -175,7 +176,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				system must show him, via the car display, if the aforementioned car position is or
   				isn't inside a safe area
   				\item The system must be able to know if a car is plugged in a specific charging
-  				station
+  				station (see \hyperref[sec:cars]{cars section} for more details)
    			\end{enumerate}
   		\item \ref{goal:calculateCost}\ Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride
   			\begin{enumerate}[resume*]

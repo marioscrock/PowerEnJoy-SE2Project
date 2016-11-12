@@ -16,6 +16,15 @@ Giovanni is really interested in electric cars so he decides to use the PowerEnJ
 \subsubsection{Scenario 4}
 \label{scenario:4}
 Dino reserves a car, he reaches it and unlock the doors. He starts driving but after few minutes the engine stops and a warning icon lights up in the dashboard. He contacts the customer care service that suggests him to reserve a different car which is nearby, the customer care operator then tags the first car as not available specifying a brief description of the fault. The maintenance service is now aware of the problem and they take care of resolving the issue: a maintenance operator is sent to the car, he unlocks it  and fixes it. When the car is fully functional he tags it as available using a restricted access API of our system.
+
+\subsubsection{Scenario 5}
+\label{scenario:5}
+Stefania often uses PowerEnJoy service when she is coming back home after work. Before finish her work schedule she checks with the map if there are cars nearby in order to reserve one of them: today she can see one from the window that is not present in the map because its battery is empty. After a while she checks again the map and she notices that the car is now located in a charging station nearby and it is available for a reservation.
+	
+\subsubsection{Scenario 6}
+\label{scenario:6}
+Lorenzo is driving a PowerEnJoy car in order to reach Dino's house outside the safe area. As soon as he exists the safe area the car system notifies him with a message. When he is arrived he terminates the rent, the payment is executed with an extra fee and the car is tagged as not available.
+
 \clearpage
 \subsection{Use case diagram}
 
@@ -196,7 +205,7 @@ If the position inserted by the user is not correct an error message is displaye
 \begin{enumerate}
 	\item The user asks the system to unlock the car he reserved
 	\item The system checks if the user's position is at most 5 meters away from the position of the car he reserved
-	\item The system unlocks the car
+	\item The system unlocks the car with the state set as \emph{Reserved} paired with the aforementioned user
 	\item The system sends a message to the user, confirming that the car is unlocked
 \end{enumerate} \\
 \midrule
@@ -252,7 +261,7 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro , the car state is set as \emph{Available} and the user is notified his reservation is expired
+	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro (through a payment procedure), the car state is set as \emph{Available} and the user is notified his reservation is expired
 \end{itemize} \\
 \bottomrule
 \caption{\emph{Car rent} use case description}
@@ -448,10 +457,10 @@ The user should have enabled the \emph{money saving option} \\
 
 %///////////////////////////////////////////////////////////
 \clearpage
-\subsubsection{View user information}
+\subsubsection{Visualization of users information}
 \begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
 \toprule
-\textbf{Name} & \textbf{View user information} \\
+\textbf{Name} & \textbf{Visualization of users information} \\
 \midrule
 \textbf{Actors} &  Customer care operator\\
 \midrule
@@ -462,20 +471,27 @@ The user should have enabled the \emph{money saving option} \\
 	\item The customer care operator inserts the username of a registered user
 	\item The system checks if the username corresponds to a user registered to the system
 	\item The system retrieves user's data: name, surname, birth date and place, current domicile
-	and driving license information 
-	\item The system retrieves the list of user's payments
-	\item The system filters the list selecting the unsuccessful payments
-	\item The system shows to the customer care operator the info about the user and the list of unsuccessful payments
+	and driving license information
+	\item The system shows to the customer care operator the info about the user
 \end{enumerate} \\
 \midrule
-\textbf{Exit conditions} & The customer care operator can view the information and the unsuccessful payments of the user \\
+\textbf{Alternative flow} & 
+Flow of events as specified upon from \emph{1} to \emph{4}
+\begin{enumerate}
+	\item The customer care operator asks to view user's payments and rents history
+	\item The system retrieves the list of user's payments (successful and unsuccessful)
+	\item The system retrieves the list of user's rents
+	\item The system shows to the customer care operator user's payments and rents history
+\end{enumerate} \\
+\midrule
+\textbf{Exit conditions} & The customer care operator can view the information required about the user \\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
 	\item If the username inserted by the customer car operator is not recognized, the system shows an error message
 \end{itemize} \\
 \bottomrule
-\caption{\emph{View user information} use case description}
+\caption{\emph{Visualization of users information} use case description}
 \end{longtable}
 
 %///////////////////////////////////////////////////////////
@@ -492,7 +508,6 @@ The user should have enabled the \emph{money saving option} \\
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The customer care operator inserts the username of a registered user
-	\item \textbf{View user information}
 	\item The customer care operator asks to ban or to enable the registered user paired with the inserted username
 		\begin{itemize}
 			\item If the operator wants to mark a user as \emph{banned} he must insert a brief description of reasons why  

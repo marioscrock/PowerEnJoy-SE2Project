@@ -75,6 +75,10 @@ The following requirements are derived in order to fulfill the specified goals.
    				to allow users to reserve and rent the aforementioned car
    				\item The system must offer a restricted access API to set the state of a
    				specific car as \emph{Available}
+   				\item The system must be able to know if a specific car is locked or unlocked
+   				\item When the system receives a request to set the state of a car as
+   				\emph{Available} through the API, before to process the request the system must
+   				check if the car is locked and its state is set as \emph{Not Available}
   			\end{enumerate}
   		\item \ref{goal:needMaintenance} Provide logged users with a way to contact customer service to report a damaged car
   		\begin{enumerate}[resume*]
@@ -182,7 +186,8 @@ The following requirements are derived in order to fulfill the specified goals.
   			\begin{enumerate}[resume*]
   			    \item The system must not cumulate the discounts but must apply only the one with
   			    the highest percentage.
-  			    \item The system must be able to know how many passengers are there on a car	
+  			    \item The system must be able to know how many passengers are detected on a car
+  			    during a ride	
   				\item If locking an \emph{In Use} car the system detects that the car position is not
   				inside a safe area, the system must charge the user paired with the \emph{In Use}
   				state of the aforementioned car for the cost of the ride plus an additional fee; that fee

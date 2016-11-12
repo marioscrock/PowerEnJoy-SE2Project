@@ -254,7 +254,7 @@ The user is paired with the \emph{Reserved} state of a car\\
     near one of them
     \item When the timer expires:
     	\begin{enumerate}[label = 8.\arabic*]
-    		\item The system retrieves informations about the ride from the car: number of passengers detected during the ride, position and battery level at the end of the ride and if the car is or not on charge 
+    		\item The system retrieves informations about the ride from the car: number of passengers detected during the ride, position of the car and battery level at the end of the ride and if the car is or not on charge 
     		\item The system sets the car as \emph{Available}
     	\end{enumerate}
     \item \textbf{Rent payment}
@@ -415,13 +415,13 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Actors} &  Maintenance service system\\
 \midrule
-\textbf{Entry conditions} & Maintenance service system must know the password to be identified by the system\\
+\textbf{Entry conditions} & Maintenance service system must know the access token to be identified by the system\\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The maintenance service system asks for the list of car with state set as \emph{Not Available} sending the request
-	paired with the  password
-	\item The system checks the password
+	paired with the  access token
+	\item The system checks the access token
 	\item The system retrieves the list of car with state set as \emph{Not Available} along with the identifier used by the system to identify each car, the GPS position of each car, the description of the problem of each car and the software key to access each car
 	\item The system sends the information to the maintenance service system
 \end{enumerate} \\
@@ -430,7 +430,7 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+	\item If the access token sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
 \end{itemize} \\
 \bottomrule
 \caption{\emph{Visualization of not available cars} use case description}
@@ -445,24 +445,26 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Actors} &  Maintenance service system\\
 \midrule
-\textbf{Entry conditions} & Maintenance service system must know the password to be identified by the system\\
+\textbf{Entry conditions} & Maintenance service system must know the access token to be identified by the system\\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The maintenance service system asks to tag a car as Available sending the car identifier
-	paired with the password
-	\item The system checks the password sent by the maintenance service
-	\item The system checks the identifier sent corresponds to a car with state set as \emph{Not Available}
+	paired with the access token
+	\item The system checks the access token sent by the maintenance service
+	\item The system checks the identifier received corresponds to a car with state set as \emph{Not Available}
+	\item The system checks if the car identified by the identifier received is locked
 	\item The system set the state of the car identified by the aforementioned identifier as \emph{Available}
-	\item The system sends to the maintenance service system a confirmation message the car has been tagged as \emph{Available}
+	\item The system sends to the maintenance service system a confirmation message the car state has been set as \emph{Available}
 \end{enumerate} \\
 \midrule
 \textbf{Exit conditions} & The car state is set as \emph{Available} \\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the password sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
-	\item If car identifier sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+	\item If the access token sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
+	\item If the car identifier sent by the maintenance service system is not recognized or doesn't correspond to a car set as \emph{Not Available}, the system sent to the maintenance service system an error message
+	\item If the car identifier sent by the maintenance service system corresponds to a car not locked, the system sent to the maintenance service system an error message
 \end{itemize} \\
 \bottomrule
 \caption{\emph{Tag a car as not available} use case description}

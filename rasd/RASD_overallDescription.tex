@@ -16,7 +16,8 @@
 	
 	\paragraph{Customer care} Every time it is required, a PowerEnJoy customer care service operator can interact with a user. Customer care service operators can request and see all user details, their rents and payments history. Such operators can also ban or unban users from the system, mark cars as not available and, in general, provide assistance to users.
 
-	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provide their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, \todo{in UseCase expand lock/unlock proc.} fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned API provided by the system.
+	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provide their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, \todo{in UseCase expand lock/unlock proc.} fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned \todo{another one?} API provided by the system.
+	\todo{software key?}
 	
 	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external Geographic Information System.
 
@@ -30,19 +31,19 @@
 		\item battery level (percentage)
 		\item charging status (in charge, not in charge)
 		\item door locking status (locked, unlocked)
-		\item system failure description, if present
+		\item system failure description, if present \todo{eliminerei, cust service no interazione macchina}
 	\end{itemize}
 	Information sent to the car by the system include:
 	\begin{itemize}
-		\item location of safe areas \todo{dice solo se la posizione inviata è in una safe aerea, non da' la lista delle safe area}
-		\item position of charging stations \todo{secondo me no (Mario)}
+		\item location of safe areas 
+		\item position of charging stations
 		\item current time
 	\end{itemize}
 	Commands runnable by the system include:
 	\begin{itemize}
-		\item lock doors \todo{may be useful, never used in normal event flow}
+		\item lock doors
 		\item unlock doors
-		\item set car status (see \autoref{fig:carFSA})
+		\item set car status (see \autoref{fig:carFSA}) \todo{eliminare?}
 	
 	\end{itemize}		
 	Information shown to the user by the embedded car interface include:
@@ -78,6 +79,7 @@
 		\item Reserve a car
 		\item Ask the customer care service for assistance 
 	\end{enumerate}
+	\todo{unlock the car? view own informations?}
 %	Using the interface in the car users can:
 %	\begin{enumerate}
 %		\item Start the engine

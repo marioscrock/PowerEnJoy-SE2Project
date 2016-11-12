@@ -477,16 +477,38 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}
-	\item The customer care operator inserts the username of a registered user
-	\item The system checks if the username corresponds to a user registered to the system
+	\item The customer care operator inserts the username or the mail of a registered user
+	\item The system checks if the username or the mail correspond to a user registered to the
+	system
 	\item The system retrieves user's data: name, surname, birth date and place, current domicile
 	and driving license information
 	\item The system shows to the customer care operator the info about the user
 \end{enumerate} \\
 \midrule
-\textbf{Alternative flow} & 
-Flow of events as specified upon from \emph{1} to \emph{4}
+\textbf{Exit conditions} & The customer care operator can view the information required about the user \\
+\midrule
+\textbf{Exceptions} & 
+\begin{itemize}
+	\item If no users are found according to the parameters inserted by the customer care operator the system shows an error message
+\end{itemize} \\
+\bottomrule
+\caption{\emph{Visualization of users information} use case description}
+\end{longtable}
+
+%///////////////////////////////////////////////////////////
+\clearpage
+\subsubsection{View users payments and rents history}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Name} & \textbf{View users payments and rents history} \\
+\midrule
+\textbf{Actors} &  Customer care operator\\
+\midrule
+\textbf{Entry conditions} & \\
+\midrule
+\textbf{Flow of events} & 
 \begin{enumerate}
+	\item \textbf{Visualization of users information}
 	\item The customer care operator asks to view user's payments and rents history
 	\item The system retrieves the list of user's payments (successful and unsuccessful)
 	\item The system retrieves the list of user's rents
@@ -495,12 +517,9 @@ Flow of events as specified upon from \emph{1} to \emph{4}
 \midrule
 \textbf{Exit conditions} & The customer care operator can view the information required about the user \\
 \midrule
-\textbf{Exceptions} & 
-\begin{itemize}
-	\item If the username inserted by the customer car operator is not recognized, the system shows an error message
-\end{itemize} \\
+\textbf{Exceptions} & \\
 \bottomrule
-\caption{\emph{Visualization of users information} use case description}
+\caption{\emph{View users payments and rents history} use case description}
 \end{longtable}
 
 %///////////////////////////////////////////////////////////

@@ -5,12 +5,9 @@ sig Car{
 	status: one CarStatus,
 	usedBy: lone LoggedUser,
 	reservedBy: lone LoggedUser,
-	numberOfPassengers: Int,
+	numberOfPassengers: NOPType,
     onCharge: one Bool,
 	engineOn: one Bool
-}{
-	numberOfPassengers >= 0
-	numberOfPassengers <=5 //Assuming 5 seats per car
 }
 
 // Car statuses
@@ -25,8 +22,19 @@ abstract sig BatteryLevelPercentage{}
 one sig Lower20Full extends BatteryLevelPercentage{} 
 one sig More20Full extends BatteryLevelPercentage{} 
 
+//NumberOfPassengers
+abstract sig NOPType{}
+one sig Zero extends NOPType{}
+one sig One extends NOPType{}
+one sig Two extends NOPType{}
+one sig Three extends NOPType{}
+one sig Four extends NOPType{}
+one sig Five extends NOPType{}
+
 abstract sig User{}
-sig LoggedUser extends User{}
+sig LoggedUser extends User{
+	banned: one Bool
+}
 
 sig ChargingStation{
 	charging: set Car
@@ -72,11 +80,11 @@ fact CarWithBatteryPercentageLower20FullNotAvailable{
 }
 
 fact PassengersOnlyOnInUseCars{
-	no c:Car | c.status != InUse and c.numberOfPassengers >0
+	no c:Car | c.status != InUse and c.numberOfPassengers != Zero
 }
 
 fact AtLeastOnePassengerOnInUseCars{
-	no c:Car | c.status = InUse and c.numberOfPassengers =0
+	no c:Car | c.status = InUse and c.numberOfPassengers = Zero
 }
 
 fact OnlyInUseCarEngineOn{
@@ -98,10 +106,21 @@ fact NoMoreOneCSForOneCar{
 	all disjoint s1,s2:ChargingStation | s1.charging & s2.charging = none
 }
 
+fact NoBannedUsersDealingWithCars{
+	no u:User | some c:Car | u.banned = True and ( c.usedBy = u or c.reservedBy = u )
+}
 
-//Add facts about engineOn and OnCharge?
+// Assertions
+assert NoReservedCarWithEngineOn{
+	no c:Car | c.engineOn = True and c.status = Reserved
+}
+check NoReservedCarWithEngineOn
+
+assert NoCarInChargeWithEngineOn{
+	no c:Car | c.engineOn = True and c.onCharge = True
+}
+check NoCarInChargeWithEngineOn
 
 /* REQUIREMENTS */
-
-pred show{#usedBy > 0}
-run show for 10 but exactly 5 ChargingStation, 6 Car, 4 User
+pred show{#charging > 2 #banned > 0}
+run show for 10 but exactly 2 ChargingStation, exactly 6 Car, exactly 4 LoggedUser

@@ -16,8 +16,7 @@
 	
 	\paragraph{Customer care} Every time it is required, a PowerEnJoy customer care service operator can interact with a user. Customer care service operators can request and see all user details, their rents and payments history. Such operators can also mark or unmark users as banned from the system, mark cars as not available and, in general, provide assistance to users.
 
-	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provides their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, \todo{in UseCase expand lock/unlock proc.} fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned \todo{another one?} API provided by the system.
-	\todo{software key?}
+	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provides their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned API provided by the system. See \hyperref[sec:cars]{cars section} for more details.
 	
 	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external GIS.
 
@@ -102,7 +101,7 @@ All vehicles have an embedded external software system, which is able to display
 		\item All data provided by users are correct and reliable
 		\item All cars provided by the customer are equipped with a module which provides a set of
 		primitives that allow the system to retrieve all the information it needs about
-		the car and to run commands which allow the system to take actions on the car
+		the car and to run commands which allow the system to take actions on the car. See \hyperref[sec:cars]{cars section} for more details.
 		\item Charging station can exclusively be used by PowerEnJoy cars
 		\item The set of safe areas is pre-defined and is provided to our system by the customer
 		\item The position of charging station is provided to our system by the customer

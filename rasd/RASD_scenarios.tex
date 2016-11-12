@@ -205,7 +205,7 @@ If the position inserted by the user is not correct an error message is displaye
 \begin{enumerate}
 	\item The user asks the system to unlock the car he reserved
 	\item The system checks if the user's position is at most 5 meters away from the position of the car he reserved
-	\item The system unlocks the car
+	\item The system unlocks the car with the state set as \emph{Reserved} paired with the aforementioned user
 	\item The system sends a message to the user, confirming that the car is unlocked
 \end{enumerate} \\
 \midrule
@@ -261,7 +261,7 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro , the car state is set as \emph{Available} and the user is notified his reservation is expired
+	\item If the user doesn't start the engine up to one hour after the reservation, he is charged of 1\euro (through a payment procedure), the car state is set as \emph{Available} and the user is notified his reservation is expired
 \end{itemize} \\
 \bottomrule
 \caption{\emph{Car rent} use case description}

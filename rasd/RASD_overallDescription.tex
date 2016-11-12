@@ -19,7 +19,7 @@
 	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provide their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, \todo{in UseCase expand lock/unlock proc.} fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned \todo{another one?} API provided by the system.
 	\todo{software key?}
 	
-	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external Geographic Information System.
+	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external GIS.
 
 	\paragraph{Cars}\label{sec:cars}All cars provided by the customer are equipped with a communication system which ensures a continuous protected communication between the car and the system. All cars also have a module which provides a set of primitives that allow the system to retrieve information and to run commands to take actions on the car. A built-in user interface embedded with the modules shows some relevant information to the user.\\
 	Information retrieved by the system from the car include:
@@ -43,8 +43,6 @@
 	\begin{itemize}
 		\item lock doors
 		\item unlock doors
-		\item set car status (see \autoref{fig:carFSA}) \todo{eliminare?}
-	
 	\end{itemize}		
 	Information shown to the user by the embedded car interface include:
 	\begin{itemize}
@@ -54,16 +52,9 @@
 		\item current time
 		\item amount owed until now
 	\end{itemize}
-
-	The overall status of a car can be represented by an FSM \todo{da spostare nei grafi sezione 3}
-	\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.5]{CarFSA}
-			\caption{
-				\label{fig:carFSA} 
-				Car statuses
-			}
-		\end{figure}
+	
+	This system provides, among other functionalities, a secure way to unlock and lock the doors of the car: it has a command which returns a software key which can be sent to the maintenance operators; they are able to unlock and lock the car with a smartphone client  of the car embedded system and the key.
+	
 		
 \subsubsection{User interfaces}
 	Using the interfaces of the system users can:\todo{move car to system interface}
@@ -98,7 +89,7 @@ Databases and DBMSs are clearly required in order to store data about users, car
 
 As mentioned before (see \autoref{sec:systemInterfaces}) the system needs to use external APIs and to expose interfaces in order to interact with other systems.
 
-All vehicles have an embedded external software system, which is able to display all information described in \hyperref[sec:cars]{cars section}. Such system provides, among other functionalities, a secure way to unlock the doors of the car: it has a command which returns a software key to the system, such key can then be sent to the maintenance operators\todo{sarebbe sensato che si trovasse nella stessa lista delle macchine che non funzionano, insieme alla posizione e alla descrizione del problema}, which with a smartphone client of the car embedded system and the key, are able to unlock the car, without needing to interact with our system.
+All vehicles have an embedded external software system, which is able to display all information described in \hyperref[sec:cars]{cars section}. 
 
 \subsection{Product functions}
 	\todo{See goals?}The system will:
@@ -110,7 +101,7 @@ All vehicles have an embedded external software system, which is able to display
 	Users can use our system when they want to rent a car.\\
 	Necessary conditions for the user in order to use the system are:
 	\begin{itemize}
-		\item He must be able to use a smartphone
+		\item He must have a smartphone and be able to use it
 		\item He must be in the age of majority
 		\item He must have a proper valid driving license
 		\item He must be able to drive a car (i.d. he must be in both physical and mental health)

@@ -252,7 +252,11 @@ The user is paired with the \emph{Reserved} state of a car\\
 	\item The system locks the car
     \item The system activates a timer to allow the user to plug the car into a power grid if it is
     near one of them
-    \item When the timer expires: The system sets the car as \emph{Available}
+    \item When the timer expires:
+    	\begin{enumerate}[label = 8.\arabic*]
+    		\item The system retrieves informations about the ride from the car: number of passengers detected during the ride, position and battery level at the end of the ride and if the car is or not on charge 
+    		\item The system sets the car as \emph{Available}
+    	\end{enumerate}
     \item \textbf{Rent payment}
 \end{enumerate} \\
 \midrule
@@ -304,7 +308,7 @@ The user is charged of the correct amount for the ride and at anytime could perf
 \textbf{Actors} &  Logged user\\
 \midrule
 \textbf{Entry conditions} & 
-The user must have completed a rent shutting off the engine and exiting the car. The timer activated by the system locking the car expires. \\
+The user must have completed a rent shutting off the engine and exiting the car. The system has retrieved information about the ride from the car. \\
 \midrule
 \textbf{Flow of events} & 
 \begin{enumerate}

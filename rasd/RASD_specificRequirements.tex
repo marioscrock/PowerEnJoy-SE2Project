@@ -4,7 +4,7 @@
 The following requirements are derived in order to fulfill the specified goals.
 \subsubsection{Goals}
 	\begin{description}
-		\item \ref{goal:register}\ Allow \emph{guest} users to register to the system
+		\item \ref{goal:register}\ Allow guest users to register to the system
 			\begin{enumerate}[label=\textbf{R\arabic*}]
   				\item The system must require the \emph{guest} user to insert a username to identify him
    				\item The system must check that the username inserted by the  \emph{guest} user
@@ -18,6 +18,8 @@ The following requirements are derived in order to fulfill the specified goals.
    				during the registration phase
    				\item The system must require the  \emph{guest} user to provide an email address during
    				the	registration phase
+   				\item The system must check that the email inserted by the  \emph{guest} user
+   				doesn't belong to another user already registered to the system 
    				\item The system must check that the email inserted by the  \emph{guest} user exists
    				and belongs to him
    				\item The system must require the  \emph{guest} user to insert his name, surname,
@@ -48,6 +50,7 @@ The following requirements are derived in order to fulfill the specified goals.
    				cars
   				\item The system must be able to identify the position of the user and show it on a
   				map
+  				\item The system must be able to identify a position inserted by the user and show it on the map
    				\item The system must be able to calculate the distance of each car from a given
    				position
   			\end{enumerate}
@@ -59,7 +62,7 @@ The following requirements are derived in order to fulfill the specified goals.
    				\item If the state of a specific car is set to \emph{Not Available} the
    				system must prevent users from reserving or renting the aforementioned car
    				\item If the state of a specific car is set to \emph{Not Available}, the
-   				car must be paired with a brief description of why the car is not
+   				car state must be paired with a brief description of why the car is not
    				available
    				\item The system must offer a restricted access API to retrieve the list of cars marked
    				as \emph{Not Available} along with the identifier used by the system to identify each
@@ -80,8 +83,9 @@ The following requirements are derived in order to fulfill the specified goals.
    			\item The system must allow the customer service to set the state of a
    			specific car to \emph{Not Available}	
   		\end{enumerate}
-  		\item \ref{goal:usersHistory}\ Provide a way to show each user's rent and payment history
-  			\begin{enumerate}[resume*]
+  		\item \ref{goal:usersHistory}\ Provide a way to show to each user his rents and payments history
+  			\todo{era diverso dalla sezione goals!! inglese?}
+  			\begin{enumerate}[resume*] 
   				\item The system must log an history of all rents and payments
   				\item User's rents history must include expired reservations in which the rent was not completed
   				\item Each record in the payment history of a user, which refers to a ride, must include the ride cost and 
@@ -93,8 +97,8 @@ The following requirements are derived in order to fulfill the specified goals.
   		\item \ref{goal:banUnbanUsers}\ Provide customer service with a way to ban registered users in order to prevent them from reserving or using other cars, and enable them to use the service again
   			\begin{enumerate}[resume*]
   				\item The system must be able to mark and unmark a user as \emph{banned} 
-  				\item The system must require a brief description of the reasons why the user is being marked as 
-  				\emph{banned}
+  				\item The system must require a brief description of the reasons why the user is being
+  				marked as \emph{banned}
   				\item The system must not allow a \emph{banned} user to access the system but only
   				provide him information about how to contact customer service 
   				\item The system must allow customer service to access users' information (name,
@@ -116,7 +120,6 @@ The following requirements are derived in order to fulfill the specified goals.
  	  			\item A car set to \emph{Reserved} remains in this state exactly one hour after the user
  	  			made the reservation, if the user doesn't pick it up before; after that time the reservation expires and the system
  	  			must set the state of the aforementioned car to \emph{Available}
- 	  			\item The system must not allow a user to make multiple reservations at the same time
    			\end{enumerate}
   		\item \ref{goal:reservationFee}\ Charge the user for 1\euro\ in case he hasn't used the car he reserved after an hour from such reservation
   			\begin{enumerate}[resume*]
@@ -141,6 +144,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				the user paired	with the \emph{Reserved} state of the car and the GPS position of the
   				aforementioned car
   				\item The system must allow the user to ask to unlock the car
+  				\item \todo{unlock the car if request and 5m?}
   				\item When the state of a specific car is set to \emph{In Use}, the car must be
  	  			uniquely paired with the user who is using the car
   				\item The system can set the state of a \emph{Reserved} car to \emph{In Use} i.f.f.
@@ -188,9 +192,9 @@ The following requirements are derived in order to fulfill the specified goals.
   				Use} the system must set the car state to \emph{Not Available} stating that reason
   				as description
   				\item If during the time a car is set as \emph{In Use} the system detects more than
-  				one passengers into the car, the system must apply a 10\% discount on the cost of the current to the user paired with the
-  				\emph{In Use} state of the aforementioned car
-  				the current ride
+  				one passengers into the car, the system must apply to the user paired with
+  				the \emph{In Use} state of the aforementioned car a discount of 10\% of the cost
+  				of the last ride
   				\item If locking  a \emph{In Use} car the system detects a level of battery of the
   				aforementioned car greater than 50\%, the system must apply to the user paired with
   				the \emph{In Use} state of the aforementioned car a discount of 20\% of the cost

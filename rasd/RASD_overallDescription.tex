@@ -16,7 +16,7 @@
 	
 	\paragraph{Customer care} Every time it is required, a PowerEnJoy customer care service operator can interact with a user. Customer care service operators can request and see all user details, their rents and payments history. Such operators can also mark or unmark users as banned from the system, mark cars as not available and, in general, provide assistance to users.
 
-	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provide their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, \todo{in UseCase expand lock/unlock proc.} fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned \todo{another one?} API provided by the system.
+	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provides their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, \todo{in UseCase expand lock/unlock proc.} fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned \todo{another one?} API provided by the system.
 	\todo{software key?}
 	
 	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external GIS.
@@ -31,7 +31,6 @@
 		\item battery level (percentage)
 		\item charging status (in charge, not in charge)
 		\item door locking status (locked, unlocked)
-		\item system failure description, if present \todo{eliminerei, cust service no interazione macchina}
 	\end{itemize}
 	Information sent to the car by the system include:
 	\begin{itemize}
@@ -57,7 +56,7 @@
 	
 		
 \subsubsection{User interfaces}
-	Using the interfaces of the system users can:\todo{move car to system interface}
+	Using the interfaces of the system users can:
 	\begin{enumerate}
 		\item Register and log-in to the system
 		\item On the map they can view the position of
@@ -68,21 +67,11 @@
 				\item charging stations
 			\end{enumerate}
 		\item Reserve a car
-		\item Ask the customer care service for assistance 
+		\item View customer care contacts 
+		\item Unlock the reserved car
+		\item View and edit personal information
+		\item View rents and payments history
 	\end{enumerate}
-	\todo{unlock the car? view own informations?}
-%	Using the interface in the car users can:
-%	\begin{enumerate}
-%		\item Start the engine
-%		\item View the real time battery level
-%		\item View their real time GPS position
-%		\item View their position w.r.t safe areas
-%		\item Terminate the rent\todo{through an interface? Must be so by definition!}
-%		\item Ask the customer care service for assistance
-%	\end{enumerate}			
-
-
-	\todo{Move elsewhere}In order to use all feature of our system a user must be registered. All guest users can register to our system providing some relevant information about themselves (such as name, surname, phone number, driving license, payment details etc.). A registered user can reserve one\todo{Only one at a time! Check reqs} available car for 1 hour, in this period of time he can reach the car he reserved and once he is nearby...
 
 \subsubsection{Software interfaces}
 Databases and DBMSs are clearly required in order to store data about users, cars, charging stations, safe areas etc.

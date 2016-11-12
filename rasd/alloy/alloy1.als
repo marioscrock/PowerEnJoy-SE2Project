@@ -13,9 +13,6 @@ sig Car{
 	numberOfPassengers <=5 //Assuming 5 seats per car
 }
 
-abstract sig User{}
-sig LoggedUser extends User{}
-
 // Car statuses
 abstract sig CarStatus{}
 one sig Available extends CarStatus{}
@@ -28,6 +25,12 @@ abstract sig BatteryLevelPercentage{}
 one sig Lower20Full extends BatteryLevelPercentage{} 
 one sig More20Full extends BatteryLevelPercentage{} 
 
+abstract sig User{}
+sig LoggedUser extends User{}
+
+sig ChargingStation{
+	charging: set Car
+}
 
 fact ACarUsedByOnlyOneUser{
 	no disjoint c1,c2:Car | c1.usedBy = c2.usedBy and c1.usedBy != none
@@ -84,9 +87,21 @@ fact InUseCarNotOnCharge{
 	all c:Car | c.status = InUse implies c.onCharge = False
 }
 
+// A car is charging when connected to a charging station
+fact CarIsChargingWhenConnected{
+	all s:ChargingStation, c:Car | c in s.charging implies c.onCharge = True
+	all c:Car | some s:ChargingStation | c.onCharge = True implies c in s.charging
+}
+
+// At most one charging station connected to a car
+fact NoMoreOneCSForOneCar{
+	all disjoint s1,s2:ChargingStation | s1.charging & s2.charging = none
+}
+
+
 //Add facts about engineOn and OnCharge?
 
 /* REQUIREMENTS */
 
-pred show{}
-run show for 4
+pred show{#usedBy > 0}
+run show for 10 but exactly 5 ChargingStation, 6 Car, 4 User

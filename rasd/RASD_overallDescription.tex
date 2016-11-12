@@ -78,13 +78,7 @@ Databases and DBMSs are clearly required in order to store data about users, car
 
 As mentioned before (see \autoref{sec:systemInterfaces}) the system needs to use external APIs and to expose interfaces in order to interact with other systems.
 
-All vehicles have an embedded external software system, which is able to display all information described in \hyperref[sec:cars]{cars section}. 
-
-\subsection{Product functions}
-	\todo{See goals?}The system will:
-	\begin{enumerate}[label=\textbf{F\arabic*.}]
-		\item Function 1
-	\end{enumerate}
+All vehicles have an embedded external software system, which is able to display all information described in \hyperref[sec:cars]{cars section}.
 
 \subsection{User characteristics}
 	Users can use our system when they want to rent a car.\\
@@ -100,8 +94,8 @@ All vehicles have an embedded external software system, which is able to display
 \subsection{Domain assumption}
 	We assume that these assumptions hold true in the domain of our system 
 	\begin{enumerate}[label=\textbf{DA\arabic*}]
-		\item GPS position is supposed to be accurate
-		\item GPS position and status of all cars is always available
+		\item GPS position is supposed to be accurate (max error $\pm5$m)
+		\item GPS position of all cars is always obtainable
 		\item The user who reserves the car will always be the person who drives it
 		\item Users are legally allowed to drive cars (i.d. users have a proper driving license)
 		\item Charging stations are always working correctly
@@ -113,10 +107,10 @@ All vehicles have an embedded external software system, which is able to display
 		\item The set of safe areas is pre-defined and is provided to our system by the customer
 		\item The position of charging station is provided to our system by the customer
 		\item All charging station are located inside safe areas
-		\item The maps used by our system are always up to date
-		\item The commands sent to cars by the system, are always executed
+		\item The maps provided by the GIS are always up to date
+		\item The commands sent to cars by the system are always executed
 		correctly
-		\item Cars information are always available
-		\item Position of the user is always available
+		\item Information provided by the car are always correct and reliable
+		\item Position of the user is always available when he uses our system
 		
 	\end{enumerate}

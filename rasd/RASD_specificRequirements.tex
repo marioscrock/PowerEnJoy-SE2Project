@@ -84,7 +84,6 @@ The following requirements are derived in order to fulfill the specified goals.
    			specific car to \emph{Not Available}	
   		\end{enumerate}
   		\item \ref{goal:usersHistory}\ Provide a way to show to each user his rents and payments history
-  			\todo{era diverso dalla sezione goals!! inglese?}
   			\begin{enumerate}[resume*] 
   				\item The system must log an history of all rents and payments
   				\item User's rents history must include expired reservations in which the rent was not completed
@@ -144,7 +143,7 @@ The following requirements are derived in order to fulfill the specified goals.
   				the user paired	with the \emph{Reserved} state of the car and the GPS position of the
   				aforementioned car
   				\item The system must allow the user to ask to unlock the car
-  				\item \todo{unlock the car if request and 5m?}
+  				\item The system must unlock a car reserved by a user if the distance between the user's GPS position and the car GPS position is less than 5m and the user asks to the system to unlock the car
   				\item When the state of a specific car is set to \emph{In Use}, the car must be
  	  			uniquely paired with the user who is using the car
   				\item The system can set the state of a \emph{Reserved} car to \emph{In Use} i.f.f.
@@ -230,15 +229,13 @@ The following requirements are derived in order to fulfill the specified goals.
   	\end{description}
   	
 \subsection{Performance Requirements}
-\subsection{Design Constraints}
 \subsection{Software System Attributes}\todo{Da SISTEMARE}
 	\subsubsection{Reliability}
 	\subsubsection{Availability}
 	System must be available 24 hours a day.
 	\subsubsection{Security}
-	Data must be protected during transmission.
-	Restricted access APIs must verify the user who tries to use them.
-	\subsubsection{Maintainability}
+	Users personal information and payment information are encrypted and must be protected during transmission.
+	Restricted access APIs must check that who tries to use them is actually allowed to do so.
 	\subsubsection{Portability}
 	The system must be also accessible by mobile platforms (iOS and Android).
 

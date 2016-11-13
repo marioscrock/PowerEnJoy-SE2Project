@@ -123,7 +123,7 @@ Lorenzo is driving a PowerEnJoy car in order to reach Dino's house outside the s
 	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdLogin.png}
 	\caption{
 		\label{fig:authSequence} 
-		Authentication sequence diagram
+		\emph{Authentication} sequence diagram
 	}
 \end{figure}
 
@@ -161,7 +161,7 @@ If the position inserted by the user is not correct an error message is displaye
 	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarMapVisualization.png}
 	\caption{
 		\label{fig:carsMapSequence} 
-		View cars on the map sequence diagram
+		\emph{View cars on the map}  sequence diagram
 	}
 \end{figure}
 
@@ -225,7 +225,7 @@ If the position inserted by the user is not correct an error message is displaye
 	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdCarUnlock.png}
 	\caption{
 		\label{fig:carUnlockSequence} 
-		Car unlock sequence diagram
+		\emph{Car unlock} sequence diagram
 	}
 \end{figure}
 
@@ -440,7 +440,7 @@ The user should have enabled the \emph{money saving option} \\
 	\centering
 	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdViewNotAvaCars}
 	\caption{
-		\label{fig:msOptionSequence} 
+		\label{fig:visNotAvaSequence} 
 		\emph{Visualization of not available cars} sequence diagram
 	}
 \end{figure}
@@ -471,14 +471,22 @@ The user should have enabled the \emph{money saving option} \\
 \midrule
 \textbf{Exceptions} & 
 \begin{itemize}
-	\item If the access token sent by the maintenance service system is not recognized, the system sent to the maintenance service system an error message
-	\item If the car identifier sent by the maintenance service system is not recognized or doesn't correspond to a car set as \emph{Not Available}, the system sent to the maintenance service system an error message
-	\item If the car identifier sent by the maintenance service system corresponds to a car not locked, the system sent to the maintenance service system an error message
+	\item If the access token sent by the maintenance service system is not recognized, the system sends to the maintenance service system an error message
+	\item If the car identifier sent by the maintenance service system is not recognized or doesn't correspond to a car set as \emph{Not Available}, the system sends to the maintenance service system an error message
+	\item If the car identifier sent by the maintenance service system corresponds to a car not locked, the system sends to the maintenance service system an error message
 \end{itemize} \\
 \bottomrule
 \caption{\emph{Tag a car as not available} use case description}
 \end{longtable}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdTagCarAva}
+	\caption{
+		\label{fig:tagAvaSequence} 
+		\emph{Tag a car as available} sequence diagram
+	}
+\end{figure}
 %///////////////////////////////////////////////////////////
 \clearpage
 \subsubsection{Visualization of users information}
@@ -600,6 +608,14 @@ The user should have enabled the \emph{money saving option} \\
 \caption{\emph{Tag a car as not available} use case description}
 \end{longtable}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdTagCarNotAva}
+	\caption{
+		\label{fig:notAvaSequence} 
+		\emph{Tag a car as Not Available} sequence diagram
+	}
+\end{figure}
 \clearpage
 \subsection{UML class diagram}
 Based on collected scenarios and on the identified use cases we have developed the following requirements-level class diagram.

@@ -6,7 +6,7 @@ sig Car{
 	usedBy: lone LoggedUser,
 	reservedBy: lone LoggedUser,
 	numberOfPassengers: NOPType,
-    onCharge: one Bool,
+	onCharge: one Bool,
 	engineOn: one Bool
 }
 

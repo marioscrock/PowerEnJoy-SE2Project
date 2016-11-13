@@ -41,9 +41,10 @@ sig ChargingStation{
 	charging: set Car
 }
 
-//leftMSOstation: money saving option enabled and auto left on thestation determined by MSO
 //It models a rent made in the past, so, for example, in the world created the user who made the rent can
-//be banned or the car used for the rent can be NotAvailable 
+//be banned or the car used for the rent can be NotAvailable
+
+//leftMSOstation: true iff money saving option enabled and auto left on the station determined by MSO 
 sig RentMade{
 	userRent: one LoggedUser,
 	carRent: one Car,
@@ -219,5 +220,5 @@ assert NoOSAFIfOnChargeAtTheEndRent{
 check NoOSAFIfOnChargeAtTheEndRent
 
 /* REQUIREMENTS */
-pred show{#charging > 2 #banned > 0}
-run show for 10 but exactly 2 ChargingStation, exactly 6 Car, exactly 4 LoggedUser
+pred show{#charging > 2 some u:LoggedUser | u.banned = True}
+run show for 10 but exactly 2 ChargingStation, exactly 6 Car, exactly 4 LoggedUser, exactly 2 RentMade

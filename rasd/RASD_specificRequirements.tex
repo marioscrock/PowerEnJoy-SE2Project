@@ -185,7 +185,8 @@ The following requirements are derived in order to fulfill the specified goals.
   		\item \ref{goal:calculateCost}\ Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride
   			\begin{enumerate}[resume*]
   			    \item The system must not cumulate the discounts but must apply only the one with
-  			    the highest percentage.
+  			    the highest percentage, calculated on the base cost
+  			    \item All applicable percentage based fees are calculated by the system on the base cost of the ride and then summed to obtain the total fee the system must add to the base cost
   			    \item The system must be able to know how many passengers are detected on a car
   			    during a ride	
   				\item If locking an \emph{In Use} car the system detects that the car position is not

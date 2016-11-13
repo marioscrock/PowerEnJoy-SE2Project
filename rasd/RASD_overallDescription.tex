@@ -26,11 +26,15 @@
 		\item unique car identifier
 		\item GPS position
 		\item engine status (on, off)
-		\item number of passengers
+		\item current number of passengers
+		\item maximum number of passengers
 		\item battery level (percentage)
 		\item charging status (in charge, not in charge)
 		\item door locking status (locked, unlocked)
+		\item door closing status (open, closed)
 	\end{itemize}
+	For each of these information the car provides a primitive to instantiate a listener which triggers a notification to the system whenever the observed parameter changes.\\
+\newline
 	Information sent to the car by the system include:
 	\begin{itemize}
 		\item location of safe areas
@@ -42,6 +46,7 @@
 	\begin{itemize}
 		\item lock doors
 		\item unlock doors
+		\item start rent timer
 	\end{itemize}		
 	Information shown to the user by the embedded car interface include:
 	\begin{itemize}
@@ -57,7 +62,7 @@
 	
 	In order to determine which cars are in charge in which charging station the system checks if the charging status of a car is set to \emph{true} and its position is within a small distance from the charging station position.\\
 	
-	The number of passengers represents the maximum number of passengers that were detected by the car during its last ride (defined as the last period from engine on to engine off).\\
+	The maximum number of passengers represents the maximum number of passengers that were detected by the car during its last ride (defined as the last period from engine on to engine off).\\
 		
 \subsubsection{User interfaces}
 	Using the interfaces of the system users can:

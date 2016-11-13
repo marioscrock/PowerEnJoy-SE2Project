@@ -203,6 +203,10 @@ fact A3BCFeeMustBeAdded{
 		implies (r.endPosition  = More3kmPowerGrid or r.endBatteryLevel = Lower20Full)
 }
 
+fact NoA3BCFeeIfonCharge{
+    no r:RentMade | r.onChargeAtTheEnd  = True and A3BCF in r.additionalFeeRent
+}
+
 // Assertions
 assert NoReservedCarWithEngineOn{
 	no c:Car | c.engineOn = True and c.status = Reserved
@@ -218,6 +222,16 @@ assert NoOSAFIfOnChargeAtTheEndRent{
 	no r:RentMade |  r.onChargeAtTheEnd  = True and OSAF in r.additionalFeeRent
 }
 check NoOSAFIfOnChargeAtTheEndRent
+
+assert NoCCDAndA3BCF{
+	no r:RentMade | CCD in r.discountAppliableRent and A3BCF in r.additionalFeeRent
+}
+check NoCCDAndA3BCF
+
+assert NoMSODAndA3BCF{
+	no r:RentMade | MSOD in r.discountAppliableRent and A3BCF in r.additionalFeeRent
+}
+check NoMSODAndA3BCF
 
 /* REQUIREMENTS */
 pred show{#charging > 2 some u:LoggedUser | u.banned = True}

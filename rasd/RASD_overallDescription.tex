@@ -36,7 +36,7 @@
 		\item location of safe areas
 		\item position of charging stations
 		\item current time
-		\item amount owed until now
+		\item rent cost per hour
 	\end{itemize}
 	Commands runnable by the system include:
 	\begin{itemize}
@@ -49,10 +49,11 @@
 		\item number of passengers
 		\item battery level (percentage)
 		\item current time
-		\item amount owed until now
+		\item rent time
+		\item amount owed until now (based upon rent cost per hour)
 	\end{itemize}
 	
-	This system provides, among other functionalities, a secure way to unlock and lock the doors of the car: it has a command which returns a software key which can be sent to the maintenance operators; they are able to unlock and lock the car with a smartphone client  of the car embedded system and the key.\\
+	This system provides, among other functionalities, a secure way to unlock and lock the doors of the car: it has a command which returns a software key which can be sent to the maintenance operators; they are able to unlock and lock the car with a smartphone client  of the car's embedded system and the key.\\
 	
 	In order to determine which cars are in charge in which charging station the system checks if the charging status of a car is set to \emph{true} and its position is within a small distance from the charging station position.\\
 	

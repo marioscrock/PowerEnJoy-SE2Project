@@ -247,4 +247,4 @@ assert NoMSODAndA3BCF{
 check NoMSODAndA3BCF
 
 pred show{#charging > 2 some u:LoggedUser | u.banned = True}
-run show for 10 but exactly 2 ChargingStation, exactly 6 Car, exactly 4 LoggedUser, exactly 2 RentMade
+run show for 10 but exactly 2 ChargingStation, exactly 4 Car, exactly 4 LoggedUser, exactly 2 RentMade

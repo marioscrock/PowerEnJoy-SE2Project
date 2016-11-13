@@ -10,20 +10,20 @@ sig Car{
 	engineOn: one Bool
 }
 
-// Car statuses
+//Car statuses
 abstract sig CarStatus{}
 one sig Available extends CarStatus{}
 one sig Reserved extends CarStatus{}
 one sig InUse extends CarStatus{}
 one sig NotAvailable extends CarStatus{}
 
-//BatteryLevelPercentage
+//Battery level percentage: should be a percentage 0-100%
 abstract sig BatteryLevelPercentage{}
 one sig Lower20Full extends BatteryLevelPercentage{} 
 one sig More50Full extends BatteryLevelPercentage{}
 one sig From20to50Full extends BatteryLevelPercentage{} 
 
-//NumberOfPassengers
+//Number of passengers, we assume to deal with 5 passengers cars
 abstract sig NOPType{}
 one sig Zero extends NOPType{}
 one sig One extends NOPType{}
@@ -34,6 +34,8 @@ one sig Five extends NOPType{}
 
 abstract sig User{}
 sig LoggedUser extends User{
+	//personal information
+	//other parameters
 	banned: one Bool
 }
 
@@ -41,14 +43,19 @@ sig ChargingStation{
 	charging: set Car
 }
 
-//It models a rent made in the past, so, for example, in the world created the user who made the rent can
-//be banned or the car used for the rent can be NotAvailable
+//A RentMade models a rent made in the past, so, for example, in the world created 
+//the user who made the rent can be banned or the car used for the rent can be NotAvailable
+
+//If a RentMade corresponds to a reservation expired the corrispondent fee is assigned but
+//others parameters regarding the end of the rent are set to default acceptable values
 
 //leftMSOstation: true iff money saving option enabled and auto left on the station determined by MSO 
+
+//Choice of discount to be applied is not modeled
 sig RentMade{
 	userRent: one LoggedUser,
 	carRent: one Car,
-	endPosition: one Position,
+	endPosition: one PositionWrtPowerGrid,
 	endSafeArea: one Bool,
 	reservationExpired: one Bool,
 	endBatteryLevel: one BatteryLevelPercentage,
@@ -59,9 +66,9 @@ sig RentMade{
 	leftMSOstation: one Bool
 }
 
-abstract sig Position{}
-one sig More3kmPowerGrid extends Position{}
-one sig Lower3kmPowerGrid extends Position{}
+abstract sig PositionWrtPowerGrid{}
+one sig More3kmPowerGrid extends PositionWrtPowerGrid{}
+one sig Lower3kmPowerGrid extends PositionWrtPowerGrid{}
 
 //M2PD = MoreThan2PassengersDiscount
 //BHFD = BatteryHalfFullDiscount
@@ -81,38 +88,47 @@ one sig REF extends Fee{}
 one sig OSAF extends Fee{}
 one sig A3BCF extends Fee{}
 
-fact ACarUsedByOnlyOneUser{
+//A user can be only in one car at a given time
+fact OneUserCanBeInOneCarAtSameTime{
 	no disjoint c1,c2:Car | c1.usedBy = c2.usedBy and c1.usedBy != none
 }
 
+//A user can reserve only one car at a given time
 fact ACarReservedByOnlyOneUser{
 	no disjoint c1,c2:Car | c1.reservedBy = c2.reservedBy and c1.reservedBy != none
 }
 
+//A car in use cannot be reserved
 fact ACarInUseCannotBeReserved{
     all c:Car | c.usedBy != none implies c.reservedBy = none
 }
 
+//A user cannot use one car and reserve another car at a given time
 fact NoUsersCanUseAndReserveDifferentCars{
 	no disjoint c1,c2:Car | c1.usedBy = c2.reservedBy and c1.usedBy != none and c2.reservedBy != none
 }
 
+//Cars set as Available cannot be used or reserved at a given time
 fact AvaialableCarsCantBeReservedOrUsed{
 	no c:Car | c.status = Available and (c.usedBy != none or c.reservedBy != none)
 }
 
+//Cars set as Not Available cannot be used or reserved at a given time
 fact NotAvaialableCarsCantBeReservedOrUsed{
 	no c:Car | c.status = NotAvailable and (c.usedBy != none or c.reservedBy != none)
 }
 
+//Reserved statuts must be paired with only one user
 fact ReservedStatusMustBePairedWithOneUser{
 	all c:Car | c.status = Reserved implies (c.reservedBy != none and c.usedBy = none)
 }
 
+//In Use statuts must be paired with only one user
 fact InUseStatusMustBePairedWithOneUser{
 	all c:Car | c.status = InUse implies (c.reservedBy = none and c.usedBy != none)
 }
 
+//Car with battery percentage lower than 20 percent full must be set as Not Available 
 fact CarWithBatteryPercentageLower20FullNotAvailable{
 	all c:Car | (c.batteryLevel = Lower20Full and c.onCharge = False) implies c.status = NotAvailable
 }
@@ -149,7 +165,7 @@ fact NoBannedUsersDealingWithCars{
 }
 
 
-fact ReservationExpiredFee{
+fact ReservationExpiredFeeApplicable{
 	all r:RentMade | r.reservationExpired = True iff (REF in r.additionalFeeRent and #r.additionalFeeRent = 1)
 	no r:RentMade | r.reservationExpired = False and REF in r.additionalFeeRent
 }
@@ -167,7 +183,7 @@ fact NoPassengersIfReservationExpires{
 }
 
 fact M2PDiscountAppliable{
-	all r:RentMade | r.passengersDuringTheRide != One 
+	all r:RentMade |( r.passengersDuringTheRide != Zero and r.passengersDuringTheRide != One) 
 		iff M2PD in r.discountApplicableRent
 }
 
@@ -182,7 +198,7 @@ fact CCDiscountAppliable{
 }
 
 fact AllCharginStationInSafeArea{
-	all r:RentMade | r.onChargeAtTheEnd  = True iff r.endSafeArea = True
+	all r:RentMade | r.onChargeAtTheEnd  = True implies r.endSafeArea = True
 }
 
 fact IfLeftMSOStationIsOnCharge{

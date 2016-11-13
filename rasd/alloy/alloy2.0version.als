@@ -49,17 +49,17 @@ sig RentMade{
 	userRent: one LoggedUser,
 	carRent: one Car,
 	endPosition: one Position,
+	endSafeArea: one Bool,
 	reservationExpired: one Bool,
 	endBatteryLevel: one BatteryLevelPercentage,
 	onChargeAtTheEnd: one Bool,
 	passengersDuringTheRide: one NOPType,
-	discountAppliableRent: set Discount,
+	discountApplicableRent: set Discount,
 	additionalFeeRent: set Fee,
 	leftMSOstation: one Bool
 }
 
 abstract sig Position{}
-one sig OutsideSafeArea extends Position{}
 one sig More3kmPowerGrid extends Position{}
 one sig Lower3kmPowerGrid extends Position{}
 
@@ -154,8 +154,12 @@ fact ReservationExpiredFee{
 	no r:RentMade | r.reservationExpired = False and REF in r.additionalFeeRent
 }
 
+fact NoReservationExpiredOutsideSafeArea{
+	no r:RentMade | r.reservationExpired = True and r.endSafeArea = False
+}
+
 fact NoDiscountOrFeeIfReservationExpires{
-	all r:RentMade | r.reservationExpired = True implies r.discountAppliableRent = none 
+	all r:RentMade | r.reservationExpired = True implies r.discountApplicableRent = none 
 }
 
 fact NoPassengersIfReservationExpires{
@@ -164,21 +168,21 @@ fact NoPassengersIfReservationExpires{
 
 fact M2PDiscountAppliable{
 	all r:RentMade | r.passengersDuringTheRide != One 
-		iff M2PD in r.discountAppliableRent
+		iff M2PD in r.discountApplicableRent
 }
 
 fact BHFDiscountAppliable{
 	all r:RentMade | r.endBatteryLevel  = More50Full
-		iff BHFD in r.discountAppliableRent
+		iff BHFD in r.discountApplicableRent
 }
 
 fact CCDiscountAppliable{
 	all r:RentMade | r.onChargeAtTheEnd  = True
-		iff CCD in r.discountAppliableRent
+		iff CCD in r.discountApplicableRent
 }
 
 fact AllCharginStationInSafeArea{
-	all r:RentMade | r.onChargeAtTheEnd  = True iff r.endPosition != OutsideSafeArea
+	all r:RentMade | r.onChargeAtTheEnd  = True iff r.endSafeArea = True
 }
 
 fact IfLeftMSOStationIsOnCharge{
@@ -186,11 +190,11 @@ fact IfLeftMSOStationIsOnCharge{
 }
 
 fact MSODiscountAppliable{
-	all r:RentMade | r.leftMSOstation = True iff MSOD in r.discountAppliableRent
+	all r:RentMade | r.leftMSOstation = True iff MSOD in r.discountApplicableRent
 }
 
 fact OSAFeeMustBeAdded{
-	all r:RentMade | r.endPosition  = OutsideSafeArea
+	all r:RentMade | r.endSafeArea = False
 		iff OSAF in r.additionalFeeRent
 }
 
@@ -205,6 +209,10 @@ fact A3BCFeeMustBeAdded{
 
 fact NoA3BCFeeIfonCharge{
     no r:RentMade | r.onChargeAtTheEnd  = True and A3BCF in r.additionalFeeRent
+}
+
+fact NoCCDMoreThan3km{
+	no r:RentMade | CCD in r.discountApplicableRent and r.endPosition = More3kmPowerGrid
 }
 
 // Assertions
@@ -224,15 +232,19 @@ assert NoOSAFIfOnChargeAtTheEndRent{
 check NoOSAFIfOnChargeAtTheEndRent
 
 assert NoCCDAndA3BCF{
-	no r:RentMade | CCD in r.discountAppliableRent and A3BCF in r.additionalFeeRent
+	no r:RentMade | CCD in r.discountApplicableRent and A3BCF in r.additionalFeeRent
 }
 check NoCCDAndA3BCF
 
+assert NoMSODMoreThan3km{
+	no r:RentMade | MSOD in r.discountApplicableRent and r.endPosition = More3kmPowerGrid
+}
+check NoMSODMoreThan3km
+
 assert NoMSODAndA3BCF{
-	no r:RentMade | MSOD in r.discountAppliableRent and A3BCF in r.additionalFeeRent
+	no r:RentMade | MSOD in r.discountApplicableRent and A3BCF in r.additionalFeeRent
 }
 check NoMSODAndA3BCF
 
-/* REQUIREMENTS */
 pred show{#charging > 2 some u:LoggedUser | u.banned = True}
 run show for 10 but exactly 2 ChargingStation, exactly 6 Car, exactly 4 LoggedUser, exactly 2 RentMade

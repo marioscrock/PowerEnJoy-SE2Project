@@ -50,6 +50,20 @@
 		\item Mario Scrocca: $\sim$ 48 hours
 		\item Moreno R. Vendra: $\sim$ 45 hours
 	\end{itemize}
+	
+	\section{Changelog}
+	\begin{itemize}
+		\item \textbf{v1.0} November 13, 2016
+		\item \textbf{v1.1} November 23, 2016
+		\begin{itemize}
+			\item Added notes to read the \hyperref[fig:usecase]{use case diagram} w.r.t. external system interactions
+			\item Added notes to read the \hyperref[fig:carFSA]{FSM diagram} in order to clarify the system behaviour in case of car critical battery level
+			\item Improvements in \hyperref[fig:classDiagram]{class diagram}: cardinalities and compositions
+			\item Improvements in the definition of \emph{Available} and \emph{Not Available} car
+			\item Updated \ref{req:notAvailbleCritical} to avoid \emph{Available} on charge cars to be set as \emph{Not Available}
+			\item Added \ref{da:zeroBattery} to ensure communication even if the car has an empty battery
+		\end{itemize}
+	\end{itemize}
 \end{appendices}
 \clearpage
 \begin{thebibliography}{9}

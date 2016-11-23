@@ -36,8 +36,15 @@ Lorenzo is driving a PowerEnJoy car in order to reach Dino's house outside the s
 		Use case diagram
 	}
 \end{figure}
-\clearpage
+\subsection{Notes to read the diagram}
+The use case diagram represents the possible interactions of actors with the system and the different use cases in which the actors are involved.\\
 
+The "Maintenance service system" is an external software which the system-to-be needs to interact with. \\
+ 
+We do not consider the external payment handling system an actor since it does not start any interaction with our system, it simply reacts when our system requests its services; this interaction is encapsulated as sub-procedure in the flow of events of the "Rent payment" use case.\\
+
+We do not consider the car an actor for the same reason, moreover the only interactions started by the car are trigger events which are very simple interactions, which we do not consider use cases.\\
+\clearpage
 \subsection{Use cases description}
 
 \subsubsection{Registration}

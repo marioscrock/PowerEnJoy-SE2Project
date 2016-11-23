@@ -308,8 +308,10 @@ The overall status of a car can be represented by the FSM in \autoref{fig:carFSA
 		\end{figure}
 %///////////////////////////////////////////////////////////
 \paragraph{Notes to read the diagram}
-The \emph{Not Available} state includes the cases in which the car is either broken or a user left it with a critical battery level and not on charge.\\
-The system changes the state of a car from \emph{Available} to \emph{Not Available} when its battery level is critical and the car is not on charge.\\
+The \emph{Not Available} state includes the cases in which the car is either broken or a user left it with a critical battery level and not on charge.\\ 
+
+The system changes the state of a car from \emph{Available} to \emph{Not Available} when its battery level is critical and the car is not on charge (see \ref{req:notAvailbleCritical}).\\
+
 Even if the car is left with no battery left, it is still able to communicate with the system, so the rent can end normally and the maintenance service will take care the car
 (see \ref{da:zeroBattery}).
 \clearpage

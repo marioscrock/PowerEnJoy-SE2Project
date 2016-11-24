@@ -1,10 +1,13 @@
 \section{Introduction}
 \subsection{Purpose of this document}
+In this document we are going to describe software design and architecture of the PowerEnJoy system.\\
+The software architecture of a system is the structure or structures of the system, which comprise software elements, the externally visible properties of those elements, and the relationships among them.\cite{SoftwareArch}
 
 \subsection{Scope}
 PowerEnJoy is a car-sharing service that exclusively employs electric cars; we are going to develop a web-based software system that will provide the functionalities normally provided by car-sharing services, such as allowing the user to register to the system in order to access it, showing the cars available near a given location and allowing a user to reserve a car before picking it up.
-A screen located inside the car will show in real time the ride amount of money to the user. When the user reaches a predefined safe area and exits the car, the system will stop charging the user and will lock the car. The system will provide information about charging station location where the car can be plugged after the ride and incentivize virtuous behaviours of the users with discounts\todo{citation RASD}
+A screen located inside the car will show in real time the ride amount of money to the user. When the user reaches a predefined safe area and exits the car, the system will stop charging the user and will lock the car. The system will provide information about charging station location where the car can be plugged after the ride and incentivize virtuous behaviours of the users with discounts\cite{RASD}
 \subsection{Glossary}
+The \emph{PowerEnJoy: Requirements Analysis and Specification Document}\cite{RASD} should be referenced for terms not defined in this section.
 \subsubsection{Definitions}
 
 \subsubsection{Acronyms}
@@ -28,7 +31,11 @@ A screen located inside the car will show in real time the ride amount of money 
 	\end{description}
 
 \subsection{Reference documents}
-All domain assumptions, goals, requirements and system components' definition are all described in the \emph{PowerEnJoy: Requirements Analysis and Specification Document} - \mbox{D. Piantella}, \mbox{M. Scrocca}, \mbox{M.R. Vendra}
+All domain assumptions, goals, requirements and system components' definition are all described in the \emph{PowerEnJoy: Requirements Analysis and Specification Document}.\cite{RASD}\\
+Others references are:
+\begin{itemize}
+	\item IEEE Std 1016-2009 Standard for Information Technology, Systems Design, Software Design Descriptions
+\end{itemize}
 
 \subsection{Document overview}
 This document is structured as

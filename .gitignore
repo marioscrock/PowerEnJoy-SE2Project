@@ -41,3 +41,4 @@ Backup[ ]of[ ]*.numbers/
 
 # Folder to ignore
 noGit/
+dd/

@@ -104,8 +104,11 @@ The following requirements are derived in order to fulfill the specified goals.
   				marked as \emph{banned}
   				\item The system must not allow a \emph{banned} user to access the system but only
   				provide him information about how to contact customer service 
-  				\item The system must allow customer service to access users' information (name,
-  				surname, birth date and place, current domicile, driving license information) and
+  				\item \label{req:userCurrentInfo} The system must allow customer service to access
+  				users' information (name, surname, birth date and place, current domicile, driving
+  				license information) eventually among with information about the car state the user is
+  				actually paired with
+  				\item \label{req:userHistory} The system must allow customer service to access
   				users' rents and payments histories
    				\item The system must allow the customer service to set the state of a
    				specific user to \emph{banned} or \emph{not banned}

@@ -29,7 +29,18 @@
 			}
 		\end{figure}
 		
-		
+		Going deeper in the analysis of our system composition, we are able to identify some of the modules that will be required in order to provide the functionalities specified in the Requirement Analysis and Specification Document. 
+		\paragraph{Communication Interfaces} Since our system interacts with many external agents, it needs to have different \emph{Communication Interfaces} in order to communicate with them. 
+		\begin{itemize}
+			\item An API is needed to provide \emph{Maintenance Service System} the information it needs to work with us
+			\item A software module is needed to provide the \emph{Customer Care} the functionalitities it needs
+			\item A web server is needed in order to communicate with the users
+			\item An internal payment software module will deal with the communication with the \emph{External Payment System} 
+			\item A set of modules will manage the communications between the cars and the system;
+		\end{itemize}
+		\paragraph{Business Logic}
+			The actual application logic of our system needs to manage the users information, the rents and the cars information; for each of these purposes several software modules are necessary; they will use communication interfaces to communicate with the agents and they will be able to retrieve data from the data interfaces.
+		\paragraph{Data Interface}
 
 \subsection{Component view}
 \subsection{Deployment view}

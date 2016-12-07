@@ -1,14 +1,17 @@
 BEGIN
 
     DATA-CS := READ "ChargingStations.xml"
-    C  := retrieve-cs(DATA-CS); //array of charging station IDs
+    //array of charging station IDs
+    C  := retrieve-cs(DATA-CS); 
     P,AP,D,S := empty array;
     dest = GPS position of the user inserted destination;
 
     FOR i:=0 TO C.length DO
-        available-plug := retrieve-cs-plugsNumb(C[i], DATA-CS) - cars-in-cs(C[i]);
+        available-plug := retrieve-cs-plugsNumb(C[i], DATA-CS) 
+                            - cars-in-cs(C[i]);
         IF available-plug > 0 THEN
-            //AP[i] contains available plugs of C[i] charging station if
+            //AP[i] contains available plugs 
+   	        //of C[i] charging station if
             //that number is greater than zero
             AP[i]:= available-plug;
         ELSE 
@@ -20,12 +23,14 @@ BEGIN
     END-FOR
 
     FOR i:=0 TO C.length DO 
-        //P[i] contains GPS position of C[i] charging station
+        //P[i] contains GPS position
+        //of C[i] charging station
         P[i]:= retrieve-cs-position(C[i], DATA-CS);
     END-FOR
  
     FOR i:=0 TO C.length DO 
-        //D[i] contains the distance between C[i] charging station
+        //D[i] contains the distance
+        //between C[i] charging station
         //and the distance inserted by the user
         D[i]:= calculate-distance(C[i], dest)
     END-FOR

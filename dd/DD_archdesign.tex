@@ -187,6 +187,30 @@ Beyond primary keys, the following attributes must be unique:
 	\end{itemize}
 \end{itemize}
 
+Charging stations are provided to the system as an XML file with the following structure
+\lstset{language=XML, morekeywords={chargingStations,chargingStation,GPSLocation,numberOfPlugs,lat,long},frame=false}
+\begin{lstlisting}
+<chargingStations>
+	<chargingStation id="1">
+		<GPSLocation>
+			<lat>45.477452</lat>
+			<long>9.218617</long>
+		</GPSLocation>
+		<numberOfPlugs>10</numberOfPlugs>
+	</chargingStation>
+	
+	<chargingStation id="2">
+		<GPSLocation>
+			<lat>45.476257</lat>
+			<long>9.171926</long>
+		</GPSLocation>
+		<numberOfPlugs>10</numberOfPlugs>
+	</chargingStation>
+	
+	[...]
+</chargingStations>
+\end{lstlisting}
+
 Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
 
 The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.

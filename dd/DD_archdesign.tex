@@ -187,33 +187,44 @@ Beyond primary keys, the following attributes must be unique:
 	\end{itemize}
 \end{itemize}
 
-Charging stations are provided to the system as an XML file with the following structure
-\lstset{language=XML, morekeywords={chargingStations,chargingStation,GPSLocation,numberOfPlugs,lat,long},frame=false}
+Charging stations are provided to the system as an XML file with the following DTD:
+\lstset{language=XML,frame=false}
 \begin{lstlisting}
-<chargingStations>
-	<chargingStation id="1">
+<!ELEMENT ChargingStations(ChargingStation+)>
+<!ELEMENT ChargingStation(GPSLocation, NumberOfPlugs)>
+<!ELEMENT GPSLocation(lat,long)>
+<!ELEMENT lat(#CDATA)>
+<!ELEMENT long(#CDATA)>
+<!ELEMENT NumberOfPlugs(#CDATA)>
+<!ATTLIST ChargingStation id ID #REQUIRED>
+\end{lstlisting}
+An example of such an XML file is 
+\lstset{language=XML, frame=false, morekeywords={ChargingStations,ChargingStation,GPSLocation,NumberOfPlugs,lat,long}}
+\begin{lstlisting}
+<ChargingStations>
+
+	<ChargingStation id="1">
 		<GPSLocation>
 			<lat>45.477452</lat>
 			<long>9.218617</long>
 		</GPSLocation>
-		<numberOfPlugs>10</numberOfPlugs>
-	</chargingStation>
+		<NumberOfPlugs>10</NumberOfPlugs>
+	</ChargingStation>
 	
-	<chargingStation id="2">
+	<ChargingStation id="2">
 		<GPSLocation>
 			<lat>45.476257</lat>
 			<long>9.171926</long>
 		</GPSLocation>
-		<numberOfPlugs>10</numberOfPlugs>
-	</chargingStation>
+		<NumberOfPlugs>15</NumberOfPlugs>
+	</ChargingStation>
 	
-	[...]
-</chargingStations>
+</ChargingStations>
 \end{lstlisting}
 
 Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
 
-The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
+The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
 
 \subsection{Deployment view}
 \subsection{Runtime view}

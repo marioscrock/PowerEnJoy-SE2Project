@@ -1,0 +1,57 @@
+BEGIN
+
+    DATA-CS := READ "ChargingStations.xml"
+    C  := retrieve-cs(DATA-CS); //array of charging station IDs
+    P,AP,D,S := empty array;
+    dest = GPS position of the user inserted destination;
+
+    FOR i:=0 TO C.length DO
+        available-plug := retrieve-cs-plugsNumb(C[i], DATA-CS) - cars-in-cs(C[i]);
+        IF available-plug > 0 THEN
+            //AP[i] contains available plugs of C[i] charging station if
+            //that number is greater than zero
+            AP[i]:= available-plug;
+        ELSE 
+            //removes the i-th element shifting other 
+            //elements respecting the precedent order
+            remove-from-array(C[i]);
+        END-IF
+        
+    END-FOR
+
+    FOR i:=0 TO C.length DO 
+        //P[i] contains GPS position of C[i] charging station
+        P[i]:= retrieve-cs-position(C[i], DATA-CS);
+    END-FOR
+ 
+    FOR i:=0 TO C.length DO 
+        //D[i] contains the distance between C[i] charging station
+        //and the distance inserted by the user
+        D[i]:= calculate-distance(C[i], dest)
+    END-FOR
+
+    max-distance := max-value(D);
+    min-distance := min-value(D);
+
+    //Distances are normalized
+    IF max-value != min-value DO
+        FOR i:=0 TO C.length DO 
+            //normalized distance
+            D[i]:= (D[i] - min-value)/(max-value - min-value);
+        END-FOR
+    END-IF
+
+    k := multiplicative weight for the distance variable
+    t := multiplicative weight for the availability of plugs 
+
+    FOR i:=0 TO C.length DO 
+        //Score assigned to the C[i] charging station
+        S[i]:=  D[i]*k + AP[i]*t;
+    END-FOR
+
+    //if two scores are equal the charging station closer to
+    //the destination inserted by the user is chosen
+    RETURN C[array-key(max-score(S))];
+
+END
+

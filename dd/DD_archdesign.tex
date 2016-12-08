@@ -15,7 +15,7 @@
 		We need to design a system which allows communications with many agents such as cars, users, external systems, etc.
 		Moreover we recognize that in most of the interactions the system is providing a service to agents so, after taking in consideration different alternatives, we decided to use a client-server architectural approach.
 		
-		Cars offer to the system a set of primitives which allow it to interact with them: in this case it is clear that cars are providing the system services, so they can be identified as serves while the system acts as a client; on the other end the notification functionality offered by cars clearly yields to an event-based approach due to the asynchronous nature of such interactions, this led us to use a publish-subscribe paradigm for these specific interactions.
+		Cars offer to the system a set of primitives which allow it to interact with them: in this case it is clear that cars are providing the system services, so they can be identified as servers while the system acts as a client; on the other end the notification functionality offered by cars clearly yields to an event-based approach due to the asynchronous nature of such interactions, this led us to use a publish-subscribe paradigm for these specific interactions.
 		\clearpage
 		
 	\subsubsection{Composition viewpoint}
@@ -37,7 +37,7 @@
 			\item A software module is needed to provide the \emph{Customer Care} the functionalitities it needs
 			\item A web server is needed in order to communicate with the users
 			\item An internal payment software module will deal with the communication with the \emph{External Payment System} 
-			\item A set of modules will manage the communications between the cars and the system;
+			\item A set of modules will manage the communications between the cars and the system: a module to call primitives on cars through the provided API and another one to observe events triggered by the car \todo{ok?}
 		\end{itemize}
 		\paragraph{Business Logic}
 			The actual application logic of our system needs to manage the users information, the rents and the cars information; for each of these purposes several software modules are necessary; they will use communication interfaces to communicate with the agents and they will be able to retrieve data from the data interfaces.

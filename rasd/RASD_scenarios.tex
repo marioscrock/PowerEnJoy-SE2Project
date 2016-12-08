@@ -62,13 +62,14 @@ We do not consider the car an actor for the same reason, moreover the only inter
 	\item The user asks the system to register to its services
 	\item The system shows the appropriate form to fill to register to the system
 	\item The user inserts an username to be uniquely identified by the system
-	\item The system checks the username to be unique
 	\item The user inserts his own email address
-	\item The system checks the email to be unique
 	\item The user inserts his name, surname, birth date and place and current domicile
-	\item The user inserts his driving license ID code and expiring date
+	\item The user inserts his driving license ID code
 	\item The user inserts payment information
 	\item The user confirms data inserted are correct e submit the form
+	\item The system checks the username to be unique
+	\item The system checks the email to be unique
+	\item The system checks the driving license ID to be unique
 	\item The system sends an email to the user with a unique link to verify the email address inserted by the user really belongs to him
 	\item The user clicking on the link received confirms his email address
 	\item The user is notified by mail the registration procedure is correctly completed and
@@ -110,7 +111,7 @@ We do not consider the car an actor for the same reason, moreover the only inter
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The user inserts his username and password in the appropriate form and submit it
-	\item The system validates the inserted credential
+	\item The system validates the inserted credentials checking also if the user has confirmed his own email address
 	\item The system checks if the user is banned
 \end{enumerate} \\
 \midrule

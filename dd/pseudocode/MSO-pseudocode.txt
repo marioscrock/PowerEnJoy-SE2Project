@@ -1,10 +1,12 @@
-BEGIN
+BEGIN MoneySavingOption(dest)
+    
+    //dest: GPS position of the user inserted destination
 
     DATACS := READ "ChargingStations.xml"
     //array of charging station IDs
     C  := retrieveCs(DATACS); 
-    P,AP,D,S := empty array;
-    dest = GPS position of the user inserted destination;
+    P,AP,D,NC,S := empty array;
+    j:= radius distance constant;
 
     FOR i:=0 TO C.length DO
         availablePlug := 
@@ -31,7 +33,13 @@ BEGIN
         //D[i] contains the distance
         //between C[i] charging station
         //and the distance inserted by the user
-        D[i]:= calculateDistance(C[i], dest)
+        D[i]:= calculateDistance(P[i], dest)
+
+        //NC[i] contains the number of
+        //cars within a radius of j km from
+        //the C[i] charging station normalized 
+        //w.r.t the total number of cars 
+        NC[i]:= getNumbCarsNearbyNormalized(C[i],j);
     END-FOR
 
     maxDistance := maxValue(D);
@@ -51,10 +59,15 @@ BEGIN
 
     k := multiplicative weight of distance variable
     t := multiplicative weight of availability of plugs 
+    q := multiplicative weight of cars nearby
 
     FOR i:=0 TO C.length DO 
+        IF AP[i] == 0 THEN 
+            S[i]:= 0;
+        ELSE
         //Score assigned to the C[i] charging station
-        S[i]:=  D[i]*k + AP[i]*t;
+            S[i]:=  D[i]*k + AP[i]*t - NC[i]*q;
+        END-IF
     END-FOR
 
     //if two scores are equal the charging station closer to

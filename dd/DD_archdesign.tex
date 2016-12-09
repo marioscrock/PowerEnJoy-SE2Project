@@ -138,15 +138,24 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 		ER model
 	}
 \end{figure}
-Beyond primary keys, the following attributes must be unique:
+
+\paragraph{Users} Beyond the primary key, the \mbox{\emph{email}}, \mbox{\emph{drivingLicenseNumber}} and \mbox{\emph{emailToken}} attributes must be unique.
+
+\paragraph{Fees and discounts}
+Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
+The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
+
+As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixed amount plus a variable amount proportional to the \emph{distance} of the car form the nearest safe area, can be expressed as a fixed number of fee clustered by distance.
+
+\paragraph{Payment status} There are three possible payment status:
 \begin{itemize}
-	\item Users
-	\begin{itemize}
-		\item email
-		\item drivingLicenseNumber
-		\item emailToken
-	\end{itemize}
+	\item \emph{Pending}: a payment transaction request has been sent to the external payment system
+	\item \emph{Confirmed}: the payment transaction has been successfully executed
+	\item \emph{Rejected}: the payment transaction has failed
 \end{itemize}
+The default state for a payment is \emph{Pending}.
+
+\paragraph{Failures}A failure is considered "open" (i.d. to be fixed) if the attribute \emph{fixedDate} is not present. A car can have at most one open failure.
 
 \paragraph{Charging stations}Charging stations are provided to the system as an XML file with the following DTD:
 \lstset{language=XML,frame=false}
@@ -191,20 +200,6 @@ An example of such an XML file is
 	\item changes in XML files (sent to all cars)
 	\item new car (sent to one car)
 \end{itemize}
-
-\paragraph{Fees and discounts}
-Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
-The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
-
-As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixed amount plus a variable amount proportional to the \emph{distance} of the car form the nearest safe area, can be expressed as a fixed number of fee clustered by distance.
-
-\paragraph{Payment status} There are three possible payment status:
-\begin{itemize}
-	\item \emph{Pending}: a payment transaction request has been sent to the external payment system
-	\item \emph{Confirmed}: the payment transaction has been successfully executed
-	\item \emph{Rejected}: the payment transaction has failed
-\end{itemize}
-The default state for a payment is \emph{Pending}.
 
 \subsubsection{Server component}
 To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.
@@ -341,7 +336,7 @@ The following sequence diagrams show the interactions between the Rent Manager a
 
 \clearpage
 \subsubsection{MaintenanceManager component}
-At regular time intervals the \emph{MaintenanceManager} component calls a primitive on the car through the \emph{CarHandler} component in order to retrieve and update battery level data.
+At regular time intervals the \emph{MaintenanceManager} component calls a primitive on the car through the \emph{CarHandler} component in order to retrieve and update battery level data.\todo{it is not true}
 
 \subsection{Deployment view}
 \subsection{Runtime view}

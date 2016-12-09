@@ -277,9 +277,35 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \clearpage
 
 \subsubsection{RentManager component}
-%image here
+In \autoref{fig:sequenceUnlockStartRent}, \autoref{fig:sequenceEndRent1} and \autoref{fig:sequenceEndRent2} we represent the internal interactions if the \emph{RentManager} component.
 Interaction not represented in sequence diagrams: during the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=90,width=0.9685\linewidth]{sequenceDiagrams/UnlockStartRent}
+	\caption{
+		\label{fig:sequenceUnlockStartRent} 
+		\emph{Car unlock and start rent} sequence diagram
+	}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=90,width=0.9685\linewidth]{sequenceDiagrams/EndRent}
+	\caption{
+		\label{fig:sequenceEndRent1} 
+		\emph{End rent} sequence diagram (part 1)
+	}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=90,width=0.9685\linewidth]{sequenceDiagrams/EndRent2}
+	\caption{
+		\label{fig:sequenceEndRent2} 
+		\emph{End rent} sequence diagram (part 2)
+	}
+\end{figure}
 
+
+\clearpage
 \subsubsection{MaintenanceManager component}
 At regular time intervals the \emph{MaintenanceManager} component calls a primitive on the car through the \emph{CarHandler} component in order to retrieve and update battery level data.
 

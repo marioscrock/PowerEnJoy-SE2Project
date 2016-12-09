@@ -62,12 +62,8 @@ BEGIN MoneySavingOption(dest)
     q := multiplicative weight of cars nearby
 
     FOR i:=0 TO C.length DO 
-        IF AP[i] == 0 THEN 
-            S[i]:= 0;
-        ELSE
         //Score assigned to the C[i] charging station
             S[i]:=  D[i]*k + AP[i]*t - NC[i]*q;
-        END-IF
     END-FOR
 
     //if two scores are equal the charging station closer to

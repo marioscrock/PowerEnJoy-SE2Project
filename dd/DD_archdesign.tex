@@ -196,6 +196,7 @@ An example of such an XML file is
 Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
 The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
 
+As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixed amount plus a variable amount proportional to the \emph{distance} of the car form the nearest safe area, can be expressed as a fixed number of fee clustered by distance.
 
 \subsubsection{Server component}
 To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.
@@ -281,7 +282,7 @@ In \autoref{fig:sequenceUnlockStartRent}, \autoref{fig:sequenceEndRent1} and \au
 Interaction not represented in sequence diagrams: during the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=0.95\linewidth]{sequenceDiagrams/UnlockStartRent}
+	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/UnlockStartRent}
 	\caption{
 		\label{fig:sequenceUnlockStartRent} 
 		\emph{Car unlock and start rent} sequence diagram
@@ -289,7 +290,7 @@ Interaction not represented in sequence diagrams: during the rent, at predetermi
 \end{figure}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=0.9685\linewidth]{sequenceDiagrams/EndRent}
+	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/EndRent}
 	\caption{
 		\label{fig:sequenceEndRent1} 
 		\emph{End rent} sequence diagram (part 1)
@@ -297,7 +298,7 @@ Interaction not represented in sequence diagrams: during the rent, at predetermi
 \end{figure}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=0.9685\linewidth]{sequenceDiagrams/EndRent2}
+	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/EndRent2}
 	\caption{
 		\label{fig:sequenceEndRent2} 
 		\emph{End rent} sequence diagram (part 2)

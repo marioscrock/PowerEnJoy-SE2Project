@@ -286,9 +286,26 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \clearpage
 
 \subsubsection{RentManager component}
-In \autoref{fig:sequenceUnlockStartRent}, \autoref{fig:sequenceEndRent1} and \autoref{fig:sequenceEndRent2} we represent the internal interactions if the \emph{RentManager} component.
+In \autoref{fig:rentObjectDiagram}, \autoref{fig:sequenceUnlockStartRent}, \autoref{fig:sequenceEndRent1} and \autoref{fig:sequenceEndRent2} we represent the internal interactions if the \emph{RentManager} component.
 
-Interactions not represented in sequence diagrams
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=90,width=0.8\linewidth]{ObjectRentManager}
+	\caption{
+		\label{fig:rentObjectDiagram} 
+		\emph{Rent Manager} object diagram
+	}
+\end{figure}
+\clearpage
+\autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.\\
+The following sequence diagrams show the interactions between the Rent Manager and other components in the system in different scenarios:
+\begin{itemize}
+	\item A user unlocks the car he reserved and starts the rent
+	\item A car in use car notifies the system that the engine is off, there are no passengers in the car and the doors are closed
+	\item The rent just ended and the system initialize the payment procedure
+\end{itemize}
+
+\paragraph{Interactions not represented in the following sequence diagrams}
 \begin{itemize}
 	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
 

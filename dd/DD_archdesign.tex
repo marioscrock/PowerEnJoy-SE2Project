@@ -263,9 +263,23 @@ An example of such an XML file is
 
 Safe areas are also provided as XML file according to the \emph{GPS Exchange Format} and they are composed by a closed broken line.
 
+The position of charging stations and safe areas are processed and sent to cars only in case of:
+\begin{itemize}
+	\item system initialization (sent to all cars)
+	\item changes in XML files (sent to all cars)
+	\item new car (sent to one car)
+\end{itemize}
+
 Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
 
 The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
+
+\subsubsection{RentManager component}
+%image here
+Interaction not represented in sequence diagrams: during the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
+
+\subsubsection{MaintenanceManager component}
+At regular time intervals the \emph{MaintenanceManager} component calls a primitive on the car through the \emph{CarHandler} component in order to retrieve and update battery level data.
 
 \subsection{Deployment view}
 \subsection{Runtime view}

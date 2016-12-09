@@ -127,8 +127,78 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 \end{itemize}
 \clearpage
 
+\subsubsection{DB component}
+\paragraph{ER model}In \autoref{fig:ERModel} is represented the ER model of the system's database.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9685\linewidth]{ER}
+	\caption{
+		\label{fig:ERModel} 
+		ER model
+	}
+\end{figure}
+Beyond primary keys, the following attributes must be unique:
+\begin{itemize}
+	\item Users
+	\begin{itemize}
+		\item email
+		\item drivingLicenseNumber
+		\item emailToken
+	\end{itemize}
+\end{itemize}
+
+\paragraph{Charging stations}Charging stations are provided to the system as an XML file with the following DTD:
+\lstset{language=XML,frame=false}
+\begin{lstlisting}
+<!ELEMENT ChargingStations(ChargingStation+)>
+<!ELEMENT ChargingStation(GPSLocation, NumberOfPlugs)>
+<!ELEMENT GPSLocation(lat,long)>
+<!ELEMENT lat(#CDATA)>
+<!ELEMENT long(#CDATA)>
+<!ELEMENT NumberOfPlugs(#CDATA)>
+<!ATTLIST ChargingStation id ID #REQUIRED>
+\end{lstlisting}
+An example of such an XML file is 
+\lstset{language=XML, frame=false, morekeywords={ChargingStations,ChargingStation,GPSLocation,NumberOfPlugs,lat,long}}
+\begin{lstlisting}
+<ChargingStations>
+
+	<ChargingStation id="1">
+		<GPSLocation>
+			<lat>45.477452</lat>
+			<long>9.218617</long>
+		</GPSLocation>
+		<NumberOfPlugs>10</NumberOfPlugs>
+	</ChargingStation>
+	
+	<ChargingStation id="2">
+		<GPSLocation>
+			<lat>45.476257</lat>
+			<long>9.171926</long>
+		</GPSLocation>
+		<NumberOfPlugs>15</NumberOfPlugs>
+	</ChargingStation>
+	
+</ChargingStations>
+\end{lstlisting}
+
+\paragraph{Safe areas}Safe areas are also provided as XML file according to the \emph{GPS Exchange Format} and they are composed by a closed broken line.
+
+\paragraph{Safe areas and charging stations deployment}The position of charging stations and safe areas are processed and sent to cars only in case of:
+\begin{itemize}
+	\item system initialization (sent to all cars)
+	\item changes in XML files (sent to all cars)
+	\item new car (sent to one car)
+\end{itemize}
+
+\paragraph{Fees and discounts}
+Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
+The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
+
+
 \subsubsection{Server component}
-To explain how the Server component manages interfaces, communication with external components and system functionalities we represent here its internal structure showing its main components and their interactions.
+To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.
 \\
 
 \begin{figure}[h]
@@ -205,74 +275,6 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \end{figure}
 		
 \clearpage
-\subsubsection{DB component}
-Here is the ER model of the system's database.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.9685\linewidth]{ER}
-	\caption{
-		\label{fig:ERModel} 
-		ER model
-	}
-\end{figure}
-Beyond primary keys, the following attributes must be unique:
-\begin{itemize}
-	\item Users
-	\begin{itemize}
-		\item email
-		\item drivingLicenseNumber
-		\item emailToken
-	\end{itemize}
-\end{itemize}
-
-Charging stations are provided to the system as an XML file with the following DTD:
-\lstset{language=XML,frame=false}
-\begin{lstlisting}
-<!ELEMENT ChargingStations(ChargingStation+)>
-<!ELEMENT ChargingStation(GPSLocation, NumberOfPlugs)>
-<!ELEMENT GPSLocation(lat,long)>
-<!ELEMENT lat(#CDATA)>
-<!ELEMENT long(#CDATA)>
-<!ELEMENT NumberOfPlugs(#CDATA)>
-<!ATTLIST ChargingStation id ID #REQUIRED>
-\end{lstlisting}
-An example of such an XML file is 
-\lstset{language=XML, frame=false, morekeywords={ChargingStations,ChargingStation,GPSLocation,NumberOfPlugs,lat,long}}
-\begin{lstlisting}
-<ChargingStations>
-
-	<ChargingStation id="1">
-		<GPSLocation>
-			<lat>45.477452</lat>
-			<long>9.218617</long>
-		</GPSLocation>
-		<NumberOfPlugs>10</NumberOfPlugs>
-	</ChargingStation>
-	
-	<ChargingStation id="2">
-		<GPSLocation>
-			<lat>45.476257</lat>
-			<long>9.171926</long>
-		</GPSLocation>
-		<NumberOfPlugs>15</NumberOfPlugs>
-	</ChargingStation>
-	
-</ChargingStations>
-\end{lstlisting}
-
-Safe areas are also provided as XML file according to the \emph{GPS Exchange Format} and they are composed by a closed broken line.
-
-The position of charging stations and safe areas are processed and sent to cars only in case of:
-\begin{itemize}
-	\item system initialization (sent to all cars)
-	\item changes in XML files (sent to all cars)
-	\item new car (sent to one car)
-\end{itemize}
-
-Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
-
-The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
 
 \subsubsection{RentManager component}
 %image here

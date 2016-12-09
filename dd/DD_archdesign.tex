@@ -198,6 +198,14 @@ The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determin
 
 As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixed amount plus a variable amount proportional to the \emph{distance} of the car form the nearest safe area, can be expressed as a fixed number of fee clustered by distance.
 
+\paragraph{Payment status} There are three possible payment status:
+\begin{itemize}
+	\item \emph{Pending}: a payment transaction request has been sent to the external payment system
+	\item \emph{Confirmed}: the payment transaction has been successfully executed
+	\item \emph{Rejected}: the payment transaction has failed
+\end{itemize}
+The default state for a payment is \emph{Pending}.
+
 \subsubsection{Server component}
 To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.
 \\
@@ -279,10 +287,18 @@ we decided to design the system on a four tier architecture pattern (see also \e
 
 \subsubsection{RentManager component}
 In \autoref{fig:sequenceUnlockStartRent}, \autoref{fig:sequenceEndRent1} and \autoref{fig:sequenceEndRent2} we represent the internal interactions if the \emph{RentManager} component.
-Interaction not represented in sequence diagrams: during the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
+
+Interactions not represented in sequence diagrams
+\begin{itemize}
+	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
+
+	\item When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated.
+\end{itemize}
+\clearpage
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/UnlockStartRent}
+	\includegraphics[angle=90,width=0.95\linewidth]{sequenceDiagrams/UnlockStartRent}
 	\caption{
 		\label{fig:sequenceUnlockStartRent} 
 		\emph{Car unlock and start rent} sequence diagram

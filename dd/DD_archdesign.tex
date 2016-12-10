@@ -207,7 +207,7 @@ To explain how the Server component manages interfaces, communication with exter
 
 \begin{figure}[h]
 			\centering
-			\includegraphics[width=0.9685\linewidth]{ServerComponent}
+			\includegraphics[angle=90,width=0.9685\linewidth]{ServerComponent}
 			\caption{
 				\label{fig:ServerComponent} 
 				Server component
@@ -281,16 +281,18 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \subsubsection{RentManager component}
 
 \autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
+\\
+This component encapsulates most of the logic of the System, it manages the information coming from the cars and it creates and manages rents and payments. 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=0.75\linewidth]{ObjectRentManager}
+	\includegraphics[angle=90,width=0.7\linewidth]{ObjectRentManager}
 	\caption{
 		\label{fig:rentObjectDiagram} 
 		\emph{RentManager} object diagram
 	}
 \end{figure}
-
+\clearpage
 \paragraph{InUseCarHandler:} this part of the RentManager manages in use cars, it subscribes to the events of a specific car through the EventBroker component which enables asynchronous communication between the cars and the system.
 \paragraph{CarUnlockManager:} this part of the RentManager is the one that manages the unlock car requests, it checks, by accessing the DataProvider component, that the user who is requesting the unlock actually reserved the car and that he is less than 5 meters away from it; after that it activates the necessary triggers on the car and instantiate an InUseCarHandler object which will subscribe to them. When a rent ends the CarUnlockManager is notified by the corresponding InUseCarHandler, it will update the status of the car and it will notify the EndRentManager component in order to terminate the rent.
 \paragraph{EndRentManager:} this part of the RentManager is the one that manages the termination of the rent and that starts the payment procedure via the PaymentProcedureHandler object.
@@ -304,6 +306,8 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \clearpage
 \subsubsection{MaintenanceManager component}
 \autoref{fig:maintenanceManagerObjectDiagram} shows the internal structure of the Maintenance Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
+\\
+This component provides the Maintenance Service with all the functionalities it needs, granting it access to the API and allowing it to see unavailable cars and tag fixed cars as available.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{ObjectMaintenanceManager}
@@ -319,7 +323,8 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \paragraph{MaintenanceDoneManager:} this part of the MaintenanceManager component allows the Maintenance Service operators to tag a car as \emph{Available} after fixing a problem.
 
 \subsubsection{UserInformationManager component}
-BlaBlaBla\todo{write description}
+\autoref{fig:userInformationManagerObjectDiagram} shows the internal structure of the UserInformationManager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
+This component manages the user information present in the system, granting access to it to the Customer Care and to the User Application Server.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{ObjectUserInformationManager}
@@ -329,9 +334,14 @@ BlaBlaBla\todo{write description}
 	}
 \end{figure}
 
-\paragraph{CcUserInfoManager:}
-\paragraph{UserInfoManager:}
-\paragraph{BanUnbanManager:}
+\paragraph{CcUserInfoManager:} this part of the UserInformationManager component provides the Customer Care with the information it is allowed to access, and allows it access the BanUnbanManager.
+\paragraph{UserInfoManager:} this part of the UserInformationManafer component provides the User Application Server with the information it is allowed to access.
+\paragraph{BanUnbanManager:} allows the Customer Care to ban or unban Users.
+\subsubsection{AccessManager component}
+This component manages the registration and login phase of users, it encapsulates the logic that allows the users to register and login. Having a component for this specific purpose enhances decoupling in the system and ensures that these functionalities will not be affected by changes in other components of the system.
+
+\subsubsection{UserAppServer component}
+This component acts as an interface between the user and the application logic of the system; it produces the html pages shown to the user by his web browser and it receives the commands the users inputs on the web page. This component solves the concerns related to the handling of the requests sent by the users: these connection requests and the work related to generating the web pages will be handled by this component, without causing load problems on the application logic. It also allows the decoupling of the application logic from the presentation logic, which has to be realized in a four tier client-server architecture.
 \clearpage
 
 \subsection{Deployment view}

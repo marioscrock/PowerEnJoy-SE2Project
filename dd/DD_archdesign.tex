@@ -402,7 +402,8 @@ The \emph{MapManager} component takes care of updating the battery level informa
 
 \clearpage
 \subsubsection{Maintenance API and failures occurrence}
-At regular time intervals the \emph{MaintenanceManager} component calls a primitive on the car through the \emph{CarHandler} component in order to retrieve and update battery level data.\todo{it is not true}
+Our \emph{Maintenance API} is used by maintenance operators to obtain a list of car failures and to tag them back as Available when the failure has been fixed. The execution of these two commands is shown in \autoref{fig:sequenceMaintenanceAPI}.
+\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{UnavailableCarManager} component takes care of verifying if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD.
 
 \begin{figure}[h!]
 	\centering
@@ -423,5 +424,6 @@ At regular time intervals the \emph{MaintenanceManager} component calls a primit
 	}
 \end{figure}
 \subsection{Component interfaces}
+
 \subsection{Architectural style and patterns}
 \subsection{Other design decision}

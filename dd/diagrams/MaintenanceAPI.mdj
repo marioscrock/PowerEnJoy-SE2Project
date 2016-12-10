@@ -70,7 +70,8 @@
 													"underline": false,
 													"text": "maintenanceAPI",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -95,7 +96,8 @@
 													"underline": false,
 													"text": "interaction",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												}
 											],
 											"visible": true,
@@ -109,7 +111,7 @@
 											"containerExtending": false,
 											"left": 5,
 											"top": 5,
-											"width": 860,
+											"width": 1012,
 											"height": 684,
 											"autoResize": false,
 											"nameLabel": {
@@ -161,7 +163,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -186,7 +189,8 @@
 															"underline": false,
 															"text": "MaintenanceAPI",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -211,7 +215,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -235,7 +240,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -359,7 +365,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -384,7 +391,8 @@
 															"underline": false,
 															"text": "ucManager: UnavailableCarManager",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -409,7 +417,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -433,7 +442,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -557,7 +567,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -582,7 +593,8 @@
 															"underline": false,
 															"text": "dataProvider: DataProvider",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -607,7 +619,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -631,7 +644,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -755,7 +769,8 @@
 													"underline": false,
 													"text": "1 : execute(command,token)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -788,7 +803,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -821,7 +837,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -922,7 +939,8 @@
 													"underline": false,
 													"text": "2 : error(accessDenied)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -955,7 +973,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -988,7 +1007,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1089,7 +1109,8 @@
 													"underline": false,
 													"text": "3 : accessGranted",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1122,7 +1143,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1155,7 +1177,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1256,7 +1279,8 @@
 													"underline": false,
 													"text": "4 : getFailuresToBeFixed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1289,7 +1313,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1322,7 +1347,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1423,7 +1449,8 @@
 													"underline": false,
 													"text": "5 : getFailuresToBeFixed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1456,7 +1483,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1489,7 +1517,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1590,7 +1619,8 @@
 													"underline": false,
 													"text": "6 : failuresToBeFixed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1623,7 +1653,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1656,7 +1687,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1757,7 +1789,8 @@
 													"underline": false,
 													"text": "7 : failuresToBeFixed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1790,7 +1823,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1823,7 +1857,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1924,7 +1959,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -1949,7 +1985,8 @@
 															"underline": false,
 															"text": "securityChecker: SecurityChecker",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -1974,7 +2011,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -1998,7 +2036,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -2113,7 +2152,8 @@
 													"underline": false,
 													"text": "checkSecurityToken",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -2138,7 +2178,8 @@
 													"underline": false,
 													"text": "alt",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLInteractionOperandCompartmentView",
@@ -2183,7 +2224,8 @@
 																	"underline": false,
 																	"text": "[Access denied]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -2197,7 +2239,7 @@
 															"containerExtending": false,
 															"left": 24,
 															"top": 143,
-															"width": 833,
+															"width": 985,
 															"height": 74,
 															"autoResize": false,
 															"guardLabel": {
@@ -2237,7 +2279,8 @@
 																	"underline": false,
 																	"text": "[Access granted]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -2251,7 +2294,7 @@
 															"containerExtending": false,
 															"left": 24,
 															"top": 217,
-															"width": 833,
+															"width": 985,
 															"height": 456,
 															"autoResize": false,
 															"guardLabel": {
@@ -2270,7 +2313,7 @@
 													"containerExtending": false,
 													"left": 24,
 													"top": 143,
-													"width": 833,
+													"width": 985,
 													"height": 530,
 													"autoResize": false
 												}
@@ -2286,7 +2329,7 @@
 											"containerExtending": false,
 											"left": 24,
 											"top": 120,
-											"width": 833,
+											"width": 985,
 											"height": 553,
 											"autoResize": false,
 											"nameLabel": {
@@ -2332,7 +2375,8 @@
 													"underline": false,
 													"text": "checkCommand",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -2357,7 +2401,8 @@
 													"underline": false,
 													"text": "alt",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLInteractionOperandCompartmentView",
@@ -2402,7 +2447,8 @@
 																	"underline": false,
 																	"text": "[command == getFailureToBeFixed]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -2416,7 +2462,7 @@
 															"containerExtending": false,
 															"left": 48,
 															"top": 311,
-															"width": 801,
+															"width": 953,
 															"height": 162,
 															"autoResize": false,
 															"guardLabel": {
@@ -2456,7 +2502,8 @@
 																	"underline": false,
 																	"text": "[command == setCarAsAvailable]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -2470,7 +2517,7 @@
 															"containerExtending": false,
 															"left": 48,
 															"top": 473,
-															"width": 801,
+															"width": 953,
 															"height": 128,
 															"autoResize": false,
 															"guardLabel": {
@@ -2510,7 +2557,8 @@
 																	"underline": false,
 																	"text": "[else]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -2524,7 +2572,7 @@
 															"containerExtending": false,
 															"left": 48,
 															"top": 601,
-															"width": 801,
+															"width": 953,
 															"height": 65,
 															"autoResize": false,
 															"guardLabel": {
@@ -2543,7 +2591,7 @@
 													"containerExtending": false,
 													"left": 48,
 													"top": 311,
-													"width": 801,
+													"width": 953,
 													"height": 355,
 													"autoResize": false
 												}
@@ -2559,7 +2607,7 @@
 											"containerExtending": false,
 											"left": 48,
 											"top": 288,
-											"width": 801,
+											"width": 953,
 											"height": 378,
 											"autoResize": false,
 											"nameLabel": {
@@ -2614,7 +2662,8 @@
 													"underline": false,
 													"text": "8 : failuresToBeFixed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2647,7 +2696,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2680,7 +2730,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -2781,7 +2832,8 @@
 													"underline": false,
 													"text": "9 : failureFixed(failureID)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2814,7 +2866,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2847,7 +2900,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -2934,7 +2988,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 491,
+													"left": 578,
 													"top": 496,
 													"width": 210.25341796875,
 													"height": 13,
@@ -2948,7 +3002,8 @@
 													"underline": false,
 													"text": "10 : fixFailureTagAvailable(failureID)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2968,7 +3023,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 596,
+													"left": 683,
 													"top": 481,
 													"width": 0,
 													"height": 13,
@@ -2981,7 +3036,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3001,7 +3057,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 596,
+													"left": 683,
 													"top": 516,
 													"width": 0,
 													"height": 13,
@@ -3014,7 +3070,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3034,7 +3091,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 710,
+													"left": 885,
 													"top": 512,
 													"width": 14,
 													"height": 41,
@@ -3051,13 +3108,13 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"head": {
-												"$ref": "AAAAAAFY5NYbJKEBCig="
+												"$ref": "AAAAAAFY6bIFNiChT5E="
 											},
 											"tail": {
 												"$ref": "AAAAAAFY5NTtFqDcF3o="
 											},
 											"lineStyle": 0,
-											"points": "482:512;710:512",
+											"points": "482:512;885:512",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5RO5J6OZ9lk="
 											},
@@ -3101,7 +3158,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 562,
+													"left": 649,
 													"top": 548,
 													"width": 67.91357421875,
 													"height": 13,
@@ -3115,7 +3172,8 @@
 													"underline": false,
 													"text": "11 : confirm",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3135,7 +3193,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 595,
+													"left": 682,
 													"top": 563,
 													"width": 0,
 													"height": 13,
@@ -3148,7 +3206,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3168,7 +3227,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 596,
+													"left": 683,
 													"top": 528,
 													"width": 0,
 													"height": 13,
@@ -3181,7 +3240,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3221,10 +3281,10 @@
 												"$ref": "AAAAAAFY5NTtFqDcF3o="
 											},
 											"tail": {
-												"$ref": "AAAAAAFY5NYbJKEBCig="
+												"$ref": "AAAAAAFY6bIFNiChT5E="
 											},
 											"lineStyle": 0,
-											"points": "710:544;482:544",
+											"points": "885:544;482:544",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5RaYlKPJ6Pc="
 											},
@@ -3282,7 +3342,8 @@
 													"underline": false,
 													"text": "12 : configm",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3315,7 +3376,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3348,7 +3410,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3449,7 +3512,8 @@
 													"underline": false,
 													"text": "13 : confirm",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3482,7 +3546,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3515,7 +3580,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3616,7 +3682,8 @@
 													"underline": false,
 													"text": "14 : error(commadnUnknown)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3649,7 +3716,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3682,7 +3750,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3740,6 +3809,208 @@
 											},
 											"showProperty": true,
 											"showType": true
+										},
+										{
+											"_type": "UMLSeqLifelineView",
+											"_id": "AAAAAAFY6bIFNSCbwcI=",
+											"_parent": {
+												"$ref": "AAAAAAFY5NMTnaClsHQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFY6bIFNSCaCZQ="
+											},
+											"subViews": [
+												{
+													"_type": "UMLNameCompartmentView",
+													"_id": "AAAAAAFY6bIFNSCcOy0=",
+													"_parent": {
+														"$ref": "AAAAAAFY6bIFNSCbwcI="
+													},
+													"model": {
+														"$ref": "AAAAAAFY6bIFNSCaCZQ="
+													},
+													"subViews": [
+														{
+															"_type": "LabelView",
+															"_id": "AAAAAAFY6bIFNSCdHRM=",
+															"_parent": {
+																"$ref": "AAAAAAFY6bIFNSCcOy0="
+															},
+															"visible": false,
+															"enabled": true,
+															"lineColor": "#000000",
+															"fillColor": "#ffffff",
+															"fontColor": "#000000",
+															"font": "Arial;13;0",
+															"showShadow": true,
+															"containerChangeable": false,
+															"containerExtending": false,
+															"left": 0,
+															"top": 0,
+															"width": 0,
+															"height": 13,
+															"autoResize": false,
+															"underline": false,
+															"horizontalAlignment": 2,
+															"verticalAlignment": 5,
+															"wordWrap": false
+														},
+														{
+															"_type": "LabelView",
+															"_id": "AAAAAAFY6bIFNiCeWbM=",
+															"_parent": {
+																"$ref": "AAAAAAFY6bIFNSCcOy0="
+															},
+															"visible": true,
+															"enabled": true,
+															"lineColor": "#000000",
+															"fillColor": "#ffffff",
+															"fontColor": "#000000",
+															"font": "Arial;13;1",
+															"showShadow": true,
+															"containerChangeable": false,
+															"containerExtending": false,
+															"left": 805,
+															"top": 47,
+															"width": 174.70263671875,
+															"height": 26,
+															"autoResize": false,
+															"underline": false,
+															"text": "mdManager: MaintenanceDoneManager",
+															"horizontalAlignment": 2,
+															"verticalAlignment": 5,
+															"wordWrap": true
+														},
+														{
+															"_type": "LabelView",
+															"_id": "AAAAAAFY6bIFNiCfqe4=",
+															"_parent": {
+																"$ref": "AAAAAAFY6bIFNSCcOy0="
+															},
+															"visible": false,
+															"enabled": true,
+															"lineColor": "#000000",
+															"fillColor": "#ffffff",
+															"fontColor": "#000000",
+															"font": "Arial;13;0",
+															"showShadow": true,
+															"containerChangeable": false,
+															"containerExtending": false,
+															"left": 0,
+															"top": 0,
+															"width": 106.20263671875,
+															"height": 13,
+															"autoResize": false,
+															"underline": false,
+															"text": "(from Interaction1)",
+															"horizontalAlignment": 2,
+															"verticalAlignment": 5,
+															"wordWrap": false
+														},
+														{
+															"_type": "LabelView",
+															"_id": "AAAAAAFY6bIFNiCgfjA=",
+															"_parent": {
+																"$ref": "AAAAAAFY6bIFNSCcOy0="
+															},
+															"visible": false,
+															"enabled": true,
+															"lineColor": "#000000",
+															"fillColor": "#ffffff",
+															"fontColor": "#000000",
+															"font": "Arial;13;0",
+															"showShadow": true,
+															"containerChangeable": false,
+															"containerExtending": false,
+															"left": 0,
+															"top": 0,
+															"width": 0,
+															"height": 13,
+															"autoResize": false,
+															"underline": false,
+															"horizontalAlignment": 1,
+															"verticalAlignment": 5,
+															"wordWrap": false
+														}
+													],
+													"visible": true,
+													"enabled": true,
+													"lineColor": "#000000",
+													"fillColor": "#ffffff",
+													"fontColor": "#000000",
+													"font": "Arial;13;0",
+													"showShadow": true,
+													"containerChangeable": false,
+													"containerExtending": false,
+													"left": 800,
+													"top": 40,
+													"width": 184.70263671875,
+													"height": 40,
+													"autoResize": false,
+													"stereotypeLabel": {
+														"$ref": "AAAAAAFY6bIFNSCdHRM="
+													},
+													"nameLabel": {
+														"$ref": "AAAAAAFY6bIFNiCeWbM="
+													},
+													"namespaceLabel": {
+														"$ref": "AAAAAAFY6bIFNiCfqe4="
+													},
+													"propertyLabel": {
+														"$ref": "AAAAAAFY6bIFNiCgfjA="
+													}
+												},
+												{
+													"_type": "UMLLinePartView",
+													"_id": "AAAAAAFY6bIFNiChT5E=",
+													"_parent": {
+														"$ref": "AAAAAAFY6bIFNSCbwcI="
+													},
+													"model": {
+														"$ref": "AAAAAAFY6bIFNSCaCZQ="
+													},
+													"visible": true,
+													"enabled": true,
+													"lineColor": "#000000",
+													"fillColor": "#ffffff",
+													"fontColor": "#000000",
+													"font": "Arial;13;0",
+													"showShadow": true,
+													"containerChangeable": false,
+													"containerExtending": false,
+													"left": 892,
+													"top": 80,
+													"width": 1,
+													"height": 609,
+													"autoResize": false
+												}
+											],
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 800,
+											"top": 40,
+											"width": 184.70263671875,
+											"height": 649,
+											"autoResize": false,
+											"stereotypeDisplay": "label",
+											"showVisibility": true,
+											"showNamespace": false,
+											"showProperty": true,
+											"showType": true,
+											"nameCompartment": {
+												"$ref": "AAAAAAFY6bIFNSCcOy0="
+											},
+											"wordWrap": true,
+											"linePart": {
+												"$ref": "AAAAAAFY6bIFNiChT5E="
+											}
 										}
 									],
 									"showSequenceNumber": true,
@@ -3917,7 +4188,7 @@
 										"$ref": "AAAAAAFY5NTtE6DViuk="
 									},
 									"target": {
-										"$ref": "AAAAAAFY5NYbH6D6FVk="
+										"$ref": "AAAAAAFY6bIFNSCaCZQ="
 									},
 									"visibility": "public",
 									"messageSort": "synchCall",
@@ -3932,7 +4203,7 @@
 									},
 									"name": "confirm",
 									"source": {
-										"$ref": "AAAAAAFY5NYbH6D6FVk="
+										"$ref": "AAAAAAFY6bIFNSCaCZQ="
 									},
 									"target": {
 										"$ref": "AAAAAAFY5NTtE6DViuk="
@@ -4044,6 +4315,19 @@
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFY5Ogdm6I7trw="
+									},
+									"isMultiInstance": false
+								},
+								{
+									"_type": "UMLLifeline",
+									"_id": "AAAAAAFY6bIFNSCaCZQ=",
+									"_parent": {
+										"$ref": "AAAAAAFY5NMTnaCkeRg="
+									},
+									"name": "mdManager",
+									"visibility": "public",
+									"represent": {
+										"$ref": "AAAAAAFY6bIFNCCZSis="
 									},
 									"isMultiInstance": false
 								}
@@ -4224,6 +4508,24 @@
 							"isDerived": false,
 							"aggregation": "none",
 							"isID": false
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFY6bIFNCCZSis=",
+							"_parent": {
+								"$ref": "AAAAAAFY5NMTnaCjiZU="
+							},
+							"name": "Role6",
+							"visibility": "public",
+							"isStatic": false,
+							"isLeaf": false,
+							"type": "MaintenanceDoneManager",
+							"isReadOnly": false,
+							"isOrdered": false,
+							"isUnique": false,
+							"isDerived": false,
+							"aggregation": "none",
+							"isID": false
 						}
 					],
 					"isAbstract": false,
@@ -4289,7 +4591,8 @@
 													"underline": false,
 													"text": "batteryLevelBecomesCritical",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -4314,7 +4617,8 @@
 													"underline": false,
 													"text": "interaction",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												}
 											],
 											"visible": true,
@@ -4380,7 +4684,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -4405,7 +4710,8 @@
 															"underline": false,
 															"text": "cbManager: CarBatteryManager",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -4430,7 +4736,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -4454,7 +4761,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -4578,7 +4886,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -4603,7 +4912,8 @@
 															"underline": false,
 															"text": "dataProvider: DataProvider",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -4628,7 +4938,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -4652,7 +4963,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -4776,7 +5088,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -4801,7 +5114,8 @@
 															"underline": false,
 															"text": "eventBroker: EventBroker",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -4826,7 +5140,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -4850,7 +5165,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -4974,7 +5290,8 @@
 													"underline": false,
 													"text": "1 : notify(carID, batteryLevelCritical)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5007,7 +5324,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5040,7 +5358,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -5141,7 +5460,8 @@
 													"underline": false,
 													"text": "2 : getCar(carID)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5174,7 +5494,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5207,7 +5528,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -5308,7 +5630,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -5333,7 +5656,8 @@
 															"underline": false,
 															"text": "car: CarJPA",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -5358,7 +5682,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -5382,7 +5707,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -5506,7 +5832,8 @@
 													"underline": false,
 													"text": "3 : createJPA(carID)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5540,7 +5867,8 @@
 													"underline": false,
 													"text": "«create»",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5573,7 +5901,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -5674,7 +6003,8 @@
 													"underline": false,
 													"text": "4 : car",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5707,7 +6037,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5740,7 +6071,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -5841,7 +6173,8 @@
 													"underline": false,
 													"text": "5 : setState(notAvailable)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5874,7 +6207,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5907,7 +6241,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -6008,7 +6343,8 @@
 													"underline": false,
 													"text": "6 : confirm",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -6041,7 +6377,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -6074,7 +6411,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -6175,7 +6513,8 @@
 													"underline": false,
 													"text": "7 : destroyCarJPA",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -6209,7 +6548,8 @@
 													"underline": false,
 													"text": "«destroy»",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -6242,7 +6582,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -6343,7 +6684,8 @@
 													"underline": false,
 													"text": "8 : createFailure(carID, \"batteryCritical\", now)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -6376,7 +6718,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -6409,7 +6752,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",

@@ -279,18 +279,31 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \end{figure}
 		
 \subsubsection{RentManager component}
+
+\autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=0.8\linewidth]{ObjectRentManager}
+	\includegraphics[angle=90,width=0.75\linewidth]{ObjectRentManager}
 	\caption{
 		\label{fig:rentObjectDiagram} 
 		\emph{RentManager} object diagram
 	}
 \end{figure}
-\autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
 
+\paragraph{InUseCarHandler:} this part of the RentManager manages in use cars, it subscribes to the events of a specific car through the EventBroker component which enables asynchronous communication between the cars and the system.
+\paragraph{CarUnlockManager:} this part of the RentManager is the one that manages the unlock car requests, it checks, by accessing the DataProvider component, that the user who is requesting the unlock actually reserved the car and that he is less than 5 meters away from it; after that it activates the necessary triggers on the car and instantiate an InUseCarHandler object which will subscribe to them. When a rent ends the CarUnlockManager is notified by the corresponding InUseCarHandler, it will update the status of the car and it will notify the EndRentManager component in order to terminate the rent.
+\paragraph{EndRentManager:} this part of the RentManager is the one that manages the termination of the rent and that starts the payment procedure via the PaymentProcedureHandler object.
+\paragraph{ReservationRequestManager:} this part of the RentManager component is the one in charge of receiving and validating the reservation requests made by users.
+\paragraph{PaymentProcedureHandler:} this part of the RentManager allows other components to instantiate payments and interacts with the External Payment System in order to realize them.
+\paragraph{ReservationTimer:} this part of the RentManager component checks if any reservation expires and if so it instantiate a ProcedureHandeler in order to make the user pay the fee for the expiration.
+\paragraph{MoneySavingOptionHandler:} this component is used by the ReservationRequestManager when a user enables the Money Saving Option in his reservation; given the user's destination it calculates the most convenient Charging Station and it returns it to the ReservationRequestManager.
+\paragraph{EndRentTimerHandler:} this timer is used to let the user connect the car to a power plug after his rent has ended; if a car is connected to the power plug after this timer has expired, the user won't receive the related discount.
+\paragraph{DiscountFeeApplicableHandler:} this part of the RentManager component is used by the EndRentTimerHandler at the end of the rent and it checks which Discounts and which Fees are applicable to the rent.
+
+\clearpage
 \subsubsection{MaintenanceManager component}
-BlaBlaBla\todo{write description}
+\autoref{fig:maintenanceManagerObjectDiagram} shows the internal structure of the Maintenance Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{ObjectMaintenanceManager}
@@ -299,6 +312,11 @@ BlaBlaBla\todo{write description}
 		\emph{MaintenanceManager} object diagram
 	}
 \end{figure}
+
+\paragraph{CarBatteryManager:} this part of the MaintenanceManager component can check the   battery status of the cars and be notified by them when their battery level is critical.
+\paragraph{SecurityChecker:} this part of the MaintenanceManager componenent is in charge of ensuring that only the Maintenance Service is able to access the services offered by the API.
+\paragraph{UnavailableCarManager:} this part of the MaintenanceManager component builds the list of \emph{Not available} cars from the database
+\paragraph{MaintenanceDoneManager:} this part of the MaintenanceManager component allows the Maintenance Service operators to tag a car as \emph{Available} after fixing a problem.
 
 \subsubsection{UserInformationManager component}
 BlaBlaBla\todo{write description}
@@ -311,9 +329,23 @@ BlaBlaBla\todo{write description}
 	}
 \end{figure}
 
+\paragraph{CcUserInfoManager:}
+\paragraph{UserInfoManager:}
+\paragraph{BanUnbanManager:}
 \clearpage
 
 \subsection{Deployment view}
+BlaBlaBla\todo{write description}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{deployment}
+	\caption{
+		\label{fig:deployment} 
+		Deployment diagram
+	}
+\end{figure}
+
+\clearpage
 \subsection{Runtime view}
 \subsubsection{Performing a rent}
 The following sequence diagrams show the interactions between the Rent Manager and other components in the system in different scenarios:
@@ -356,10 +388,43 @@ The following sequence diagrams show the interactions between the Rent Manager a
 	}
 \end{figure}
 
+\clearpage
+\subsubsection{Reservation expiring}
+To ensure a maximum reservation time of one hour, the \emph{ReservationTimer} component shown in \autoref{fig:sequenceReserveTimer} checks every minute the presence of expired reservations in the database. 
+
+When a reservation expired is found this component takes care of creating a payment request of the relative fee and deleting the reservation. 
+
+The extra time that could be granted to a reservation due to the timer interval and the system latency is considered acceptable.
+
+\paragraph{Interactions not represented} An interaction by the \emph{ReservationTimer} with the \emph{DataProvider} component is required in order to delete a reservation and to ban a user if the payment is rejected.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/ReserveTimer}
+	\caption{
+		\label{fig:sequenceReserveTimer} 
+		\emph{Reservation expiring} sequence diagram
+	}
+\end{figure}
+
+\clearpage
+\subsubsection{Map}
+The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
+
+The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=0,width=\linewidth]{sequenceDiagrams/MapGeneration}
+	\caption{
+		\label{fig:mapGeneration} 
+		\emph{Map generation} sequence diagram
+	}
+\end{figure}
 
 \clearpage
 \subsubsection{Maintenance API and failures occurrence}
-At regular time intervals the \emph{MaintenanceManager} component calls a primitive on the car through the \emph{CarHandler} component in order to retrieve and update battery level data.\todo{it is not true}
+Our \emph{Maintenance API} is used by maintenance operators to obtain a list of car failures and to tag them back as Available when the failure has been fixed. The execution of these two commands is shown in \autoref{fig:sequenceMaintenanceAPI}.
+\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{UnavailableCarManager} component takes care of verifying if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD.
 
 \begin{figure}[h!]
 	\centering
@@ -380,5 +445,6 @@ At regular time intervals the \emph{MaintenanceManager} component calls a primit
 	}
 \end{figure}
 \subsection{Component interfaces}
+
 \subsection{Architectural style and patterns}
 \subsection{Other design decision}

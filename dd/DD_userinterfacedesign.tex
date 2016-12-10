@@ -43,7 +43,7 @@ The icon in the right corner, from this page, brings the user to the functionali
 		\end{figure}
 		
 \subsubsection{See available cars}
-Accessing to the see available cars functionality, as described in the requirements document, the system asks to the user if he wants to search car nearby his actual position (using GPS position of user's device) or he wants to insert a different position from which starting the research. \\
+Accessing to the see available cars functionality, as described in the requirements document, the user app asks to the user if he wants to search car nearby his actual position (using GPS position of user's device) or he wants to insert a different position from which starting the research. \\
 
 The \emph{Use GPS} allows the user to choose the first option skipping other interactions on this page. \\
 
@@ -90,9 +90,9 @@ If a user has already an active reservation or the selected car has been reserve
 		
 \subsubsection{Money saving option}
 
-If an user enables the \emph{money saving option} while reserving a car, the system shows him a dedicated page to accomplish the reservation with the option. On this page the user must insert the planned destination of his rent in order to give to the system the possibility to calculate the charging station the user must leave the car plugged in to get the discount.\\
+If an user enables the \emph{money saving option} while reserving a car, the user app shows him a dedicated page to accomplish the reservation with the option. On this page the user must insert the planned destination of his rent in order to give to the system the possibility to calculate the charging station the user must leave the car plugged in to get the discount.\\
 
-A brief description of the \emph{money saving option} is offered to the user to clarify why the system is asking him his planned destination. \\
+A brief description of the \emph{money saving option} is offered to the user to clarify why the user app is asking him his planned destination. \\
 
 The user is supposed to insert an address location (e.g. 34 Maria Victoria Lane, London) before pushing the \emph{Confirm} button; the system will resolve that address as a GPS location displaying an error message if it could not done it. \\
 
@@ -111,6 +111,21 @@ The \emph{Cancel} button allows the user to go back on the map, for example to m
 		\end{figure}
 
 \subsubsection{Unlock a car}
+
+From the home page, if the user has an active reservation he can access to the \emph{Unlock car} functionality through the dedicated button. \\
+
+On this page the user can see data about his reservation:
+\begin{itemize}
+	\item model and license number of the car he has reserved
+	\item time until the reservation expires
+	\item (\emph{Optional}) charging station related to money saving
+	 option
+	\item  current car position (clicking on \emph{see it on the map} link the user app searches for an installed program on the user device to open the GPS coordinates, if it can not find any program it only shows the GPS coordinates)
+\end{itemize}
+
+The user could ask the system to unlock the car through the \emph{Unlock your car} button. If the user GPS position is not 5m away from the car or the user app could not check the position of the user an error message is displayed. \\
+
+If the system manages to process the request to unlock the car a message is displayed to notify the user the car has been unlocked and he could start the rent turning on the engine.\\
 
 \begin{figure}[h]
 			\centering

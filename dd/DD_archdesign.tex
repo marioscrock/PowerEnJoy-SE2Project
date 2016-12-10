@@ -147,6 +147,8 @@ The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determin
 
 As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixed amount plus a variable amount proportional to the \emph{distance} of the car form the nearest safe area, can be expressed as a fixed number of fee clustered by distance.
 
+\paragraph{Cars}Beyond the primary key, the \mbox{\emph{licenseNumber}} attribute must be unique. The \mbox{\emph{lastSeen}} attribute is set by default to the timestamp of the last car information update. The \mbox{\emph{carStatus}} attribute represent the car statuses as defined in the RASD.
+
 \paragraph{Payment status} There are three possible payment status:
 \begin{itemize}
 	\item \emph{Pending}: a payment transaction request has been sent to the external payment system
@@ -200,6 +202,9 @@ An example of such an XML file is
 	\item changes in XML files (sent to all cars)
 	\item new car (sent to one car)
 \end{itemize}
+
+\paragraph{Security}Users' passwords and all credit card numbers (associated to the users and used for past payments) must be stored 
+with proper and secure encryption.
 
 \subsubsection{Server component}
 To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.

@@ -203,8 +203,7 @@ An example of such an XML file is
 	\item new car (sent to one car)
 \end{itemize}
 
-\paragraph{Security}Users' passwords and all credit card numbers (associated to the users and used for past payments) must be stored 
-with proper and secure encryption.
+\paragraph{Security}Users' passwords and all credit card numbers (associated to the users and used for past payments) must be stored with proper and secure encryption.
 
 \subsubsection{Server component}
 To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.
@@ -453,6 +452,22 @@ Our \emph{Maintenance API} is used by maintenance operators to obtain a list of 
 
 \clearpage
 \subsection{Component interfaces}
+
+\subsubsection{Car-server interfaces}
+All cars are provided with a module that grants TCP/IP connectivity over a dedicated subnet offered by a specific ISP. In order to ensure better security for the communications, in the same subnet is also located the server with the \mbox{\emph{CarEventHandler}} interface and the APIs used by Maintenance and Customer Care services.
+
+The \emph{CarHandler} component communicates to cars via the \mbox{\emph{CarPrimitives}} external component (using the JAX-RS paradigm) which executes functions directly on car modules using a dedicated built-in connection.
+
+\subsubsection{Maintenance API interface}
+The Maintenance API must be realized using the REST paradigm. The external maintenance system should query the Maintenance API at predefined time intervals in order to retrieve an updated list of car failures.
+
+Considering the importance of the operations performed, these security measures must be taken into consideration:
+\begin{itemize}
+	\item The API must be accessible only over the system dedicated subnet
+	\item A security token must be provided in order to perform any action through the API
+\end{itemize}
+The maintenance operators have been provided a smartphone which is connected in the same dedicated subnet used for cars and for the server with the Maintenance API.
+Security tokens must be negotiated by our system and the external maintenance service.
 
 \subsection{Architectural style and patterns}
 \subsection{Other design decision}

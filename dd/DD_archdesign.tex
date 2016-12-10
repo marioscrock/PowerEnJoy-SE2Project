@@ -424,17 +424,18 @@ The \emph{MapManager} component takes care of updating the battery level informa
 \clearpage
 \subsubsection{Maintenance API and failures occurrence}
 Our \emph{Maintenance API} is used by maintenance operators to obtain a list of car failures and to tag them back as Available when the failure has been fixed. The execution of these two commands is shown in \autoref{fig:sequenceMaintenanceAPI}.
-\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{UnavailableCarManager} component takes care of verifying if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD.
+\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{MaintenanceDoneManager} takes care of verifying via the \emph{CarHandler} component if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/maintenanceAPI}
+	\includegraphics[angle=90,width=0.895\linewidth]{sequenceDiagrams/maintenanceAPI}
 	\caption{
 		\label{fig:sequenceMaintenanceAPI} 
 		\emph{MaintenanceAPI} sequence diagram
 	}
 \end{figure}
 
+\clearpage
 \paragraph{Critical battery level}In \autoref{fig:sequenceMaintenanceBattery} is represented the case in which a car battery reaches its critical level. Note that the \emph{CarBatteryManager} component must be subscribed via the \mbox{\emph{EventBroker}} component to all cars and it must enable via the \emph{CarHandler} component the trigger for the critical battery level event.
 \begin{figure}[h!]
 	\centering
@@ -444,6 +445,8 @@ Our \emph{Maintenance API} is used by maintenance operators to obtain a list of 
 		\emph{Battery level critical trigger} sequence diagram
 	}
 \end{figure}
+
+\clearpage
 \subsection{Component interfaces}
 
 \subsection{Architectural style and patterns}

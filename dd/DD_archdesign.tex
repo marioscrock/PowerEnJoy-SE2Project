@@ -342,8 +342,18 @@ At regular time intervals the \emph{MaintenanceManager} component calls a primit
 	\centering
 	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/maintenanceAPI}
 	\caption{
-		\label{fig:maintenanceAPI} 
+		\label{fig:sequenceMaintenanceAPI} 
 		\emph{MaintenanceAPI} sequence diagram
+	}
+\end{figure}
+
+\paragraph{Critical battery level}In \autoref{fig:sequenceMaintenanceBattery} is represented the case in which a car battery reaches its critical level. Note that the \emph{CarBatteryManager} component must be subscribed via the \mbox{\emph{EventBroker}} component to all cars and it must enable via the \emph{CarHandler} component the trigger for the critical battery level event.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{sequenceDiagrams/maintenanceBatteryLevel}
+	\caption{
+		\label{fig:sequenceMaintenanceBattery} 
+		\emph{Battery level critical trigger} sequence diagram
 	}
 \end{figure}
 

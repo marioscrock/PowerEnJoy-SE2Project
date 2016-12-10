@@ -375,6 +375,21 @@ The extra time that could be granted to a reservation due to the timer interval 
 \end{figure}
 
 \clearpage
+\subsubsection{Map}
+The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
+
+The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=0,width=\linewidth]{sequenceDiagrams/MapGeneration}
+	\caption{
+		\label{fig:mapGeneration} 
+		\emph{Map generation} sequence diagram
+	}
+\end{figure}
+
+\clearpage
 \subsubsection{Maintenance API and failures occurrence}
 At regular time intervals the \emph{MaintenanceManager} component calls a primitive on the car through the \emph{CarHandler} component in order to retrieve and update battery level data.\todo{it is not true}
 

@@ -336,7 +336,7 @@ The following sequence diagrams show the interactions between the Rent Manager a
 	\item The rent just ended and the system initialize the payment procedure
 \end{itemize}
 
-\paragraph{Interactions not represented in the following sequence diagrams}
+\paragraph{Interactions not represented}
 \begin{itemize}
 	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
 
@@ -369,6 +369,38 @@ The following sequence diagrams show the interactions between the Rent Manager a
 	}
 \end{figure}
 
+\clearpage
+\subsubsection{Reservation expiring}
+To ensure a maximum reservation time of one hour, the \emph{ReservationTimer} component shown in \autoref{fig:sequenceReserveTimer} checks every minute the presence of expired reservations in the database. 
+
+When a reservation expired is found this component takes care of creating a payment request of the relative fee and deleting the reservation. 
+
+The extra time that could be granted to a reservation due to the timer interval and the system latency is considered acceptable.
+
+\paragraph{Interactions not represented} An interaction by the \emph{ReservationTimer} with the \emph{DataProvider} component is required in order to delete a reservation and to ban a user if the payment is rejected.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/ReserveTimer}
+	\caption{
+		\label{fig:sequenceReserveTimer} 
+		\emph{Reservation expiring} sequence diagram
+	}
+\end{figure}
+
+\clearpage
+\subsubsection{Map}
+The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
+
+The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=0,width=\linewidth]{sequenceDiagrams/MapGeneration}
+	\caption{
+		\label{fig:mapGeneration} 
+		\emph{Map generation} sequence diagram
+	}
+\end{figure}
 
 \clearpage
 \subsubsection{Maintenance API and failures occurrence}

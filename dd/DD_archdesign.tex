@@ -303,7 +303,7 @@ we decided to design the system on a four tier architecture pattern (see also \e
 
 \clearpage
 \subsubsection{MaintenanceManager component}
-\autoref{fig:rentObjectDiagram} shows the internal structure of the Maintenance Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
+\autoref{fig:maintenanceManagerObjectDiagram} shows the internal structure of the Maintenance Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{ObjectMaintenanceManager}
@@ -312,6 +312,11 @@ we decided to design the system on a four tier architecture pattern (see also \e
 		\emph{MaintenanceManager} object diagram
 	}
 \end{figure}
+
+\paragraph{CarBatteryManager:} this part of the MaintenanceManager component can check the   battery status of the cars and be notified by them when their battery level is critical.
+\paragraph{SecurityChecker:} this part of the MaintenanceManager componenent is in charge of ensuring that only the Maintenance Service is able to access the services offered by the API.
+\paragraph{UnavailableCarManager:} this part of the MaintenanceManager component builds the list of \emph{Not available} cars from the database
+\paragraph{MaintenanceDoneManager:} this part of the MaintenanceManager component allows the Maintenance Service operators to tag a car as \emph{Available} after fixing a problem.
 
 \subsubsection{UserInformationManager component}
 BlaBlaBla\todo{write description}
@@ -324,6 +329,9 @@ BlaBlaBla\todo{write description}
 	}
 \end{figure}
 
+\paragraph{CcUserInfoManager:}
+\paragraph{UserInfoManager:}
+\paragraph{BanUnbanManager:}
 \clearpage
 
 \subsection{Deployment view}
@@ -336,7 +344,7 @@ The following sequence diagrams show the interactions between the Rent Manager a
 	\item The rent just ended and the system initialize the payment procedure
 \end{itemize}
 
-\paragraph{Interactions not represented}
+\paragraph{Interactions not represented in the following sequence diagrams}
 \begin{itemize}
 	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
 
@@ -369,38 +377,6 @@ The following sequence diagrams show the interactions between the Rent Manager a
 	}
 \end{figure}
 
-\clearpage
-\subsubsection{Reservation expiring}
-To ensure a maximum reservation time of one hour, the \emph{ReservationTimer} component shown in \autoref{fig:sequenceReserveTimer} checks every minute the presence of expired reservations in the database. 
-
-When a reservation expired is found this component takes care of creating a payment request of the relative fee and deleting the reservation. 
-
-The extra time that could be granted to a reservation due to the timer interval and the system latency is considered acceptable.
-
-\paragraph{Interactions not represented} An interaction by the \emph{ReservationTimer} with the \emph{DataProvider} component is required in order to delete a reservation and to ban a user if the payment is rejected.
-\begin{figure}[h!]
-	\centering
-	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/ReserveTimer}
-	\caption{
-		\label{fig:sequenceReserveTimer} 
-		\emph{Reservation expiring} sequence diagram
-	}
-\end{figure}
-
-\clearpage
-\subsubsection{Map}
-The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
-
-The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[angle=0,width=\linewidth]{sequenceDiagrams/MapGeneration}
-	\caption{
-		\label{fig:mapGeneration} 
-		\emph{Map generation} sequence diagram
-	}
-\end{figure}
 
 \clearpage
 \subsubsection{Maintenance API and failures occurrence}

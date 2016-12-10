@@ -215,4 +215,40 @@ The user can access the payment record related to the rent through the link in t
 \clearpage
 
 \subsection{Customer care app}
-sadasD
+The customer care app has a simple interface in order to provide features to customer care operator in a clear and simple way. This interface must be optimized for a desktop monitor size.
+
+\subsubsection{Home page}
+All main features are accessible directly from the home page to provide a rapid and intuitive access to them. \\
+From the home page the operator can:
+\begin{itemize}
+	\item Access information about a user through the user's username or email address (see \hyperref[sec:userInfoCc]{user's information section}) 
+	\item Mark/Unmark user as banned through its username (if the username inserted is found by the system, in order to fulfil this task a new page is shown otherwise a new error message is displayed. The new page shows to the operator the current state of the user and if the operator wants to mark the user as \emph{banned} asks the operator a brief description of the reasons)
+	\item Retrieve basic data for each user (username, name, surname, email)
+	\item Tag a car as \emph{Not Available} (if the car license number inserted is found by the system, in order to fulfil this task a new page is shown otherwise a new error message is displayed. The new page  asks the operator a brief description of the reasons why he wants to mark the car as {Not Available})
+\end{itemize}
+ 
+ \begin{figure}[h]
+			\centering
+			\includegraphics[width=0.895\linewidth]{mockups/customerCare1}
+			\caption{
+				\label{fig:cc1} 
+				\emph{Customer care home page} mockup
+			}
+		\end{figure}
+
+\clearpage 
+		
+\subsubsection{User's information} \label{sec:userInfoCc}
+
+From the home page the operator could access information about a specific user. In this page the customer care app shows to the operator all user's information unless the sensitive ones (as password and credit car number). \\
+
+From this page the operator could also access user's rent and payment history through specific buttons.
+
+\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.895\linewidth]{mockups/customerCare2}
+			\caption{
+				\label{fig:cc1} 
+				\emph{Customer care user's information page} mockup
+			}
+		\end{figure}

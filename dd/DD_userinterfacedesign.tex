@@ -13,7 +13,7 @@ If a user is not recognized or is banned an error alert is shown when credential
 			\includegraphics[width=0.4\linewidth]{mockups/loginPage}
 			\caption{
 				\label{fig:loginPage} 
-				Login page
+				\emph{Login page} mockup
 			}
 		\end{figure}
 		
@@ -21,7 +21,7 @@ If a user is not recognized or is banned an error alert is shown when credential
 \subsubsection{Home page}
 The home page shows to a logged user all the possible functionalities provided from the app:
 \begin{itemize}
-	\item See available cars and reserve one of them (eventually with the \emph{Money Saving Option})
+	\item See available cars and reserve one of them (eventually with the \emph{money saving option})
 	\item Unlock a car (disabled button in the mockups, it would be active only if there is an active reservation for the registered user logged in)
 	\item See user's information and edit them
 	\item See user's rent history
@@ -38,7 +38,7 @@ The icon in the right corner, from this page, brings the user to the functionali
 			\includegraphics[width=0.4\linewidth]{mockups/homePage}
 			\caption{
 				\label{fig:homePage} 
-				Home page
+				\emph{Home page} mockup 
 			}
 		\end{figure}
 		
@@ -60,27 +60,65 @@ The map is interactive and the user can move around the actual position. \\
 			\includegraphics[width=0.9\linewidth]{mockups/findCar}
 			\caption{
 				\label{fig:searchCar} 
-				See available cars
+				\emph{See available cars} mockup
 			}
 		\end{figure}
 
 \subsubsection{Reserve a car}
 
-From the map showing available cars, a user tapping on a car could access information about the:
+From the page showing available cars on the map, a user tapping on a car could access information about it, in particular:
 \begin{itemize}
 	\item Model of the car
 	\item License number of the car
 	\item The battery percentage level of the car
 \end{itemize}
 
+When the user taps on a car the circle around it becomes orange, to give a feedback on the tap to the user, and a box appears on the screen. Through it the user can access the aforementioned info about the car and reserve the selected car. \\
+
+Before clicking the \emph{Reserve it!} button the user has the possibility to choice if he wants or not to enable the \emph{money saving option} through an on/off toggle.\\
+
+If a user has already an active reservation or the selected car has been reserved while the user navigates on the map an error message is displayed.\\
+
 \begin{figure}[h]
 			\centering
 			\includegraphics[width=0.9\linewidth]{mockups/reserveCar}
 			\caption{
 				\label{fig:reserveCar} 
-				Reserve a car
+				\emph{Reserve a car} mockup
+			}
+		\end{figure}
+		
+\subsubsection{Money saving option}
+
+If an user enables the \emph{money saving option} while reserving a car, the system shows him a dedicated page to accomplish the reservation with the option. On this page the user must insert the planned destination of his rent in order to give to the system the possibility to calculate the charging station the user must leave the car plugged in to get the discount.\\
+
+A brief description of the \emph{money saving option} is offered to the user to clarify why the system is asking him his planned destination. \\
+
+The user is supposed to insert an address location (e.g. 34 Maria Victoria Lane, London) before pushing the \emph{Confirm} button; the system will resolve that address as a GPS location displaying an error message if it could not done it. \\
+
+If the address inserted by the user is correctly processed the system notifies the user with the charging station (number and address) 
+the user must leave the car plugged in to get the discount. \\
+
+The \emph{Cancel} button allows the user to go back on the map, for example to make the reservation without enabling the \emph{money saving option}.\\
+
+\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\linewidth]{mockups/moneySavingOption}
+			\caption{
+				\label{fig:msOption} 
+				\emph{Money saving option} mockup
 			}
 		\end{figure}
 
+\subsubsection{Unlock a car}
 
+\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\linewidth]{mockups/unlockCar}
+			\caption{
+				\label{fig:unlockCar} 
+				\emph{Unlock a car} mockup
+			}
+		\end{figure}
+		
 \subsection{Customer care app}

@@ -48,7 +48,7 @@
 			\item A software module is needed to provide the \emph{Customer Care} the functionalitities it needs
 			\item A web server is needed in order to communicate with the users
 			\item An internal payment software module will deal with the communication with the \emph{External Payment System} 
-			\item A set of modules will manage the communications between the cars and the system: a module to call primitives on cars through the provided API and another one to observe events triggered by the car \todo{ok?}
+			\item A set of modules will manage the communications between the cars and the system: a module to call primitives on cars through the provided API and another one to observe events triggered by the car
 		\end{itemize}
 		\paragraph{Business Logic}
 			The actual application logic of our system needs to manage the users information, the rents and the cars information; for each of these purposes several software modules are necessary; they will use communication interfaces to communicate with the agents and they will be able to retrieve data from the data interfaces.
@@ -229,7 +229,8 @@ This white box representation shows the parts composing the \emph{Server} compon
 
 
 
-Mapping componenti->requirements relativi ai goal\todo{translate \& clarify}
+In the following table is presented a mapping correspondence between the requirement related to each goal and the components identified in the server component diagram. \todo{check} \\
+
 \begin{longtable}{p{0.7\linewidth}p{0.3\linewidth}}
 \toprule
 \textbf{Goal} & \textbf{Components}\\
@@ -272,7 +273,7 @@ Taking into account that:
 	\item in the \emph{Server component view} we can clearly distinguish modules who take care of the specific application logic
 \end{itemize}
 we decided to design the system on a four tier architecture pattern (see also \emph{Deployment View}). 
-	
+\todo{la figura flotta in giro}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{4TierSunny}
@@ -321,9 +322,9 @@ This component provides the Maintenance Service with all the functionalities it 
 	}
 \end{figure}
 
-\paragraph{CarBatteryManager:} this part of the MaintenanceManager component can check the   battery status of the cars and be notified by them when their battery level is critical.
+\paragraph{CarBatteryManager:} this part of the MaintenanceManager component can check the battery status of the cars and be notified by them when their battery level is critical.
 \paragraph{SecurityChecker:} this part of the MaintenanceManager componenent is in charge of ensuring that only the Maintenance Service is able to access the services offered by the API.
-\paragraph{UnavailableCarManager:} this part of the MaintenanceManager component builds the list of \emph{Not available} cars from the database
+\paragraph{UnavailableCarManager:} this part of the MaintenanceManager component builds the list of \emph{Not available} cars from the database and for each car of the list generates software keys to let maintenance operators to access those cars.
 \paragraph{MaintenanceDoneManager:} this part of the MaintenanceManager component allows the Maintenance Service operators to tag a car as \emph{Available} after fixing a problem.
 
 \subsubsection{UserInformationManager component}
@@ -349,6 +350,26 @@ This component acts as an interface between the user and the application logic o
 \clearpage
 
 \subsection{Deployment view}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{4Tier}
+	\caption{
+		\label{fig:fourTierCloud} 
+		Four tier architecture with internet layer
+	}
+\end{figure}
+
+\begin{figure}[h]
+			\centering
+			\includegraphics[angle=90,width=0.9685\linewidth]{deployComponent}
+			\caption{
+				\label{fig:deployServerComponent} 
+				Mapping server component on architecture
+			}
+		\end{figure}
+\clearpage
+
 BlaBlaBla\todo{write description}
 \begin{figure}[h!]
 	\centering

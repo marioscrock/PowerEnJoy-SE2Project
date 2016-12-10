@@ -365,7 +365,7 @@
 															"height": 32,
 															"autoResize": false,
 															"underline": false,
-															"text": "userApplication: UserApplication",
+															"text": "userAppServer: UserAppServer",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
 															"wordWrap": true
@@ -567,7 +567,7 @@
 															"height": 32,
 															"autoResize": false,
 															"underline": false,
-															"text": "reservationRequestManager: ReservationRequestManager",
+															"text": "rrManager: ReservationRequestManager",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
 															"wordWrap": true
@@ -1103,7 +1103,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 559,
+													"left": 557,
 													"top": 110,
 													"width": 170.7109375,
 													"height": 16,
@@ -1138,7 +1138,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 644,
+													"left": 642,
 													"top": 97,
 													"width": 0,
 													"height": 13,
@@ -1172,7 +1172,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 644,
+													"left": 642,
 													"top": 132,
 													"width": 0,
 													"height": 13,
@@ -1206,7 +1206,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 859,
+													"left": 855,
 													"top": 128,
 													"width": 14,
 													"height": 41,
@@ -1229,7 +1229,7 @@
 												"$ref": "AAAAAAFY5GC55Lo0uW4="
 											},
 											"lineStyle": 0,
-											"points": "430:128;859:128",
+											"points": "430:128;855:128",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6G+XIxVdBvo="
 											},
@@ -1273,7 +1273,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 990,
+													"left": 988,
 													"top": 125,
 													"width": 170.7109375,
 													"height": 16,
@@ -1308,7 +1308,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1049,
+													"left": 1047,
 													"top": 111,
 													"width": 62.265625,
 													"height": 16,
@@ -1343,7 +1343,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1080,
+													"left": 1078,
 													"top": 148,
 													"width": 0,
 													"height": 13,
@@ -1400,7 +1400,7 @@
 												"$ref": "AAAAAAFY6GzzhRU7BXc="
 											},
 											"lineStyle": 0,
-											"points": "872:144;1288:144",
+											"points": "868:144;1288:144",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5Gyd9LsKJ1Y="
 											},
@@ -1444,7 +1444,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 621,
+													"left": 619,
 													"top": 162,
 													"width": 44.4609375,
 													"height": 16,
@@ -1479,7 +1479,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 643,
+													"left": 641,
 													"top": 179,
 													"width": 0,
 													"height": 13,
@@ -1513,7 +1513,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 644,
+													"left": 642,
 													"top": 144,
 													"width": 0,
 													"height": 13,
@@ -1570,7 +1570,7 @@
 												"$ref": "AAAAAAFY6GzzhRU7BXc="
 											},
 											"lineStyle": 0,
-											"points": "859:160;430:160",
+											"points": "855:160;430:160",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6HCgdhV9rfw="
 											},
@@ -1648,14 +1648,14 @@
 															"containerExtending": false,
 															"left": 805,
 															"top": 47,
-															"width": 122.04296875,
-															"height": 16,
+															"width": 113.140625,
+															"height": 32,
 															"autoResize": false,
 															"underline": false,
-															"text": "DataProvider",
+															"text": "dataProvider: DataProvider",
 															"horizontalAlignment": 2,
 															"verticalAlignment": 5,
-															"wordWrap": false
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -1720,7 +1720,7 @@
 													"containerExtending": false,
 													"left": 800,
 													"top": 40,
-													"width": 132.04296875,
+													"width": 123.140625,
 													"height": 40,
 													"autoResize": false,
 													"stereotypeLabel": {
@@ -1754,7 +1754,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 866,
+													"left": 862,
 													"top": 80,
 													"width": 1,
 													"height": 729,
@@ -1772,7 +1772,7 @@
 											"containerExtending": false,
 											"left": 800,
 											"top": 40,
-											"width": 132.04296875,
+											"width": 123.140625,
 											"height": 769,
 											"autoResize": false,
 											"stereotypeDisplay": "label",
@@ -1783,7 +1783,7 @@
 											"nameCompartment": {
 												"$ref": "AAAAAAFY6GzzhBU2Uw0="
 											},
-											"wordWrap": false,
+											"wordWrap": true,
 											"linePart": {
 												"$ref": "AAAAAAFY6GzzhRU7BXc="
 											}
@@ -1816,7 +1816,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 492,
+													"left": 490,
 													"top": 205,
 													"width": 286.3203125,
 													"height": 16,
@@ -1851,7 +1851,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 644,
+													"left": 642,
 													"top": 193,
 													"width": 0,
 													"height": 13,
@@ -1885,7 +1885,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 644,
+													"left": 642,
 													"top": 228,
 													"width": 0,
 													"height": 13,
@@ -1919,7 +1919,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 859,
+													"left": 855,
 													"top": 224,
 													"width": 14,
 													"height": 41,
@@ -1942,7 +1942,7 @@
 												"$ref": "AAAAAAFY5GC55Lo0uW4="
 											},
 											"lineStyle": 0,
-											"points": "430:224;859:224",
+											"points": "430:224;855:224",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6HZIXBX9CKo="
 											},
@@ -1986,7 +1986,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 892,
+													"left": 890,
 													"top": 222,
 													"width": 256.9765625,
 													"height": 16,
@@ -2021,7 +2021,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 989,
+													"left": 987,
 													"top": 207,
 													"width": 62.265625,
 													"height": 16,
@@ -2056,7 +2056,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1020,
+													"left": 1018,
 													"top": 244,
 													"width": 0,
 													"height": 13,
@@ -2113,7 +2113,7 @@
 												"$ref": "AAAAAAFY6GzzhRU7BXc="
 											},
 											"lineStyle": 0,
-											"points": "872:240;1168:240",
+											"points": "868:240;1168:240",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6IEC+hY0EQA="
 											},
@@ -2157,7 +2157,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 593,
+													"left": 591,
 													"top": 258,
 													"width": 101.3828125,
 													"height": 16,
@@ -2192,7 +2192,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 643,
+													"left": 641,
 													"top": 275,
 													"width": 0,
 													"height": 13,
@@ -2226,7 +2226,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 644,
+													"left": 642,
 													"top": 240,
 													"width": 0,
 													"height": 13,
@@ -2283,7 +2283,7 @@
 												"$ref": "AAAAAAFY6GzzhRU7BXc="
 											},
 											"lineStyle": 0,
-											"points": "859:256;430:256",
+											"points": "855:256;430:256",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6IJd/RZeMrQ="
 											},
@@ -4343,7 +4343,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFY5GAwgLn8hmA="
 									},
-									"name": "userApplication",
+									"name": "userAppServer",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFY5GCsM7oN+9Q="
@@ -4356,7 +4356,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFY5GAwgLn8hmA="
 									},
-									"name": "reservationRequestManager",
+									"name": "rrManager",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFY5GC547oseOw="
@@ -4382,7 +4382,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFY5GAwgLn8hmA="
 									},
-									"name": "DataProvider",
+									"name": "dataProvider",
 									"visibility": "public",
 									"represent": {
 										"$ref": "AAAAAAFY6GzzgxUz5OU="
@@ -4456,7 +4456,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": "UserApplication",
+							"type": "UserAppServer",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -4582,6 +4582,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "DataProvider",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,

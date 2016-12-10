@@ -1,11 +1,11 @@
 \section{User interface design}
 In this section are presented some mockups of the main features and related user interfaces the system is supposed to offer to the user and to the customer care through the proper web-based application.
 \subsection{User app}
-The user app must have a charming and intuitive user interface in order to provide a easy-to-use experience to the user. That interface must be optimized for mobile devices even if the application is accessible and must be usable from every web browser on different size devices.
+The user app must have a charming and intuitive user interface in order to provide a easy-to-use experience to the user. The interface must be optimized for mobile devices even if the application is accessible and must be usable from every web browser on different size devices.
 
 \subsubsection{Login page}
 Simple initial page for the application to allow the user to authenticate to the system through username and password. A new user can access the registration process through the \emph{New User} button. \\
-As specified in the requirements section, that page also allows a guest user or a \emph{banned} registered user to access to customer care contact information through the \emph{Contact us} button. \\
+As specified in the requirements document, thist page also allows a guest user or a \emph{banned} registered user to access to customer care contact information through the \emph{Contact us} button. \\
 If a user is not recognized or is banned an error alert is shown when credential are submitted.
 
 	\begin{figure}[h]
@@ -29,9 +29,9 @@ The home page shows to a logged user all the possible functionalities provided f
 	\item Show customer care contact information
 \end{itemize}
 
-That page shows also the user's name to ensure to the user he has been correctly recognized by the system and to make the interface more customized. \\
+This page shows also the user's name to ensure to the user he has been correctly recognized by the system and to make the interface more customized. \\
 
-The icon in the right corner, from that page, brings the user to the functionality of see available cars; on all other pages (without the orange position icon) it brings the user to that page: the home page.
+The icon in the right corner, from this page, brings the user to the functionality of see available cars; on all other pages (without the orange position icon) it brings the user to this page: the home page.
 
 	\begin{figure}[h]
 			\centering
@@ -39,6 +39,46 @@ The icon in the right corner, from that page, brings the user to the functionali
 			\caption{
 				\label{fig:homePage} 
 				Home page
+			}
+		\end{figure}
+		
+\subsubsection{See available cars}
+Accessing to the see available cars functionality, as described in the requirements document, the system asks to the user if he wants to search car nearby his actual position (using GPS position of user's device) or he wants to insert a different position from which starting the research. \\
+
+The \emph{Use GPS} allows the user to choose the first option skipping other interactions on this page. \\
+
+If the user chooses the second option, he is supposed to insert an address location (e.g. 34 Maria Victoria Lane, London) before pushing the \emph{Search} button; the system will resolve that address as a GPS location displaying an error message if it could not done it. \\
+
+The \emph{Cancel} button allows the user to return to the home page. \\
+
+The system searches for available cars (nearby the position given by the user or retrieved by the GPS) and displays a map with available cars on their actual position. Blue circled cars are actually plugged on a charging station, all others car are green circled.\\
+
+The map is interactive and the user can move around the actual position. \\
+
+	\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\linewidth]{mockups/findCar}
+			\caption{
+				\label{fig:searchCar} 
+				See available cars
+			}
+		\end{figure}
+
+\subsubsection{Reserve a car}
+
+From the map showing available cars, a user tapping on a car could access information about the:
+\begin{itemize}
+	\item Model of the car
+	\item License number of the car
+	\item The battery percentage level of the car
+\end{itemize}
+
+\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\linewidth]{mockups/reserveCar}
+			\caption{
+				\label{fig:reserveCar} 
+				Reserve a car
 			}
 		\end{figure}
 

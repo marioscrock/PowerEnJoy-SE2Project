@@ -120,10 +120,10 @@ On this page the user can see data about his reservation:
 	\item time until the reservation expires
 	\item (\emph{Optional}) charging station related to money saving
 	 option
-	\item  current car position (clicking on \emph{see it on the map} link the user app searches for an installed program on the user device to open the GPS coordinates, if it can not find any program it only shows the GPS coordinates)
+	\item  current car position (clicking on \emph{see it on the map} link the user app looks for an installed program on the user device to open the GPS coordinates, if it can not find any program it only shows the GPS coordinates)
 \end{itemize}
 
-The user could ask the system to unlock the car through the \emph{Unlock your car} button. If the user GPS position is not 5m away from the car or the user app could not check the position of the user an error message is displayed. \\
+The user could ask the system to unlock the car through the \emph{Unlock your car} button. If the user GPS position is not 5m away from the car an error message is displayed to ask the user to reach the car before trying to unlock the car. \\
 
 If the system manages to process the request to unlock the car a message is displayed to notify the user the car has been unlocked and he could start the rent turning on the engine.\\
 
@@ -135,5 +135,56 @@ If the system manages to process the request to unlock the car a message is disp
 				\emph{Unlock a car} mockup
 			}
 		\end{figure}
-		
+
+\subsubsection{Payment history}
+
+From the home page, the user can access his own payment history through the \emph{See Payment History} button. \\
+
+On this page the user app shows to the user all made payments in chronological order, from the more recent to the latest ones as shown in \autoref{fig:paymentHistory}. \\
+
+Payment not related to a rent, for example fee related to an expired reservation, are shown with a different color to clearly distinguish it. \\
+
+Through this page a user can only see if a payment is related or not to a rent and date and hour of each payment. The user could access all payments details by click on one of the rows shown, or can rapidly access to customer care contact information if for example it finds out some payment he is not aware of. \\
+
+
+\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.4\linewidth]{mockups/paymentHistory}
+			\caption{
+				\label{fig:paymentHistory} 
+				\emph{Payment history} mockup
+			}
+		\end{figure}
+\clearpage
+
+In \autoref{fig:payments} are shown two examples of payments history's single record. The one on the right shows a payment related to a rent, instead the one on the left shows a payment related to a reservation expired fee. \\
+
+For each payment record the user can see information about:
+\begin{itemize}
+	\item payment ID
+	\item time of the payment
+	\item base cost (in case of rent it's calculated as \emph{rent time} x \emph{time based rate})
+	\item discount amount applied on the rent 
+	\item fee amount applied on the rent
+	\item total paid amount
+	\item payment used method (for security reason only the last four numbers are shown)
+	\item (\emph{optional}) rent associated with the payment
+\end{itemize}
+
+If the payment is associated with a rent, the user can access the rent record through the link in the \emph{rent} section.
+\\
+ 
+\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\linewidth]{mockups/payments}
+			\caption{
+				\label{fig:payments} 
+				\emph{Single payment records} mockup
+			}
+		\end{figure}
+
+\clearpage
+
+
 \subsection{Customer care app}
+sadasD

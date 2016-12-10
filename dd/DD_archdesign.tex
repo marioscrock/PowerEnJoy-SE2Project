@@ -279,18 +279,31 @@ we decided to design the system on a four tier architecture pattern (see also \e
 \end{figure}
 		
 \subsubsection{RentManager component}
+
+\autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=0.8\linewidth]{ObjectRentManager}
+	\includegraphics[angle=90,width=0.75\linewidth]{ObjectRentManager}
 	\caption{
 		\label{fig:rentObjectDiagram} 
 		\emph{RentManager} object diagram
 	}
 \end{figure}
-\autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
 
+\paragraph{InUseCarHandler:} this part of the RentManager manages in use cars, it subscribes to the events of a specific car through the EventBroker component which enables asynchronous communication between the cars and the system.
+\paragraph{CarUnlockManager:} this part of the RentManager is the one that manages the unlock car requests, it checks, by accessing the DataProvider component, that the user who is requesting the unlock actually reserved the car and that he is less than 5 meters away from it; after that it activates the necessary triggers on the car and instantiate an InUseCarHandler object which will subscribe to them. When a rent ends the CarUnlockManager is notified by the corresponding InUseCarHandler, it will update the status of the car and it will notify the EndRentManager component in order to terminate the rent.
+\paragraph{EndRentManager:} this part of the RentManager is the one that manages the termination of the rent and that starts the payment procedure via the PaymentProcedureHandler object.
+\paragraph{ReservationRequestManager:} this part of the RentManager component is the one in charge of receiving and validating the reservation requests made by users.
+\paragraph{PaymentProcedureHandler:} this part of the RentManager allows other components to instantiate payments and interacts with the External Payment System in order to realize them.
+\paragraph{ReservationTimer:} this part of the RentManager component checks if any reservation expires and if so it instantiate a ProcedureHandeler in order to make the user pay the fee for the expiration.
+\paragraph{MoneySavingOptionHandler:} this component is used by the ReservationRequestManager when a user enables the Money Saving Option in his reservation; given the user's destination it calculates the most convenient Charging Station and it returns it to the ReservationRequestManager.
+\paragraph{EndRentTimerHandler:} this timer is used to let the user connect the car to a power plug after his rent has ended; if a car is connected to the power plug after this timer has expired, the user won't receive the related discount.
+\paragraph{DiscountFeeApplicableHandler:} this part of the RentManager component is used by the EndRentTimerHandler at the end of the rent and it checks which Discounts and which Fees are applicable to the rent.
+
+\clearpage
 \subsubsection{MaintenanceManager component}
-BlaBlaBla\todo{write description}
+\autoref{fig:rentObjectDiagram} shows the internal structure of the Maintenance Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{ObjectMaintenanceManager}

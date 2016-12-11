@@ -366,11 +366,20 @@ The following technologies were chosen for the implementation of the PowerEnJoy 
 \paragraph{Web Pages:} JSP was chosen over Servlets because the content of our web pages has few dynamic parts so writing small chunks of Java code in html pages is a more suitable solution
 \paragraph{Application Logic:} J2EE was the choice we made to write the application logic because it offers a wide range of functionalities that makes the development of scalable multi tiered web based application much easier than with other technologies;
 \paragraph{Application Server and Web Server:} GlassFish 4.1 was chosen since it offers containers both for the EJB and the JSP pages 
-\paragraph{Provided APIs:} all the API provided by this system are compliant with the REST paradigm so JAX-RS was used;
-\paragraph{Data - Application Logic Communication:} JPA was chosen as a mean to enable communication between the Application Logic and the DBMS;
+\paragraph{Provided APIs:} all the API provided by this system are compliant with the REST paradigm so JAX-RS was used
+\paragraph{Data - Application Logic Communication:} JPA over JDBC was chosen as a mean to enable communication between the Application Logic and the DBMS
 \paragraph{Web Server - Application Logic Communication:} JNDI was chosen as a naming and directory service to allow the web servers to access the functionalities offered by the Application Logic
-
-
+\clearpage
+\subsubsection{Decision Tree}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{decisionTree}
+	\caption{
+		\label{fig:decisionTree} 
+		Decision Tree
+	}
+\end{figure}
+\clearpage
 \subsubsection{Deployment diagram}
 The diagram in \autoref{fig:deployment} represents the mapping of the software components depicted in \autoref{fig:deployServerComponent} and \autoref{fig:highLevelComponents} on the devices that will run them. Many design concerns were considered while developing this solution.
 \paragraph{Security:}security is ensured in different points of the architecture, in particular the \emph{UserAppServer} uses HTTPS as communication protocol to communicate with the users; the devices running the \emph{CustomerCareApplication} component are in a VPN with the device running the \emph{CustomerCareServer}.
@@ -378,7 +387,7 @@ The diagram in \autoref{fig:deployment} represents the mapping of the software c
 \paragraph{Decoupling:}decoupling in this architecture is present at different levels; in the deployment diagram it is clear that the each of the four tier runs on different devices, moreover the \emph{UserAppServer} component runs on a different device than the \emph{CustomerCareServer}, the Maintenance API and the \textit{CarEventHandlerIntF} interface.
 \paragraph{Redundancy:}in this iteration of the architecture no redundancy of components or devices is present, but it is allowed in prevision of future expansions of the system's infrastructure.
 \paragraph{Fault Tolerance:}deploying different components on different machines allows the system to be easier to recover in case of a problem on one of the machines; for an example the Web Server running the \textit{UserAppServer} component goes down, it can be replaced with another machine and in the mean time the \textit{ApplicationServer} would still be up and running and still be able to provide the \textit{CustomerCareApplication} with its functionalities.
-
+\clearpage
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{deployment}

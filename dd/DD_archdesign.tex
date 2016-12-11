@@ -360,7 +360,14 @@ we decided to design the system on a four tier architecture pattern (see also \l
 		\end{figure}
 \clearpage
 
-BlaBlaBla\todo{write description}
+\subsubsection{Deployment diagram}
+The diagram in \autoref{fig:deployment} represents the mapping of the software components depicted in \autoref{fig:deployServerComponent} and \autoref{fig:highLevelComponents} on the devices that will run them. Many design concerns were considered while developing this solution.
+\paragraph{Security:}security is ensured in different points of the architecture, in particular the \emph{UserAppServer} uses HTTPS as communication protocol to communicate with the users; the devices running the \emph{CustomerCareApplication} component are in a VPN with the device running the \emph{CustomerCareServer}.
+\paragraph{Scalability:}this model of deployment is scalable in the sense that the system administrators will be able to add more devices and deploy more instances of the needed components when and where performance issues will arise, in order to maintain a minimum level of performance even with loads increase.
+\paragraph{Decoupling:}decoupling in this architecture is present at different levels; in the deployment diagram it is clear that the each of the four tier runs on different devices, moreover the \emph{UserAppServer} component runs on a different device than the \emph{CustomerCareServer}, the Maintenance API and the \textit{CarEventHandlerIntF} interface.
+\paragraph{Redundancy:}in this iteration of the architecture no redundancy of components or devices is present, but it is allowed in prevision of future expansions of the system's infrastructure.
+\paragraph{Fault Tolerance:}deploying different components on different machines allows the system to be easier to recover in case of a problem on one of the machines; for an example the Web Server running the \textit{UserAppServer} component goes down, it can be replaced with another machine and in the mean time the \textit{ApplicationServer} would still be up and running and still be able to provide the \textit{CustomerCareApplication} with its functionalities.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{deployment}
@@ -372,6 +379,22 @@ BlaBlaBla\todo{write description}
 
 \clearpage
 \subsection{Runtime view}
+
+\subsubsection{Map}
+The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
+
+The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=0,width=\linewidth]{sequenceDiagrams/MapGeneration}
+	\caption{
+		\label{fig:mapGeneration} 
+		\emph{Map generation} sequence diagram
+	}
+\end{figure}
+
+\clearpage
 \subsubsection{Car reservation}
 The diagram in \autoref{fig:sequenceCarReservation} shows the car reservation process.\\
 The \mbox{\emph{MoneySavingOptionManager}} component determines the appropriate charging station for the money saving option given the user destination using the algorithm described in the \hyperref[sec:msoAlgorithm]{proper section}.
@@ -430,7 +453,9 @@ The following sequence diagrams show the interactions between the \mbox{Rent} \m
 
 \clearpage
 \subsubsection{Payment}
-BlaBla \todo{description}
+In the \autoref{fig:sequencePayment} is shown a rent payment initiated by the \emph{EndRentManager} component. This diagram is the continuation of the diagram in \autoref{fig:sequenceEndRent2}.
+
+\paragraph{Interactions not represented} An interaction by the \emph{EndRentManager} with the \emph{DataProvider} component is required in order to ban a user if the payment is rejected.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[angle=90,width=0.95\linewidth]{sequenceDiagrams/Payment}
@@ -455,21 +480,6 @@ When a reservation expired is found, this component takes care of creating a pay
 	\caption{
 		\label{fig:sequenceReserveTimer} 
 		\emph{Reservation expiring} sequence diagram
-	}
-\end{figure}
-
-\clearpage
-\subsubsection{Map}
-The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
-
-The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[angle=0,width=\linewidth]{sequenceDiagrams/MapGeneration}
-	\caption{
-		\label{fig:mapGeneration} 
-		\emph{Map generation} sequence diagram
 	}
 \end{figure}
 

@@ -1,0 +1,74 @@
+BEGIN MoneySavingOption(dest)
+    
+    //dest: GPS position of the user inserted destination
+
+    DATACS := READ "ChargingStations.xml"
+    //array of charging station IDs
+    C  := retrieveCs(DATACS); 
+    P,AP,D,NC,S := empty array;
+    j:= radius distance constant;
+
+    FOR i:=0 TO C.length DO
+        availablePlug := 
+            retrieveCsPlugsNumb(C[i], DATACS) 
+                - carsInCs(C[i]);
+        IF availablePlug > 0 THEN
+            //AP[i] contains available plugs 
+   	        //of C[i] charging station if
+            //that number is greater than zero
+            AP[i]:= availablePlug;
+        ELSE 
+            //removes the i-th element shifting other 
+            //elements respecting the precedent order
+            removeFromArray(C[i]);
+        END-IF
+        
+    END-FOR
+
+    FOR i:=0 TO C.length DO 
+        //P[i] contains GPS position
+        //of C[i] charging station
+        P[i]:= retrieveCsPosition(C[i], DATACS);
+
+        //D[i] contains the distance
+        //between C[i] charging station
+        //and the distance inserted by the user
+        D[i]:= calculateDistance(P[i], dest)
+
+        //NC[i] contains the number of
+        //cars within a radius of j km from
+        //the C[i] charging station normalized 
+        //w.r.t the total number of cars 
+        NC[i]:= getNumbCarsNearbyNormalized(C[i],j);
+    END-FOR
+
+    maxDistance := maxValue(D);
+    minDistance := minValue(D);
+
+    //Distances are normalized
+    IF maxDistance != minDistance THEN
+        FOR i:=0 TO C.length DO 
+            D[i]:= (D[i] - minDistance)
+                        /( maxDistance - minDistance);
+        END-FOR
+    ELSE
+        FOR i:=0 TO C.length DO 
+            D[i]:= 0;
+        END-FOR
+    END-IF
+
+    k := multiplicative weight of distance variable
+    t := multiplicative weight of availability of plugs 
+    q := multiplicative weight of cars nearby
+
+    FOR i:=0 TO C.length DO 
+        //Score assigned to the C[i] charging station
+            S[i]:=  D[i]*k + AP[i]*t - NC[i]*q;
+    END-FOR
+
+    //if two scores are equal the charging station closer to
+    //the destination inserted by the user is chosen
+    RETURN C[arrayKey(maxScore(S))];
+
+END
+

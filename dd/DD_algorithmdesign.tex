@@ -1,0 +1,22 @@
+\section{Algorithm design}
+\subsection{Payments}\label{sec:paymentAlgorithms}
+\subsubsection{Discount assignment}
+Let $d_i=[d_{iFixed},d_{iPercentage}]$ be a general discount with its fixed and percentage components.\\
+Let $c$ be the base cost of the rent.\\
+Let $D = \lbrace d_1,d_2,\ldots,d_n\rbrace$ be the set of all applicable discounts for a specific rent.\\
+Then the final applied discount is $$d = \max_{d_i\in D} \lbrace d_{iFixed}+d_{iPercentage}\cdot c \rbrace$$
+
+\subsubsection{Fee assignment}
+Let $f_i=[f_{iFixed},f_{iPercentage}]$ be a general fee with its fixed and percentage components.\\
+Let $c$ be the base cost of the rent.\\
+Let $F = \lbrace f_1,f_2,\ldots,f_n\rbrace$ be the set of all applicable fees for a specific rent.\\
+Then the final applied fee is $$f = \sum_{f_i\in F} ( f_{iFixed} + f_{iPercentage} \cdot c )$$
+
+\subsection{Money saving option}\label{sec:msoAlgorithm}
+The Money Saving Option algorithm returns a charging station with available plugs near the destination inserted by the user to ensure a better distribution of cars.
+
+Each charging station is assigned a score considering the distance from the desired destination, the number of cars nearby and its plugs availability. 
+
+The charging station with the highest score is returned.
+
+\lstinputlisting[language=pseudocode]{pseudocode/MSO-pseudocode.txt}

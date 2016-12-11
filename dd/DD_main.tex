@@ -1,0 +1,81 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{enumitem}	%enumerate
+\usepackage{fancyhdr}	%intestazioni e piè pagina
+\fancypagestyle{SE2}{% Software Engineering 2 Project Page Style
+	\pagestyle{fancy}	
+	%\fancyhead[LE,RO]{\slshape\rightmark}
+	%\fancyhead[LO,RE]{\slshape\leftmark}
+	%\fancyhead[L,R]{\slshape\rightmark}
+	\cfoot{} % get rid of the page number 
+	\fancyfoot[L]{\emph{PowerEnJoy}\quad \textbf{D}esign \textbf{D}ocument}
+	\fancyfoot[R]{\thepage}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{SE2}
+%\pagestyle{fancy}
+\usepackage{graphicx}	%immagini
+\usepackage[colorinlistoftodos]{todonotes}	%todo
+%numeri romani maiuscoli
+\newcommand{\RomanNumber}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\usepackage{hyperref} %link pdf
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\graphicspath{{./img/}} %extra root-path for images
+\usepackage[T1]{fontenc}
+%\usepackage[style=alphabetic]{biblatex}
+%\usepackage[babel]{csquotes}
+%\usepackage[bibstyle=authortitle,citestyle=verbose-trad1]{biblatex}
+%\bibliography{RASD-main.bib}
+%
+\usepackage[toc,page]{appendix}
+\usepackage{eurosym}%\simbolo euro
+\usepackage{booktabs}%table rule
+\usepackage{longtable} %multiple page tables
+\usepackage{listings} 
+\input{latex_pseudocode.sty}
+
+\begin{document}
+
+\include{DD_cover}
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\pagenumbering{Roman}
+\tableofcontents
+\listoffigures
+\listoftables
+\hypersetup{
+	linkcolor=blue,
+	citecolor=blue,
+	urlcolor=blue
+}
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+\clearpage
+\pagenumbering{arabic}
+
+\include{DD_introduction}
+
+\include{DD_archdesign}
+
+\include{DD_algorithmdesign}
+
+\include{DD_userinterfacedesign}
+
+\include{DD_reqtraceability}
+
+\include{DD_appendix}
+\end{document}

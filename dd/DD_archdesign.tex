@@ -297,7 +297,7 @@ This component encapsulates most of the logic of the System, it manages the info
 		\emph{RentManager} object diagram
 	}
 \end{figure}
-\clearpage
+
 \paragraph{InUseCarHandler:} this part of the RentManager manages in use cars, it subscribes to the events of a specific car through the EventBroker component which enables asynchronous communication between the cars and the system.
 \paragraph{CarUnlockManager:} this part of the RentManager is the one that manages the unlock car requests, it checks, by accessing the DataProvider component, that the user who is requesting the unlock actually reserved the car and that he is less than 5 meters away from it; after that it activates the necessary triggers on the car and instantiate an InUseCarHandler object which will subscribe to them. When a rent ends the CarUnlockManager is notified by the corresponding InUseCarHandler, it will update the status of the car and it will notify the EndRentManager component in order to terminate the rent.
 \paragraph{EndRentManager:} this part of the RentManager is the one that manages the termination of the rent and that starts the payment procedure via the PaymentProcedureHandler object.
@@ -347,6 +347,17 @@ This component manages the registration and login phase of users, it encapsulate
 
 \subsubsection{UserAppServer component}
 This component acts as an interface between the user and the application logic of the system; it produces the html pages shown to the user by his web browser and it receives the commands the users inputs on the web page. This component solves the concerns related to the handling of the requests sent by the users: these connection requests and the work related to generating the web pages will be handled by this component, without causing load problems on the application logic. It also allows the decoupling of the application logic from the presentation logic, which has to be realized in a four tier client-server architecture.
+
+\subsubsection{CustomerCareServer component}
+This component provides the CustomerCareApplication client with the information it needs to show and with the functionalities it needs to access; this component was decoupled from the UserAppServer component because it offers different functionalities and is only used and accessible by a specific client application.
+
+\subsubsection{DataProvider component}
+This component is in charge of providing a unified interface to the different data sources of the System, both the DBMS and the files contained in the File System of the OS hosting the application logic. This component allows a better decoupling between the application logic components and the underlying data layer.
+
+\subsubsection{CarHandler and EventBroker components}
+These 2 components are responsible for the communication with the cars embedded system.
+\paragraph{Car Handler} exposes to the PowerEnJoy system all of the primitives provided by the car embedded system; it does that via a client server communication in which the cars embedded system is the server, offering its primitives, and the CarHandler component is the client, requesting the primitives.
+\paragraph{EventBroker} instead is notified by the cars embedded system when some specific events take place in the car system; this communication is realized via a publish subscribe paradigm in which the cars embedded system is the publisher, publishing events on the EventBroker component, and the internal components of the PowerEnJoy system are the subscribers which are interested to the events taking place in the cars. 
 \clearpage
 
 \subsection{Deployment view}

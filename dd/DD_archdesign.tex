@@ -414,10 +414,13 @@ BlaBlaBla\todo{write description}
 \clearpage
 \subsection{Runtime view}
 \subsubsection{Car reservation}
-BlaBla \todo{description}
+The diagram in \autoref{fig:sequenceCarReservation} shows the car reservation process.\\
+The \mbox{\emph{MoneySavingOptionManager}} component determines the appropriate charging station for the money saving option given the user destination using the algorithm described in the \hyperref[sec:msoAlgorithm]{proper section}.
+
+\paragraph{Interactions not represented}The \emph{ReservationRequestManager} need an interaction with the external GIS API in order to convert into latitude and longitude the destination inserted by the user for the money saving option.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[angle=90,width=0.78\linewidth]{sequenceDiagrams/ReserveCar}
+	\includegraphics[angle=90,width=0.85\linewidth]{sequenceDiagrams/ReserveCar}
 	\caption{
 		\label{fig:sequenceCarReservation} 
 		\emph{Car reservation} sequence diagram
@@ -557,17 +560,17 @@ The maintenance operators have been provided a smartphone which is connected in 
 Security tokens must be negotiated by our system and the external maintenance service.
 
 \subsubsection{User Application interface}
-The \emph{UserAppInt} interface is responsible for communications between the user application and the related web server.
+The \emph{UserAppIntF} interface is responsible for communications between the user application and the related web server.
 Because of the nature of exchanged data (credit card number, password, and privacy-related information) the protocol to be used is HTTPS.
 
 \subsubsection{Customer Care interface}
-Via the \emph{CustomerCareInt} interface an operator of the customer care service can access the CustomerCare server. All computers used by the customer care service are connected in the same dedicated subnet as the CustomerCare server and this web server is accessible only from the aforementioned subnet. A VPN is used to achieve what mentioned above.
+Via the \emph{CustomerCareIntF} interface an operator of the customer care service can access the CustomerCare server. All computers used by the customer care service are connected in the same dedicated subnet as the CustomerCare server and this web server is accessible only from the aforementioned subnet. A VPN is used to achieve what mentioned above.
 
 \subsubsection{GIS API}
 Using an external API of a \emph{Geographical Information System} our system is able to:
 \begin{itemize}
 	\item retrieve an updated map centered on a given position
-	\item get the latitude and longitude of a given location
+	\item get the latitude and longitude of a given location and vice versa
 \end{itemize}
 
 \subsection{Architectural style and patterns}

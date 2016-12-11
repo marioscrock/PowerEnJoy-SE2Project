@@ -145,7 +145,7 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 Fees and discounts must be defined as sum of a fixed value and a percentage factor w.r.t. the base rent cost.
 The \emph{appliedDiscount} and \emph{appliedFee} payment attributes are determined, respectively, based upon the set of all \emph{applicableDiscount} and \emph{applicableFee} attributes associated to the rent. See \hyperref[sec:paymentAlgorithms]{payment algorithms} for more details.
 
-As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixed amount plus a variable amount proportional to the \emph{distance} of the car form the nearest safe area, can be expressed as a fixed number of fee clustered by distance.
+As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixed amount plus a variable amount proportional to the \emph{distance} of the car form the nearest safe area, can be expressed as a fixed number of fees clustered w.r.t. distance.
 
 \paragraph{Cars}Beyond the primary key, the \mbox{\emph{licenseNumber}} attribute must be unique. The \mbox{\emph{lastSeen}} attribute is set by default to the timestamp of the last car information update. The \mbox{\emph{carStatus}} attribute represents the car statuses as defined in the RASD.
 
@@ -203,7 +203,7 @@ An example of such an XML file is
 	\item new car (sent to one car)
 \end{itemize}
 
-\paragraph{Security}Users' passwords and all credit card numbers (associated to the users and used for past payments) must be stored with proper and secure encryption.
+\paragraph{Security}Users' passwords and all credit card numbers (associated to users and used for past payments) must be stored with proper and secure encryption.
 
 \subsubsection{Server component}
 To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.
@@ -229,11 +229,11 @@ This white box representation shows the parts composing the \emph{Server} compon
 
 
 
-In the following table is presented a mapping correspondence between the requirement related to each goal and the components identified in the server component diagram. \todo{check} \\
+In the \autoref{tbl:mappingGoalsOnComponent} is presented a mapping correspondence between the RASD requirements related to each goal and the components identified in the server component diagram. \todo{check} \\
 
 \begin{longtable}{p{0.7\linewidth}p{0.3\linewidth}}
 \toprule
-\textbf{Goal} & \textbf{Components}\\
+\textbf{Requirements of goal} & \textbf{Components}\\
 \midrule
 \textbf{G1} Allow guest users to register to the system & \mbox{UserAppServer} \mbox{AccessManager} \mbox{DataProvider} \mbox{UserInformationManager}\\
 \midrule
@@ -262,9 +262,10 @@ In the following table is presented a mapping correspondence between the require
 \textbf{G13} Allow a logged user to enable a money saving option which provides him with a charging station as destination of the ride to get a discount on the cost of the aforementioned ride & \mbox{UserAppServer} \mbox{RentMaganer} \mbox{DataProvider}\\
 \midrule
 \bottomrule
-\caption{Mapping goals on components}
+\caption{\label{tbl:mappingGoalsOnComponent}Mapping goals on components}
 \end{longtable}
 
+\clearpage
 \subsubsection{Four tier architecture}
 Taking into account that:
 \begin{itemize}
@@ -272,8 +273,7 @@ Taking into account that:
 	\item in the \emph{Server component view} we can clearly distinguish modules who take care of presentation and communication with the client
 	\item in the \emph{Server component view} we can clearly distinguish modules who take care of the specific application logic
 \end{itemize}
-we decided to design the system on a four tier architecture pattern (see also \emph{Deployment View}). 
-\todo{la figura flotta in giro}
+we decided to design the system on a four tier architecture pattern (see also \hyperref[sec:deploymentView]{Deployment View section}). 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{4TierSunny}
@@ -282,10 +282,11 @@ we decided to design the system on a four tier architecture pattern (see also \e
 		Four tier architecture
 	}
 \end{figure}
-		
+
+\clearpage
 \subsubsection{RentManager component}
 
-\autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an Object Diagram was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
+\autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an \mbox{Object} \mbox{Diagram} was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
 \\
 This component encapsulates most of the logic of the System, it manages the information coming from the cars and it creates and manages rents and payments. 
 
@@ -300,7 +301,7 @@ This component encapsulates most of the logic of the System, it manages the info
 \clearpage
 \paragraph{InUseCarHandler:} this part of the RentManager manages in use cars, it subscribes to the events of a specific car through the EventBroker component which enables asynchronous communication between the cars and the system.
 \paragraph{CarUnlockManager:} this part of the RentManager is the one that manages the unlock car requests, it checks, by accessing the DataProvider component, that the user who is requesting the unlock actually reserved the car and that he is less than 5 meters away from it; after that it activates the necessary triggers on the car and instantiate an InUseCarHandler object which will subscribe to them. When a rent ends the CarUnlockManager is notified by the corresponding InUseCarHandler, it will update the status of the car and it will notify the EndRentManager component in order to terminate the rent.
-\paragraph{EndRentManager:} this part of the RentManager is the one that manages the termination of the rent and that starts the payment procedure via the PaymentProcedureHandler object.
+\paragraph{EndRentManager:} this part of the RentManager is the one that manages the termination of the rent and that starts the payment procedure via the \mbox{PaymentProcedureHandler} object.
 \paragraph{ReservationRequestManager:} this part of the RentManager component is the one in charge of receiving and validating the reservation requests made by users.
 \paragraph{PaymentProcedureHandler:} this part of the RentManager allows other components to instantiate payments and interacts with the External Payment System in order to realize them.
 \paragraph{ReservationTimer:} this part of the RentManager component checks if any reservation expires and if so it instantiate a ProcedureHandeler in order to make the user pay the fee for the expiration.
@@ -350,7 +351,7 @@ This component acts as an interface between the user and the application logic o
 \clearpage
 
 \subsection{Deployment view}
-
+\label{sec:deploymentView}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{4Tier}
@@ -383,18 +384,18 @@ BlaBlaBla\todo{write description}
 \clearpage
 \subsection{Runtime view}
 \subsubsection{Performing a rent}
-The following sequence diagrams show the interactions between the Rent Manager and other components in the system in different scenarios:
+The following sequence diagrams show the interactions between the \mbox{Rent} \mbox{Manager} and other system components in different scenarios:
 \begin{itemize}
-	\item A user unlocks the car he reserved and starts the rent
-	\item A car in use car notifies the system that the engine is off, there are no passengers in the car and the doors are closed
-	\item The rent just ended and the system initialize the payment procedure
+	\item \autoref{fig:sequenceUnlockStartRent}: a user unlocks the car he reserved and starts the rent
+	\item \autoref{fig:sequenceEndRent1}: a in use car notifies the system that the engine is off, there are no passengers in the car and the doors are closed
+	\item \autoref{fig:sequenceEndRent2}: the rent just ended and the system initialize the payment procedure
 \end{itemize}
 
-\paragraph{Interactions not represented in the following sequence diagrams}
+\paragraph{Interactions not represented}
 \begin{itemize}
-	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position.
+	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position
 
-	\item When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated.
+	\item When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated
 \end{itemize}
 \clearpage
 
@@ -427,9 +428,9 @@ The following sequence diagrams show the interactions between the Rent Manager a
 \subsubsection{Reservation expiring}
 To ensure a maximum reservation time of one hour, the \emph{ReservationTimer} component shown in \autoref{fig:sequenceReserveTimer} checks every minute the presence of expired reservations in the database. 
 
-When a reservation expired is found this component takes care of creating a payment request of the relative fee and deleting the reservation. 
+When a reservation expired is found, this component takes care of creating a payment request for the relative fee and deletes the reservation. 
 
-The extra time that could be granted to a reservation due to the timer interval and the system latency is considered acceptable.
+\paragraph{Note}The extra time that could be granted to a reservation due to the timer interval and the system's latency is considered acceptable.
 
 \paragraph{Interactions not represented} An interaction by the \emph{ReservationTimer} with the \emph{DataProvider} component is required in order to delete a reservation and to ban a user if the payment is rejected.
 \begin{figure}[h!]
@@ -458,8 +459,8 @@ The \emph{MapManager} component takes care of updating the battery level informa
 
 \clearpage
 \subsubsection{Maintenance API and failures occurrence}
-Our \emph{Maintenance API} is used by maintenance operators to obtain a list of car failures and to tag them back as Available when the failure has been fixed. The execution of these two commands is shown in \autoref{fig:sequenceMaintenanceAPI}.
-\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{MaintenanceDoneManager} takes care of verifying via the \emph{CarHandler} component if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD.
+Our \emph{Maintenance API} is used by maintenance operators to obtain a list of car failures and to tag the cars back as Available when the failure has been fixed. The execution of these two commands is shown in \autoref{fig:sequenceMaintenanceAPI}.
+\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{MaintenanceDoneManager} takes care of verifying via \emph{DataProvider} and \emph{CarHandler} components if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD.
 
 \begin{figure}[h!]
 	\centering
@@ -471,7 +472,8 @@ Our \emph{Maintenance API} is used by maintenance operators to obtain a list of 
 \end{figure}
 
 \clearpage
-\paragraph{Critical battery level}In \autoref{fig:sequenceMaintenanceBattery} is represented the case in which a car battery reaches its critical level. Note that the \emph{CarBatteryManager} component must be subscribed via the \mbox{\emph{EventBroker}} component to all cars and it must enable via the \emph{CarHandler} component the trigger for the critical battery level event.
+\paragraph{Critical battery level}In \autoref{fig:sequenceMaintenanceBattery} is represented the case in which a car battery reaches its critical level.
+\subparagraph{Note} The \emph{CarBatteryManager} component must be subscribed via the \mbox{\emph{EventBroker}} component to all cars and it must enable via the \emph{CarHandler} component the trigger for the critical battery level event. We can suppose that these operations are done during the initialization phase.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{sequenceDiagrams/maintenanceBatteryLevel}

@@ -538,11 +538,11 @@ The maintenance operators have been provided a smartphone which is connected in 
 Security tokens must be negotiated by our system and the external maintenance service.
 
 \subsubsection{User Application interface}
-The \emph{UserAppInt} interface is responsible for communications between the user application and the related web server.
+The \emph{UserAppIntF} interface is responsible for communications between the user application and the related web server.
 Because of the nature of exchanged data (credit card number, password, and privacy-related information) the protocol to be used is HTTPS.
 
 \subsubsection{Customer Care interface}
-Via the \emph{CustomerCareInt} interface an operator of the customer care service can access the CustomerCare server. All computers used by the customer care service are connected in the same dedicated subnet as the CustomerCare server and this web server is accessible only from the aforementioned subnet. A VPN is used to achieve what mentioned above.
+Via the \emph{CustomerCareIntF} interface an operator of the customer care service can access the CustomerCare server. All computers used by the customer care service are connected in the same dedicated subnet as the CustomerCare server and this web server is accessible only from the aforementioned subnet. A VPN is used to achieve what mentioned above.
 
 \subsubsection{GIS API}
 Using an external API of a \emph{Geographical Information System} our system is able to:

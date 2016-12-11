@@ -71,12 +71,12 @@ abstract sig PositionWrtPowerGrid{}
 one sig More3kmPowerGrid extends PositionWrtPowerGrid{}
 one sig Lower3kmPowerGrid extends PositionWrtPowerGrid{}
 
-//M2PD = MoreThan2PassengersDiscount
+//M1PD = MoreThan1PassengerDiscount
 //BHFD = BatteryHalfFullDiscount
 //CCD = CarOnChargeDiscount
 //MSOD = MoneySavingOptionDiscount
 abstract sig Discount{}
-one sig M2PD extends Discount{}
+one sig M1PD extends Discount{}
 one sig BHFD extends Discount{}
 one sig CCD extends Discount{}
 one sig MSOD extends Discount{}
@@ -194,9 +194,9 @@ fact NoPassengersIfReservationExpires{
 }
 
 //M2P discount must be applied iff there are at least two passengers detected during the ride
-fact M2PDiscountAppliable{
+fact M1PDiscountAppliable{
 	all r:RentMade |( r.passengersDuringTheRide != Zero and r.passengersDuringTheRide != One) 
-		iff M2PD in r.discountApplicableRent
+		iff M1PD in r.discountApplicableRent
 }
 
 //BHF discount must be applied iff the car is left with more than 50 percent of battery

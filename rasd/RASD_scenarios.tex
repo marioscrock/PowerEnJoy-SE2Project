@@ -37,7 +37,15 @@ Lorenzo is driving a PowerEnJoy car in order to reach Dino's house outside the s
 	}
 \end{figure}
 \clearpage
+\paragraph{Notes to read the diagram}
+The use case diagram represents the possible interactions of actors with the system and the different use cases in which the actors are involved.\\
 
+The "Maintenance service system" is an external software which the system-to-be needs to interact with. \\
+ 
+We do not consider the external payment handling system an actor since it does not start any interaction with our system, it simply reacts when our system requests its services; this interaction is encapsulated as sub-procedure in the flow of events of the "Rent payment" use case.\\
+
+We do not consider the car an actor for the same reason, moreover the only interactions started by the car are trigger events which are very simple interactions, which we do not consider use cases.\\
+\clearpage
 \subsection{Use cases description}
 
 \subsubsection{Registration}
@@ -54,13 +62,14 @@ Lorenzo is driving a PowerEnJoy car in order to reach Dino's house outside the s
 	\item The user asks the system to register to its services
 	\item The system shows the appropriate form to fill to register to the system
 	\item The user inserts an username to be uniquely identified by the system
-	\item The system checks the username to be unique
 	\item The user inserts his own email address
-	\item The system checks the email to be unique
 	\item The user inserts his name, surname, birth date and place and current domicile
-	\item The user inserts his driving license ID code and expiring date
+	\item The user inserts his driving license ID code
 	\item The user inserts payment information
 	\item The user confirms data inserted are correct e submit the form
+	\item The system checks the username to be unique
+	\item The system checks the email to be unique
+	\item The system checks the driving license ID to be unique
 	\item The system sends an email to the user with a unique link to verify the email address inserted by the user really belongs to him
 	\item The user clicking on the link received confirms his email address
 	\item The user is notified by mail the registration procedure is correctly completed and
@@ -84,7 +93,7 @@ Lorenzo is driving a PowerEnJoy car in order to reach Dino's house outside the s
 	\includegraphics [width=\textwidth]{/diagrams/Sequence/sdRegistration.png}
 	\caption{
 		\label{fig:registrationSequence} 
-		Registration sequence diagram
+		\emph{Registration} sequence diagram
 	}
 \end{figure}
 
@@ -102,7 +111,7 @@ Lorenzo is driving a PowerEnJoy car in order to reach Dino's house outside the s
 \textbf{Flow of events} & 
 \begin{enumerate}
 	\item The user inserts his username and password in the appropriate form and submit it
-	\item The system validates the inserted credential
+	\item The system validates the inserted credentials checking also if the user has confirmed his own email address
 	\item The system checks if the user is banned
 \end{enumerate} \\
 \midrule
@@ -248,7 +257,7 @@ The user is paired with the \emph{Reserved} state of a car\\
 	\item The system sets the state of the \emph{Reserved} car to \emph{In Use} paired
 	with the same user
 	\item During the rent the user is informed about the current charge and whether he is or not inside a safe area
-	\item The user leaves the auto turning off the engine and closing the doors
+	\item The user leaves the car turning off the engine and closing the doors
 	\item The system locks the car
     \item The system activates a timer to allow the user to plug the car into a charging station if it is
     near one of them
@@ -299,6 +308,13 @@ The overall status of a car can be represented by the FSM in \autoref{fig:carFSA
 			}
 		\end{figure}
 %///////////////////////////////////////////////////////////
+\paragraph{Notes to read the diagram}
+The \emph{Not Available} state includes the cases in which the car is either broken or a user left it with a critical battery level and not on charge.\\ 
+
+The system changes the state of a car from \emph{Available} to \emph{Not Available} when its battery level is critical and the car is not on charge (see \ref{req:notAvailbleCritical}).\\
+
+Even if the car is left with no battery left, it is still able to communicate with the system, so the rent can end normally and the maintenance service will take care the car
+(see \ref{da:zeroBattery}).
 \clearpage
 
 \subsubsection{Rent payment}
@@ -504,8 +520,9 @@ The user should have enabled the \emph{money saving option} \\
 	\item The customer care operator inserts the username or the mail of a registered user
 	\item The system checks if the username or the mail correspond to a user registered to the
 	system
-	\item The system retrieves user's data: name, surname, birth date and place, current domicile
-	and driving license information
+	\item The system retrieves user's data (name, surname, birth date and place, current domicile
+	and driving license information) along with information about the car state the user is
+	actually paired with
 	\item The system shows to the customer care operator the info about the user
 \end{enumerate} \\
 \midrule

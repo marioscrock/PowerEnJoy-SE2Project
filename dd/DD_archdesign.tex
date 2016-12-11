@@ -196,7 +196,7 @@ An example of such an XML file is
 
 \paragraph{Safe areas}Safe areas are also provided as XML file according to the \emph{GPX GPS Exchange Format} \cite{gpx} and they are composed by closed polygonal chains.
 
-\paragraph{Safe areas and charging stations deployment}The position of charging stations and safe areas are processed and sent to cars only in case of:
+\paragraph{Safe areas and charging stations deployment}The position of charging stations and safe areas are processed and sent to cars through the dedicated primitives only in case of:
 \begin{itemize}
 	\item system initialization (sent to all cars)
 	\item changes in XML files (sent to all cars)
@@ -296,7 +296,7 @@ This component acts as an interface between the user and the application logic o
 This component provides the CustomerCareApplication client with the information it needs to show and with the functionalities it needs to access; this component was decoupled from the UserAppServer component because it offers different functionalities and is only used and accessible by a specific client application.
 
 \subsubsection{DataProvider component}
-This component is in charge of providing a unified interface to the different data sources of the System, both the DBMS and the files contained in the File System of the OS hosting the application logic. This component allows a better decoupling between the application logic components and the underlying data layer.
+This component is in charge of providing a unified interface to access the different data sources of the System, both the DBMS and the files contained in the File System of the OS hosting the application logic. This component allows a better decoupling between the application logic components and the underlying data layer.
 
 \subsubsection{CarHandler and EventBroker components}
 These 2 components are responsible for the communication with the cars embedded system.
@@ -361,16 +361,19 @@ we decided to design the system on a four tier architecture pattern (see also \l
 \clearpage
 
 \subsubsection{Implementation choices}
-The following technologies were chosen for the implementation of the PowerEnJoy system.
-\paragraph{DBMS:} MySQL was chosen as DBMS since it is the most popular and widespread and it has a lot of documentation and a big community of users; in combination with it we chose InnoDB which allows the usage of foreign keys
+The following technologies were chosen for the implementation of the PowerEnJoy system. J2EE was the main choice we made because it offers a wide range of functionalities that makes the development of scalable multi tiered web based application much easier than with other technologies.
+
 \paragraph{Web Pages:} JSP was chosen over Servlets because the content of our web pages has few dynamic parts so writing small chunks of Java code in html pages is a more suitable solution
-\paragraph{Application Logic:} J2EE was the choice we made to write the application logic because it offers a wide range of functionalities that makes the development of scalable multi tiered web based application much easier than with other technologies;
+\paragraph{Application Logic:} EJB were used to implement the Application Logic components since our application is developed using J2EE
 \paragraph{Application Server and Web Server:} GlassFish 4.1 was chosen since it offers containers both for the EJB and the JSP pages 
 \paragraph{Provided APIs:} all the API provided by this system are compliant with the REST paradigm so JAX-RS was used
 \paragraph{Data - Application Logic Communication:} JPA over JDBC was chosen as a mean to enable communication between the Application Logic and the DBMS
 \paragraph{Web Server - Application Logic Communication:} JNDI was chosen as a naming and directory service to allow the web servers to access the functionalities offered by the Application Logic
+\paragraph{DBMS:} MySQL was chosen as DBMS since it is the most popular and widespread and it has a lot of documentation and a big community of users; in combination with it we chose InnoDB which allows the usage of foreign keys
 \clearpage
 \subsubsection{Decision Tree}
+\autoref{fig:decisionTree} represents a summary of the main design and implementation decisions that were made during the development of the architecture of the PowerEnJoy system.\\
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{decisionTree}
@@ -402,7 +405,7 @@ The diagram in \autoref{fig:deployment} represents the mapping of the software c
 \subsection{Runtime view}
 
 \subsubsection{Map}
-The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
+The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user. The user interface allows the user to input a specific location or use the GPS position of his device; in both cases the GIS will resolve the given position and provide the map centred in that location.
 
 The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.\\
 
@@ -446,6 +449,10 @@ The following sequence diagrams show the interactions between the \mbox{Rent} \m
 
 	\item When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated
 \end{itemize}
+
+\paragraph{Notes}
+The timestamp saved in the rent record in the DB is the one of interaction \emph{15: startRent} while the interaction \emph{17: startRentTimer} is used to start the timer on the car, just to show the user the current cost of its ride.
+
 \clearpage
 
 \begin{figure}[h!]
@@ -478,6 +485,10 @@ The following sequence diagrams show the interactions between the \mbox{Rent} \m
 In the \autoref{fig:sequencePayment} is shown a rent payment initiated by the \emph{EndRentManager} component. This diagram is the continuation of the diagram in \autoref{fig:sequenceEndRent2}.
 
 \paragraph{Interactions not represented} An interaction by the \emph{EndRentManager} with the \emph{DataProvider} component is required in order to ban a user if the payment is rejected.
+
+\paragraph{Notes}
+In this sequence diagram and some of the following ones the usage of the \emph{<<create>> message} to create a JPA object implies the usage of the DataProvider component, which is the only component able to create JPA objects; we omitted this interaction to improve the readability of the diagrams.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[angle=90,width=0.95\linewidth]{sequenceDiagrams/Payment}

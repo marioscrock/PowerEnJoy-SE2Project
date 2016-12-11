@@ -360,6 +360,17 @@ we decided to design the system on a four tier architecture pattern (see also \l
 		\end{figure}
 \clearpage
 
+\subsubsection{Implementation choices}
+The following technologies were chosen for the implementation of the PowerEnJoy system.
+\paragraph{DBMS:} MySQL was chosen as DBMS since it is the most popular and widespread and it has a lot of documentation and a big community of users; in combination with it we chose InnoDB which allows the usage of foreign keys
+\paragraph{Web Pages:} JSP was chosen over Servlets because the content of our web pages has few dynamic parts so writing small chunks of Java code in html pages is a more suitable solution
+\paragraph{Application Logic:} J2EE was the choice we made to write the application logic because it offers a wide range of functionalities that makes the development of scalable multi tiered web based application much easier than with other technologies;
+\paragraph{Application Server and Web Server:} GlassFish 4.1 was chosen since it offers containers both for the EJB and the JSP pages 
+\paragraph{Provided APIs:} all the API provided by this system are compliant with the REST paradigm so JAX-RS was used;
+\paragraph{Data - Application Logic Communication:} JPA was chosen as a mean to enable communication between the Application Logic and the DBMS;
+\paragraph{Web Server - Application Logic Communication:} JNDI was chosen as a naming and directory service to allow the web servers to access the functionalities offered by the Application Logic
+
+
 \subsubsection{Deployment diagram}
 This diagram represents the mapping of the software components depicted in \autoref{fig:deployServerComponent} and \autoref{fig:highLevelComponents} on the devices that will run them. Many design concerns were considered while developing this solution.
 \paragraph{Security:}security is ensured in different points of the architecture, in particular the UserAppServer uses HTTPS as communication protocol to communicate with the users; the devices running the CustomerCareApplication component are in a VPN with the device running the CustomerCareServer.

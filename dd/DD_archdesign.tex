@@ -120,7 +120,7 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 		\item Call car embedded system's primitives
 	\end{itemize}
 	
-	\item Car Event Handler Interface \todo{name must be consistent with graph}
+	\item Car Event Handler Interface
 	\begin{itemize}
 		\item Triggered by an event notification from cars
 	\end{itemize}
@@ -194,7 +194,7 @@ An example of such an XML file is
 </ChargingStations>
 \end{lstlisting}
 
-\paragraph{Safe areas}Safe areas are also provided as XML file according to the \emph{GPX GPS Exchange Format} \cite{gpx} and they are composed by a closed broken line.\todo{cite ref}
+\paragraph{Safe areas}Safe areas are also provided as XML file according to the \emph{GPX GPS Exchange Format} \cite{gpx} and they are composed by closed polygonal chains.
 
 \paragraph{Safe areas and charging stations deployment}The position of charging stations and safe areas are processed and sent to cars only in case of:
 \begin{itemize}
@@ -226,46 +226,6 @@ This white box representation shows the parts composing the \emph{Server} compon
 	\item it had to communicate in different ways with different components, so interface specific parts had to be designed
 	\item associations between internal components needed to be clarified, so lollipop-socket notation was used to express the provided or required interfaces of each part
 \end{itemize}
-
-
-
-In the \autoref{tbl:mappingGoalsOnComponent} is presented a mapping correspondence between the RASD requirements related to each goal and the components identified in the server component diagram. \todo{check} \\
-
-\begin{longtable}{p{0.7\linewidth}p{0.3\linewidth}}
-\toprule
-\textbf{Requirements of goal} & \textbf{Components}\\
-\midrule
-\textbf{G1} Allow guest users to register to the system & \mbox{UserAppServer} \mbox{AccessManager} \mbox{DataProvider} \mbox{UserInformationManager}\\
-\midrule
-\textbf{G2} Allow registered users to authenticate to the system & \mbox{UserAppServer} \mbox{AccessManager} \mbox{DataProvider}\\
-\midrule
-\textbf{G3} Provide logged users with the position of available cars & \mbox{UserAppServer} \mbox{RentManager} \mbox{DataProvider}\\
-\midrule
-\textbf{G4} Notify maintenance service with a list of not available cars & \mbox{MaintenanceManager} \mbox{DataProvider}  \mbox{EventBroker} \mbox{CarHandler}\\
-\midrule
-\textbf{G5} Provide the maintenance service with a way to notify the system when a car is available again & \mbox{MaintenanceManager} \mbox{DataProvider}\\
-\midrule
-\textbf{G6} Provide users with a way to report a damaged car & \mbox{UserAppServer} \mbox{CustomerCareServer}\\
-\midrule
-\textbf{G7} Provide a way to show to each user his rents and payments history & \mbox{UserAppServer} \mbox{UserInformationManager} \mbox{DataProvider}\\
-\midrule
-\textbf{G8} Provide customer service with a way to ban registered users in order to prevent them from reserving or using other cars, and enable them to use the service again & \mbox{CustomerCareServer} \mbox{UserInformationManager} \mbox{DataProvider}\\
-\midrule
-\textbf{G9} Allow a logged user to reserve a car, if available, and hold that reservation for an hour & \mbox{UserAppServer} \mbox{RentManager} \mbox{DataProvider}\\
-\midrule
-\textbf{G10} Charge a user for 1\euro{} in case he hasn't used the car he reserved after an hour from such reservation & \mbox{UserAppServer} \mbox{RentManager} \mbox{DataProvider}\\
-\midrule
-\textbf{G11} Allow a logged user to perform a complete rent: reserving a car, using it and leaving it terminating the rent, accomplishing the payment procedure related to aforementioned rent & \mbox{UserAppServer} \mbox{RentManager} \mbox{EventBroker} \mbox{CarHandler} \mbox{DataProvider}\\
-\midrule
-\textbf{G12} Calculate and charge the user for the correct amount of money he has to pay for his last ride, also considering the various discounts and fees applicable based on the ride & \mbox{RentMaganer} \mbox{CarHandler} \mbox{DataProvider}\\
-\midrule
-\textbf{G13} Allow a logged user to enable a money saving option which provides him with a charging station as destination of the ride to get a discount on the cost of the aforementioned ride & \mbox{UserAppServer} \mbox{RentMaganer} \mbox{DataProvider}\\
-\midrule
-\bottomrule
-\caption{\label{tbl:mappingGoalsOnComponent}Mapping goals on components}
-\end{longtable}
-
-\clearpage
 
 \subsubsection{RentManager component}
 

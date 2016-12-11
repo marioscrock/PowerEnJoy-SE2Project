@@ -503,12 +503,12 @@ Our \emph{Maintenance API} is used by maintenance operators to obtain a list of 
 \subsection{Component interfaces}
 
 \subsubsection{Car-server interfaces}
-All cars are provided with a module that grants TCP/IP connectivity over a dedicated subnet offered by a specific ISP. In order to ensure better security for the communications, in the same subnet is also located the server with the \mbox{\emph{CarEventHandler}} interface and the APIs used by Maintenance and Customer Care services.
+All cars are provided with a module that grants TCP/IP connectivity over a dedicated subnet offered by a specific ISP. In order to ensure better security for the communications, in the same subnet is also located the server with the \mbox{\emph{CarEventHandler}} interface and the API used by Maintenance.
 
-The \emph{CarHandler} component communicates to cars via the \mbox{\emph{CarPrimitives}} external component (using the JAX-RS paradigm) which executes functions directly on car modules using a dedicated built-in connection.
+The \emph{CarHandler} component communicates to cars via the \mbox{\emph{CarPrimitives}} external API (using the JAX-RS API) which executes functions directly on car modules using a dedicated built-in connection.
 
 \subsubsection{Maintenance API interface}
-The Maintenance API must be realized using the REST paradigm. The external maintenance system should query the Maintenance API at predefined time intervals in order to retrieve an updated list of car failures.
+The Maintenance API must be realized using the REST paradigm. The external maintenance system should query the Maintenance API at predefined time intervals in order to retrieve an updated list of car failures paired with proper software keys in order to unlock the doors.
 
 Considering the importance of the operations performed, these security measures must be taken into consideration:
 \begin{itemize}
@@ -519,18 +519,36 @@ The maintenance operators have been provided a smartphone which is connected in 
 Security tokens must be negotiated by our system and the external maintenance service.
 
 \subsubsection{User Application interface}
-The \emph{UserAppIntF} interface is responsible for communications between the user application and the related web server.
-Because of the nature of exchanged data (credit card number, password, and privacy-related information) the protocol to be used is HTTPS.
+The \emph{UserAppIntF} interface is responsible for communications between the user application and the user application server.
+
+Because of the nature of exchanged data (credit card number, password, and privacy-related information), the protocol to be used is HTTPS.
 
 \subsubsection{Customer Care interface}
-Via the \emph{CustomerCareIntF} interface an operator of the customer care service can access the CustomerCare server. All computers used by the customer care service are connected in the same dedicated subnet as the CustomerCare server and this web server is accessible only from the aforementioned subnet. A VPN is used to achieve what mentioned above.
+Via the \emph{CustomerCareIntF} interface is responsible for communications between the customer care application and the CustomerCare server.
+
+All computers used by the customer care service are connected in the same dedicated subnet as the CustomerCare server and this web server is accessible only from the aforementioned subnet. 
+
+A VPN is used to achieve what mentioned above. Because of corporate data exchange, the protocol to be used id HTTPS
 
 \subsubsection{GIS API}
-Using an external API of a \emph{Geographical Information System} our system is able to:
+Using this external API of a \emph{Geographical Information System} our system is able to:
 \begin{itemize}
 	\item retrieve an updated map centered on a given position
 	\item get the latitude and longitude of a given location and vice versa
 \end{itemize}
 
+\subsubsection{DBMS API}
+Trough the DBMS API the system can retrieve and write data into the database. Note that the \mbox{\emph{DataProvider}} component is the only one that access directly this interface.
+
+\subsubsection{Payments API}
+Payment transactions are processed using this external API of a \emph{Web based electronic payment system}.\\
+Information required from this API are in order to complete a payment transaction (fetched from the database):
+\begin{itemize}
+	\item name and surname of the payer
+	\item due amount
+	\item credit card number
+\end{itemize}
+Data encryption must be taken into consideration.\\
+The API response must be the payment outcome in JSON format (succeded or rejected).
 \subsection{Architectural style and patterns}
 \subsection{Other design decision}

@@ -45,8 +45,8 @@
 			Since our system interacts with many external agents, it needs to have different \emph{Communication Interfaces} in order to communicate with them. 
 		\begin{itemize}
 			\item An API is needed to provide \emph{Maintenance Service System} the information it needs to work with us
-			\item A software module is needed to provide the \emph{Customer Care} the functionalitities it needs
-			\item A web server is needed in order to communicate with the users
+			\item A software module is needed in order to provide users functionalities of the system 
+			\item A software module is needed to provide the \emph{Customer Care} the functionalities it needs
 			\item An internal payment software module will deal with the communication with the \emph{External Payment System} 
 			\item A set of modules will manage the communications between the cars and the system: a module to call primitives on cars through the provided API and another one to observe events triggered by the car
 		\end{itemize}
@@ -54,8 +54,6 @@
 			The actual application logic of our system needs to manage the users information, the rents and the cars information; for each of these purposes several software modules are necessary; they will use communication interfaces to communicate with the agents and they will be able to retrieve data from the data interfaces.
 		\paragraph{Data Interface}
 			Our system needs a way to access and store the data it produces or retrieves from external resources, that is why \emph{Data Interface} modules are needed. These modules allows interaction between the \emph{Business Logic} modules and the System Databases; moreover they provide an interface to communicate with the GIS in order to allow the \emph{Business Logic} modules to access its functionalities.
-
-
 
 \subsection{Component view}
 \begin{figure}[h]
@@ -66,6 +64,7 @@
 		High-level components
 	}
 \end{figure}
+
 Considering all the previous graphs, we have identified in \autoref{fig:highLevelComponents} the following high level components, interfaces and mapping of the functionality defined in the RASD:
 \begin{itemize}
 
@@ -89,7 +88,7 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 	
 	\item Customer Care application
 	\begin{itemize}
-		\item View each user profile, including personal information, progress of the current rent, rent and payments history
+		\item View each user profile, including personal information, progress of the current rent, rent and payment history
 		\item Mark and unmark users as banned
 		\item Mark cars as Not Available
 	\end{itemize}
@@ -102,6 +101,7 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 	\item GIS API
 	\begin{itemize}
 		\item Get a map which will be populated with markers
+		\item Get the latitude and  longitude of a given location and vice versa
 	\end{itemize}
 	
 	\item Payments API
@@ -111,7 +111,7 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 	
 	\item Maintenance API
 	\begin{itemize}
-		\item Expose the list of the cars tagged as Not Available with their GPS position and a brief description of the problem
+		\item Expose the list of the cars tagged as Not Available with their GPS position, a brief description of the problem and a software key to access the car
 		\item Tag Not Available cars as Available
 	\end{itemize}
 	
@@ -209,16 +209,6 @@ An example of such an XML file is
 To explain how the Server component manages interfaces, communication with external components and system functionalities we represent in \autoref{fig:ServerComponent} its internal structure showing its main components and their interactions.
 \\
 
-\begin{figure}[h]
-			\centering
-			\includegraphics[angle=90,width=0.9685\linewidth]{ServerComponent}
-			\caption{
-				\label{fig:ServerComponent} 
-				Server component
-			}
-		\end{figure}
-\clearpage
-
 This white box representation shows the parts composing the \emph{Server} component and their interactions by means of lollipop-socket notation. When designing this component's internal structure several concerns and requirements were taken into account:
 \begin{itemize}
 	\item all of its required and provided interfaces had to be delegated to some part of its internal structure
@@ -226,6 +216,16 @@ This white box representation shows the parts composing the \emph{Server} compon
 	\item it had to communicate in different ways with different components, so interface specific parts had to be designed
 	\item associations between internal components needed to be clarified, so lollipop-socket notation was used to express the provided or required interfaces of each part
 \end{itemize}
+
+\begin{figure}[h]
+			\centering
+			\includegraphics[angle=90,width=\linewidth]{ServerComponent}
+			\caption{
+				\label{fig:ServerComponent} 
+				Server component
+			}
+		\end{figure}
+\clearpage
 
 \subsubsection{RentManager component}
 
@@ -388,7 +388,8 @@ The diagram in \autoref{fig:deployment} represents the mapping of the software c
 \paragraph{Redundancy:}in this iteration of the architecture no redundancy of components or devices is present, but it is allowed in prevision of future expansions of the system's infrastructure.
 \paragraph{Fault Tolerance:}deploying different components on different machines allows the system to be easier to recover in case of a problem on one of the machines; for an example the Web Server running the \textit{UserAppServer} component goes down, it can be replaced with another machine and in the mean time the \textit{ApplicationServer} would still be up and running and still be able to provide the \textit{CustomerCareApplication} with its functionalities.
 \clearpage
-\begin{figure}[h!]
+
+\begin{figure}[t!]
 	\centering
 	\includegraphics[width=\linewidth]{deployment}
 	\caption{
@@ -403,7 +404,8 @@ The diagram in \autoref{fig:deployment} represents the mapping of the software c
 \subsubsection{Map}
 The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user.
 
-The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
+The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.\\
+
 
 \begin{figure}[h!]
 	\centering
@@ -580,5 +582,3 @@ Information required from this API are in order to complete a payment transactio
 \end{itemize}
 Data encryption must be taken into consideration.\\
 The API response must be the payment outcome in JSON format (succeded or rejected).
-\subsection{Architectural style and patterns}
-\subsection{Other design decision}

@@ -362,11 +362,34 @@ we decided to design the system on a four tier architecture pattern (see also \l
 		Four tier architecture with internet layer
 	}
 \end{figure}
-\paragraph{Mapping of Server components on architecture:} to clarify at a finer level how the Server components are mapped in the four tier layered architecture the following diagram represent the Server components highlighted in the same color of the tier in the previous diagram:
+\paragraph{Mapping of Server components on architecture:}to clarify at a finer level how the Server components are mapped in the four tier layered architecture the following diagram represents the Server components highlighted in the same color of the tier in the previous diagram:
 \begin{itemize}
-	\item 
+	\item Client: components used by users in order to access the functionalities offered by the system
+		\begin{itemize}
+			\item UserApplication
+			\item CustomerCareApplication
+		\end{itemize}
+	\item Web Server: components which provides interfaces to clients in order to allow them to use functionalities offered by the system
+		\begin{itemize}
+			\item UserAppServer
+			\item CustomerCareServer
+		\end{itemize}
+	\item Business Logic: components which realizes the functionalities offered by the system
+		\begin{itemize}
+			\item RentManager
+			\item AccessManager
+			\item UserInformationManager
+			\item MaintenanceManager
+			\item EventBroker
+			\item CarHandler
+			\item DataProvider
+		\end{itemize}
+	\item Data: components which store and manage the access to the data produced and needed by the Business Logic
+		\begin{itemize}
+			\item DBMS
+		\end{itemize}
 \end{itemize}
-\clearpage
+
 \begin{figure}[h]
 			\centering
 			\includegraphics[angle=90,width=0.9685\linewidth]{deployComponent}

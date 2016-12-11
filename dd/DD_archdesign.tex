@@ -401,7 +401,13 @@ we decided to design the system on a four tier architecture pattern (see also \l
 \clearpage
 
 \subsubsection{Deployment diagram}
-BlaBlaBla\todo{write description}
+This diagram represents the mapping of the software components depicted in \autoref{fig:deployServerComponent} and \autoref{fig:highLevelComponents} on the devices that will run them. Many design concerns were considered while developing this solution.
+\paragraph{Security:}security is ensured in different points of the architecture, in particular the UserAppServer uses HTTPS as communication protocol to communicate with the users; the devices running the CustomerCareApplication component are in a VPN with the device running the CustomerCareServer.
+\paragraph{Scalability:}this model of deployment is scalable in the sense that the system administrators will be able to add more devices and deploy more instances of the needed components when and where performance issues will arise, in order to maintain a minimum level of performance even with loads increase.
+\paragraph{Decoupling:}decoupling in this architecture is present at different levels; in the deployment diagram it is clear that the each of the four tier runs on different devices, moreover the UserAppServer component runs on a different device than the CustomerCareServer, the Maintenance API and the CarEventHandlerIntF.
+\paragraph{Redundancy:}in this iteration of the architecture no redundancy of components or devices is present, but it is allowed in prevision of future expansions of the system's infrastructure.
+\paragraph{Fault Tolerance:}deploying different components on different machines allows the system to be easier to recover in case of a problem on one of the machines; for an example the WebServer running the UserAppServer component goes down, it can be replaced with another machine and in the mean time the ApplicationServer would still be up and running and still be able to provide the CustomerCareApplication with its functionalities.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{deployment}

@@ -55,7 +55,7 @@
 		\paragraph{Data Interface}
 			Our system needs a way to access and store the data it produces or retrieves from external resources, that is why \emph{Data Interface} modules are needed. These modules allows interaction between the \emph{Business Logic} modules and the System Databases; moreover they provide an interface to communicate with the GIS in order to allow the \emph{Business Logic} modules to access its functionalities.
 
-\clearpage
+
 
 \subsection{Component view}
 \begin{figure}[h]
@@ -194,7 +194,7 @@ An example of such an XML file is
 </ChargingStations>
 \end{lstlisting}
 
-\paragraph{Safe areas}Safe areas are also provided as XML file according to the \emph{GPS Exchange Format} and they are composed by a closed broken line.\todo{cite ref}
+\paragraph{Safe areas}Safe areas are also provided as XML file according to the \emph{GPX GPS Exchange Format} \cite{gpx} and they are composed by a closed broken line.\todo{cite ref}
 
 \paragraph{Safe areas and charging stations deployment}The position of charging stations and safe areas are processed and sent to cars only in case of:
 \begin{itemize}
@@ -512,6 +512,20 @@ Considering the importance of the operations performed, these security measures 
 \end{itemize}
 The maintenance operators have been provided a smartphone which is connected in the same dedicated subnet used for cars and for the server with the Maintenance API.
 Security tokens must be negotiated by our system and the external maintenance service.
+
+\subsubsection{User Application interface}
+The \emph{UserAppInt} interface is responsible for communications between the user application and the related web server.
+Because of the nature of exchanged data (credit card number, password, and privacy-related information) the protocol to be used is HTTPS.
+
+\subsubsection{Customer Care interface}
+Via the \emph{CustomerCareInt} interface an operator of the customer care service can access the CustomerCare server. All computers used by the customer care service are connected in the same dedicated subnet as the CustomerCare server and this web server is accessible only from the aforementioned subnet. A VPN is used to achieve what mentioned above.
+
+\subsubsection{GIS API}
+Using an external API of a \emph{Geographical Information System} our system is able to:
+\begin{itemize}
+	\item retrieve an updated map centered on a given position
+	\item get the latitude and longitude of a given location
+\end{itemize}
 
 \subsection{Architectural style and patterns}
 \subsection{Other design decision}

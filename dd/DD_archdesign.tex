@@ -266,24 +266,7 @@ In the \autoref{tbl:mappingGoalsOnComponent} is presented a mapping corresponden
 \end{longtable}
 
 \clearpage
-\subsubsection{Four tier architecture}
-Taking into account that:
-\begin{itemize}
-	\item the \emph{Composition viewpoint} diagram shows the need of database decoupling from the actual system
-	\item in the \emph{Server component view} we can clearly distinguish modules who take care of presentation and communication with the client
-	\item in the \emph{Server component view} we can clearly distinguish modules who take care of the specific application logic
-\end{itemize}
-we decided to design the system on a four tier architecture pattern (see also \hyperref[sec:deploymentView]{Deployment View section}). 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\linewidth]{4TierSunny}
-	\caption{
-		\label{fig:fourTier} 
-		Four tier architecture
-	}
-\end{figure}
 
-\clearpage
 \subsubsection{RentManager component}
 
 \autoref{fig:rentObjectDiagram} shows the internal structure of the Rent Manager component; an \mbox{Object} \mbox{Diagram} was used in order to show the objects realizing the component functionalities and the associations between the aforementioned objects. This diagram also shows the delegation associations between the provided and required interfaces of the components and the objects realizing it.
@@ -362,7 +345,15 @@ These 2 components are responsible for the communication with the cars embedded 
 \clearpage
 
 \subsection{Deployment view}
-\label{sec:deploymentView}
+
+\subsubsection{Four tier architecture}
+Taking into account that:
+\begin{itemize}
+	\item the \emph{Composition viewpoint} diagram shows the need of database decoupling from the actual system
+	\item in the \emph{Server component view} we can clearly distinguish modules who take care of presentation and communication with the client
+	\item in the \emph{Server component view} we can clearly distinguish modules who take care of the specific application logic
+\end{itemize}
+we decided to design the system on a four tier architecture pattern (see also \label{sec:deploymentView}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{4Tier}
@@ -371,7 +362,11 @@ These 2 components are responsible for the communication with the cars embedded 
 		Four tier architecture with internet layer
 	}
 \end{figure}
-
+\paragraph{Mapping of Server components on architecture:} to clarify at a finer level how the Server components are mapped in the four tier layered architecture the following diagram represent the Server components highlighted in the same color of the tier in the previous diagram:
+\begin{itemize}
+	\item 
+\end{itemize}
+\clearpage
 \begin{figure}[h]
 			\centering
 			\includegraphics[angle=90,width=0.9685\linewidth]{deployComponent}

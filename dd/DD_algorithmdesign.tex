@@ -12,7 +12,7 @@ Let $c$ be the base cost of the rent.\\
 Let $F = \lbrace f_1,f_2,\ldots,f_n\rbrace$ be the set of all applicable fees for a specific rent.\\
 Then the final applied fee is $$f = \sum_{f_i\in F} ( f_{iFixed} + f_{iPercentage} \cdot c )$$
 
-\subsection{Money saving option}
+\subsection{Money saving option}\label{sec:msoAlgorithm}
 The Money Saving Option algorithm returns a charging station with available plugs near the destination inserted by the user to ensure a better distribution of cars.
 
 Each charging station is assigned a score considering the distance from the desired destination, the number of cars nearby and its plugs availability. 

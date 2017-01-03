@@ -562,6 +562,7 @@ Our \emph{Maintenance API} is used by maintenance operators to obtain a list of 
 \subsection{Component interfaces}
 
 \subsubsection{Car-server interfaces}
+\label{sec:carServerInt}
 All cars are provided with a module that grants TCP/IP connectivity over a dedicated subnet offered by a specific ISP. In order to ensure better security for the communications, in the same subnet is also located the server with the \mbox{\emph{CarEventHandler}} interface and the API used by Maintenance.
 
 The \emph{CarHandler} component communicates to cars via the \mbox{\emph{CarPrimitives}} external API provided by cars (using the JAX-RS API) which executes functions directly on their modules.

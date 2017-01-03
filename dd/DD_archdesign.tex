@@ -548,7 +548,9 @@ Our \emph{Maintenance API} is used by maintenance operators to obtain a list of 
 \subsubsection{Car-server interfaces}
 All cars are provided with a module that grants TCP/IP connectivity over a dedicated subnet offered by a specific ISP. In order to ensure better security for the communications, in the same subnet is also located the server with the \mbox{\emph{CarEventHandler}} interface and the API used by Maintenance.
 
-The \emph{CarHandler} component communicates to cars via the \mbox{\emph{CarPrimitives}} external API (using the JAX-RS API) which executes functions directly on car modules using a dedicated built-in connection.
+The \emph{CarHandler} component communicates to cars via the \mbox{\emph{CarPrimitives}} external API provided by cars (using the JAX-RS API) which executes functions directly on their modules.
+
+A specific car is reach by the system using its IP address or via ARP protocol using the \emph{MACaddress} database attribute when the IP is unknown.
 
 \subsubsection{Maintenance API interface}
 The Maintenance API must be realized using the REST paradigm. The external maintenance system should query the Maintenance API at predefined time intervals in order to retrieve an updated list of car failures paired with proper software keys in order to unlock the doors.

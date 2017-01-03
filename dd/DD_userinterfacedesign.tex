@@ -1,7 +1,15 @@
 \section{User interface design}
-In this section are presented some mockups of the main features and related user interfaces the system is supposed to offer to the user and to the customer care through the proper web-based application.
+In this section are presented some mockups of the main features and related user interfaces the system is supposed to offer to the user and to the customer care through the proper web-based application. \\
+
+The presented mockups have been designed based on both the \emph{PowerEnJoy: Requirements Analysis and Specification Document}\cite{RASD} and on the architectural design decisions and component interactions presented on this document. \\
+In particular mockups show how the user interface is supposed to offer to the user the possibility to interact and make request to the system (obviously such user's interactions will result in a client-server communication of the user/customer care app view with the related server component based on the protocol chosen for that communication).  \\
+
+The main goal of our mockups design process is to build an interface that clearly distinguish functionalities offered by the system taking into account the architectural decoupling offered by the taken design choices. \\
+
+\clearpage
+
 \subsection{User app}
-The user app must have a charming and intuitive user interface in order to provide a easy-to-use experience to the user. The interface must be optimized for mobile devices even if the application is accessible and must be usable from every web browser on different size devices.
+The user app must have a charming and intuitive user interface in order to provide a easy-to-use experience to the user. The user app is supposed to be a web-based application, so the interface must be optimized for mobile devices even if the application is accessible and must be usable from every web browser on different size devices.
 
 \subsubsection{Login page}
 Simple initial page for the application to allow the user to authenticate to the system through username and password. A new user can access the registration process through the \emph{New User} button. \\
@@ -17,6 +25,7 @@ If a user is not recognized or is banned an error alert is shown when credential
 			}
 		\end{figure}
 		
+\clearpage
 
 \subsubsection{Home page}
 The home page shows to a logged user all the possible functionalities provided from the app:

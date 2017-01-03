@@ -448,6 +448,8 @@ The following sequence diagrams show the interactions between the \mbox{Rent} \m
 	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position
 
 	\item When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated
+	
+	\item When the trigger method is called on \emph{CarHandler}, it enables the requested triggers on the car passed as a parameter. This allows the cars to notify to the system the events related to the aforementioned triggers; these events will be received and dispathced by the \emph{EventBroker}.
 \end{itemize}
 
 \paragraph{Notes}

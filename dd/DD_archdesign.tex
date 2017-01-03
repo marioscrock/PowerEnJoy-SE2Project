@@ -48,13 +48,25 @@
 			\item A software module is needed in order to provide users functionalities of the system 
 			\item A software module is needed to provide the \emph{Customer Care} the functionalities it needs
 			\item An internal payment software module will deal with the communication with the \emph{External Payment System} 
-			\item A set of modules will manage the communications between the cars and the system: a module to call primitives on cars through the provided API and another one to observe events triggered by the car
+			\item A set of modules will manage the communications between the cars and the system: a module to call primitives on cars through the provided API and another one to observe events triggered by the car. When the trigger method is called on \emph{CarClient}, it enables the requested triggers on the car passed as a parameter. This allows the cars to notify to the system the events related to the aforementioned triggers; these events will be received and dispatched by the \emph{EventBroker} to the subscribed components.
 		\end{itemize}
+\clearpage
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{carInterface}
+	\caption{
+		\label{fig:carInterface} 
+		Car communication Interface
+	}
+\end{figure}
+
+
 		\paragraph{Business Logic}
 			The actual application logic of our system needs to manage the users information, the rents and the cars information; for each of these purposes several software modules are necessary; they will use communication interfaces to communicate with the agents and they will be able to retrieve data from the data interfaces.
 		\paragraph{Data Interface}
 			Our system needs a way to access and store the data it produces or retrieves from external resources, that is why \emph{Data Interface} modules are needed. These modules allows interaction between the \emph{Business Logic} modules and the System Databases; moreover they provide an interface to communicate with the GIS in order to allow the \emph{Business Logic} modules to access its functionalities.
 
+\clearpage
 \subsection{Component view}
 \begin{figure}[h]
 	\centering
@@ -449,7 +461,9 @@ The following sequence diagrams show the interactions between the \mbox{Rent} \m
 
 	\item When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated
 	
-	\item When the trigger method is called on \emph{CarHandler}, it enables the requested triggers on the car passed as a parameter. This allows the cars to notify to the system the events related to the aforementioned triggers; these events will be received and dispathced by the \emph{EventBroker}.
+	\item When the trigger method is called on \emph{CarHandler}, it uses the carJPA passed as parameter in order to enable on the correspondent car the triggers passed as parameters; this happens as specified in previous sections.
+	
+	\item The \emph{EventBroker} component calls the notify method on \emph{InUseCarHandler} when a notification is received by a car, as specified in previous sections.
 \end{itemize}
 
 \paragraph{Notes}

@@ -2,3 +2,18 @@
 
 For each step of the integration process above, describe the type of tests that will be used to verify that the elements integrated in this step perform as expected. Describe in general the expected results of the test set. You may refer to Chapter 3 and Chapter 4 of the test plan example [1] as an example of what we expect.
 (NOTE: This is not a detailed description of test protocols. Think of this as the test design phase. Specific protocols will be written to fulfill the goals of the tests in this section.)
+
+\begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+\hline \textbf{ExampleFunction(argument1,argument2)} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null parameter & A NullArgumentException is raised.\\
+\midrule
+A non valid argument1 & An InvalidArgumentValueException is
+raised. \\
+\midrule
+A set of valid parameters & The example function is executed and 42 is returned. \\
+\bottomrule
+\caption{\emph{ExampleFunction} Test description}
+\end{longtable}

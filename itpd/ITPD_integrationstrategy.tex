@@ -17,7 +17,44 @@ The integration process can start when these conditions are met by the system de
 \end{itemize}
 
 \subsection{Elements to be integrated}
-Identify the components to be integrated, refer to your design document to identify such components in a way that is consistent with your design.
+In this section we identify the components and subcomponents to be integrated and add some details about their specific integration.\\
+
+As specified in the design document, some component of the PowerEnJoy system such as the \emph{Rent Manager} and the \emph{Maintenance Manager} are rather complex and thus its internal subcomponents need to be integrated before proceeding with the integration of entire components with other components of the system.\\
+
+The following components will be integrated to obtain the subsystem related to the Maintenance functionalities:
+
+\begin{itemize}
+	\item \emph{Maintenance Manager}
+	\item \emph{Event Broker}
+	\item \emph{Data Provider}
+	\item \emph{Car Handler}
+\end{itemize}
+
+The following components will be integrated to obtain the subsystem related to the User Application functionalities:
+
+\begin{itemize}
+	\item \emph{User Application}
+	\item \emph{UserApp Server}
+	\item \emph{Access Manager}
+	\item \emph{Rent Manager}
+	\item \emph{User Information Manager}
+	\item \emph{Data Provider}
+	\item \emph{Car Handler}
+	\item \emph{Event Broker}
+\end{itemize}
+
+The following components will be integrated to obtain the subsystem related to the Customer Care functionalities:
+
+\begin{itemize}
+	\item \emph{Customer Care Application}
+	\item \emph{Customer Care Server}
+	\item \emph{User Information Manager}
+	\item \emph{Data Provider}
+\end{itemize}
+
+\paragraph{Notes}
+The external components like the \emph{DBMS} and the external APIs are products that are not developed by us and that we suppose already completely tested; however we decided to include them in the integration testing by firstly testing the external component's interfaces on their own, and the by proceeding to test them when integrated with PowerEnJoy components.\\
+In the same way the Maintenance Manger will be tested as a component integrated with our system and then it will be tested through the Maintenance API it provides to the maintenance company. 
 
 \subsection{Integration Testing Strategy}
 A Bottom-up approach was chosen because most of the functionalities and the complexity is located in lower level components of our system, hence it is a better choice to test them first and ensure that they work well together before higher level components.
@@ -35,11 +72,11 @@ The diagram above shows the needed precedences in the integration phase between 
 				\label{fig:overallIntegration} 
 				\emph{Overall Component Integration Diagram}
 			}
-		\end{figure}
+	\end{figure}
 
 \clearpage
 
-\subsubsection{Unit Testing} 
+\subsubsection{Subcomponent Integration} 
 Fare unit test con attenzione a queste precedenze nei seguenti componenti.
 \todo{tradurre e sistemare}
 

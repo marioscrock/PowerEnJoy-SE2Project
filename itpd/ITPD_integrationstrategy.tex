@@ -1,9 +1,20 @@
 \section{Integration Strategy}
 
 \subsection{Entry Criteria}
-\todo{da rivedere, guarda keep}
 The following conditions have to be verified before entering the integration testing phase in order for it to produce meaningful results.\\
-All of the components of the PowerEnJoy system must have passed unit testing with high percentage of covering, so that it is much likely that any problem discovered by integration testing is actually due to integration problems.
+
+A fundamental initial criterion is that the development of the components and their functionalities proceeds together with the unit testing on such components, so that even when the components are not fully developed, they have already been tested at unit level w.r.t. the fully developed functionalities. 
+Given the aforementioned criterion, before entering the integration phase, the development percentage of a component must be at least 90\% and the main functionalities required to test its integration w.r.t. another component of the system must be fully developed.\\
+
+The integration process can start when these conditions are met by the system development
+\begin{itemize}
+	\item 100\% of development on the \emph{Data Provider} component
+	\item 90\% of development on the \emph{Event Broker} and \emph{Car Handler} components
+	\item 80\% of development on the \emph{Rent Manager} component
+	\item 60\% of development on the \emph{Maintenance Manager} component
+	\item 40\% of development on the \emph{User Information Manager} and \emph{Access Manager} components
+	\item 30\% of development on the \emph{User Application Server}, \emph{User Application}, \emph{Customer Care Server} and \emph{Customer Care Application} components
+\end{itemize}
 
 \subsection{Elements to be integrated}
 Identify the components to be integrated, refer to your design document to identify such components in a way that is consistent with your design.

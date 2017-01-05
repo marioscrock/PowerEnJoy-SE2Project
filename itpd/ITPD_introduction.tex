@@ -1,8 +1,7 @@
 \section{Introduction}
 
 \subsection{Purpose of this document}
-The purpose of the PowerEnJoy Integration Test Plan Document is to describe how the integration testing is going to be accomplished for the PowerEnJoy system; it describes the entry criteria of each component for the integration, the integration strategy of the software and the subsystems and the actual integration tests.
-\todo{also tools, equipment stubs and data required}
+The purpose of the PowerEnJoy Integration Test Plan Document is to describe how the integration testing is going to be accomplished for the PowerEnJoy system; it describes the entry criteria of each component for the integration, the integration strategy of the software and the subsystems, the actual integration sequence and how to verify that the components integrated perform as expected in each step of the sequence. The document also describes the tools and equipment required for testing and highlights the stubs/drivers and data required for the integration process.
 
 \subsection{Scope}
 PowerEnJoy is a car-sharing service that exclusively employs electric cars; we are going to develop a web-based software system that will provide the functionalities normally provided by car-sharing services, such as allowing the user to register to the system in order to access it, showing the cars available near a given location and allowing a user to reserve a car before picking it up.
@@ -10,25 +9,20 @@ A screen located inside the car will show in real time the ride amount of money 
 
 \subsection{Glossary}
 \todo{GLOSSARY to be checked}
-The \emph{PowerEnJoy: Requirements Analysis and Specification Document}\cite{RASD} should be referenced for terms not defined in this section.
-\subsubsection{Definitions}
-	\begin{description}
-		\item [Base cost:] cost before any discount or fee application, obtained from rent time and time-based cost
-	\end{description}
+The \emph{PowerEnJoy: Requirements Analysis and Specification Document}\cite{RASD} and the \emph{PowerEnJoy: Design Document}\cite{DD} should be referenced for terms not defined in this section.
+
 \subsubsection{Acronyms}
 	\begin{description}
 		\item [RASD:] Requirements Analysis and Specification Document
 		\item [DD:] Design Document
+		\item [ITPD:] Integration Test Plan Document
 		\item [API:] Application Programming Interface
 		\item [GPS:] Global Position System
 		\item [DB:] DataBase
 		\item [DBMS:] DataBase Management System
 		\item [GIS:] Geographic Information System
-		\item [ER:] Entity Relationship Model
-		\item [XML:] eXtensible Markup Language
 		\item [REST API:] REpresentational State Transfer API
 		\item [JAX-RS:] JAVA API for REST Web Services
-		\item [ISP:] Internet Service Provider
 	\end{description}
 \subsubsection{Abbreviations}
 	\begin{description}
@@ -45,13 +39,12 @@ Context, domain assumptions, goals, requirements and system interfaces are all d
 Software design and architecture of the system are all described in the \emph{PowerEnJoy: Design Document}.\cite{DD}\\
 
 \subsection{Document overview}
-\todo{add description}
 This document is structured as
 \begin{enumerate}
 	\item \textbf{Introduction}: contains refereces, glossary, definitions, acronyms and abbreviations; it also explains the purpose and scope of this document
 	\item \textbf{Integration Strategy}: this section explains the integration strategy for the PoweEnJoy car sharing system and the reasons that brought us to choose such strategy.
-	\item \textbf{Individual Steps and Test Description}: ...
-	\item \textbf{Tools and Test Equipment Required}: ...
-	\item \textbf{Program Stubs and Test Data Required}: ...
+	\item \textbf{Individual Steps and Test Description}: for each step of the sequence describes how to verify that the components integrated perform as expected.
+	\item \textbf{Tools and Test Equipment Required}
+	\item \textbf{Program Stubs and Test Data Required}
 	\item \textbf{Appendices}: it contains references, software and tools used and hours of work per each team member
 \end{enumerate}

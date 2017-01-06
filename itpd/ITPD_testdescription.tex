@@ -3,6 +3,10 @@
 For each step of the integration process above, describe the type of tests that will be used to verify that the elements integrated in this step perform as expected. Describe in general the expected results of the test set. You may refer to Chapter 3 and Chapter 4 of the test plan example [1] as an example of what we expect.
 (NOTE: This is not a detailed description of test protocols. Think of this as the test design phase. Specific protocols will be written to fulfill the goals of the tests in this section.)
 
+\subsection{Test Description}
+
+\subsubsection{Example1, Example2}
+
 \begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
 \hline \textbf{ExampleFunction(argument1,argument2)} \\
 \toprule
@@ -17,3 +21,72 @@ A set of valid parameters & The example function is executed and 42 is returned.
 \bottomrule
 \caption{\emph{ExampleFunction} Test description}
 \end{longtable}
+
+\subsubsection{RentManager, DataProvider}
+getFromFile(safeAreas) \\
+getFromFile(chargingStations) \\
+query(queryToMake) \\
+createCarJPA(carID) \\
+createReservationJPA(carID, userID) \\
+createRentJPA(rentInfo) \\
+createPaymentJPA(rent, discounts, fees, pending) \\ %pending??
+findReservedCar(userID) %returns JPA of the Car reserved by the user ID\\
+
+\subsubsection{RentManager, CarHandler}
+getBattery(listOfCars) \\
+unlock(carJPA) \\
+trigger(carJPA, myTriggers) \\
+removeTrigger(carJPA, myTriggers) \\
+getParameters(parameters) \\ %parameters example such as batteryLevel, passengers ecc...
+
+\subsubsection{RentManager, EventBroker}
+subscribe(component, carJPA) \\
+\textbf{ATTENZIONE interazione al contrario (da EB a RM) e reazione dipende dal tipo di evento: come lo testo?} \\
+notify(carID, event) \\
+\emph{events taken by SD engineOn, engineOff, NoPassengers, doorsClosed}
+
+\subsubsection{MaintenanceManager, DataProvider}
+getFailuresToBeFixed()\\
+fixFailureTagAvailable(failureID)
+
+\subsubsection{MaintenanceManager, CarHandler}
+getSoftwareKeys(carsList) 
+
+\subsubsection{MaintenanceManager, EventBroker}
+subscribe(component, carJPA) \\
+\textbf{ATTENZIONE interazione al contrario (da EB a MM) e reazione dipende dal tipo di evento: come lo testo?} \\
+notify(carID, event) \\
+\emph{events taken by SD batteryLevelCritical}
+
+\subsubsection{UserInformationManager/AccessManager, DataProvicer}
+query(queryToMake) \textbf{?? BOH}
+
+\subsubsection{UserAppServer, RentManager}
+getMapAvailableCars(position) \\
+reserveCar(userID, carID, MSOOptionBoolean) \\
+carUnlock(userID) \\
+
+\subsubsection{UserAppServer, AccessManager}
+login(username, password) %returns user ID
+
+\subsubsection{UserAppServer, UserInformationManager}
+getUserInfo(userID)
+getRentHistory(userID) \\
+getPaymentHistory(userID) \\
+
+\subsubsection{CustomerCareServer, UserInformationManager}
+getUserInfo(userID)
+getRentHistory(userID) \\
+getPaymentHistory(userID) \\
+markUser(userID, bannedBoolean) \\
+tagCarAsNotAvailable(carID) \\
+
+
+
+
+
+
+
+
+
+

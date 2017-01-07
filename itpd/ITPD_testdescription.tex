@@ -21,30 +21,127 @@ A set of valid parameters & The example function is executed and 42 is returned.
 \end{longtable}
 
 \subsubsection{RentManager, DataProvider}
-getFromFile(fileName) \\
-query(queryToMake) \\
-createCarJPA(carID) \\
-createReservationJPA(carID, userID) \\
-createRentJPA(rentInfo) \\
-createPaymentJPA(rent, discounts, fees, paymentStatus) \\ %pending??
-findReservedCar(userID) %returns JPA of the Car reserved by the user ID
+query(queryToMake)\todo{creare metodo da carHandler a dataProvider } \\
 
+%getFromFile(searchFor)
+\begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
+\multicolumn{2}{c}{\textbf{getFromFile(searchFor)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null searchFor & A NullArgumentException is raised.\\
+\midrule
+The corresponding file does not exists & A FileNotFoundException is raised. \\
+\midrule
+The parameter value does not correspond to any known file & An InvalidArgumentValueException is raised. \\
+\midrule
+The parameter value corresponds to a known existing file & The pointer to the correct file is returned. \\
+\bottomrule
+\caption{\emph{getFromFile(searchFor)} test description}
+\end{longtable}
+
+
+%createCarJPA(carID)
+\begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
+\multicolumn{2}{c}{\textbf{createCarJPA(carID)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null carID & A NullArgumentException is raised.\\
+\midrule
+A carID which does not correspond with any car in the DB & An InvalidArgumentValueException is raised. \\
+\midrule
+A carID which identifies a car in the DB & A JPA class mapped to the car identified by the carID in the DB is returned. \\
+\bottomrule
+\caption{\emph{createCarJPA(carID)} test description}
+\end{longtable}
+
+
+%createReservationJPA(carID, userID)
+\begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
+\multicolumn{2}{c}{\textbf{createReservationJPA(carID, userID)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null carID and/or a null userID & A NullArgumentException is raised.\\
+\midrule
+A carID which does not correspond to any car and/or a userID does not correspond to any user in the DB & An InvalidArgumentValueException is raised. \\
+\midrule
+The user identified by the userID has already more than zero reservation & An AtMostOneReservationException is raised. \\
+\midrule
+The user identified by the userID is performing a rent & An NoReservationDuringARentException is raised. \\
+\midrule
+The carStatus DB attribute of the car identified by the carID is not \emph{Available} & A NotReservableCarException is raised. \\
+\midrule
+The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents & \begin{itemize}
+	\item A new reservation for the specified car and user and with the current timestamp is created in the DB
+	\item the carStatus attribute of the specified car changes to \emph{Reserved}
+	\item the JPA class mapped to the new reservation is returned.
+\end{itemize} \\
+\bottomrule
+\caption{\emph{createReservationJPA(carID, userID)} test description}
+\end{longtable}
+
+%createPaymentJPA(rent, discounts, fees, paymentStatus)
 \begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
-\hline \textbf{findReservedCar(userID)} \\
+\multicolumn{2}{c}{\textbf{createPaymentJPA(rent, discounts, fees, paymentStatus)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null rent and/or a null discounts array and/or a null fees array and/or a null paymentStatus & A NullArgumentException is raised.\\
+\midrule
+A rent with endTimestamp and/or endLocation null attributes & An InvalidArgumentValueException is raised. \\
+\midrule
+An unknown paymentStatus & An InvalidArgumentValueException is raised. \\
+\midrule
+\begin{itemize}
+\item An empty array of discounts and/or an empty array of fees
+\item A not empty array of discounts and/or a not empty array of fees
+\end{itemize} & The applied fee and applied discount are computed, a new payment is inserted properly in the DB with the paymentStatus attribute as \emph{Pending}\\
+\bottomrule
+\caption{\emph{createPaymentJPA(rent, discounts, fees, paymentStatus)} test description}
+\end{longtable}
+
+%createRentJPA(startLocation, startTimestamp, car, msoStation)
+\begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+\multicolumn{2}{c}{\textbf{createRentJPA(startLocation, startTimestamp, car, msoStation)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null startLocation and/or a null startTimer and/or a null car & A NullArgumentException is raised.\\
+\midrule
+A startTimestamp in the future & An InvalidArgumentValueException is raised. \\
+\midrule
+A wrong format of startTimestamp & An InvalidArgumentValueException is raised. \\
+\midrule
+A wrong format of startLocation & An InvalidArgumentValueException is raised. \\
+\midrule
+The carStatus DB attribute of the specified car is not \emph{Reserved} & A CarNotReservedException is raised. \\
+\midrule
+A msoStation parameter which does not identify any charging station in the DB & An InvalidArgumentValueException is raised. \\
+\midrule
+Proper startLocation, startTimestamp and car parameters, null msoStation & A new payment (paired with the user that has reserved the car) is inserted properly in the DB with endTimestamp, endLocation and moneySavingOption attributes set to null.\\
+\midrule
+Proper \mbox{startLocation}, startTimestamp and car parameters, \mbox{msoStation} parameter valid and not null & A new payment (paired with the user that has reserved the car) is inserted properly in the DB with endTimestamp, endLocation attributes set to null.\\
+\bottomrule
+\caption{\emph{createRentJPA(startLocation, startTimestamp, car, msoStation)} test description}
+\end{longtable}
+
+%findReservedCar(userID)
+\begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+\multicolumn{2}{c}{\textbf{findReservedCar(userID)}} \\
 \toprule
 \emph{Input} & \emph{Expected output} \\
 \midrule
 A null userID & A NullArgumentException is raised.\\
 \midrule
-An unknown userID  & An InvalidArgumentValueException is
-raised. \\
+An unknown userID  & An InvalidArgumentValueException is raised. \\
 \midrule
-A valid userID without a current reservation & A NoReservedCarException is
-raised. \\
+A valid userID identifying a user without an active reservation & A NoReservedCarException is raised. \\
 \midrule
-A valid userID with a current reservation & A CarJPA related to the car currently reserved by the user associated with the userID argument is returned \\
+A valid userID identifying a user with an active reservation & A CarJPA related to the car currently reserved by the user associated with the userID argument is returned.\\
 \bottomrule
-\caption{\emph{ExampleFunction} Test description}
+\caption{\emph{ExampleFunction} test description}
 \end{longtable}
 
 \subsubsection{RentManager, CarHandler}

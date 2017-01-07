@@ -23,14 +23,13 @@ A set of valid parameters & The example function is executed and 42 is returned.
 \end{longtable}
 
 \subsubsection{RentManager, DataProvider}
-getFromFile(safeAreas) \\
-getFromFile(chargingStations) \\
+getFromFile(fileName) \\
 query(queryToMake) \\
 createCarJPA(carID) \\
 createReservationJPA(carID, userID) \\
 createRentJPA(rentInfo) \\
-createPaymentJPA(rent, discounts, fees, pending) \\ %pending??
-findReservedCar(userID) %returns JPA of the Car reserved by the user ID\\
+createPaymentJPA(rent, discounts, fees, paymentStatus) \\ %pending??
+findReservedCar(userID) %returns JPA of the Car reserved by the user ID
 
 \subsubsection{RentManager, CarHandler}
 getBattery(listOfCars) \\
@@ -39,12 +38,6 @@ trigger(carJPA, myTriggers) \\
 removeTrigger(carJPA, myTriggers) \\
 getParameters(parameters) \\ %parameters example such as batteryLevel, passengers ecc...
 
-\subsubsection{RentManager, EventBroker}
-subscribe(component, carJPA) \\
-\textbf{ATTENZIONE interazione al contrario (da EB a RM) e reazione dipende dal tipo di evento: come lo testo?} \\
-notify(carID, event) \\
-\emph{events taken by SD engineOn, engineOff, NoPassengers, doorsClosed}
-
 \subsubsection{MaintenanceManager, DataProvider}
 getFailuresToBeFixed()\\
 fixFailureTagAvailable(failureID)
@@ -52,34 +45,37 @@ fixFailureTagAvailable(failureID)
 \subsubsection{MaintenanceManager, CarHandler}
 getSoftwareKeys(carsList) 
 
-\subsubsection{MaintenanceManager, EventBroker}
-subscribe(component, carJPA) \\
-\textbf{ATTENZIONE interazione al contrario (da EB a MM) e reazione dipende dal tipo di evento: come lo testo?} \\
-notify(carID, event) \\
-\emph{events taken by SD batteryLevelCritical}
-
-\subsubsection{UserInformationManager/AccessManager, DataProvicer}
-query(queryToMake) \textbf{?? BOH}
-
 \subsubsection{UserAppServer, RentManager}
 getMapAvailableCars(position) \\
 reserveCar(userID, carID, MSOOptionBoolean) \\
 carUnlock(userID) \\
 
-\subsubsection{UserAppServer, AccessManager}
+\subsubsection{CustomerCareServer, DataProvider}
+setUserStatus(userID, bannedBoolean) \\
+tagCarAsNotAvailable(carID) \\
+
+
+\paragraph{UserAppServer, AccessManager}
 login(username, password) %returns user ID
 
-\subsubsection{UserAppServer, UserInformationManager}
-getUserInfo(userID)
+\paragraph{AccessManager, DataProvider} 
+description \\
+query(queryToMake)
+
+\paragraph{UserInformationManager, DataProvider} 
+description \\
+query(queryToMake)
+
+\paragraph{UserAppServer, UserInformationManager}
+getUserInfoUAS(userID)
 getRentHistory(userID) \\
 getPaymentHistory(userID) \\
 
-\subsubsection{CustomerCareServer, UserInformationManager}
-getUserInfo(userID)
+\paragraph{CustomerCareServer, UserInformationManager}
+getUserInfoCCS(userID) \\
+getUsers()
 getRentHistory(userID) \\
 getPaymentHistory(userID) \\
-markUser(userID, bannedBoolean) \\
-tagCarAsNotAvailable(carID) \\
 
 
 

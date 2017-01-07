@@ -1,7 +1,20 @@
 \section{Program Stubs and Test Data Required}
-
-Based on the testing strategy and test design, identify any program stubs or special test data required for each integration step.
+Based on the testing strategy chosen and tests description presented, this section identifies program stubs/drivers and tests data required for the integration phase.
 
 \subsection{Drivers Required}
+As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy} section we decide to use a bottom-up strategy to test the integration of the \emph{Power EnJoy} system components. This type of strategy implies the necessity to build drivers (pieces of software) to simulate components, not already integrated, invoking methods on the integrated components we are currently testing. \\
+
+The main drivers needed to complete the integration test plan are:
+\begin{itemize}
+	\item \textbf{DataProviderDriver}: this driver is used to invoke methods exposed by the \emph{DataProvider} component in order to test its integration with the DBMS component
+	\item \textbf{CarHandlerDriver}: this driver is used to invoke methods exposed by the \emph{CarHandler} component in order to test its integration with the \emph{DataProvider} component and the external API provided by cars
+	\item \textbf{EventBrokerDriver}: this driver is used to act like a subscriber of the \emph{EventBroker} component in order to test its integration with its related interface (\textbf{note} so it must also allows a stub-like behaviour in order to verify subscribers are correctly notified of events published on the \emph{CarEventHandlerIntF})
+	\item \textbf{UserInformationManagerDriver}: this driver is used to invoke methods exposed by the \emph{UserInformationManager} component in order to test its integration with the \emph{DataProvider} component
+	\item \textbf{AccessManagerDriver}: this driver is used to invoke methods exposed by the \emph{AccessManager} component in order to test its integration with the \emph{DataProvider} component
+	\item \textbf{RentManagerDriver}: this driver is used to invoke methods exposed by the \emph{RentManager} component in order to test its integration with the \emph{EventBroker},  \emph{CarHandler}, \emph{DataProvider} components and the GIS and Payments API interfaces
+	\item \textbf{MaintenanceManagerDriver}: this driver is used to invoke methods exposed by the \emph{MaintenanceManager} component in order to test its integration with the \emph{EventBroker},  \emph{CarHandler} and \emph{DataProvider} components (\textbf{note} it may also be useful to develop a MaintenanceAPIIntfDriver in order to test also invocation of interface methods from the point of view of an external user of the API)
+	\item \textbf{UserAppServerDriver}: this driver is used to invoke methods exposed by the \emph{UserAppServer} component in order to test its integration with the \emph{RentManager}, \emph{UserInformationManager} and \emph{AccessManager} components
+	\item \textbf{CustomerCareServerDriver}: this driver is used to invoke methods exposed by the \emph{CustomerCareServer} component in order to test its integration \emph{UserInformationManager} and \emph{DataProvider} components
+\end{itemize}
 
 \subsection{Data Required}

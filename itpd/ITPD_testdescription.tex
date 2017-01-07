@@ -5,8 +5,6 @@ For each step of the integration process above, describe the type of tests that 
 
 \subsection{Test Description}
 
-\subsubsection{Example1, Example2}
-
 \begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
 \hline \textbf{ExampleFunction(argument1,argument2)} \\
 \toprule
@@ -23,14 +21,31 @@ A set of valid parameters & The example function is executed and 42 is returned.
 \end{longtable}
 
 \subsubsection{RentManager, DataProvider}
-getFromFile(safeAreas) \\
-getFromFile(chargingStations) \\
+getFromFile(fileName) \\
 query(queryToMake) \\
 createCarJPA(carID) \\
 createReservationJPA(carID, userID) \\
 createRentJPA(rentInfo) \\
-createPaymentJPA(rent, discounts, fees, pending) \\ %pending??
-findReservedCar(userID) %returns JPA of the Car reserved by the user ID\\
+createPaymentJPA(rent, discounts, fees, paymentStatus) \\ %pending??
+findReservedCar(userID) %returns JPA of the Car reserved by the user ID
+
+\begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+\hline \textbf{findReservedCar(userID)} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null userID & A NullArgumentException is raised.\\
+\midrule
+An unknown userID  & An InvalidArgumentValueException is
+raised. \\
+\midrule
+A valid userID without a current reservation & A NoReservedCarException is
+raised. \\
+\midrule
+A valid userID with a current reservation & A CarJPA related to the car currently reserved by the user associated with the userID argument is returned \\
+\bottomrule
+\caption{\emph{ExampleFunction} Test description}
+\end{longtable}
 
 \subsubsection{RentManager, CarHandler}
 getBattery(listOfCars) \\
@@ -39,12 +54,6 @@ trigger(carJPA, myTriggers) \\
 removeTrigger(carJPA, myTriggers) \\
 getParameters(parameters) \\ %parameters example such as batteryLevel, passengers ecc...
 
-\subsubsection{RentManager, EventBroker}
-subscribe(component, carJPA) \\
-\textbf{ATTENZIONE interazione al contrario (da EB a RM) e reazione dipende dal tipo di evento: come lo testo?} \\
-notify(carID, event) \\
-\emph{events taken by SD engineOn, engineOff, NoPassengers, doorsClosed}
-
 \subsubsection{MaintenanceManager, DataProvider}
 getFailuresToBeFixed()\\
 fixFailureTagAvailable(failureID)
@@ -52,34 +61,37 @@ fixFailureTagAvailable(failureID)
 \subsubsection{MaintenanceManager, CarHandler}
 getSoftwareKeys(carsList) 
 
-\subsubsection{MaintenanceManager, EventBroker}
-subscribe(component, carJPA) \\
-\textbf{ATTENZIONE interazione al contrario (da EB a MM) e reazione dipende dal tipo di evento: come lo testo?} \\
-notify(carID, event) \\
-\emph{events taken by SD batteryLevelCritical}
-
-\subsubsection{UserInformationManager/AccessManager, DataProvicer}
-query(queryToMake) \textbf{?? BOH}
-
 \subsubsection{UserAppServer, RentManager}
 getMapAvailableCars(position) \\
 reserveCar(userID, carID, MSOOptionBoolean) \\
 carUnlock(userID) \\
 
-\subsubsection{UserAppServer, AccessManager}
+\subsubsection{CustomerCareServer, DataProvider}
+setUserStatus(userID, bannedBoolean) \\
+tagCarAsNotAvailable(carID) \\
+
+
+\paragraph{UserAppServer, AccessManager}
 login(username, password) %returns user ID
 
-\subsubsection{UserAppServer, UserInformationManager}
-getUserInfo(userID)
+\paragraph{AccessManager, DataProvider} 
+description \\
+query(queryToMake)
+
+\paragraph{UserInformationManager, DataProvider} 
+description \\
+query(queryToMake)
+
+\paragraph{UserAppServer, UserInformationManager}
+getUserInfoUAS(userID)
 getRentHistory(userID) \\
 getPaymentHistory(userID) \\
 
-\subsubsection{CustomerCareServer, UserInformationManager}
-getUserInfo(userID)
+\paragraph{CustomerCareServer, UserInformationManager}
+getUserInfoCCS(userID) \\
+getUsers()
 getRentHistory(userID) \\
 getPaymentHistory(userID) \\
-markUser(userID, bannedBoolean) \\
-tagCarAsNotAvailable(carID) \\
 
 
 

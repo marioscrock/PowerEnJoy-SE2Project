@@ -1,6 +1,7 @@
 \section{Integration Strategy}
 
 \subsection{Entry Criteria}
+\label{sec:entryCriteria}
 The following conditions have to be verified before entering the integration testing phase in order for it to produce meaningful results.\\
 
 A fundamental initial criterion is that the development of the components and their functionalities proceeds together with the unit testing on such components, so that even when the components are not fully developed, they have already been tested at unit level w.r.t. the fully developed functionalities. 
@@ -57,8 +58,8 @@ The external components like the \emph{DBMS} and the external APIs are products 
 In the same way the Maintenance Manger will be tested as a component integrated with our system and then it will be tested through the Maintenance API it provides to the maintenance company. 
 
 \subsection{Integration Testing Strategy}
-A Bottom-up approach was chosen because most of the functionalities and the complexity is located in lower level components of our system, hence it is a better choice to test them first and ensure that they work well together before higher level components.
-
+Both bottom-up and top-down were taken in consideration when thinking of the integration strategy for the PowerEnJoy system; looking at the structure and composition of the system it is clear the most complex and relevant functionalities are located in the lower end tiers, which are also the most independent ones. Moreover as stated in \hyperref[sec:entryCriteria]{Section 2.1} those will be the only fully developed components at the time of starting the integration process since the software development of the PowerEnJoy system will proceed using the bottom-up approach. These considerations brought us to lean towards a bottom-up approach that will allow the lower end components to be tested and integrated before any other component; doing so any issue or problem in the integration phase of these components will be found at an early stage in the integration process, and so it will be easier to tackle it and solve it, while maintaining as much parallelism and decoupling as possible.\\
+Given that some functionalities of the system are decoupled, during the integration process some steps of the integration sequence will have the same priority. In those cases the critical-module-first approach will be used in order to integrate and test the riskiest  components first and solve their issues before they create worse problems in the integration process.
 \subsection{Sequence of Component Integration}
 Depends on strategy chosen, this is a proposed structure.
 

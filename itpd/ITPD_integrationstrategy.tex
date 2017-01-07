@@ -67,7 +67,7 @@ This section describes the proposed plan for the integration test phase of the P
 \subsubsection{Overall Component Integration Diagram}  \label{sec:overallPrecedences}
 The diagram above shows the needed precedences in the integration phase between the main components of the system taking into account the integration testing strategy chosen.
 
-\paragraph{NOTES} In the following diagram we represent with arrows the precedences needed between the components, the purpose is to indicate that following the strategy chosen a component can be integrated with another one only if that component has already been integrated with all the component it needs to be integrated with (arrows point from the \emph{<need integration>} component to the \emph{<needed integration>} one, numbers are shown to clearify order of the integration and steps that are possibly made in parallel).\\
+\paragraph{NOTES} In the following diagram we represent with arrows the precedences needed between the components, the purpose is to indicate that following the strategy chosen a component can be integrated with another one only if that component has already been integrated with all the components it needs to be integrated with (arrows point from the \emph{<need integration>} component to the \emph{<needed integration>} one, numbers are shown to clearify order of the integration and steps that are possibly made in parallel).\\
 
 
 	\begin{figure}[h]
@@ -126,10 +126,10 @@ The diagram above shows the needed precedences in the integration phase inside t
 \clearpage 
 
 \subsubsection{Component Integration}
-This section describes the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy section} we decide to start the bottom-up integration from the components related to the critical functionality of the system (such as the communication with cars); even if the steps are proposed sequentially following these criteria, it is clear the sequence proposed presents the possibility to make same integration steps in parallel given the needed precedences between components presented in the \hyperref[sec:overallPrecedences]{Overall Component Integration Diagram}.
+This section describes the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy section} we decide to start the bottom-up integration from the components related to the critical functionalities of the system (such as the communication with cars); even if the steps are proposed sequentially following these criteria, it is clear the sequence proposed presents the possibility to make same integration steps in parallel given the needed precedences between components presented in the \hyperref[sec:overallPrecedences]{Overall Component Integration Diagram}.
 
 \paragraph{DataProvider} 
-The first step of our integration sequence is to the integrate the \emph{DataProvider} component with the DBMS component.
+The first step of our integration sequence is to integrate the \emph{DataProvider} component with the DBMS component.
 \paragraph{}
 
 		\begin{figure}[h]
@@ -223,8 +223,8 @@ After that, we first integrate the \emph{CustomerCareServer} with the \emph{User
 \clearpage 
 
 \subsubsection{Subsystem Integration Sequence}
-Once the three major subsystem have been fully integrated tested we integrate them together to test the whole system and its functionalities together; so we test the integration of the maintenance-related subsystem (figure \ref{fig:maintenanceManager}), the user-related subsystem (figure \ref{fig:userAppServer}) and the customer-care-related subsystem (figura \ref{fig:ccAppServer}).
-This step may be split in different kind of tests on local machines but also on the real architecture we will use for our system in order to provide reliable tests data also about performances and network issues.\\
+Once the three major subsystem have been fully integrated and tested we integrate them together to test the whole system and its functionalities together; so we test the integration of the maintenance-related subsystem (figure \ref{fig:maintenanceManager}), the user-related subsystem (figure \ref{fig:userAppServer}) and the customer-care-related subsystem (figura \ref{fig:ccAppServer}).
+This step may be split in different kind of tests on local machines but also on the real architecture we will use for our system in order to provide reliable test data also about performances and network issues. \\
 
 	\begin{figure}[h]
 			\centering

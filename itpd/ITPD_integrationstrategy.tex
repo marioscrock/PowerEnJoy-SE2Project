@@ -168,7 +168,7 @@ The integration between the \emph{UserInformationManager} and the \emph{DataProv
 		\end{figure}
 		
 \paragraph{RentManager} 
-After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{RentManager}. We also integrate the \emph{RentManager} component with the external APIs related to the GIS and the Payment System testing the interfaces between our system component and them. This integration step is really critical to the functionality provided by our system and a lot of care must be given to the integration of the \emph{RentManager} with the components communicating with the car and the consistency between information provided by cars and information in our database.  \\
+After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{RentManager}. We also integrate the \emph{RentManager} component with the external APIs related to the GIS and the Payment System testing the interfaces between our system component and them. This integration step is really critical to the functionality provided by our system and a lot of care must be given in the integration tests of the \emph{RentManager} on the communication with cars and the consistency between information provided by cars and information in our database.  \\
 \paragraph{}
 		
 		\begin{figure}[h]
@@ -181,7 +181,7 @@ After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \e
 		\end{figure}
 
 \paragraph{MaintenanceManager} 
-After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{MaintenanceManager} obtaining.
+After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{MaintenanceManager} obtaining the complete test of the subsystem related to the functionalities to manage the maintenance API. We also want to test the integration between the maintenance subsystem and the API interface exposed externally checking the token mechanism (\emph{see \cite{DD} for more details}) and its correctly behaviour for a "user" external to the system.
 \paragraph{}
 		
 		\begin{figure}[h]
@@ -190,6 +190,19 @@ After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \e
 			\caption{
 				\label{fig:maintenanceManager} 
 				\emph{MaintenanceManager integration}
+			}
+		\end{figure}
+		
+\paragraph{User Application and Server} 
+After that we first integrate the \emph{UserAppServer} with the \emph{AccessManager}, \emph{RentManager} and \emph{UserInformationManager} and secondly we test the integration between the \emph{UserAppServer} and the \emph{UserApplication} obtaining the complete test of the subsystem related to the functionalities provided to a \emph{Power EnJoy system} user.
+\paragraph{}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{img/Integration4}
+			\caption{
+				\label{fig:userAppServer} 
+				\emph{User Application and Server integration}
 			}
 		\end{figure}
 		
@@ -203,19 +216,6 @@ After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \e
 			\caption{
 				\label{fig:ccAppServer} 
 				\emph{CustomerCare Application and Server integration}
-			}
-		\end{figure}
-		
-\paragraph{User Application and Server} 
-...
-\paragraph{}
-		
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=0.8\linewidth]{img/Integration4}
-			\caption{
-				\label{fig:userAppServer} 
-				\emph{User Application and Server integration}
 			}
 		\end{figure}
 

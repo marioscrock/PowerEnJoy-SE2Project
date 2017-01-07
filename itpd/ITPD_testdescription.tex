@@ -5,8 +5,6 @@ For each step of the integration process above, describe the type of tests that 
 
 \subsection{Test Description}
 
-\subsubsection{Example1, Example2}
-
 \begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
 \hline \textbf{ExampleFunction(argument1,argument2)} \\
 \toprule
@@ -30,6 +28,24 @@ createReservationJPA(carID, userID) \\
 createRentJPA(rentInfo) \\
 createPaymentJPA(rent, discounts, fees, paymentStatus) \\ %pending??
 findReservedCar(userID) %returns JPA of the Car reserved by the user ID
+
+\begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+\hline \textbf{findReservedCar(userID)} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null userID & A NullArgumentException is raised.\\
+\midrule
+An unknown userID  & An InvalidArgumentValueException is
+raised. \\
+\midrule
+A valid userID without a current reservation & A NoReservedCarException is
+raised. \\
+\midrule
+A valid userID with a current reservation & A CarJPA related to the car currently reserved by the user associated with the userID argument is returned \\
+\bottomrule
+\caption{\emph{ExampleFunction} Test description}
+\end{longtable}
 
 \subsubsection{RentManager, CarHandler}
 getBattery(listOfCars) \\

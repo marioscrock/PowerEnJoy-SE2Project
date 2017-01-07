@@ -60,10 +60,10 @@ In the same way the Maintenance Manger will be tested as a component integrated 
 A Bottom-up approach was chosen because most of the functionalities and the complexity is located in lower level components of our system, hence it is a better choice to test them first and ensure that they work well together before higher level components.
 
 \subsection{Sequence of Component Integration}
-Depends on strategy chosen, this is a proposed structure.
+In this sequence we describe the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the precedent section we decide to start the bottom-up integration from the components related to the critical functionality of the system (such as the communication with cars); even if the steps are proposed sequentially following these criteria, it is clear the sequence proposed presents the possibility to make same integration steps in parallel given the needed precedences between components.
 
 \subsubsection{Overall Component Integration Diagram} 
-The diagram above shows the needed precedences in the integration phase between the main components of the system.
+The diagram above shows the needed precedences in the integration phase between the main components of the system taking into account the integration testing strategy chosen.
 
 	\begin{figure}[h]
 			\centering
@@ -76,12 +76,12 @@ The diagram above shows the needed precedences in the integration phase between 
 
 \clearpage
 
-\subsubsection{Subcomponent Integration} 
-Fare unit test con attenzione a queste precedenze nei seguenti componenti.
-\todo{tradurre e sistemare}
+\subsubsection{Subcomponent Integration}
+In the \emph{PowerEnJoy: Design Document}\cite{DD} some high-level components are described deeply through the definition of the subcomponents composing them.
+In this section are shown the diagram of the precedences between the subcomponents to integrate them. We assume that when the high-level component enters the integration sequence presented they have been fully tested inside considering them as a single component unit-level tested to be integrated.
 
 \paragraph{RentManager} 
-The diagram above shows the needed precedences in the integration phase inside the \emph{RentManager} component.
+The diagram above shows the needed precedences in the integration phase between the \emph{RentManager} subcomponents.
 \paragraph{}
 
 		\begin{figure}[h]
@@ -94,12 +94,12 @@ The diagram above shows the needed precedences in the integration phase inside t
 		\end{figure}
 		
 \paragraph{MaintenanceManager} 
-The diagram above shows the needed precedences in the integration phase inside the \emph{MaintenanceManager} component.
+The diagram above shows the needed precedences in the integration phase between the \emph{MaintenanceManager} subcomponents.
 \paragraph{}
 
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=\linewidth]{img/maintenanceIntegration}
+			\includegraphics[width=0.6\linewidth]{img/maintenanceIntegration}
 			\caption{
 				\label{fig:maintenanceIntegration} 
 				\emph{MaintenanceManager integration}
@@ -107,7 +107,7 @@ The diagram above shows the needed precedences in the integration phase inside t
 		\end{figure}
 		
 \paragraph{UserInformationManager} 
-The diagram above shows the needed precedences in the integration phase inside the \emph{UserInformationManager} component.
+The diagram above shows the needed precedences in the integration phase inside the \emph{UserInformationManager} subcomponents.
 \paragraph{}
 
 		\begin{figure}[h]

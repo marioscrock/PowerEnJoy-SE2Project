@@ -1,10 +1,19 @@
 \section{Tools and Test Equipment Required}
 
-Identify all tools and test equipment needed to accomplish the integration. Refer to the tools presented during the lectures. Explain why and how you are going to use them.
-Note that you may also use manual testing for some part. Consider manual testing as one of the possible tools you have available.
+In this section the tools needed for testing and he test equipment will be described together with the reasons why those are needed.
 
 \subsection{Tools Required}
-Mockito, Arquillian, JMeter over JUnit
+
+\subsubsection{Unit Testing}
+As for unit testing the tools chosen are JUnit for the testing framework in combination with Mockito as a mocking framework.
+JUnit will allow the developers to incrementally build test suites, to measure progress and detect unintended side effects; Mockito instead will allow the developers to test small functionalities even when these have many dependencies. It will also allow them to ensure that the interaction between the components to be tested and the mocked ones corresponds to the expected behaviour of the system.
+
+\subsubsection{Integration Testing}
+As for integration testing the chosen tools are again JUnit and Mockito, but in this case in combination with the Arquillian integration testing framework.
+Arquillian adds to the convenience of JUnit and Mockito, the capability to test the functionalities when run in the context of a container, an instance of the GlassFish server in our case. This will allow our developer to really ensure that the components that are being integrated interacts in the correct way among them and w.r.t. their container.
+
+\subsubsection{Performance Testing}
+The chosen tool for performance testing is JMeter.
 
 \subsection{Test Equipment Required}
 Phones of different screen sizes and pc for cc test

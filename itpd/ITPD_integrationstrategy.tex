@@ -130,6 +130,8 @@ The diagram above shows the needed precedences in the integration phase inside t
 \subsubsection{Component Integration}
 This section describes the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy}  section  we decide to start the bottom-up integration from the components related to the critical functionalities of the system (such as the communication with cars); even if the following steps are proposed sequentially, it is clear that the sequence proposed leaves the possibility to make some integration steps in parallel, always taking into account the needed precedences between the components shown in the \hyperref[sec:overallPrecedences]{Overall Component Integration Diagram}.
 
+\paragraph{Notes for diagrams} In each diagram we assume components represented have been already integrated as specified in precedent steps.
+
 \paragraph{DataProvider} 
 The first step of our integration sequence is to integrate the \emph{DataProvider} component with the DBMS component.
 \paragraph{}
@@ -145,7 +147,6 @@ The first step of our integration sequence is to integrate the \emph{DataProvide
 
 \paragraph{EventBroker and CarHandler} 
 After that we integrate the \emph{EventBroker} and the \emph{CarHandler} with the external API provided by the car embedded system testing the interfaces between our system and them. We also integrate the \emph{CarHandler} with the {DataProvider} component.\\
-\paragraph{}
 		
 		\begin{figure}[h]
 			\centering
@@ -156,7 +157,6 @@ After that we integrate the \emph{EventBroker} and the \emph{CarHandler} with th
 			}
 		\end{figure}
 
-\clearpage
 \paragraph{UserInformationManager and AccessManager} 
 The integration between the \emph{UserInformationManager} and the \emph{DataProvider} components and between the \emph{AccessManager} and the \emph{DataProvider} components are here reported because they can be made at this point of the sequence (given the integration tests already completed), however it is suggested to first complete the critical integration of the \emph{RentManager} component. \\
 \paragraph{}

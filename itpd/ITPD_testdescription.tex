@@ -8,6 +8,8 @@ This section describes the integration tests for most pair of components to be i
 
 \subsubsection{RentManager, DataProvider}
 \todo{check array > list of}
+\todo{togliere null on int}
+\todo{does not identify = xxxNotFoundException}
 
 %getFromFile(searchFor)
 \begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
@@ -43,6 +45,7 @@ A carID which identifies a car in the DB & A JPA class mapped to the car identif
 
 
 %createReservationJPA(carID, userID)
+\todo{double check, anche rispetto a createReservation(..,..,..)}
 \begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
 \multicolumn{2}{c}{\textbf{createReservationJPA(carID, userID)}} \\
 \toprule
@@ -52,17 +55,13 @@ A null carID and/or a null userID & A NullArgumentException is raised.\\
 \midrule
 A carID which does not correspond to any car and/or a userID does not correspond to any user in the DB & An InvalidArgumentValueException is raised. \\
 \midrule
-The user identified by the userID has already more than zero reservation & An AtMostOneReservationException is raised. \\
+A userID which identifies a user that has already more than zero reservation & An AtMostOneReservationException is raised. \\
 \midrule
 The user identified by the userID is performing a rent & An NoReservationDuringARentException is raised. \\
 \midrule
 The carStatus DB attribute of the car identified by the carID is not \emph{Available} & A NotReservableCarException is raised. \\
 \midrule
-The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents & \begin{itemize}
-	\item A new reservation for the specified car and user and with the current timestamp is created in the DB
-	\item the carStatus attribute of the specified car changes to \emph{Reserved}
-	\item the JPA class mapped to the new reservation is returned.
-\end{itemize} \\
+The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents & A new reservation for the specified car and user and with the current timestamp is created in the DB.\\
 \bottomrule
 \caption{\emph{createReservationJPA(carID, userID)} test description}
 \end{longtable}
@@ -127,6 +126,25 @@ A valid userID identifying a user without an active reservation & A NoReservedCa
 A valid userID identifying a user with an active reservation & A CarJPA related to the car currently reserved by the user associated with the userID argument is returned.\\
 \bottomrule
 \caption{\emph{findReservedCar(userID)} test description}
+\end{longtable}
+
+%banUser(userID, reason)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{banUser(userID, reason)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null reason & A NullArgumentException is raised.\\
+\midrule
+An empty reason & An InvalidArgumentValueException is raised.\\
+\midrule
+A userID which does not identify any user in the DB & A UserNotFoundException is raised.\\
+\midrule
+A userID which identifies a user in the DB already banned & A UserAlreadyBannedException is raised.\\
+\midrule
+A not empty reason and userID which identifies a not banned user in the DB & The banned attribute is set to true and the reason attribute is updated as specified for the user identified by the userID parameter.\\
+\bottomrule
+\caption{\emph{banUser(userID, reason)} test description}
 \end{longtable}
 
 \subsubsection{RentManager, CarHandler}
@@ -235,16 +253,106 @@ A failureID which identifies a pending failure in the DB & The failure's fixedTi
 \caption{\emph{fixFailureTagAvailable(failureID)} test description}
 \end{longtable}
 
+%createFailure(carID, reason, timestamp)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{createFailure(carID, reason, timestamp)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null listOfParameters and/or a null timestamp & A NullArgumentException is raised.\\
+\midrule
+An empty reason & An InvalidArgumentValueException is raised. \\
+\midrule
+A timestamp in the future & An InvalidArgumentValueException is raised. \\
+\midrule
+A carID which does not identify any car in the DB & A CarNotFoundException is raised.\\
+\midrule
+A carID which identifies a car in the DB whose carStatus attribute is not \emph{NotAvailable} & A CarNotUnavailableException is raised.\\
+\midrule
+A carID that identifies a car in the DB which is already paired with a pending failure & A AtMostOnePendingFailureException is raised.\\
+\midrule
+A carID that identifies a car in the DB whose carStatus attribute is \emph{NotAvailable} and which is not already paired with a pending failure & A new failure for the specified car and reason and with the current timestamp is created in the DB.\\
+\bottomrule
+\caption{\emph{createFailure(carID, reason, timestamp)} test description}
+\end{longtable}
+
 \subsubsection{MaintenanceManager, CarHandler}
-getSoftwareKeys(carsList) 
+%getSoftwareKeys(carsList)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{getSoftwareKeys(carsList)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null carsList & A NullArgumentException is raised.\\
+\midrule
+An empty carsList & An InvalidArgumentValueException is raised. \\
+\midrule
+A carsList with null element(s) & An InvalidArgumentValueException is raised.\\
+\midrule
+A carsList which contains a carID that does not identify any car in the DB with pending failures & A FailureNotFoundException is raised. \\
+\midrule
+A carsList which contains only carIDs that identify cars in the DB with pending failures & Each specified car is asked for the unlocking software key, a list of the specified cars paired with their related software key is returned.\\
+\bottomrule
+\caption{\emph{getSoftwareKeys(carsList)} test description}
+\end{longtable}
 
 \subsubsection{UserAppServer, RentManager}
-getMapAvailableCars(position) \\
-reserveCar(userID, carID, MSOOptionBoolean) \\
+
 carUnlock(userID) \\
 
+
+%getMapAvailableCars(position)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{getMapAvailableCars(position)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null position & A NullArgumentException is raised.\\
+\midrule
+A wrong format of position & An InvalidArgumentValueException is raised. \\
+\midrule
+A well-formatted position & An encoded map is returned; in the map is shown the position of the safe areas, charging stations, input position, locations and details (see \cite{DD}) of available cars within a radius of 2 Km. The batteryLevel and lastSeenTime attributes of these cars are updated if elder than 2 hours.\\
+\bottomrule
+\caption{\emph{getMapAvailableCars(position)} test description}
+\end{longtable}
+
+%reserveCar(userID, carID, MSODestination) \\
+\todo{citare algoritmo mso DD?}
+\todo{double check, anche rispetto a createReservation(..,..,..)}
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{reserveCar(userID, carID, MSODestination)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null MSODestination & A NullArgumentException is raised.\\
+\midrule
+A carID which does not identify any car in the DB & An InvalidArgumentValueException is raised.\\
+\midrule
+A userID which does not identify any user in the DB & An InvalidArgumentValueException is raised.\\
+\midrule
+A userID which identifies a user in the DB that has already more than zero reservation & An AtMostOneReservationException is raised. \\
+\midrule
+A userID which identifies a user in the DB that is performing a rent & An NoReservationDuringARentException is raised. \\
+\midrule
+The carStatus DB attribute of the car identified by the carID is not \emph{Available} & A NotReservableCarException is raised. \\
+\midrule
+The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents, MSODestination is empty & \begin{itemize}
+	\item a new reservation for the specified car and user and with the current timestamp is created in the DB
+	\item the carStatus attribute of the specified car changes to \emph{Reserved}
+	\item the JPA class mapped to the new reservation is returned.
+\end{itemize} \\
+\midrule
+The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents, MSODestination is not empty & \begin{itemize}
+\item \emph{see previous case}
+\item a charging station is computed according to the proper algorithm and set as destinationChargingStation in the reservation table.
+\end{itemize}\\
+\bottomrule
+\caption{\emph{reserveCar(userID, carID, MSODestination)} test description}
+\end{longtable}
+
 \subsubsection{CustomerCareServer, DataProvider}
-setUserStatus(userID, bannedBoolean) \\
+unbanUser(userID)\\
+banUser(userID, reason)\\
 tagCarAsNotAvailable(carID) \\
 
 

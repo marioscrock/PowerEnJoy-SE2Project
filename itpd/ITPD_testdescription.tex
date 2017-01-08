@@ -7,6 +7,7 @@ This section describes the main tests that will be used to verify that the eleme
 This section describes the integration tests for most pair of components to be integrated; the integration test are described through the expected behaviour of the methods of the second component against the calls of the first in terms of relations between \emph{input} and \emph{expected output}.
 
 \subsubsection{RentManager, DataProvider}
+\todo{check array > list of}
 
 %getFromFile(searchFor)
 \begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
@@ -129,15 +130,110 @@ A valid userID identifying a user with an active reservation & A CarJPA related 
 \end{longtable}
 
 \subsubsection{RentManager, CarHandler}
-getBattery(listOfCars) \\
-unlock(carJPA) \\
-trigger(carJPA, myTriggers) \\
-removeTrigger(carJPA, myTriggers) \\
-getParameters(parameters) \\ %parameters example such as batteryLevel, passengers ecc...
+
+%getBattery(listOfCars) 
+\todo{check empty element in list also elsewhere}
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{getBattery(listOfCars)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null listOfCars & A NullArgumentException is raised.\\
+\midrule
+A listOfCars with null element(s) & A InvalidArgumentValueException is raised.\\
+\midrule
+An empty listOfCars & An InvalidArgumentValueException is raised. \\
+\midrule
+A not empty listOfCars without null elements & The input list of cars is returned with the battery level updated for each car.\\
+\bottomrule
+\caption{\emph{getBattery(listOfCars)} test description}
+\end{longtable}
+
+
+%unlock(carJPA)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{unlock(carJPA)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null carJPA & A NullArgumentException is raised.\\
+\midrule
+A carJPA which maps to a car whose carStatus attribute is not \emph{Reserved} & A CarNotReservedException is raised. \\
+\midrule
+A carJPA which maps to a car whose carStatus attribute is \emph{Reserved} & The car is unlocked and TRUE is returned.\\
+\bottomrule
+\caption{\emph{unlock(carJPA)} test description}
+\end{longtable}
+
+
+%trigger(carJPA, listOfTriggers)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{trigger(carJPA, listOfTriggers)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null carJPA and/or a null listOfTriggers & A NullArgumentException is raised.\\
+\midrule
+An empty listOfTriggers & An InvalidArgumentValueException is raised. \\
+\midrule
+A listOfTriggers with null element(s) & A InvalidArgumentValueException is raised.\\
+\midrule
+A valid carJPA and listOfTriggers & The specified triggers are enabled in the specified car and TRUE is returned. \\
+\bottomrule
+\caption{\emph{trigger(carJPA, listOfTriggers)} test description}
+\end{longtable}
+
+
+%removeTrigger(carJPA, listOfTriggers)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{removeTrigger(carJPA, listOfTriggers)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null carJPA and/or a null listOfTriggers & A NullArgumentException is raised.\\
+\midrule
+An empty listOfTriggers & An InvalidArgumentValueException is raised. \\
+\midrule
+A listOfTriggers with null element(s) & A InvalidArgumentValueException is raised.\\
+\midrule
+A valid carJPA and listOfTriggers & The specified triggers are disabled in the specified car and TRUE is returned. \\
+\bottomrule
+\caption{\emph{removeTrigger(carJPA, listOfTriggers)} test description}
+\end{longtable}
+
+%getParameters(carJPA,listOfParameters)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{getParameters(carJPA,listOfParameters)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null carJPA and/or a null listOfParameters & A NullArgumentException is raised.\\
+\midrule
+An empty listOfParameters & An InvalidArgumentValueException is raised. \\
+\midrule
+A listOfParameters with null element(s) & A InvalidArgumentValueException is raised.\\
+\midrule
+A valid carJPA and listOfParameters & The values of parameters requested for the specified car are returned. \\
+\bottomrule
+\caption{\emph{getParameters(carJPA,listOfParameters)} test description}
+\end{longtable}
 
 \subsubsection{MaintenanceManager, DataProvider}
-getFailuresToBeFixed()\\
-fixFailureTagAvailable(failureID)
+
+%fixFailureTagAvailable(failureID)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{fixFailureTagAvailable(failureID)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A failureID which does not identify any failure in the DB & A FailureNotFoundException is raised.\\
+\midrule
+A failureID which identifies an already fixed failure in the DB & A FailureAlreadyFixedException is raised.\\
+\midrule
+A failureID which identifies a pending failure in the DB & The failure's fixedTimestamp DB attribute is updated with the current timestamp, the carStatus attribute of the car related to the failure is set to \emph{Available}.\\
+\bottomrule
+\caption{\emph{fixFailureTagAvailable(failureID)} test description}
+\end{longtable}
 
 \subsubsection{MaintenanceManager, CarHandler}
 getSoftwareKeys(carsList) 

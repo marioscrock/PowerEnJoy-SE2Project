@@ -67,7 +67,7 @@ This section describes the proposed plan for the integration test phase of the P
 \subsubsection{Overall Component Integration Diagram}  \label{sec:overallPrecedences}
 The diagram above shows the needed precedences in the integration phase between the main components of the system taking into account the integration testing strategy chosen.
 
-\paragraph{NOTES} In the following diagram we represent with arrows the precedences needed between the components, the purpose is to indicate that following the strategy chosen a component can be integrated with another one only if that component has already been integrated with all the components it needs to be integrated with (arrows point from the \emph{<need integration>} component to the \emph{<needed integration>} one, numbers are shown to clearify order of the integration and steps that are possibly made in parallel).\\
+\paragraph{NOTES} In the following diagram we represent with arrows the precedences needed between the components, the purpose is to indicate that following the strategy chosen a component can be integrated with another one only if that component has already been integrated with all the components it needs to be integrated with (arrows point from the \emph{<need integration>} component to the \emph{<needed integration>} one; numbers are shown to clearify order of the integration and steps that are possibly made in parallel).\\
 
 
 	\begin{figure}[h]
@@ -126,7 +126,7 @@ The diagram above shows the needed precedences in the integration phase inside t
 \clearpage 
 
 \subsubsection{Component Integration}
-This section describes the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy section} we decide to start the bottom-up integration from the components related to the critical functionalities of the system (such as the communication with cars); even if the following steps are proposed sequentially, it is clear that the sequence proposed leaves the possibility to make some integration steps in parallel, always taking into account the needed precedences between the components shown in the \hyperref[sec:overallPrecedences]{Overall Component Integration Diagram}.
+This section describes the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy}  section  we decide to start the bottom-up integration from the components related to the critical functionalities of the system (such as the communication with cars); even if the following steps are proposed sequentially, it is clear that the sequence proposed leaves the possibility to make some integration steps in parallel, always taking into account the needed precedences between the components shown in the \hyperref[sec:overallPrecedences]{Overall Component Integration Diagram}.
 
 \paragraph{DataProvider} 
 The first step of our integration sequence is to integrate the \emph{DataProvider} component with the DBMS component.
@@ -182,7 +182,7 @@ After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \e
 		\end{figure}
 
 \paragraph{MaintenanceManager} 
-After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{MaintenanceManager} obtaining the complete test of the subsystem related to the functionalities to manage the maintenance API. We also want to test the integration between the maintenance subsystem and the API interface exposed externally checking the token mechanism (\emph{see \cite{DD} for more details}) and its correctly behaviour for a "user" external to the system.
+After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{MaintenanceManager} obtaining the complete test of the subsystem related to the functionalities to manage the maintenance API. We also want to test the integration between the maintenance subsystem and the API interface exposed externally checking the token mechanism (\emph{see \cite{DD} for more details}) and its correctly behaviour for an API-user external to the system.
 \paragraph{}
 		
 		\begin{figure}[h]
@@ -208,7 +208,7 @@ After that, we first integrate the \emph{UserAppServer} with the \emph{AccessMan
 		\end{figure}
 		
 \paragraph{CustomerCare Application and Server} 
-After that, we first integrate the \emph{CustomerCareServer} with the \emph{UserInformationManager} and the \emph{DataProvider} components  and secondly we test the integration between the \emph{CustomerCareApplication} and the \emph{CustomerCareServer} obtaining the complete test of the subsystem related to the functionalities provided to a customer care operator.
+After that, we first integrate the \emph{CustomerCareServer} with the \emph{UserInformationManager} and the \emph{DataProvider} components  and, secondly, we test the integration between the \emph{CustomerCareApplication} and the \emph{CustomerCareServer} obtaining the complete test of the subsystem related to the functionalities provided to a customer care operator.
 \paragraph{}
 		
 		\begin{figure}[h]

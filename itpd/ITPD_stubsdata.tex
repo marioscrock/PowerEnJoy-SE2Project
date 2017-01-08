@@ -18,7 +18,7 @@ The main drivers needed to complete the integration test plan are:
 \end{itemize}
 
 \subsection{Data Required}
-As specified before in this document, the DataProvider component must be implemented and unit-tested before \todo{giusto?} any integration test can start, furthermore referential integrity is always maintained because \emph{InnoDB} is used as DB engine with the usage of foreign keys constrains, therefore we can consider the data retrieved from the DataProvider component always reliable and well-formed.
+As specified before in this document, the DataProvider component must be integrated with the DBMS at the beginning of the integration sequence, furthermore referential integrity is always maintained because \emph{InnoDB} is used as DB engine with the usage of foreign keys constrains, therefore we can consider the data retrieved from the DataProvider component always reliable and well-formed.
 
 The database used during the tests must have the same tables and structure as the production one.
 

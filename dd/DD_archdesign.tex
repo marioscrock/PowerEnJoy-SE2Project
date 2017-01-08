@@ -440,9 +440,11 @@ The \mbox{\emph{MoneySavingOptionManager}} component determines the appropriate 
 
 \paragraph{Interactions not represented}
 \begin{itemize}
+\item The \emph{createReservationJPA} method of \emph{DataProvider} checks if the car is \emph{Available} before creating the reservation, the eventual exception flow is not represented.
 \item The \emph{ReservationRequestManager} need an interaction with the external GIS API in order to convert into latitude and longitude the destination inserted by the user for the money saving option.
-\item To improve redeability of the diagram some interactions between \emph{MSOManager} and \emph{DataProvider} are omitted
+\item To improve redeability of the diagram some interactions between \emph{MSOManager} and \emph{DataProvider} are omitted.
 \end{itemize}
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[angle=90,width=0.85\linewidth]{sequenceDiagrams/ReserveCar}
@@ -451,8 +453,6 @@ The \mbox{\emph{MoneySavingOptionManager}} component determines the appropriate 
 		\emph{Car reservation} sequence diagram
 	}
 \end{figure}
-
-\paragraph{Notes} The method \emph{checkAndSet} refers to an atomic operation that checks if the carJPA status is \emph{Available} and set its status as \emph{Reserved} for the userID given as parameter.
 
 \clearpage
 \subsubsection{Performing a rent}

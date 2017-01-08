@@ -169,7 +169,7 @@ As particular example, the \emph{OutOfSafeArea} fee, which is composed by a fixe
 \end{itemize}
 The default state for a payment is \emph{Pending}.
 
-\paragraph{Failures}A failure is considered "open" (i.d. to be fixed) if the attribute \emph{fixedDate} is not present. A car can have at most one open failure.
+\paragraph{Failures}A failure is considered "open" (i.d. to be fixed) if the attribute \emph{fixedTimestamp} is not present. A car can have at most one open failure.
 
 \paragraph{Charging stations}Charging stations are provided to the system as an XML file with the following DTD:
 \lstset{language=XML,frame=false}
@@ -421,6 +421,8 @@ The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, c
 
 The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.\\
 
+\paragraph{Notes} The self-message \emph{setParameters} is used to represent CarHandler operations about retrieving from cars the updated battery level and update the cars JPA.
+
 
 \begin{figure}[h!]
 	\centering
@@ -436,7 +438,11 @@ The \emph{MapManager} component takes care of updating the battery level informa
 The diagram in \autoref{fig:sequenceCarReservation} shows the car reservation process.\\
 The \mbox{\emph{MoneySavingOptionManager}} component determines the appropriate charging station for the money saving option given the user destination using the algorithm described in the \hyperref[sec:msoAlgorithm]{proper section}.
 
-\paragraph{Interactions not represented}The \emph{ReservationRequestManager} need an interaction with the external GIS API in order to convert into latitude and longitude the destination inserted by the user for the money saving option.
+\paragraph{Interactions not represented}
+\begin{itemize}
+\item The \emph{ReservationRequestManager} need an interaction with the external GIS API in order to convert into latitude and longitude the destination inserted by the user for the money saving option.
+\item To improve redeability of the diagram some interactions between \emph{MSOManager} and \emph{DataProvider} are omitted
+\end{itemize}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[angle=90,width=0.85\linewidth]{sequenceDiagrams/ReserveCar}
@@ -445,6 +451,8 @@ The \mbox{\emph{MoneySavingOptionManager}} component determines the appropriate 
 		\emph{Car reservation} sequence diagram
 	}
 \end{figure}
+
+\paragraph{Notes} The method \emph{checkAndSet} refers to an atomic operation that checks if the carJPA status is \emph{Available} and set its status as \emph{Reserved} for the userID given as parameter.
 
 \clearpage
 \subsubsection{Performing a rent}
@@ -464,6 +472,8 @@ The following sequence diagrams show the interactions between the \mbox{Rent} \m
 	\item When the trigger method is called on \emph{CarHandler}, it uses the carJPA passed as parameter in order to enable on the correspondent car the triggers passed as parameters; this happens as specified in previous sections.
 	
 	\item The \emph{EventBroker} component calls the notify method on \emph{InUseCarHandler} when a notification is received by a car, as specified in previous sections.
+	
+	\item In \autoref{fig:sequenceEndRent1} the \emph{setParameters} method refers to a set of calls to setter methods of the carJPA in order to updated parameters retrieved from cars
 \end{itemize}
 
 \paragraph{Notes}
@@ -535,7 +545,7 @@ When a reservation expired is found, this component takes care of creating a pay
 \clearpage
 \subsubsection{Maintenance API and failures occurrence}
 Our \emph{Maintenance API} is used by maintenance operators to obtain a list of car failures and to tag the cars back as Available when the failure has been fixed. The execution of these two commands is shown in \autoref{fig:sequenceMaintenanceAPI}.
-\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{MaintenanceDoneManager} takes care of verifying via \emph{DataProvider} and \emph{CarHandler} components if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD.
+\paragraph{Interactions not represented}When a car has to be tagged back as \mbox{Available} the \emph{MaintenanceDoneManager} takes care of verifying via \emph{DataProvider} and \emph{CarHandler} components if the car is associated with an open failure, if the doors are locked and all the others checks defined in the RASD\cite{RASD}.
 
 \begin{figure}[h!]
 	\centering

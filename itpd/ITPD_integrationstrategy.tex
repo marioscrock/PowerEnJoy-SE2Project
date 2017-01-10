@@ -67,9 +67,9 @@ Given that we chose a bottom-up approach as stated in \hyperref[sec:entryCriteri
 This section describes the proposed plan for the integration test phase of the PowerEnJoy system.
 
 \subsubsection{Overall Component Integration Diagram}  \label{sec:overallPrecedences}
-The diagram above shows the needed precedences in the integration phase between the main components of the system taking into account the integration testing strategy chosen.
+The \autoref{fig:overallIntegration} shows the needed precedences in the integration phase between the main components of the system taking into account the integration testing strategy chosen.
 
-\paragraph{NOTES} In the following diagram we represent with arrows the precedences needed between the components, the purpose is to indicate that following the strategy chosen a component can be integrated with another one only if that component has already been integrated with all the components it needs to be integrated with (arrows point from the \emph{<need integration>} component to the \emph{<needed integration>} one; numbers are shown to clearify order of the integration and steps that are possibly made in parallel).\\
+\paragraph{NOTES} In the following diagrams we represent with arrows the precedences needed between the components, the purpose is to indicate that following the strategy chosen a component can be integrated with another one only if that component has already been integrated with all the components it needs to be integrated with (arrows point from the \emph{need integration} component to the \emph{needed integration} one; numbers are shown to clearify order of the integration and steps that are possibly made in parallel).\\
 
 
 	\begin{figure}[h]
@@ -83,11 +83,11 @@ The diagram above shows the needed precedences in the integration phase between 
 	
 \clearpage
 \subsubsection{Subcomponent Integration}
-In the \emph{PowerEnJoy: Design Document}\cite{DD} some high-level components are described deeply through the definition of the subcomponents composing them.
-In this section are shown the diagram of the precedences between the subcomponents to integrate them. We assume that when the high-level component enters the integration sequence presented they have been fully tested inside considering them as a single component unit-level tested to be integrated.
+In the \emph{PowerEnJoy: Design Document} \cite{DD} some high-level components are described deeply through the definition of the subcomponents composing them.
+In this section are shown the diagrams of the precedences between the subcomponents needed to integrate them. We assume that when the high-level component enters the integration sequence presented they have been fully tested inside considering them as a single component unit-level tested to be integrated.
 
 \paragraph{RentManager} 
-The diagram above shows the needed precedences in the integration phase between the \emph{RentManager} subcomponents.
+The diagram in \autoref{fig:rentManagerIntegration} shows the needed precedences in the integration phase between the \emph{RentManager} subcomponents.
 \paragraph{}
 
 		\begin{figure}[h]
@@ -100,7 +100,7 @@ The diagram above shows the needed precedences in the integration phase between 
 		\end{figure}
 		
 \paragraph{MaintenanceManager} 
-The diagram above shows the needed precedences in the integration phase between the \emph{MaintenanceManager} subcomponents.
+The diagram in \autoref{fig:maintenanceIntegration} shows the needed precedences in the integration phase between the \emph{MaintenanceManager} subcomponents.
 \paragraph{}
 
 		\begin{figure}[h]
@@ -113,7 +113,7 @@ The diagram above shows the needed precedences in the integration phase between 
 		\end{figure}
 		
 \paragraph{UserInformationManager} 
-The diagram above shows the needed precedences in the integration phase inside the \emph{UserInformationManager} subcomponents.
+The diagram in \autoref{fig:userIntegration} shows the needed precedences in the integration phase inside the \emph{UserInformationManager} subcomponents.
 \paragraph{}
 
 		\begin{figure}[h]
@@ -128,12 +128,14 @@ The diagram above shows the needed precedences in the integration phase inside t
 \clearpage 
 
 \subsubsection{Component Integration}
-This section describes the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy}  section  we decide to start the bottom-up integration from the components related to the critical functionalities of the system (such as the communication with cars); even if the following steps are proposed sequentially, it is clear that the sequence proposed leaves the possibility to make some integration steps in parallel, always taking into account the needed precedences between the components shown in the \hyperref[sec:overallPrecedences]{Overall Component Integration Diagram}.
+This section describes the sequence proposed to plan the integration test of all the components of the PowerEnJoy system. As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy}  section  we decide to start the bottom-up integration starting from the components related to the critical functionalities of the system (such as the communication with cars).
 
-\paragraph{Notes for diagrams} In each diagram we assume components represented have been already integrated as specified in precedent steps.
+Even if the following steps are proposed sequentially, it is clear that the sequence proposed leaves the possibility to make some integration steps in parallel, always taking into account the needed precedences between the components shown in the \hyperref[sec:overallPrecedences]{Overall Component Integration Diagram}.
 
-\paragraph{DataProvider} 
-The first step of our integration sequence is to integrate the \emph{DataProvider} component with the DBMS component.
+\paragraph{Notes for diagrams} In each diagram we assume that represented components have been already integrated as specified in precedent steps.
+
+\paragraph{1. DataProvider} 
+The first step of the integration sequence is to integrate the \emph{DataProvider} component with the DBMS component.
 \paragraph{}
 
 		\begin{figure}[h]
@@ -145,8 +147,8 @@ The first step of our integration sequence is to integrate the \emph{DataProvide
 			}
 		\end{figure}
 
-\paragraph{EventBroker and CarHandler} 
-After that we integrate the \emph{EventBroker} and the \emph{CarHandler} with the external API provided by the car embedded system testing the interfaces between our system and them. We also integrate the \emph{CarHandler} with the {DataProvider} component.\\
+\paragraph{2a. EventBroker and CarHandler} 
+Integrate the \emph{EventBroker} and the \emph{CarHandler} with the external API provided by cars, testing the interfaces between our system and them. Integrate the \emph{CarHandler} with the \emph{DataProvider} component.\\
 		
 		\begin{figure}[h]
 			\centering
@@ -157,7 +159,7 @@ After that we integrate the \emph{EventBroker} and the \emph{CarHandler} with th
 			}
 		\end{figure}
 
-\paragraph{UserInformationManager and AccessManager} 
+\paragraph{2b. UserInformationManager and AccessManager} 
 The integration between the \emph{UserInformationManager} and the \emph{DataProvider} components and between the \emph{AccessManager} and the \emph{DataProvider} components are here reported because they can be made at this point of the sequence (given the integration tests already completed), however it is suggested to first complete the critical integration of the \emph{RentManager} component. \\
 \paragraph{}
 		
@@ -170,8 +172,10 @@ The integration between the \emph{UserInformationManager} and the \emph{DataProv
 			}
 		\end{figure}
 		
-\paragraph{RentManager} 
-After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{RentManager}. We also integrate the \emph{RentManager} component with the external APIs related to the GIS and the Payment System testing the interfaces between our system component and them. This integration step is really critical to the functionality provided by our system and a lot of care must be given in the integration tests of the \emph{RentManager} on the communication with cars and the consistency between information provided by cars and information in our database.  \\
+\paragraph{3a. RentManager} 
+Integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{RentManager}. We also integrate the \emph{RentManager} component with the external APIs related to the GIS and the Payment System, testing the interfaces between our system component and them.
+
+This integration step is really critical to the functionality provided by our system and a lot of care must be given in the integration tests of the \emph{RentManager} on the communication with cars and the consistency between information provided by cars and information in our database.  \\
 \paragraph{}
 		
 		\begin{figure}[h]
@@ -183,8 +187,10 @@ After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \e
 			}
 		\end{figure}
 
-\paragraph{MaintenanceManager} 
-After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{MaintenanceManager} obtaining the complete test of the subsystem related to the functionalities to manage the maintenance API. We also want to test the integration between the maintenance subsystem and the API interface exposed externally checking the token mechanism (\emph{see \cite{DD} for more details}) and its correctly behaviour for an API-user external to the system.
+\paragraph{3b. MaintenanceManager} 
+Integrate the \emph{EventBroker}, the \emph{CarHandler} and the \emph{DataProvider} with the \emph{MaintenanceManager} obtaining the complete test of the subsystem related to the functionalities to manage the maintenance API.
+
+Also the integration between the maintenance subsystem and the API interface exposed externally has to be tested, checking the token mechanism (\emph{see \cite{DD} for more details}) and its correctly behaviour for an API-user external to the system.
 \paragraph{}
 		
 		\begin{figure}[h]
@@ -195,22 +201,9 @@ After that we integrate the \emph{EventBroker}, the \emph{CarHandler} and the \e
 				\emph{MaintenanceManager integration}
 			}
 		\end{figure}
-		
-\paragraph{User Application and Server} 
-After that, we first integrate the \emph{UserAppServer} with the \emph{AccessManager}, \emph{RentManager} and \emph{UserInformationManager}components and secondly we test the integration between the \emph{UserAppServer} and the \emph{UserApplication} obtaining the complete test of the subsystem related to the functionalities provided to a user of the \emph{Power EnJoy system}.
-\paragraph{}
-		
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=0.7\linewidth]{img/Integration4}
-			\caption{
-				\label{fig:userAppServer} 
-				\emph{User Application and Server integration}
-			}
-		\end{figure}
-		
-\paragraph{CustomerCare Application and Server} 
-After that, we first integrate the \emph{CustomerCareServer} with the \emph{UserInformationManager} and the \emph{DataProvider} components  and, secondly, we test the integration between the \emph{CustomerCareApplication} and the \emph{CustomerCareServer} obtaining the complete test of the subsystem related to the functionalities provided to a customer care operator.
+
+\paragraph{3c. CustomerCare Application and Server} 
+Integrate first the \emph{CustomerCareServer} with the \emph{UserInformationManager} and the \emph{DataProvider} components  and secondly test the integration between the \emph{CustomerCareApplication} and the \emph{CustomerCareServer} obtaining the complete test of the subsystem related to the functionalities provided to a customer care operator.
 \paragraph{}
 		
 		\begin{figure}[h]
@@ -222,11 +215,28 @@ After that, we first integrate the \emph{CustomerCareServer} with the \emph{User
 			}
 		\end{figure}
 
+\paragraph{4. User Application and Server} 
+Integrate first the \emph{UserAppServer} with the \emph{AccessManager}, \emph{RentManager} and \emph{UserInformationManager}components and secondly test the integration between the \emph{UserAppServer} and the \emph{UserApplication} obtaining the complete test of the subsystem related to the functionalities provided to a user of the \emph{PowerEnJoy} system.
+\paragraph{}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.7\linewidth]{img/Integration4}
+			\caption{
+				\label{fig:userAppServer} 
+				\emph{User Application and Server integration}
+			}
+		\end{figure}
+		
+
 \clearpage 
 
 \subsubsection{Subsystem Integration Sequence}
-Once the three major subsystem have been fully integrated and tested we integrate them together to test the whole system and its functionalities together; so we test the integration of the maintenance-related subsystem (figure \ref{fig:maintenanceManager}), the user-related subsystem (figure \ref{fig:userAppServer}) and the customer-care-related subsystem (figura \ref{fig:ccAppServer}).
-This step may be split in different kind of tests on local machines but also on the real architecture we will use for our system in order to provide reliable test data also about performances and network issues. \\
+Once the three major subsystem have been fully integrated and tested, integrate them together to test the whole system and its functionalities.
+
+Test the integration of the maintenance-related subsystem (\autoref{fig:maintenanceManager}), the user-related subsystem (\autoref{fig:userAppServer}) and the customer-care-related subsystem (\autoref{fig:ccAppServer}).
+
+This step may be split in different kind of tests on local machines but it also should be done on the real architecture that we will use for our system, in order to provide reliable test data also about performances and network issues. \\
 
 	\begin{figure}[h]
 			\centering

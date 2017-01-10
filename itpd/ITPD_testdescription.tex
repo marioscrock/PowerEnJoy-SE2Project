@@ -355,9 +355,15 @@ unbanUser(userID)\\
 banUser(userID, reason)\\
 tagCarAsNotAvailable(carID) \\
 
+\subsubsection{Other Tests}
 
 \paragraph{UserAppServer, AccessManager}
-login(username, password) %returns user ID
+\begin{itemize}
+\item Login functionality: test if the \emph{AccessManager} confirms that a user can log into the system only if username and password given by \emph{UserAppServer} corresponds to a user correctly registered, with a null token associated(email confirmed) and a \emph{not banned} state.
+\item Registration functionality: test if the \emph{AccessManager} allows \emph{UserAppServer} to make requests about the registration of a user checking the information provided as defined in the \emph{RASD document}\cite{RASD}.
+\end{itemize}
+
+
 
 \paragraph{AccessManager, DataProvider} 
 description \\

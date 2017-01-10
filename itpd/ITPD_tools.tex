@@ -5,18 +5,23 @@ In this section the tools needed for testing and the test equipment will be desc
 \subsection{Tools Required}
 
 \subsubsection{Unit Testing}
-As for unit testing the tools chosen are JUnit for the testing framework in combination with Mockito as a mocking framework.
-JUnit was chosen because the system will be developed using the Java language and because it will allow the developers to incrementally build test suites, to measure progress and detect unintended side effects; Mockito instead will allow the developers to test small functionalities even when these have many dependencies. It will also allow them to ensure that the interaction between the components to be tested and the mocked ones corresponds to the expected behaviour of the system.
+The tools chosen for unit testing are JUnit for the testing framework in combination with Mockito as a mocking framework.
+
+JUnit was chosen because the system will be developed using the Java language and because it will allow the developers to incrementally build test suites, to measure progress and detect unintended side effects.
+
+Mockito instead will allow the developers to test small functionalities even when these have many dependencies. It will also allow them to ensure that the interaction between the components to be tested and the mocked ones corresponds to the expected behaviour of the system.
 
 \subsubsection{Integration Testing}
 As for integration testing the chosen tools are again JUnit and Mockito, but in this case in combination with the Arquillian integration testing framework.
-Arquillian adds to the convenience of JUnit and Mockito, the capability to test the functionalities when run in the context of a container, an instance of the GlassFish server in our case. This will allow our developer to really ensure that the components that are being integrated interacts in the correct way among them and w.r.t. their container.
+Arquillian adds to the convenience of JUnit and Mockito the capability to test the functionalities when run in the context of a container, an instance of the GlassFish server in our case.
+
+This will allow our developer to really ensure that the components that are being integrated interact in the correct way among them and w.r.t. their container.
 
 \subsubsection{Performance Testing}
-For performance testing the choice is the load testing tool JMeter. It will allow the developers to see how much load the system is able to handle, and how it performs while the load increases. It is also highly configurable since by creating different test plans, different functionalities can be tested.
+For performance testing the choice is the load testing tool JMeter. It will allow the developers to see how much load the system is able to handle, and how it performs while the load increases. It is also highly configurable since, by creating different test plans, different functionalities can be tested.
 
 \subsection{Test Equipment}
-The different tiers of our system will run on different machines, as represented in the Deployment Diagram of the \emph{PowerEnJoy: Design Document} \cite{DD}, so also for the integration testing it will be fundamental to ensure that the system works properly when running in that configuration.
+The different tiers of our system will run on different machines, as represented in the Deployment Diagram of the \emph{PowerEnJoy: Design Document} \cite{DD}, therefore also for the integration testing it will be fundamental to ensure that the system works properly when running in that configuration.
 \paragraph{Backend}
 The machines needed to test the backend will be:
 \begin{itemize}
@@ -30,5 +35,5 @@ The machines needed to test the frontend will be:
 	\item One computers capable of running the latest versions of the most used web browsers
 	\item Smartphones of different screen sizes in order to ensure that the website is always correctly rendered and shown on such devices.
 \end{itemize}
-Since our application is fully web based these will be the only machines needed to access and test the frontend functionalities of our system, both for the Customer Care and the regular user.
+Since our application is fully web based, these will be the only machines needed to access and test the frontend functionalities of our system, both for the Customer Care and the regular user.
 

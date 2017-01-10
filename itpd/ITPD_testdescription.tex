@@ -103,7 +103,7 @@ Proper startLocation, startTimestamp and car parameters, null msoStation & A new
 \midrule
 Proper \mbox{startLocation}, startTimestamp and car parameters, \mbox{msoStation} parameter valid and not null & A new payment (paired with the user that has reserved the car) is inserted properly in the DB with endTimestamp, endLocation attributes set to null.\\
 \bottomrule
-\caption{\emph{createRentJPA} test description}
+\caption{\label{tbk:createRentJPA}\emph{createRentJPA} test description}
 \end{longtable}
 
 %findReservedCar(userID)
@@ -340,16 +340,7 @@ The carStatus DB attribute of the car identified by the carID is \emph{Available
 \end{longtable}
 
 %carUnlock(userID)
-\todo{check}
-\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
-\multicolumn{2}{c}{\textbf{carUnlock(userID)}} \\
-\toprule
-\emph{Input} & \emph{Expected output} \\
-\midrule
-REFERENCES TO PREV TABLES?\\
-\bottomrule
-\caption{\emph{carUnlock} test description}
-\end{longtable}
+The \emph{carUnlock(userID)} method can throw any exception specified in \autoref{tbl:findReservedCar}, \autoref{tbl:createCarJPA}, \autoref{tbl:unlock}, \autoref{tbl:trigger}, \autoref{tbk:createRentJPA}. \todo{final output and check distanza (correggere sequence)}
 
 \subsubsection{CustomerCareServer, DataProvider}
 See \autoref{tbl:banUser} for \emph{banUser(userID, reason)}

@@ -340,10 +340,31 @@ The carStatus DB attribute of the car identified by the carID is \emph{Available
 \end{longtable}
 
 %carUnlock(userID)
-The \emph{carUnlock(userID)} method can throw any exception specified in \autoref{tbl:findReservedCar}, \autoref{tbl:createCarJPA}, \autoref{tbl:unlock}, \autoref{tbl:trigger}, \autoref{tbk:createRentJPA}. \todo{final output and check distanza (correggere sequence)}
+The \textbf{carUnlock(userID)} method can throw any exception specified in \\\autoref{tbl:findReservedCar} findReservedCar(userID), \\\autoref{tbl:createCarJPA} createCarJPA(carID), \\\autoref{tbl:unlock} unlock(carJPA), \\\autoref{tbl:trigger} trigger(carJPA, listOfTriggers), \\\autoref{tbk:createRentJPA} createRentJPA(startLocation, startTimestamp, car, msoStation).
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{carUnlock(userID)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null position & A NullArgumentException is raised \\
+\midrule
+A userID which does not identify any user in the DB & A UserNotFoundException is raised\\
+\midrule
+A userID which identifies a user in the DB without an active reservation & A NoReservedCarException is raised \\
+\midrule
+A position that correspond to a location further than 5 Km away from the reserved car & A NotEnoughCloseException is raised \\
+\midrule
+A userID which identifies a user in the DB with an active reservation and a position that correspond to a location closer than 5 Km to the reserved car & \begin{itemize}
+	\item \emph{union of the aforementioned methods' \mbox{outputs}}
+	\item when the system is notified of the reserved car's engine ignition the rent is started
+	\end{itemize}
+\\
+\bottomrule
+\caption{\emph{carUnlock} test description}
+\end{longtable}
 
 \subsubsection{CustomerCareServer, DataProvider}
-See \autoref{tbl:banUser} for \emph{banUser(userID, reason)}
+See \autoref{tbl:banUser} for the test description of \textbf{banUser(userID, reason)} methods.
 
 %unbanUser(userID)
 \begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}

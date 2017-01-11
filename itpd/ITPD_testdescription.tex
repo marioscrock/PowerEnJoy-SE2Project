@@ -25,6 +25,7 @@ A searchFor value corresponds to a known existing file & The pointer to the corr
 \caption{\emph{getFromFile} test description}
 \end{longtable}
 
+
 %createCarJPA(carID)
 \begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
 \multicolumn{2}{c}{\textbf{createCarJPA(carID)}} \\
@@ -38,6 +39,7 @@ A carID which identifies a car in the DB & A JPA class mapped to the car identif
 \caption{\label{tbl:createCarJPA}\emph{createCarJPA} test description}
 \end{longtable}
 
+\clearpage
 
 %createReservationJPA(carID, userID)
 \todo{double check, anche rispetto a createReservation(..,..,..)}
@@ -61,6 +63,27 @@ A carID which identifies a car in the DB with the carStatus attribute that is \e
 \caption{\emph{createReservationJPA} test description}
 \end{longtable}
 
+%banUser(userID, reason)
+\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
+\multicolumn{2}{c}{\textbf{banUser(userID, reason)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A null reason & A NullArgumentException is raised\\
+\midrule
+An empty reason & An InvalidArgumentValueException is raised\\
+\midrule
+A userID which does not identify any user in the DB & A UserNotFoundException is raised\\
+\midrule
+A userID which identifies a user in the DB already banned & A UserAlreadyBannedException is raised\\
+\midrule
+A not empty reason and userID which identifies a not banned user in the DB & The banned attribute is set to true and the reason attribute is updated as specified for the user identified by the userID parameter\\
+\bottomrule
+\caption{\label{tbl:banUser}\emph{banUser} test description}
+\end{longtable}
+
+\clearpage
+
 %createPaymentJPA(rent, discounts, fees, paymentStatus)
 \begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
 \multicolumn{2}{c}{\textbf{createPaymentJPA(rent, discounts, fees, paymentStatus)}} \\
@@ -80,6 +103,23 @@ An unknown paymentStatus & An InvalidArgumentValueException is raised \\
 \bottomrule
 \caption{\emph{createPaymentJPA} test description}
 \end{longtable}
+
+%findReservedCar(userID)
+\begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+\multicolumn{2}{c}{\textbf{findReservedCar(userID)}} \\
+\toprule
+\emph{Input} & \emph{Expected output} \\
+\midrule
+A userID which does not identify any user in the DB & A UserNotFoundException is raised\\
+\midrule
+A userID which identifies a user in the DB without an active reservation & A NoReservedCarException is raised \\
+\midrule
+A userID which identifies a user in the DB with an active reservation & A CarJPA related to the car currently reserved by the user associated with the userID argument is returned \\
+\bottomrule
+\caption{\label{tbl:findReservedCar}\emph{findReservedCar} test description}
+\end{longtable}
+
+\clearpage
 
 %createRentJPA(startLocation, startTimestamp, car, msoStation)
 \begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
@@ -106,39 +146,8 @@ Proper \mbox{startLocation}, startTimestamp and car parameters, \mbox{msoStation
 \caption{\label{tbk:createRentJPA}\emph{createRentJPA} test description}
 \end{longtable}
 
-%findReservedCar(userID)
-\begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
-\multicolumn{2}{c}{\textbf{findReservedCar(userID)}} \\
-\toprule
-\emph{Input} & \emph{Expected output} \\
-\midrule
-A userID which does not identify any user in the DB & A UserNotFoundException is raised\\
-\midrule
-A userID which identifies a user in the DB without an active reservation & A NoReservedCarException is raised \\
-\midrule
-A userID which identifies a user in the DB with an active reservation & A CarJPA related to the car currently reserved by the user associated with the userID argument is returned \\
-\bottomrule
-\caption{\label{tbl:findReservedCar}\emph{findReservedCar} test description}
-\end{longtable}
 
-%banUser(userID, reason)
-\begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
-\multicolumn{2}{c}{\textbf{banUser(userID, reason)}} \\
-\toprule
-\emph{Input} & \emph{Expected output} \\
-\midrule
-A null reason & A NullArgumentException is raised\\
-\midrule
-An empty reason & An InvalidArgumentValueException is raised\\
-\midrule
-A userID which does not identify any user in the DB & A UserNotFoundException is raised\\
-\midrule
-A userID which identifies a user in the DB already banned & A UserAlreadyBannedException is raised\\
-\midrule
-A not empty reason and userID which identifies a not banned user in the DB & The banned attribute is set to true and the reason attribute is updated as specified for the user identified by the userID parameter\\
-\bottomrule
-\caption{\label{tbl:banUser}\emph{banUser} test description}
-\end{longtable}
+\clearpage
 
 \subsubsection{RentManager, CarHandler}
 
@@ -193,6 +202,7 @@ A valid carJPA and listOfTriggers & The specified triggers are enabled in the sp
 \caption{\label{tbl:trigger}\emph{trigger} test description}
 \end{longtable}
 
+\clearpage
 
 %removeTrigger(carJPA, listOfTriggers)
 \begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
@@ -227,6 +237,8 @@ A valid carJPA and listOfParameters & The values of parameters requested for the
 \bottomrule
 \caption{\emph{getParameters} test description}
 \end{longtable}
+
+\clearpage
 
 \subsubsection{MaintenanceManager, DataProvider}
 
@@ -268,6 +280,8 @@ A carID that identifies a car in the DB whose carStatus attribute is \emph{NotAv
 \caption{\emph{createFailure} test description}
 \end{longtable}
 
+\clearpage
+
 \subsubsection{MaintenanceManager, CarHandler}
 %getSoftwareKeys(carsList)
 \begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
@@ -305,6 +319,8 @@ A well-formatted position & An encoded map is returned; in the map is shown the 
 \caption{\emph{getMapAvailableCars} test description}
 \end{longtable}
 
+\clearpage
+
 %reserveCar(userID, carID, MSODestination) \\
 \todo{citare algoritmo mso DD?}
 \todo{double check, anche rispetto a createReservation(..,..,..)}
@@ -325,19 +341,26 @@ A userID which identifies a user in the DB that is performing a rent & An NoRese
 \midrule
 The carStatus DB attribute of the car identified by the carID is not \emph{Available} & A NotReservableCarException is raised \\
 \midrule
-The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents, MSODestination is empty & \begin{itemize}
+The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents, MSODestination is empty & 
+\begin{itemize}
 	\item a new reservation for the specified car and user and with the current timestamp is created in the DB
 	\item the carStatus attribute of the specified car changes to \emph{Reserved}
 	\item the JPA class mapped to the new reservation is returned
 \end{itemize} \\
 \midrule
-The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents, MSODestination is not empty & \begin{itemize}
-\item \emph{see previous case}
-\item a charging station is computed according to the proper algorithm and set as destinationChargingStation in the reservation table
+The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents, MSODestination is not empty & 
+\begin{itemize}
+	\item a new reservation for the specified car and user and with the current timestamp is created in the DB
+	\item the carStatus attribute of the specified car changes to \emph{Reserved}
+	\item the JPA class mapped to the new reservation is returned
+	\item a charging station is computed according to the proper algorithm and set as destinationChargingStation in the reservation table
 \end{itemize}\\
 \bottomrule
 \caption{\emph{reserveCar} test description}
 \end{longtable}
+
+
+\clearpage
 
 %carUnlock(userID)
 The \textbf{carUnlock(userID)} method can throw any exception specified in \\\autoref{tbl:findReservedCar} findReservedCar(userID), \\\autoref{tbl:createCarJPA} createCarJPA(carID), \\\autoref{tbl:unlock} unlock(carJPA), \\\autoref{tbl:trigger} trigger(carJPA, listOfTriggers), \\\autoref{tbk:createRentJPA} createRentJPA(startLocation, startTimestamp, car, msoStation).
@@ -364,7 +387,7 @@ A userID which identifies a user in the DB with an active reservation and a posi
 \end{longtable}
 
 \subsubsection{CustomerCareServer, DataProvider}
-See \autoref{tbl:banUser} for the test description of \textbf{banUser(userID, reason)} methods.
+See \autoref{tbl:banUser} for the test description of \textbf{banUser(userID, reason)} method.
 
 %unbanUser(userID)
 \begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}

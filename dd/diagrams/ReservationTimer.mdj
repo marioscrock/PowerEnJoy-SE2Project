@@ -80,7 +80,8 @@
 													"underline": false,
 													"text": "timer",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -105,7 +106,8 @@
 													"underline": false,
 													"text": "loop",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLInteractionOperandCompartmentView",
@@ -149,7 +151,8 @@
 																	"autoResize": false,
 																	"underline": false,
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -244,7 +247,8 @@
 													"underline": false,
 													"text": "reservationExpired",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -269,7 +273,8 @@
 													"underline": false,
 													"text": "loop",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLInteractionOperandCompartmentView",
@@ -314,7 +319,8 @@
 																	"underline": false,
 																	"text": "[expiredReservations != empty]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -409,7 +415,8 @@
 													"underline": false,
 													"text": "handleExpiredReservation",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -434,7 +441,8 @@
 													"underline": false,
 													"text": "opt",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLInteractionOperandCompartmentView",
@@ -479,7 +487,8 @@
 																	"underline": false,
 																	"text": "[carStatus = reserved]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -574,7 +583,8 @@
 													"underline": false,
 													"text": "ReserveTimer",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -599,7 +609,8 @@
 													"underline": false,
 													"text": "interaction",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												}
 											],
 											"visible": true,
@@ -665,7 +676,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -690,7 +702,8 @@
 															"underline": false,
 															"text": "rTimer: ReservationTimer",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -715,7 +728,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -739,7 +753,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -863,7 +878,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -888,7 +904,8 @@
 															"underline": false,
 															"text": "ppHandler: PaymentProcedureHandler",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -913,7 +930,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -937,7 +955,8 @@
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -1054,14 +1073,15 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": -576,
+															"left": -544,
 															"top": -128,
 															"width": 0,
 															"height": 16,
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -1078,7 +1098,7 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": 1037,
+															"left": 1053,
 															"top": 459,
 															"width": 150.8798828125,
 															"height": 32,
@@ -1086,7 +1106,8 @@
 															"underline": false,
 															"text": "payment: PaymentJPA",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": true
 														},
 														{
 															"_type": "LabelView",
@@ -1103,7 +1124,7 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": -576,
+															"left": -544,
 															"top": -128,
 															"width": 130.7109375,
 															"height": 16,
@@ -1111,7 +1132,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -1128,14 +1150,15 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": -576,
+															"left": -544,
 															"top": -128,
 															"width": 0,
 															"height": 16,
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -1147,7 +1170,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1032,
+													"left": 1048,
 													"top": 452,
 													"width": 160.8798828125,
 													"height": 40,
@@ -1183,7 +1206,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1112,
+													"left": 1128,
 													"top": 492,
 													"width": 1,
 													"height": 619,
@@ -1199,7 +1222,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 1032,
+											"left": 1048,
 											"top": 452,
 											"width": 160.8798828125,
 											"height": 659,
@@ -1252,14 +1275,15 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": -1152,
+															"left": -1088,
 															"top": 16,
 															"width": 0,
 															"height": 16,
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -1276,7 +1300,7 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": 1077,
+															"left": 1109,
 															"top": 47,
 															"width": 205.6484375,
 															"height": 16,
@@ -1284,7 +1308,8 @@
 															"underline": false,
 															"text": "External Payment System",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -1301,7 +1326,7 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": -1152,
+															"left": -1088,
 															"top": 16,
 															"width": 130.7109375,
 															"height": 16,
@@ -1309,7 +1334,8 @@
 															"underline": false,
 															"text": "(from Interaction1)",
 															"horizontalAlignment": 2,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														},
 														{
 															"_type": "LabelView",
@@ -1326,14 +1352,15 @@
 															"showShadow": true,
 															"containerChangeable": false,
 															"containerExtending": false,
-															"left": -1152,
+															"left": -1088,
 															"top": 16,
 															"width": 0,
 															"height": 16,
 															"autoResize": false,
 															"underline": false,
 															"horizontalAlignment": 1,
-															"verticalAlignment": 5
+															"verticalAlignment": 5,
+															"wordWrap": false
 														}
 													],
 													"visible": true,
@@ -1345,7 +1372,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1072,
+													"left": 1104,
 													"top": 40,
 													"width": 215.6484375,
 													"height": 40,
@@ -1381,7 +1408,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1180,
+													"left": 1212,
 													"top": 80,
 													"width": 1,
 													"height": 1097,
@@ -1397,7 +1424,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 1072,
+											"left": 1104,
 											"top": 40,
 											"width": 215.6484375,
 											"height": 1137,
@@ -1445,7 +1472,7 @@
 													"containerExtending": false,
 													"left": 319,
 													"top": 144,
-													"width": 122.7109375,
+													"width": 122.875,
 													"height": 16,
 													"autoResize": false,
 													"alpha": 1.6020351553471168,
@@ -1457,7 +1484,8 @@
 													"underline": false,
 													"text": "1 : wait(1 minute)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1490,7 +1518,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1523,7 +1552,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1624,7 +1654,8 @@
 													"underline": false,
 													"text": "2 : getExpiredReservations",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1657,7 +1688,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1690,7 +1722,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -1782,7 +1815,8 @@
 													"underline": false,
 													"text": "payment",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "LabelView",
@@ -1807,7 +1841,8 @@
 													"underline": false,
 													"text": "alt",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLInteractionOperandCompartmentView",
@@ -1852,7 +1887,8 @@
 																	"underline": false,
 																	"text": "[Payment properly executed]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -1866,7 +1902,7 @@
 															"containerExtending": false,
 															"left": 176,
 															"top": 578,
-															"width": 1065,
+															"width": 1089,
 															"height": 138,
 															"autoResize": false,
 															"guardLabel": {
@@ -1906,7 +1942,8 @@
 																	"underline": false,
 																	"text": "[Payment rejected]",
 																	"horizontalAlignment": 2,
-																	"verticalAlignment": 5
+																	"verticalAlignment": 5,
+																	"wordWrap": false
 																}
 															],
 															"visible": true,
@@ -1920,7 +1957,7 @@
 															"containerExtending": false,
 															"left": 176,
 															"top": 716,
-															"width": 1065,
+															"width": 1089,
 															"height": 189,
 															"autoResize": false,
 															"guardLabel": {
@@ -1939,7 +1976,7 @@
 													"containerExtending": false,
 													"left": 176,
 													"top": 578,
-													"width": 1065,
+													"width": 1089,
 													"height": 327,
 													"autoResize": false
 												}
@@ -1955,7 +1992,7 @@
 											"containerExtending": false,
 											"left": 176,
 											"top": 552,
-											"width": 1065,
+											"width": 1089,
 											"height": 353,
 											"autoResize": false,
 											"nameLabel": {
@@ -1996,13 +2033,13 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 289,
-													"top": 389,
-													"width": 317.4765625,
+													"left": 273,
+													"top": 390,
+													"width": 346.8203125,
 													"height": 16,
 													"autoResize": false,
-													"alpha": -4.331883465341588,
-													"distance": 10.770329614269007,
+													"alpha": -4.205291325049357,
+													"distance": 10.295630140987,
 													"hostEdge": {
 														"$ref": "AAAAAAFY5Jp5x7uwbpo="
 													},
@@ -2010,7 +2047,8 @@
 													"underline": false,
 													"text": "3 : createPaymentProcedureHandler(userID)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2044,7 +2082,8 @@
 													"underline": false,
 													"text": "«create»",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2077,7 +2116,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -2164,9 +2204,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 735,
+													"left": 729,
 													"top": 454,
-													"width": 278.3515625,
+													"width": 307.6953125,
 													"height": 16,
 													"autoResize": false,
 													"alpha": -4.124387146068286,
@@ -2176,9 +2216,10 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "4 : createPayment(userID, dueAmount)",
+													"text": "4 : createPaymentJPA(userID, dueAmount)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2198,7 +2239,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 835,
+													"left": 843,
 													"top": 438,
 													"width": 62.265625,
 													"height": 16,
@@ -2212,7 +2253,8 @@
 													"underline": false,
 													"text": "«create»",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2232,7 +2274,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 880,
+													"left": 888,
 													"top": 476,
 													"width": 0,
 													"height": 13,
@@ -2245,7 +2287,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -2265,7 +2308,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1112,
+													"left": 1128,
 													"top": 472,
 													"width": 14,
 													"height": 25,
@@ -2288,7 +2331,7 @@
 												"$ref": "AAAAAAFY5I4qi7uU1gw="
 											},
 											"lineStyle": 0,
-											"points": "729:472;1032:472",
+											"points": "729:472;1048:472",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5JxYhLvw/a4="
 											},
@@ -2332,7 +2375,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 774,
+													"left": 790,
 													"top": 502,
 													"width": 366.4140625,
 													"height": 16,
@@ -2346,7 +2389,8 @@
 													"underline": false,
 													"text": "5 : paymentRequest(paymentUserInfo, dueAmount)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2366,7 +2410,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 951,
+													"left": 967,
 													"top": 497,
 													"width": 0,
 													"height": 13,
@@ -2379,7 +2423,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2399,7 +2444,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 951,
+													"left": 967,
 													"top": 532,
 													"width": 0,
 													"height": 13,
@@ -2412,7 +2457,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -2432,7 +2478,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1173,
+													"left": 1205,
 													"top": 528,
 													"width": 14,
 													"height": 497,
@@ -2455,7 +2501,7 @@
 												"$ref": "AAAAAAFY5I4qi7uU1gw="
 											},
 											"lineStyle": 0,
-											"points": "729:528;1173:528",
+											"points": "729:528;1205:528",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5Km7fbw78Ss="
 											},
@@ -2499,7 +2545,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 904,
+													"left": 920,
 													"top": 602,
 													"width": 92.484375,
 													"height": 16,
@@ -2513,7 +2559,8 @@
 													"underline": false,
 													"text": "6 : confirmed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2533,7 +2580,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 950,
+													"left": 966,
 													"top": 619,
 													"width": 0,
 													"height": 13,
@@ -2546,7 +2593,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2566,7 +2614,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 951,
+													"left": 967,
 													"top": 584,
 													"width": 0,
 													"height": 13,
@@ -2579,7 +2627,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -2622,7 +2671,7 @@
 												"$ref": "AAAAAAFY5KkYtrwfAQo="
 											},
 											"lineStyle": 0,
-											"points": "1173:600;729:600",
+											"points": "1205:600;729:600",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5K2oSLzBtLQ="
 											},
@@ -2680,7 +2729,8 @@
 													"underline": false,
 													"text": "7 : confirmed(payment)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2713,7 +2763,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2746,7 +2797,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -2847,7 +2899,8 @@
 													"underline": false,
 													"text": "8 : received",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2880,7 +2933,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2913,7 +2967,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3000,7 +3055,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 837,
+													"left": 845,
 													"top": 654,
 													"width": 161.84375,
 													"height": 16,
@@ -3014,7 +3069,8 @@
 													"underline": false,
 													"text": "9 : setState(confirmed)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3034,7 +3090,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 917,
+													"left": 925,
 													"top": 641,
 													"width": 0,
 													"height": 13,
@@ -3047,7 +3103,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3067,7 +3124,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 917,
+													"left": 925,
 													"top": 676,
 													"width": 0,
 													"height": 13,
@@ -3080,7 +3137,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3100,7 +3158,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1105,
+													"left": 1121,
 													"top": 672,
 													"width": 14,
 													"height": 33,
@@ -3123,7 +3181,7 @@
 												"$ref": "AAAAAAFY5I4qi7uU1gw="
 											},
 											"lineStyle": 0,
-											"points": "729:672;1105:672",
+											"points": "729:672;1121:672",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5K8AY70SIgY="
 											},
@@ -3167,7 +3225,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 866,
+													"left": 874,
 													"top": 698,
 													"width": 101.3828125,
 													"height": 16,
@@ -3181,7 +3239,8 @@
 													"underline": false,
 													"text": "10 : confirmed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3201,7 +3260,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 916,
+													"left": 924,
 													"top": 715,
 													"width": 0,
 													"height": 13,
@@ -3214,7 +3273,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3234,7 +3294,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 917,
+													"left": 925,
 													"top": 680,
 													"width": 0,
 													"height": 13,
@@ -3247,7 +3307,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3290,7 +3351,7 @@
 												"$ref": "AAAAAAFY5JwcJ7vWAj0="
 											},
 											"lineStyle": 0,
-											"points": "1105:696;729:696",
+											"points": "1121:696;729:696",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6JZhWyjCt9E="
 											},
@@ -3334,7 +3395,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 906,
+													"left": 922,
 													"top": 754,
 													"width": 88.0546875,
 													"height": 16,
@@ -3348,7 +3409,8 @@
 													"underline": false,
 													"text": "11 : rejected",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3368,7 +3430,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 950,
+													"left": 966,
 													"top": 771,
 													"width": 0,
 													"height": 13,
@@ -3381,7 +3443,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3401,7 +3464,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 951,
+													"left": 967,
 													"top": 736,
 													"width": 0,
 													"height": 13,
@@ -3414,7 +3477,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3457,7 +3521,7 @@
 												"$ref": "AAAAAAFY5KkYtrwfAQo="
 											},
 											"lineStyle": 0,
-											"points": "1173:752;729:752",
+											"points": "1205:752;729:752",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5K/+XL0vxz0="
 											},
@@ -3515,7 +3579,8 @@
 													"underline": false,
 													"text": "12 : rejected(payment)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3548,7 +3613,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3581,7 +3647,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3682,7 +3749,8 @@
 													"underline": false,
 													"text": "13 : banUser(userID)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3715,7 +3783,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3748,7 +3817,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -3849,7 +3919,8 @@
 													"underline": false,
 													"text": "14 : received",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3882,7 +3953,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3915,7 +3987,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -4002,7 +4075,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 843,
+													"left": 851,
 													"top": 830,
 													"width": 149.4140625,
 													"height": 16,
@@ -4016,7 +4089,8 @@
 													"underline": false,
 													"text": "15 : setState(rejeted)",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4036,7 +4110,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 917,
+													"left": 925,
 													"top": 817,
 													"width": 0,
 													"height": 13,
@@ -4049,7 +4123,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4069,7 +4144,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 917,
+													"left": 925,
 													"top": 852,
 													"width": 0,
 													"height": 13,
@@ -4082,7 +4157,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -4102,7 +4178,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1105,
+													"left": 1121,
 													"top": 848,
 													"width": 14,
 													"height": 41,
@@ -4125,7 +4201,7 @@
 												"$ref": "AAAAAAFY5I4qi7uU1gw="
 											},
 											"lineStyle": 0,
-											"points": "729:848;1105:848",
+											"points": "729:848;1121:848",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5LCRjr1LuTc="
 											},
@@ -4169,7 +4245,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 869,
+													"left": 877,
 													"top": 862,
 													"width": 101.3828125,
 													"height": 16,
@@ -4183,7 +4259,8 @@
 													"underline": false,
 													"text": "16 : confirmed",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4203,7 +4280,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 919,
+													"left": 927,
 													"top": 907,
 													"width": 0,
 													"height": 13,
@@ -4216,7 +4293,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4236,7 +4314,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 920,
+													"left": 928,
 													"top": 872,
 													"width": 0,
 													"height": 13,
@@ -4249,7 +4327,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -4292,7 +4371,7 @@
 												"$ref": "AAAAAAFY5JwcJ7vWAj0="
 											},
 											"lineStyle": 0,
-											"points": "1112:888;729:888",
+											"points": "1128:888;729:888",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6Jd1SCj5nC4="
 											},
@@ -4350,7 +4429,8 @@
 													"underline": false,
 													"text": "17 : deleteReservation",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4383,7 +4463,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4416,7 +4497,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -4517,7 +4599,8 @@
 													"underline": false,
 													"text": "18 : deletePaymentProcedureHandler",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4551,7 +4634,8 @@
 													"underline": false,
 													"text": "«destroy»",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4584,7 +4668,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -4671,7 +4756,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 837,
+													"left": 845,
 													"top": 1006,
 													"width": 167.2109375,
 													"height": 16,
@@ -4685,7 +4770,8 @@
 													"underline": false,
 													"text": "19 : deletePaymentJPA",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4705,7 +4791,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 885,
+													"left": 893,
 													"top": 991,
 													"width": 70.265625,
 													"height": 16,
@@ -4719,7 +4805,8 @@
 													"underline": false,
 													"text": "«destroy»",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4739,7 +4826,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 920,
+													"left": 928,
 													"top": 1028,
 													"width": 0,
 													"height": 13,
@@ -4752,7 +4839,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -4772,7 +4860,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 1105,
+													"left": 1121,
 													"top": 1024,
 													"width": 14,
 													"height": 29,
@@ -4795,7 +4883,7 @@
 												"$ref": "AAAAAAFY5I4qi7uU1gw="
 											},
 											"lineStyle": 0,
-											"points": "735:1024;1105:1024",
+											"points": "735:1024;1121:1024",
 											"nameLabel": {
 												"$ref": "AAAAAAFY5LPKaL3CQYs="
 											},
@@ -4839,7 +4927,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 878,
+													"left": 886,
 													"top": 1050,
 													"width": 83.625,
 													"height": 16,
@@ -4853,7 +4941,8 @@
 													"underline": false,
 													"text": "20 : deleted",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4873,7 +4962,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 919,
+													"left": 927,
 													"top": 1067,
 													"width": 0,
 													"height": 13,
@@ -4886,7 +4975,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4906,7 +4996,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 920,
+													"left": 928,
 													"top": 1032,
 													"width": 0,
 													"height": 13,
@@ -4919,7 +5009,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -4962,7 +5053,7 @@
 												"$ref": "AAAAAAFY5JwcJ7vWAj0="
 											},
 											"lineStyle": 0,
-											"points": "1105:1048;735:1048",
+											"points": "1121:1048;735:1048",
 											"nameLabel": {
 												"$ref": "AAAAAAFY6JhDwikRz5E="
 											},
@@ -5020,7 +5111,8 @@
 													"underline": false,
 													"text": "21 : deleted",
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5053,7 +5145,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -5086,7 +5179,8 @@
 													"edgePosition": 1,
 													"underline": false,
 													"horizontalAlignment": 2,
-													"verticalAlignment": 5
+													"verticalAlignment": 5,
+													"wordWrap": false
 												},
 												{
 													"_type": "UMLActivationView",
@@ -5213,7 +5307,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFY5GAwgLn8hmA="
 									},
-									"name": "createPayment",
+									"name": "createPaymentJPA",
 									"source": {
 										"$ref": "AAAAAAFY5I4qibuN3gY="
 									},

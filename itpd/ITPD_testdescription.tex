@@ -42,7 +42,6 @@ A carID which identifies a car in the DB & A JPA class mapped to the car identif
 \clearpage
 
 %createReservationJPA(carID, userID)
-\todo{double check, anche rispetto a createReservation(..,..,..)}
 \begin{longtable}{p{0.4\linewidth}p{0.6\linewidth}}
 \multicolumn{2}{c}{\textbf{createReservationJPA(carID, userID)}} \\
 \toprule
@@ -97,9 +96,9 @@ A rent with endTimestamp and/or endLocation null attributes & An InvalidArgument
 An unknown paymentStatus & An InvalidArgumentValueException is raised \\
 \midrule
 A not null rent, a known payment status and \\\\
-$\bullet$ An empty list of discounts and/or an empty list of fees\\\\
-or & The fee and discount to apply are computed, a new payment is inserted properly in the DB with the paymentStatus attribute as \emph{Pending}\\\\
-$\bullet$ A not empty list of discounts and/or a not empty list of fees)\\
+$\bullet$ An empty list of discounts and/or an empty list of fees & The fee and discount to apply are computed, a new payment is inserted properly in the DB with the paymentStatus attribute as \emph{Pending}\\
+\textbf{or} \\
+$\bullet$ A not empty list of discounts and/or a not empty list of fees\\
 \bottomrule
 \caption{\emph{createPaymentJPA} test description}
 \end{longtable}

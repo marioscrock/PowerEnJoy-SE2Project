@@ -96,10 +96,10 @@ A rent with endTimestamp and/or endLocation null attributes & An InvalidArgument
 \midrule
 An unknown paymentStatus & An InvalidArgumentValueException is raised \\
 \midrule
-\begin{itemize}
-\item An empty list of discounts and/or an empty list of fees
-\item A not empty list of discounts and/or a not empty list of fees
-\end{itemize} & The fee and discount to apply are computed, a new payment is inserted properly in the DB with the paymentStatus attribute as \emph{Pending}\\
+A not null rent, a known payment status and \\\\
+$\bullet$ An empty list of discounts and/or an empty list of fees\\\\
+or & The fee and discount to apply are computed, a new payment is inserted properly in the DB with the paymentStatus attribute as \emph{Pending}\\\\
+$\bullet$ A not empty list of discounts and/or a not empty list of fees)\\
 \bottomrule
 \caption{\emph{createPaymentJPA} test description}
 \end{longtable}
@@ -223,7 +223,7 @@ A valid carJPA and listOfTriggers & The specified triggers are disabled in the s
 
 %getParameters(carJPA,listOfParameters)
 \begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
-\multicolumn{2}{c}{\textbf{getParameters(carJPA,listOfParameters)}} \\
+\multicolumn{2}{c}{\textbf{getParameters(carJPA, listOfParameters)}} \\
 \toprule
 \emph{Input} & \emph{Expected output} \\
 \midrule
@@ -322,8 +322,6 @@ A well-formatted position & An encoded map is returned; in the map is shown the 
 \clearpage
 
 %reserveCar(userID, carID, MSODestination) \\
-\todo{citare algoritmo mso DD?}
-\todo{double check, anche rispetto a createReservation(..,..,..)}
 \begin{longtable}{p{0.35\linewidth}p{0.65\linewidth}}
 \multicolumn{2}{c}{\textbf{reserveCar(userID, carID, MSODestination)}} \\
 \toprule
@@ -345,14 +343,12 @@ The carStatus DB attribute of the car identified by the carID is \emph{Available
 \begin{itemize}
 	\item a new reservation for the specified car and user and with the current timestamp is created in the DB
 	\item the carStatus attribute of the specified car changes to \emph{Reserved}
-	\item the JPA class mapped to the new reservation is returned
 \end{itemize} \\
 \midrule
 The carStatus DB attribute of the car identified by the carID is \emph{Available} and the user identified by the userID has no active reservations or rents, MSODestination is not empty & 
 \begin{itemize}
 	\item a new reservation for the specified car and user and with the current timestamp is created in the DB
 	\item the carStatus attribute of the specified car changes to \emph{Reserved}
-	\item the JPA class mapped to the new reservation is returned
 	\item a charging station is computed according to the proper algorithm and set as destinationChargingStation in the reservation table
 \end{itemize}\\
 \bottomrule
@@ -378,7 +374,7 @@ A userID which identifies a user in the DB without an active reservation & A NoR
 A position that correspond to a location further than 5 Km away from the reserved car & A NotEnoughCloseException is raised \\
 \midrule
 A userID which identifies a user in the DB with an active reservation and a position that correspond to a location closer than 5 Km to the reserved car & \begin{itemize}
-	\item \emph{union of the aforementioned methods' \mbox{outputs}}
+	\item \emph{union of the aforementioned methods' \mbox{outputs} in case of standard flow}
 	\item when the system is notified of the reserved car's engine ignition the rent is started
 	\end{itemize}
 \\

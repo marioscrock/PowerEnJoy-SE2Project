@@ -1,0 +1,81 @@
+\section{Program Drivers and Test Data Required}
+Based on the testing strategy chosen and tests description presented, this section identifies program drivers and tests data required for the integration phase.
+
+\subsection{Drivers Required}
+As specified in the \hyperref[sec:intStrategy]{Integration Testing Strategy} section we decided to use a bottom-up strategy to test the integration of the \emph{Power EnJoy} system components. This type of strategy implies the necessity to build drivers (pieces of software) to simulate components, not already integrated, invoking methods on the integrated components we are currently testing. \\
+
+The main drivers needed to complete the integration test plan are:
+\begin{itemize}
+	\item \textbf{DataProviderDriver}: this driver is used to invoke methods exposed by the \emph{DataProvider} component in order to test its integration with the DBMS component
+	\item \textbf{CarHandlerDriver}: this driver is used to invoke methods exposed by the \emph{CarHandler} component in order to test its integration with the \emph{DataProvider} component and the external API provided by cars
+	\item \textbf{EventBrokerDriver}: this driver is used to act like a subscriber of the \emph{EventBroker} component in order to test its integration with its related interface (\textbf{note} so it must also allows a stub-like behaviour in order to verify subscribers are correctly notified of events published on the \emph{CarEventHandlerIntF})
+	\item \textbf{UserInformationManagerDriver}: this driver is used to invoke methods exposed by the \emph{UserInformationManager} component in order to test its integration with the \emph{DataProvider} component
+	\item \textbf{AccessManagerDriver}: this driver is used to invoke methods exposed by the \emph{AccessManager} component in order to test its integration with the \emph{DataProvider} component
+	\item \textbf{RentManagerDriver}: this driver is used to invoke methods exposed by the \emph{RentManager} component in order to test its integration with the \emph{EventBroker},  \emph{CarHandler}, \emph{DataProvider} components and the GIS and Payments API interfaces
+	\item \textbf{MaintenanceManagerDriver}: this driver is used to invoke methods exposed by the \emph{MaintenanceManager} component in order to test its integration with the \emph{EventBroker},  \emph{CarHandler} and \emph{DataProvider} components (\textbf{note} it may also be useful to develop a MaintenanceAPIIntfDriver in order to test also invocation of interface methods from the point of view of an external user of the API)
+	\item \textbf{UserAppServerDriver}: this driver is used to invoke methods exposed by the \emph{UserAppServer} component in order to test its integration with the \emph{RentManager}, \emph{UserInformationManager} and \emph{AccessManager} components
+	\item \textbf{CustomerCareServerDriver}: this driver is used to invoke methods exposed by the \emph{CustomerCareServer} component in order to test its integration \emph{UserInformationManager} and \emph{DataProvider} components
+\end{itemize}
+
+\subsection{Data Required}
+As specified before in this document, the DataProvider component must be integrated with the DBMS at the beginning of the integration sequence, furthermore referential integrity is always maintained because \emph{InnoDB} is used as DB engine with the usage of foreign keys constrains, therefore we can consider the data retrieved from the DataProvider component always reliable and well-formed.
+
+The database used during the tests must have the same tables and structure as the production one.
+
+Well formed XML files with the location of charging stations (at least 10) and safe areas (at least 2) are also required.
+
+In order to cover the wide variety of possible conditions, the data inserted in the test DB must include \emph{at least}:
+\begin{itemize}
+	\item 40 registered users, whereof
+	\begin{itemize}
+		\item 5 banned users
+		\item 30 not banned users
+		\item 5 users with email confirmation pending
+	\end{itemize}
+	\item 35 cars, whereof
+	\begin{itemize}
+		\item 5 reserved 
+		\item 5 not available 
+		\item 10 in use 
+		\item 15 available, whereof
+		\begin{itemize}
+			\item 2 with lastSeenTime = 2 hours
+			\item 5 with lastSeenTime < 2 hours
+			\item 8 with lastSeenTime > 2 hours
+		\end{itemize}
+	\end{itemize}
+	\item 10 failures, whereof
+	\begin{itemize}
+		\item 5 pending (whereof 2 of the same car)
+		\item 5 fixed (whereof 2 of the same car)
+	\end{itemize}
+	\item 5 active reservation, whereof
+	\begin{itemize}
+		\item 2 with the money saving option
+		\item 3 without the money saving option
+	\end{itemize}
+	\item 40 rents, whereof
+	\begin{itemize}
+		\item 10 active rents
+		\item 30 concluded rents (whereof 5 of the same car, 3 of the same user, 5 of banned users)
+	\end{itemize}
+	\item 5 fees
+	\item 5 discounts
+	\item 35 payments (whereof 5 of the same user), whereof
+	\begin{itemize}
+		\item 2 with status = pending
+		\item 5 with status = rejected
+		\item 10 without the money saving option
+		\item 10 with the money saving option
+		\item 5 related to expired reservations
+		\item 30 related to concluded rents, whereof
+		\begin{itemize}
+			\item 5 without fees or discounts related
+			\item 5 with 1 fee and 0 discounts related
+			\item 5 with 0 fees and 1 discount related
+			\item 5 with 3 fees and 0 discount related
+			\item 5 with 0 fees and 3 discount related
+			\item 5 with more than 3 fees and more than 3 discounts related
+		\end{itemize}
+	\end{itemize}
+\end{itemize}

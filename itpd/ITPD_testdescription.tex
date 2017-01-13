@@ -416,32 +416,33 @@ A userID which identifies a banned user in the DB & The banned attribute is set 
 %\end{longtable}
 
 \subsubsection{Other Tests}
+In this section we describe integration tests related to components whose methods were not detailed in the \emph{Design Document} \cite{DD} since they are mostly basic functions related to user and data management.
 
 \paragraph{AccessManager, DataProvider} 
 \begin{itemize}
-\item Login functionality: test if the \emph{DataProvider} allows \emph{AccessManager} to check the username and password given by a user,  corresponds to a user correctly registered, with a null token associated(email confirmed) and a \emph{not banned} state.
-\item Registration functionality: test if the \emph{DataProvider} allows \emph{AccessManager} correctly creates a new user record in the database when a registration request is received.
+\item \textbf{Login functionality}: test if the \emph{DataProvider} allows \emph{AccessManager} to check the username and password given by a user,  corresponds to a user correctly registered, with a null token associated(email confirmed) and a \emph{not banned} state.
+\item \textbf{Registration functionality}: test if the \emph{DataProvider} allows \emph{AccessManager} correctly creates a new user record in the database when a registration request is received.
 \end{itemize}
 
 \paragraph{UserInformationManager, DataProvider} 
 \begin{itemize}
-\item Query functionality: test if the \emph{DataProvider} allows the \emph{UserInformationManage} to retrieve personal information about the users, their rent history and their payment history; moreover test if the behaviour of the integrated components is correct both in the case the \emph{UserInformationManagerDriver} behaves as a user and in the case it behaves as a customer care operator.
+\item \textbf{Query functionality}: test if the \emph{DataProvider} allows the \emph{UserInformationManage} to retrieve personal information about the users, their rent history and their payment history; moreover test if the behaviour of the integrated components is correct both in the case the \emph{UserInformationManagerDriver} behaves as a user and in the case it behaves as a customer care operator.
 \end{itemize}
 
 \paragraph{UserAppServer, AccessManager}
 \begin{itemize}
-\item Login functionality: test if the \emph{AccessManager} confirms that a user can log into the system only if username and password given by \emph{UserAppServer} corresponds to a user correctly registered, with a null token associated(email confirmed) and a \emph{not banned} state.
-\item Registration functionality: test if the \emph{AccessManager} allows \emph{UserAppServer} to make requests about the registration of a user checking the information provided as defined in the \emph{RASD document}\cite{RASD} and correctly stores the user information.
+\item \textbf{Login functionality}: test if the \emph{AccessManager} confirms that a user can log into the system only if username and password given by \emph{UserAppServer} corresponds to a user correctly registered, with a null token associated(email confirmed) and a \emph{not banned} state.
+\item \textbf{Registration functionality}: test if the \emph{AccessManager} allows \emph{UserAppServer} to make requests about the registration of a user checking the information provided as defined in the \emph{RASD document}\cite{RASD} and correctly stores the user information.
 \end{itemize}
 
 \paragraph{UserAppServer, UserInformationManager}
 \begin{itemize}
-\item Information retrieval functionality: test if the \emph{UserInformationManager} correctly provides the \emph{UserAppServer} with user's personal information, his rent history and his payment history.
+\item \textbf{Information retrieval functionality}: test if the \emph{UserInformationManager} correctly provides the \emph{UserAppServer} with user's personal information, his rent history and his payment history.
 \end{itemize}
 
 \paragraph{CustomerCareServer, UserInformationManager}
 \begin{itemize}
-\item Information retrieval functionality: test if the \emph{UserInformationManager} correctly provides the \emph{CustomerCareServer} with a list of users, the Customer Care selection of a user personal information, his rent history and his payment history.
+\item \textbf{Information retrieval functionality}: test if the \emph{UserInformationManager} correctly provides the \emph{CustomerCareServer} with a list of users, the Customer Care selection of a user personal information, his rent history and his payment history.
 \end{itemize}
 
 

@@ -1,0 +1,110 @@
+\subsection{Cost and effort estimation: COCOMO II} 
+COnstructive COst MOdel II (COCOMO II) is a model that allows one to estimate the cost, effort, and schedule when planning a new software development activity. COCOMO II is the latest major extension to the original \mbox{COCOMO 81} model published in 1981.
+
+It consists of three submodels, each one offering increased fidelity the further along one is in the project planning and design process \cite{COCOMO}.
+
+Since the system we are to develop is brand new and there is no previous system we have to adopt the \emph{Early design} submodel.
+
+\paragraph{COCOMO effort equation}\label{par:cocomoEquation}This formula estimates the project effort in Person-Months (PM)
+$$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}EM_{i}$$
+where 
+\begin{itemize}
+	\item $A=2.94$ approximates a productivity constant in PM/KSLOC (Person-Months/Kilo-Source Lines of Code)
+	\item $Size$ is the estimated size of the project in KSLOC, it can be deducted from Function Points analysis
+	\item $E$ is an aggregation of five Scale Factors which is computed as $$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j}$$
+	\item $EM$ is the Effort Multiplier derived from each Cost Driver
+\end{itemize}
+
+\clearpage
+
+\subsubsection{Scale Factors}
+Here are described the five Scale Factors of the COCOMO II model, in \autoref{tbl:cocomoSF} are specified their numerical value according to the model definition.
+ 
+{\scriptsize
+\begin{longtable}{c|cccccc}
+\toprule
+\specialcell{Scale\\Factors}&\specialcell{Very\\Low}&Low&Nominal&High&\specialcell{Very\\High}&\specialcell{Extra\\High}\\
+\midrule
+PREC	&
+\specialcell{thoroughly\\unprecedented\\\textbf{6.20}} & 
+\specialcell{largely\\unprecedented\\\textbf{4.96}} & 
+\specialcell{somewhat\\unprecedented\\\textbf{3.72}} & 
+\specialcell{generally\\familiar\\\textbf{2.48}} & 
+\specialcell{largely\\familiar\\\textbf{1.24}} & 
+\specialcell{thoroughly\\familiar\\\textbf{0.00}} \\
+\midrule
+FLEX &
+\specialcell{rigorous\\\textbf{5.07}} & 
+\specialcell{occasional\\relaxation\\\textbf{4.05}} & 
+\specialcell{some\\relaxation\\\textbf{3.04}} & 
+\specialcell{general\\conformity\\\textbf{2.03}} & 
+\specialcell{some\\conformity\\\textbf{1.01}} & 
+\specialcell{general\\goals\\\textbf{0.00}} \\
+\midrule
+RESL &
+\specialcell{little\\(20\%)\\\textbf{7.07}} & 
+\specialcell{some\\(40\%)\\\textbf{5.65}} & 
+\specialcell{often\\(60\%)\\\textbf{4.24}} & 
+\specialcell{generally\\(75\%)\\\textbf{2.83}} & 
+\specialcell{mostly\\(90\%)\\\textbf{1.14}} & 
+\specialcell{full\\(100\%)\\\textbf{0.00}} \\
+\midrule
+TEAM &
+\specialcell{very\\difficult\\interactions\\\textbf{5.48}} & 
+\specialcell{some\\difficult\\interactions\\\textbf{4.38}} & 
+\specialcell{basically\\cooperative\\interactions\\\textbf{3.29}} & 
+\specialcell{largely\\cooperative\\\textbf{2.19}} & 
+\specialcell{highly\\cooperative\\\textbf{1.10}} & 
+\specialcell{seamless\\interactions\\\textbf{0.00}} \\
+\midrule
+PMAT &
+\specialcell{SW-CMM\\Level 1\\Lower\\\textbf{7.80}} & 
+\specialcell{SW-CMM\\Level 1\\Upper\\\textbf{6.24}} & 
+\specialcell{SW-CMM\\Level 2\\\textbf{4.68}} & 
+\specialcell{SW-CMM\\Level 3\\\textbf{3.12}} & 
+\specialcell{SW-CMM\\Level 4\\\textbf{1.56}} & 
+\specialcell{SW-CMM\\Level 5\\\textbf{0.00}} \\
+\bottomrule
+\caption{\\\label{tbl:cocomoSF}\\COCOMO II scale factors values}
+\end{longtable}
+}
+
+\paragraph{Precedentedness - PREC} It is high if a product is similar to several projects previously developed by the team. Since we do not have ever develop such a big project, although we have largely understood the product objectives and there is a minimal need of innovative algorithms or innovative data processing architectures, we decide that
+\DadoCenter{PREC is \textbf{LOW}}
+
+\paragraph{Development Flexibility - FLEX} It is high if there are no specific constraints to conform to pre-established requirements and external interface specifications. The italian law establishes specific constraints regarding the characteristics and usage of car sharing systems, driving licenses and privacy policy. Requirements specified by the client do not excessively restrict the development process, some external APIs are used in order to fulfill the requirements.\\We decide that
+\DadoCenter{FLEX is \textbf{NOMINAL}}
+
+\paragraph{Risk Resolution - RESL} It is high if the project has a good risk management plan, clear definition of budget and schedule, focus on architectural definition. The \hyperref[sec:riskManagement]{Risk Management Plan} identifies generally all critical risk items and determines actions in order to resolve them. As specified in the \hyperref[sec:schedule]{Schedule section} a relevant portion of development process is devoted to establishing architecture, given general product objectives.\\Therefore we decide that
+\DadoCenter{REL is \textbf{HIGH}}
+
+\paragraph{Team Cohesion - TEAM} It is high if all project development team members are able to work in a team and share the same vision and commitment. As objectives, cultures, ages and backgrounds are the same for all team members we decide that
+\DadoCenter{TEAM is \textbf{VERY HIGH}}
+
+\paragraph{Project Maturity - PMAT} It reflects the CMMI index of the project. Since this project can be considered a managed process, planned and executed according to policies with the usage of adequate and planned resources, stakeholders constantly involved in incremental product reviews, we decide that the CMMI index is Level 2: Managed at the Project Level, therefore
+\DadoCenter{PMAT is \textbf{NOMINAL}}
+
+\paragraph{E parameter}In the \autoref{tbl:SFChosenValues} are reported the values chosen for the five Scale Factors
+\begin{longtable}{ccc}
+\toprule
+Scale Factor&Value&Numerical Value\\
+\midrule
+PREC&Low&4.96\\
+FLEX&Nominal&3.04\\
+RESL&High&2.83\\
+TEAM&Very High&1.10\\
+PMAT&Nominal&4.68\\
+\midrule
+\multicolumn{2}{c}{\textbf{Total}}&\textbf{16.61}\\
+\bottomrule\\
+\caption{\label{tbl:SFChosenValues}Scale factors chosen values}
+\end{longtable}
+The $E$ parameter of \hyperref[par:cocomoEquation]{COCOMO effort equation} is computed as
+$$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j} = 0.91+0.01\cdot 16.61 = 1.0761$$
+
+
+\subsubsection{Cost Drivers}
+
+\subsubsection{Effort equation}
+
+\subsubsection{Schedule estimation }

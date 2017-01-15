@@ -1,31 +1,33 @@
-\section{Project size, cost and effort estimation}
+\section[Project estimations]{Project size, cost and effort estimation}
+
+This section provides an estimation for the size, cost and effort of the project based upon techniques that support the estimation procedure. The \mbox{\emph{Function Points}} method is used to estimate the size of the project while the  \mbox{\emph{COCOMO II}} method is used for cost and effort estimations..
 
 \subsection{Size estimation: Function Points}
-\paragraph{What are FP}Given the assumption that the dimension of software can be characterized based on the functionalities that it offers, function points (FP) analysis is a process used to calculate software functional size. The most pervasive version of FP Analysis is regulated by the International Function Point User Group (IFPUG).
+Given the assumption that the dimension of software can be characterized based on the functionalities that it offers, Function Points (FP) analysis is a process used to estimate software functional size. The most pervasive version of FP analysis is regulated by the International Function Point User Group (IFPUG).
 
 Functional components can be clustered as: Internal Logical Files (ILF), External Interface Files (EIF), External Inputs (EI), External Outputs (EO) and External Inquiries (EQ).
 
-Each functional component is associated with as a \emph{complexity level} based on its associated file numbers such as: Data Element Types (DET), File Types Referenced (FTR) and Record Element Types (RET).
+Each functional component is associated with a \emph{complexity level} based on its associated file and data structure and cardinality. Measures and dimensions are: Data Element Types (DET), File Types Referenced (FTR) and Record Element Types (RET).
 
 Each complexity level is then converted into a \emph{weight coefficient} which is used in the FP formulae to compute overall estimations.
 
 \paragraph{Complexity levels and their weight}\autoref{tbl:complexityILF_EIF}, \autoref{tbl:complexityEI} and \autoref{tbl:complexityEO_EQ} describe how complexity level is mapped on each function component. 
 
 In \autoref{tbl:complexityWeight} is shown how each function component is then assigned a weight
-according to its complexity.
+according to its complexity. \\
 
 
 \begin{longtable}{cccc}
 \toprule
 \multicolumn{1}{c}{} & 
-\multicolumn{3}{c}{DET}\\
+\multicolumn{3}{c}{\textbf{DET}}\\
 \midrule
-RET & 1-19 & 20-50 & 51+ \\
+\textbf{RET} & 1-19 & 20-50 & 51+ \\
 \midrule
 1	&	Low	&	Low		&	Avg \\
 2-5	&	Low	&	Avg		&	High \\
 6+	&	Avg	&	High	&	High\\
-\bottomrule
+\bottomrule \\
 \caption{Complexity for ILF and EIF}
 \label{tbl:complexityILF_EIF}
 \end{longtable}
@@ -33,29 +35,31 @@ RET & 1-19 & 20-50 & 51+ \\
 \begin{longtable}{cccc}
 \toprule
 \multicolumn{1}{c}{} & 
-\multicolumn{3}{c}{DET}\\
+\multicolumn{3}{c}{\textbf{DET}}\\
 \midrule
-FTR & 1-4 & 5-15 & 16+ \\
+\textbf{FTR} & 1-4 & 5-15 & 16+ \\
 \midrule
 0-1	&	Low	&	Low		&	Avg \\
 2	&	Low	&	Avg		&	High \\
 3+	&	Avg	&	High	&	High\\
-\bottomrule
-\caption{Complexity for EI}
+\bottomrule \\
+\caption{ Complexity for EI}
 \label{tbl:complexityEI}
 \end{longtable}
+
+\clearpage
 
 \begin{longtable}{cccc}
 \toprule
 \multicolumn{1}{c}{} & 
-\multicolumn{3}{c}{DET}\\
+\multicolumn{3}{c}{\textbf{DET}}\\
 \midrule
-FTR & 1-5 & 6-19 & 20+ \\
+\textbf{FTR} & 1-5 & 6-19 & 20+ \\
 \midrule
 0-1	&	Low	&	Low		&	Avg \\
 2-3	&	Low	&	Avg		&	High \\
 4+	&	Avg	&	High	&	High\\
-\bottomrule
+\bottomrule \\
 \caption{Complexity for EO and EQ}
 \label{tbl:complexityEO_EQ}
 \end{longtable}
@@ -82,7 +86,7 @@ External Outputs		&	4	&	5		&	7 \\
 External Inquiries		&	3	&	4		&	6 \\
 Internal Logic Files	&	7	&	10		&	15 \\
 External Interface Files&	5	&	7		&	10 \\
-\bottomrule
+\bottomrule \\
 \caption{Function component complexity weight assignment}
 \label{tbl:complexityWeight}
 \end{longtable}
@@ -92,36 +96,184 @@ $$ FP = \sum_{i \in I} \sum_{j \in i} w_{ij}$$
 where $ I = \{ILF,EIF,EI,EO,EQ\}$ and $w_{ij}$ is the weight associated with the $j$-th function component of type $i$.
 
 
-\paragraph{Computing SLOC}To be able to convert FP into Source Lines Of Code (SLOC) a language-dependent factor must be taken into consideration. Since J2EE was chosen as coding language for our system, we report in \autoref{tbl:sloc_fp_j2ee} the industry gearing factor distribution of J2EE SLOC/FP factor. \cite{QSM}
+\paragraph{Computing SLOC}To be able to convert FP into Source Lines Of Code (SLOC) a language-dependent factor must be taken into consideration. Since J2EE was chosen as coding language for our system, we report in \autoref{tbl:sloc_fp_j2ee} the industry gearing distribution of J2EE SLOC/FP factor. \cite{QSM}
 
 \begin{longtable}{cccc}
 \toprule
 \textbf{Average} & \textbf{Median} & \textbf{Low} & \textbf{High}\\
 \midrule
 46 & 49 & 15 & 67\\
-\bottomrule
+\bottomrule \\
 \caption{J2EE SLOC/FP factor distribution}
 \label{tbl:sloc_fp_j2ee}
 \end{longtable}
 
+\clearpage
+
 \subsubsection{Internal Logic Files (ILFs)}
+\label{sec:ILFs}
+
+The \emph{Function Points} method explains how to identify ILFs function points through the table provided defining ILF, DET and RET \cite{FP}:
+\begin{itemize}
+	\item An \emph{internal logical file} (ILF) is a user identifiable group of logically related data or control information maintained within the boundary of the application; the primary intent of an ILF is to hold data maintained through one or more elementary processes of the application being counted 
+	\item A \emph{data element type} (DET) is a unique user recognizable, non-repeated field
+	\item A {record element type} (RET) is a user recognizable subgroup of data elements within an ILF or EIF
+\end{itemize}
+
+\paragraph{Notes} Given that definitions, ILFs function points must be calculated independently from the technology chosen for the representation of data, omitting fields used by the system to manage data but non user recognizable (e.g. primary key generated to distinguish tuples in a relational database but without a meaning outside the actual representation)\\ 
+
+This section describes the ILFs and related RETs and DETs identified for the \emph{Power EnJoy system}.
+
+\paragraph{User} The system need to store information about user's personal info (name and surname, date of birth and place of birth, address), user's login info (username and password), user's payment info (credit card number), user's driving license (driving license number), user's status (status and banned reason).
+
+\paragraph{Rent payment} The system needs to store information about three subgroups of data related to rent payments:
+\begin{itemize}
+	\item \textbf{Payments}: for each payment the system needs to store data about the rent and the user related to the payment, payment status, payment timestamp, base cost of the ride, applied discount and applied fee
+	\item \textbf{Fees}: for each fee applicable to a rent the system needs to store data about fixed rate and percentage rate of the fee
+	\item \textbf{Discount}: for each discount applicable to a rent the system needs to store data about fixed rate and percentage rate of the fee
+\end{itemize}
+
+\paragraph{Rent} For each rent the system needs to store data about start timestamp and start location, end timestamp and end location, payment related to the rent, user performing the rent, car rented and eventually charging station related to the money saving option.
+
+\paragraph{Reservation} For each active reservation the system needs to store data about start timestamp, user who made the reservation, car reserved and eventually charging station related to the money saving option.
+
+\paragraph{Car} The system needs to store information about two subgroups of data related to cars:
+\begin{itemize}
+	\item \textbf{Car data}: for each car the system needs to store data about the car status, the GPS position, the battery level, the license number, the model and a last-seen-timestamp to know last time information about other fields has been updated
+	\item \textbf{Failures}: for each failure (fixed or not) the system needs to store data about problem description, report date and eventually the date when the failure has been fixed
+\end{itemize}
+
+\textbf{Notes} Some data stored by the system are retrieved from cars trough the provided API primitives, these data represent a cache copy of the actual data of the car which instead are considered as an EIF. 
+
+\paragraph{Charging Station} For each charging station the system needs to store data about GPS location and number of plugs.
+
+\paragraph{Safe Area} The system needs to store information about two subgroups of data related to safe areas:
+\begin{itemize}
+	\item \textbf{Closed polygonal chain}: for each safe area the system needs to store data about points composing the safe area and their order in the closed polygonal chain composing it
+	\item \textbf{Point of the polygonal chain}: for each point the system needs to store the GPS coordinates
+\end{itemize}
+
+\begin{longtable}{ccccc}
+\toprule
+\textbf{ILF}			&	RET	&	DET	&	Complexity  & \textbf{FPs}\\
+\midrule
+User			&	1	&	10		&	Low & 7 \\
+Rent payment & 3 & 11 & Low & 7 \\
+Rent & 1 & 8 & Low & 7 \\
+Reservation & 1 & 4 & Low & 7 \\
+Car & 2 & 9 & Low & 7\\
+Charging Station & 1 & 3 & Low & 7 \\
+Safe Area & 2 & 3 & Low & 7 \\
+\midrule
+\textbf{Total} & & & & 49\\
+\bottomrule \\
+\caption{Function points ILFs}
+\label{tbl:ilfFP}
+\end{longtable}
+
+\clearpage
 
 \subsubsection{External Interface Files (EIFs)}
+The \emph{Function Points} method explains how to identify EIFs function points through the table provided defining EIF, DET and RET \cite{FP}.
+
+An \emph{external interface file} (EIF) is a user identifiable group of logically related data or control information referenced by the application, but maintained within the boundary of another application. The primary intent of an EIF is to hold data referenced through one or more elementary processes within the boundary of the application counted. This means an EIF counted for an application must be in an ILF in another application.
+
+DET and RET are defined as described in the \hyperref[sec:ILFs]{ILFs section}.\\
+
+This section describes the EIFs and related RETs and DETs identified for the \emph{Power EnJoy system}.
+
+\paragraph{Location} The system relies on data about mapping of location and GPS position of the GIS API.
+
+\paragraph{Car} The system relies on data provided by the car API: unique car identifier, GPS position, engine status (on, off), current number of passengers, maximum number of passengers, battery level (percentage), charging status (in charge, not in charge), door locking status (locked, unlocked), door closing status (open, closed).
+
+\paragraph{Notes: Map} The system relies on data about maps of the GIS API but needs only a map reference to allow the user client to show a map centred in a given position, with a given zoom and a set of pointer and areas (data managed by the system). So it is not considered as an EIF.
+
+\begin{longtable}{ccccc}
+\toprule
+\textbf{EIF}			&	RET	&	DET	&	Complexity  & \textbf{FPs}\\
+\midrule
+Location			&	1	&	2		&	Low & 7 \\
+Car & 1 & 9 & Low & 7 \\
+\midrule
+\textbf{Total} & & & & 14\\
+\bottomrule \\
+\caption{Function points EIFs}
+\label{tbl:eifFP}
+\end{longtable}
+
+\clearpage
 
 \subsubsection{External Inputs (EIs)}
+\label{sec:EIs}
 
-\subsubsection{External Inquiries (EQs)}
- 
+The \emph{Function Points} method explains how to identify EIs function points through the table provided defining EI, FTR and DET \cite{FP}:
+\begin{itemize}
+	\item An \emph{external input} (EI) is an elementary process that processes data or control information that comes from outside the application boundary. The primary intent of an EI is to maintain one or more ILFs and/or to alter the behavior of the system.
+	\item \emph{A file type referenced} (FTR) is:
+	\begin{itemize}
+ 		\item An internal logical file read or maintained by a transactional function \emph{or}
+ 		\item An external interface file read by a transactional function
+	\end{itemize}
+	\item A \emph{data element type} (DET) is a unique user recognizable, non-repeated field
+\end{itemize}
+
+\paragraph{Guest user}
+\begin{itemize}
+	\item register to the \emph{PowerEnjoySystem}
+\end{itemize}
+
+\paragraph{Registered user}
+\begin{itemize}
+	\item authenticate to the \emph{PowerEnjoySystem}
+	\item see available cars
+	\item reserve a car (eventually with money saving option)
+	\item unlock a car
+	\item edit user info
+\end{itemize}
+
+\begin{longtable}{ccc}
+\toprule
+\textbf{EI}	&	Complexity  & \textbf{FPs}\\
+\midrule
+Register	&	Low & 7 \\
+\midrule
+\textbf{Total} & &  14\\
+\bottomrule \\
+\caption{Function points EIFs}
+\label{tbl:eifFP}
+\end{longtable}
+
+
 \subsubsection{External Outputs (EOs)} 
 
+The \emph{Function Points} method explains how to identify EOs function points through the table provided defining EO, FTR and DET \cite{FP}.
+
+An \textit{external output} (EO) is an elementary process that sends data or control information outside the application boundary. The primary intent of an external output is to present information to a user through processing logic other than, or in addition to, the retrieval of data or control information. The processing logic must contain at least one mathematical formula or calculation, create derived data, maintain one or more ILFs or alter the behavior of the system.
+
+DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
+
+
+\subsubsection{External Inquiries (EQs)}
+The \emph{Function Points} method explains how to identify EOs function points through the table provided defining EO, FTR and DET \cite{FP}.
+
+An \textit{external inquiry} (EQ) is an elementary process that sends data or control information outside the application boundary. The primary intent of an external inquiry is to present information to a user through the retrieval of data or control information from an ILF of EIF. The processing logic contains no mathematical formulas or calculations, and creates no derived data. No ILF is maintained during the processing, nor is the behavior of the system
+altered.
+
+DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
+
+\paragraph{Registered user}
+\begin{itemize}
+	\item see rent history
+	\item see payment history
+\end{itemize}
+
+\paragraph{Customer care user}
+\begin{itemize}
+	\item see information about a user
+	\item see rent history of a user
+	\item see payment history of a user
+	\item ban or enable a user
+	\item tag a car as \emph{Not available}
+\end{itemize}
+
 \subsubsection{Overall estimation}
-
-\subsection{Cost and effort estimation: COCOMO II} 
-
-\subsubsection{Scale Drivers}
-
-\subsubsection{Cost Drivers}
-
-\subsubsection{Effort equation}
-
-\subsubsection{Schedule estimation }

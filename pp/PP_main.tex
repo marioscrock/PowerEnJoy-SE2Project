@@ -41,6 +41,11 @@
 \usepackage{longtable} %multiple page tables
 \usepackage{listings} 
 \usepackage{multirow}
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}} % line break in tables
+\newenvironment{newCenterWithoutTopMargin}{\setlength\topsep{0pt}\center}{\endcenter} %Dado beautiful new center environment
+\newcommand{\DadoCenter}[1]{\begin{newCenterWithoutTopMargin}#1\end{newCenterWithoutTopMargin}} %Dado beautiful new center environment
+
 
 \begin{document}
 
@@ -70,6 +75,8 @@
 \include{PP_introduction}
 
 \include{PP_estimations}
+
+\include{PP_estimations_cocomo}
 
 \include{PP_schedule}
 

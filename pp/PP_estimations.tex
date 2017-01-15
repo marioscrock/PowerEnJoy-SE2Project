@@ -1,11 +1,11 @@
-\section{Project size, cost and effort estimation}
+\section[Project estimations]{Project size, cost and effort estimation}
 
 \subsection{Size estimation: Function Points}
-\paragraph{What are FP}Given the assumption that the dimension of software can be characterized based on the functionalities that it offers, function points (FP) analysis is a process used to calculate software functional size. The most pervasive version of FP Analysis is regulated by the International Function Point User Group (IFPUG).
+\paragraph{What are FP}Given the assumption that the dimension of software can be characterized based on the functionalities that it offers, Function Points (FP) analysis is a process used to estimate software functional size. The most pervasive version of FP analysis is regulated by the International Function Point User Group (IFPUG).
 
 Functional components can be clustered as: Internal Logical Files (ILF), External Interface Files (EIF), External Inputs (EI), External Outputs (EO) and External Inquiries (EQ).
 
-Each functional component is associated with as a \emph{complexity level} based on its associated file numbers such as: Data Element Types (DET), File Types Referenced (FTR) and Record Element Types (RET).
+Each functional component is associated with a \emph{complexity level} based on its associated file and data structure and cardinality. Measures and dimensions are: Data Element Types (DET), File Types Referenced (FTR) and Record Element Types (RET).
 
 Each complexity level is then converted into a \emph{weight coefficient} which is used in the FP formulae to compute overall estimations.
 
@@ -92,7 +92,7 @@ $$ FP = \sum_{i \in I} \sum_{j \in i} w_{ij}$$
 where $ I = \{ILF,EIF,EI,EO,EQ\}$ and $w_{ij}$ is the weight associated with the $j$-th function component of type $i$.
 
 
-\paragraph{Computing SLOC}To be able to convert FP into Source Lines Of Code (SLOC) a language-dependent factor must be taken into consideration. Since J2EE was chosen as coding language for our system, we report in \autoref{tbl:sloc_fp_j2ee} the industry gearing factor distribution of J2EE SLOC/FP factor. \cite{QSM}
+\paragraph{Computing SLOC}To be able to convert FP into Source Lines Of Code (SLOC) a language-dependent factor must be taken into consideration. Since J2EE was chosen as coding language for our system, we report in \autoref{tbl:sloc_fp_j2ee} the industry gearing distribution of J2EE SLOC/FP factor. \cite{QSM}
 
 \begin{longtable}{cccc}
 \toprule

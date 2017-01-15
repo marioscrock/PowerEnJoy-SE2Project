@@ -1,0 +1,61 @@
+\subsection{Cost and effort estimation: COCOMO II} 
+COnstructive COst MOdel II (COCOMO II) is a model that allows one to estimate the cost, effort, and schedule when planning a new software development activity. COCOMO II is the latest major extension to the original \mbox{COCOMO 81} model published in 1981.
+
+It consists of three submodels, each one offering increased fidelity the further along one is in the project planning and design process \cite{COCOMO}.
+
+Since the system we are to develop is brand new and there is no previous system we have to adopt the \emph{Early design} submodel.
+
+\paragraph{COCOMO effort equation}This formula estimates the project effort in Person-Months (PM)
+$$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}EM_{i}$$
+where 
+\begin{itemize}
+	\item $A=2.94$ approximates a productivity constant in PM/KSLOC (Person-Months/Kilo-Source Lines of Code)
+	\item $Size$ is the estimated size of the project in KSLOC, it can be deducted from Function Points analysis
+	\item $E$ is an aggregation of five Scale Factors which is computed as $$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j}$$
+	\item $EM$ is the Effort Multiplier derived from each Cost Driver
+\end{itemize}
+\subsubsection{Scale Drivers}
+Here are described the five Scale Drivers of the COCOMO II model, in tableXXX are specified their numerical value according to the model definitions. \todo{check: pre?}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\begin{longtable}{ccccccc}
+\toprule
+\specialcell{Scale\\Factors}&\specialcell{Very\\Low}&Low&Nominal&High&\specialcell{Very\\High}&\specialcell{Extra\\High}\\
+\midrule
+PREC	&
+\specialcell{thoroughly\\unprecedented\\\textbf{6.20}} & 
+\specialcell{largely\\unprecedented\\\textbf{4.96}} & 
+\specialcell{somewhat\\unprecedented\\\textbf{3.72}} & 
+\specialcell{generally\\familiar\\\textbf{2.48}} & 
+\specialcell{largely\\familiar\\\textbf{1.24}} & 
+\specialcell{thoroughly\\familiar\\\textbf{0.00}} \\
+\midrule
+FLEX &
+\specialcell{rigorous\\\textbf{5.07}} & 
+\specialcell{occasional\\relaxation\\\textbf{4.05}} & 
+\specialcell{some\\relaxation\\\textbf{4.05}} & 
+\specialcell{general\\conformity\\\textbf{2.03}} & 
+\specialcell{some\\conformity\\\textbf{1.01}} & 
+\specialcell{general\\goals\\\textbf{0.00}} \\
+\midrule
+RESL &
+\specialcell{little\\(20\%)\\\textbf{7.07}} & 
+\specialcell{some\\(40\%)\\\textbf{5.65}} & 
+\specialcell{often\\(60\%)\\\textbf{4.24}} & 
+\specialcell{generally\\(75\%)\\\textbf{2.83}} & 
+\specialcell{mostly\\(90\%)\\\textbf{1.14}} & 
+\specialcell{full\\(100\%)\\\textbf{0.00}} \\
+\bottomrule
+\end{longtable}
+
+
+\begin{description}
+	\item [Precedentedness (PRE):] High if a product is similar to several previously developed projects
+\end{description}
+\subsubsection{Cost Drivers}
+
+\subsubsection{Effort equation}
+
+\subsubsection{Schedule estimation }

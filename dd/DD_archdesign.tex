@@ -112,8 +112,9 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 	
 	\item GIS API
 	\begin{itemize}
-		\item Get a map which will be populated with markers
-		\item Get the latitude and  longitude of a given location and vice versa
+		\item Retrieve a reference to an up-to-date map centered on a given position
+		\item Add pointers to the aforementioned map
+		\item Get the latitude and longitude of a given location and vice versa
 	\end{itemize}
 	
 	\item Payments API
@@ -417,11 +418,15 @@ The diagram in \autoref{fig:deployment} represents the mapping of the software c
 \subsection{Runtime view}
 
 \subsubsection{Map}
-The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user. The user interface allows the user to input a specific location or use the GPS position of his device; in both cases the GIS will resolve the given position and provide the map centred in that location.
+\label{sec:mapRunView}
+The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user. The user interface allows the user to input a specific location or use the GPS position of his device; the GIS will then provide a reference to a map centred in that location and populated as specified.
 
 The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.\\
 
 \paragraph{Notes} The self-message \emph{setParameters} is used to represent CarHandler operations about retrieving from cars the updated battery level and update the cars JPA.
+
+\paragraph{Interactions not represented}
+If the user inserts a specific location as address, the \emph{UserAppServer} will send it as a string to the \emph{MapManager} which will call a GIS API method to resolve it as a GPS position.
 
 
 \begin{figure}[h!]
@@ -603,11 +608,14 @@ All computers used by the customer care service are connected in the same dedica
 A VPN is used to achieve what mentioned above. Because of corporate data exchange, the protocol to be used id HTTPS
 
 \subsubsection{GIS API}
+\label{sec:gis}
 Using this external API of a \emph{Geographical Information System} our system is able to:
 \begin{itemize}
-	\item retrieve an updated map centered on a given position
+	\item retrieve a reference to an up-to-date map centered on a given position
+	\item add pointers to the aforementioned map
 	\item get the latitude and longitude of a given location and vice versa
 \end{itemize}
+The \emph{UserApplication} component loads and shows the map using its reference.
 
 \subsubsection{DBMS API}
 Trough the DBMS API the system can retrieve and write data into the database. Note that the \mbox{\emph{DataProvider}} component is the only one that access directly this interface.

@@ -18,7 +18,7 @@
 
 	\paragraph{Maintenance} The system will interact with a preexisting car maintenance service which already deals with other car sharing services. Our system will expose to the maintenance service a real time list of all the cars tagged as \emph{not available} via a \emph{restricted access API} which will also provides their GPS position and a brief description of their problems. The maintenance service takes care of reaching those cars, unlocks the doors, fixes the fault, locks the doors back and finally tags them as \emph{available} using the aforementioned API provided by the system. See \hyperref[sec:cars]{cars section} for more details.
 	
-	\paragraph{Map} GPS position of cars and safe areas is displayed to all users, customer care operators and maintenance operators on a constantly updated map which relies on an external GIS.
+	\paragraph{Map} GPS position of cars, charging stations position and safe areas are displayed to all users on an up-to-date map which relies on an external GIS.
 
 	\paragraph{Cars}\label{sec:cars}All cars provided by the customer are equipped with a communication system which ensures a continuous protected communication between the car and the system. All cars also have a module which provides a set of primitives that allow the system to retrieve information and to run commands to take actions on the car. A built-in user interface embedded with the modules shows some relevant information to the user.\\
 	Information retrieved by the system from the car include:

@@ -5,7 +5,7 @@ It consists of three submodels, each one offering increased fidelity the further
 
 Since the system we are to develop is brand new and there is no previous system we have to adopt the \emph{Early design} submodel.
 
-\paragraph{COCOMO effort equation}This formula estimates the project effort in Person-Months (PM)
+\paragraph{COCOMO effort equation}\label{par:cocomoEquation}This formula estimates the project effort in Person-Months (PM)
 $$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}EM_{i}$$
 where 
 \begin{itemize}
@@ -18,7 +18,7 @@ where
 \clearpage
 
 \subsubsection{Scale Factors}
-Here are described the five Scale Factors of the COCOMO II model, in \autoref{tbl:cocomoSF} are specified their numerical value according to the model definition. \todo{check: pre?}
+Here are described the five Scale Factors of the COCOMO II model, in \autoref{tbl:cocomoSF} are specified their numerical value according to the model definition.
  
 {\scriptsize
 \begin{longtable}{c|cccccc}
@@ -65,17 +65,17 @@ PMAT &
 \specialcell{SW-CMM\\Level 4\\\textbf{1.56}} & 
 \specialcell{SW-CMM\\Level 5\\\textbf{0.00}} \\
 \bottomrule
-\caption{\label{tbl:cocomoSF}COCOMO II scale factors values}
+\caption{\\\label{tbl:cocomoSF}\\COCOMO II scale factors values}
 \end{longtable}
 }
 
 \paragraph{Precedentedness - PREC} It is high if a product is similar to several projects previously developed by the team. Since we do not have ever develop such a big project, although we have largely understood the product objectives and there is a minimal need of innovative algorithms or innovative data processing architectures, we decide that
 \DadoCenter{PREC is \textbf{LOW}}
 
-\paragraph{Development Flexibility - FLEX} It is high if there are no specific constraints to conform to pre-established requirements and external interface specifications. The italian law establishes specific constraints regarding the characteristics and usage of car sharing systems, driving licenses and privacy policy. Requirements specified by the client do not excessively restrict the development process, some external APIs are used in order to fulfill the requirements. We decide that
+\paragraph{Development Flexibility - FLEX} It is high if there are no specific constraints to conform to pre-established requirements and external interface specifications. The italian law establishes specific constraints regarding the characteristics and usage of car sharing systems, driving licenses and privacy policy. Requirements specified by the client do not excessively restrict the development process, some external APIs are used in order to fulfill the requirements.\\We decide that
 \DadoCenter{FLEX is \textbf{NOMINAL}}
 
-\paragraph{Architecture/Risk Resolution - RESL} It is high if the project has a good risk management plan, clear definition of budget and schedule, focus on architectural definition. The \hyperref[sec:riskManagement]{Risk Management Plan} identifies generally all critical risk items and determines actions in order to resolve them. As specified in the \hyperref[sec:schedule]{Schedule section} a relevant portion of development process is devoted to establishing architecture, given general product objectives.\\Therefore we decide that
+\paragraph{Risk Resolution - RESL} It is high if the project has a good risk management plan, clear definition of budget and schedule, focus on architectural definition. The \hyperref[sec:riskManagement]{Risk Management Plan} identifies generally all critical risk items and determines actions in order to resolve them. As specified in the \hyperref[sec:schedule]{Schedule section} a relevant portion of development process is devoted to establishing architecture, given general product objectives.\\Therefore we decide that
 \DadoCenter{REL is \textbf{HIGH}}
 
 \paragraph{Team Cohesion - TEAM} It is high if all project development team members are able to work in a team and share the same vision and commitment. As objectives, cultures, ages and backgrounds are the same for all team members we decide that
@@ -84,7 +84,7 @@ PMAT &
 \paragraph{Project Maturity - PMAT} It reflects the CMMI index of the project. Since this project can be considered a managed process, planned and executed according to policies with the usage of adequate and planned resources, stakeholders constantly involved in incremental product reviews, we decide that the CMMI index is Level 2: Managed at the Project Level, therefore
 \DadoCenter{PMAT is \textbf{NOMINAL}}
 
-\paragraph{E parameter}In the table are reported the values chosen for the five Scale Factors
+\paragraph{E parameter}In the \autoref{tbl:SFChosenValues} are reported the values chosen for the five Scale Factors
 \begin{longtable}{ccc}
 \toprule
 Scale Factor&Value&Numerical Value\\
@@ -96,8 +96,11 @@ TEAM&Very High&1.10\\
 PMAT&Nominal&4.68\\
 \midrule
 \multicolumn{2}{c}{\textbf{Total}}&\textbf{16.61}\\
-\bottomrule
+\bottomrule\\
+\caption{\label{tbl:SFChosenValues}Scale factors chosen values}
 \end{longtable}
+The $E$ parameter of \hyperref[par:cocomoEquation]{COCOMO effort equation} is computed as
+$$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j} = 0.91+0.01\cdot 16.61 = 1.0761$$
 
 
 \subsubsection{Cost Drivers}

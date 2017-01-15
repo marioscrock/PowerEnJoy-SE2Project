@@ -108,6 +108,8 @@ where $ I = \{ILF,EIF,EI,EO,EQ\}$ and $w_{ij}$ is the weight associated with the
 \label{tbl:sloc_fp_j2ee}
 \end{longtable}
 
+\clearpage
+
 \subsubsection{Internal Logic Files (ILFs)}
 The \emph{Function Points} method explains how to identify ILFs function points through the table provided defining ILF, DET and RET \cite{FP}:
 \begin{itemize}
@@ -124,9 +126,29 @@ This section describes the ILFs, RETs and DETs identified for the \emph{Power En
 
 \paragraph{Rent payment} The system needs to store information about three subgroups of data related to rent payments:
 \begin{itemize}
-	\item \textbf{Payments}: for each payment the system needs to store data about the rent and the user related to the payment, payment timestamp, base cost of the ride, applied discount and applied fee
+	\item \textbf{Payments}: for each payment the system needs to store data about the rent and the user related to the payment, payment status, payment timestamp, base cost of the ride, applied discount and applied fee
 	\item \textbf{Fees}: for each fee applicable to a rent the system needs to store data about fixed rate and percentage rate of the fee
 	\item \textbf{Discount}: for each discount applicable to a rent the system needs to store data about fixed rate and percentage rate of the fee
+\end{itemize}
+
+\paragraph{Rent} For each rent the system needs to store dara about start timestamp and start location, end timestamp and end location, payment related to the rent, user performing the rent, car rented and eventually charging station related to the money saving option.
+
+\paragraph{Reservation} For each active reservation the system needs to store data about start timestamp, user who made the reservation, car reserved and eventually charging station related to the money saving option.
+
+\paragraph{Car} The system needs to store information about two subgroups of data related to cars:
+\begin{itemize}
+	\item \textbf{Car data}: for each car the system needs to store data about the car status, the GPS position, the battery level, the license number, the model and a lastSeen timestamp to know last time information about other fields has been updated
+	\item \textbf{Failures}: for each failure (fixed or not) the system needs to store data about problem description, report date and eventually the date when the failure has been fixed
+\end{itemize}
+
+\textbf{Notes} Some car's data stored by the system are retrieved from cars trough the provided API primitives, these data represent a cache copy of the actual data of the car which are considered as an EIF. 
+
+\paragraph{Charging Station} For each charging station the system needs to store data about GPS location and number of plugs.
+
+\paragraph{Safe Area} The system needs to store information about two subgroups of data related to safe areas:
+\begin{itemize}
+	\item \textbf{Closed polygonal chain}: for each safe area the system needs to store data about points composing the safe area and their order in the closed polygonal chain
+	\item \textbf{Point of the polygonal chain}: for each point the system needs to store the GPS coordinates
 \end{itemize}
 
 \begin{longtable}{ccccc}
@@ -134,7 +156,14 @@ This section describes the ILFs, RETs and DETs identified for the \emph{Power En
 \textbf{ILF}			&	RET	&	DET	&	Complexity  & \textbf{FPs}\\
 \midrule
 User			&	1	&	10		&	Low & 7 \\
-Rent payment & 3 & 10 & Low & 7 \\
+Rent payment & 3 & 11 & Low & 7 \\
+Rent & 1 & 8 & Low & 7 \\
+Reservation & 1 & 4 & Low & 7 \\
+Car & 2 & 9 & Low & 7\\
+Charging Station & 1 & 3 & Low & 7 \\
+Safe Area & 2 & 3 & Low & 7 \\
+\midrule
+\textbf{Total} & & & & 49\\
 \bottomrule \\
 \caption{Function points ILFs}
 \label{tbl:ilfFP}
@@ -148,8 +177,11 @@ A file type referenced (FTR) is:
  \item An internal logical file read or maintained by a transactional function \emph{or}
  \item An external interface file read by a transactional function
 \end{itemize}
+
+\subsubsection{External Outputs (EOs)} 
+
 \subsubsection{External Inquiries (EQs)}
  
-\subsubsection{External Outputs (EOs)} 
+
 
 \subsubsection{Overall estimation}

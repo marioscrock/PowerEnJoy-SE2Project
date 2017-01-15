@@ -313,7 +313,7 @@ A null position & A NullArgumentException is raised\\
 \midrule
 A wrong format of position & An InvalidArgumentValueException is raised \\
 \midrule
-A well-formatted position & An encoded map is returned; in the map is shown the position of the safe areas, charging stations, input position, locations and details (see \cite{DD}) of available cars within a radius of 2 Km. The batteryLevel and lastSeenTime attributes of these cars are updated if elder than 2 hours\\
+A well-formatted position & A reference to a map is returned; the map shows the position of the safe areas, charging stations, input position, locations and details (see \cite{DD}) of available cars within a radius of 2 Km. The batteryLevel and lastSeenTime attributes of these cars are updated if elder than 2 hours\\
 \bottomrule
 \caption{\emph{getMapAvailableCars} test description}
 \end{longtable}
@@ -437,6 +437,7 @@ In this section we describe integration tests related to components whose method
 \paragraph{UserAppServer, UserInformationManager}
 \begin{itemize}
 \item \textbf{Information retrieval functionality}: test if the \emph{UserInformationManager} correctly provides the \emph{UserAppServer} with user's personal information, his rent history and his payment history.
+\item \textbf{Information edit functionality}: test if the \emph{UserInformationManager} correctly allows \emph{UserAppServer} to modify user's editable personal information.
 \end{itemize}
 
 \paragraph{CustomerCareServer, UserInformationManager}

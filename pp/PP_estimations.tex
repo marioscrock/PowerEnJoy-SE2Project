@@ -1,7 +1,9 @@
 \section[Project estimations]{Project size, cost and effort estimation}
 
+This section provides an estimation for the size, cost and effort of the project based upon techniques that support the estimation procedure. The \mbox{\emph{Function Points}} method is used to estimate the size of the project while the  \mbox{\emph{COCOMO II}} method is used for cost and effort estimations..
+
 \subsection{Size estimation: Function Points}
-\paragraph{What are FP}Given the assumption that the dimension of software can be characterized based on the functionalities that it offers, Function Points (FP) analysis is a process used to estimate software functional size. The most pervasive version of FP analysis is regulated by the International Function Point User Group (IFPUG).
+Given the assumption that the dimension of software can be characterized based on the functionalities that it offers, Function Points (FP) analysis is a process used to estimate software functional size. The most pervasive version of FP analysis is regulated by the International Function Point User Group (IFPUG).
 
 Functional components can be clustered as: Internal Logical Files (ILF), External Interface Files (EIF), External Inputs (EI), External Outputs (EO) and External Inquiries (EQ).
 
@@ -12,20 +14,20 @@ Each complexity level is then converted into a \emph{weight coefficient} which i
 \paragraph{Complexity levels and their weight}\autoref{tbl:complexityILF_EIF}, \autoref{tbl:complexityEI} and \autoref{tbl:complexityEO_EQ} describe how complexity level is mapped on each function component. 
 
 In \autoref{tbl:complexityWeight} is shown how each function component is then assigned a weight
-according to its complexity.
+according to its complexity. \\
 
 
 \begin{longtable}{cccc}
 \toprule
 \multicolumn{1}{c}{} & 
-\multicolumn{3}{c}{DET}\\
+\multicolumn{3}{c}{\textbf{DET}}\\
 \midrule
-RET & 1-19 & 20-50 & 51+ \\
+\textbf{RET} & 1-19 & 20-50 & 51+ \\
 \midrule
 1	&	Low	&	Low		&	Avg \\
 2-5	&	Low	&	Avg		&	High \\
 6+	&	Avg	&	High	&	High\\
-\bottomrule
+\bottomrule \\
 \caption{Complexity for ILF and EIF}
 \label{tbl:complexityILF_EIF}
 \end{longtable}
@@ -33,29 +35,31 @@ RET & 1-19 & 20-50 & 51+ \\
 \begin{longtable}{cccc}
 \toprule
 \multicolumn{1}{c}{} & 
-\multicolumn{3}{c}{DET}\\
+\multicolumn{3}{c}{\textbf{DET}}\\
 \midrule
-FTR & 1-4 & 5-15 & 16+ \\
+\textbf{FTR} & 1-4 & 5-15 & 16+ \\
 \midrule
 0-1	&	Low	&	Low		&	Avg \\
 2	&	Low	&	Avg		&	High \\
 3+	&	Avg	&	High	&	High\\
-\bottomrule
-\caption{Complexity for EI}
+\bottomrule \\
+\caption{ Complexity for EI}
 \label{tbl:complexityEI}
 \end{longtable}
+
+\clearpage
 
 \begin{longtable}{cccc}
 \toprule
 \multicolumn{1}{c}{} & 
-\multicolumn{3}{c}{DET}\\
+\multicolumn{3}{c}{\textbf{DET}}\\
 \midrule
-FTR & 1-5 & 6-19 & 20+ \\
+\textbf{FTR} & 1-5 & 6-19 & 20+ \\
 \midrule
 0-1	&	Low	&	Low		&	Avg \\
 2-3	&	Low	&	Avg		&	High \\
 4+	&	Avg	&	High	&	High\\
-\bottomrule
+\bottomrule \\
 \caption{Complexity for EO and EQ}
 \label{tbl:complexityEO_EQ}
 \end{longtable}
@@ -82,7 +86,7 @@ External Outputs		&	4	&	5		&	7 \\
 External Inquiries		&	3	&	4		&	6 \\
 Internal Logic Files	&	7	&	10		&	15 \\
 External Interface Files&	5	&	7		&	10 \\
-\bottomrule
+\bottomrule \\
 \caption{Function component complexity weight assignment}
 \label{tbl:complexityWeight}
 \end{longtable}
@@ -99,17 +103,51 @@ where $ I = \{ILF,EIF,EI,EO,EQ\}$ and $w_{ij}$ is the weight associated with the
 \textbf{Average} & \textbf{Median} & \textbf{Low} & \textbf{High}\\
 \midrule
 46 & 49 & 15 & 67\\
-\bottomrule
+\bottomrule \\
 \caption{J2EE SLOC/FP factor distribution}
 \label{tbl:sloc_fp_j2ee}
 \end{longtable}
 
 \subsubsection{Internal Logic Files (ILFs)}
+The \emph{Function Points} method explains how to identify ILFs function points through the table provided defining ILF, DET and RET \cite{FP}:
+\begin{itemize}
+	\item An \emph{internal logical file} (ILF) is a user identifiable group of logically related data or control information maintained within the boundary of the application; the primary intent of an ILF is to hold data maintained through one or more elementary processes of the application being counted 
+	\item A \emph{data element type} (DET) is a unique user recognizable, non-repeated field
+	\item A {record element type} (RET) is a user recognizable subgroup of data elements within an ILF or EIF
+\end{itemize}
+
+\paragraph{Notes} Given that definitions, ILFs function points must be calculated independently from the technology chosen for the representation of data, omitting fields used by the system to manage data but non user recognizable (e.g. primary key generated to distinguish tuples in a relational database but without a meaning outside the actual representation)\\ 
+
+This section describes the ILFs, RETs and DETs identified for the \emph{Power EnJoy system}.
+
+\paragraph{User} The system need to store information about user's personal info (name and surname, date of birth and place of birth, address), user's login info (username and password), user's payment info (credit card number), user's driving license (driving license number), user's status (status and banned reason).
+
+\paragraph{Rent payment} The system needs to store information about three subgroups of data related to rent payments:
+\begin{itemize}
+	\item \textbf{Payments}: for each payment the system needs to store data about the rent and the user related to the payment, payment timestamp, base cost of the ride, applied discount and applied fee
+	\item \textbf{Fees}: for each fee applicable to a rent the system needs to store data about fixed rate and percentage rate of the fee
+	\item \textbf{Discount}: for each discount applicable to a rent the system needs to store data about fixed rate and percentage rate of the fee
+\end{itemize}
+
+\begin{longtable}{ccccc}
+\toprule
+\textbf{ILF}			&	RET	&	DET	&	Complexity  & \textbf{FPs}\\
+\midrule
+User			&	1	&	10		&	Low & 7 \\
+Rent payment & 3 & 10 & Low & 7 \\
+\bottomrule \\
+\caption{Function points ILFs}
+\label{tbl:ilfFP}
+\end{longtable}
 
 \subsubsection{External Interface Files (EIFs)}
 
 \subsubsection{External Inputs (EIs)}
-
+A file type referenced (FTR) is:
+\begin{itemize}
+ \item An internal logical file read or maintained by a transactional function \emph{or}
+ \item An external interface file read by a transactional function
+\end{itemize}
 \subsubsection{External Inquiries (EQs)}
  
 \subsubsection{External Outputs (EOs)} 

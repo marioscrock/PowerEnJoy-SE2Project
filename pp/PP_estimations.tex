@@ -108,6 +108,7 @@ where $ I = \{ILF,EIF,EI,EO,EQ\}$ and $w_{ij}$ is the weight associated with the
 \label{tbl:sloc_fp_j2ee}
 \end{longtable}
 
+\paragraph{Notes} The \emph{Function Points} analysis described does takes into account aspects regarding the user interface.
 \clearpage
 
 \subsubsection{Internal Logic Files (ILFs)}
@@ -120,7 +121,7 @@ The \emph{Function Points} method explains how to identify ILFs function points 
 	\item A {record element type} (RET) is a user recognizable subgroup of data elements within an ILF or EIF
 \end{itemize}
 
-\paragraph{Notes} Given that definitions, ILFs function points must be calculated independently from the technology chosen for the representation of data, omitting fields used by the system to manage data but non user recognizable (e.g. primary key generated to distinguish tuples in a relational database but without a meaning outside the actual representation)\\ 
+\paragraph{\emph{Notes}} Given that definitions, ILFs function points must be calculated independently from the technology chosen for the representation of data, omitting fields used by the system to manage data but non user recognizable (e.g. primary key generated to distinguish tuples in a relational database but without a meaning outside the actual representation)\\ 
 
 This section describes the ILFs and related RETs and DETs identified for the \emph{Power EnJoy system}.
 
@@ -143,7 +144,7 @@ This section describes the ILFs and related RETs and DETs identified for the \em
 	\item \textbf{Failures}: for each failure (fixed or not) the system needs to store data about problem description, report date and eventually the date when the failure has been fixed
 \end{itemize}
 
-\textbf{Notes} Some data stored by the system are retrieved from cars trough the provided API primitives, these data represent a cache copy of the actual data of the car which instead are considered as an EIF. 
+\textbf{\emph{Notes}} Some data stored by the system are retrieved from cars trough the provided API primitives, these data represent a cache copy of the actual data of the car which instead are considered as an EIF. 
 
 \paragraph{Charging Station} For each charging station the system needs to store data about GPS location and number of plugs.
 
@@ -186,7 +187,7 @@ This section describes the EIFs and related RETs and DETs identified for the \em
 
 \paragraph{Car} The system relies on data provided by the car API: unique car identifier, GPS position, engine status (on, off), current number of passengers, maximum number of passengers, battery level (percentage), charging status (in charge, not in charge), door locking status (locked, unlocked), door closing status (open, closed).
 
-\paragraph{Notes: Map} The system relies on data about maps of the GIS API but needs only a map reference to allow the user client to show a map centred in a given position, with a given zoom and a set of pointer and areas (data managed by the system). So it is not considered as an EIF.
+\paragraph{Notes} The system relies on data about maps provided by the GIS API but only needs a map reference to allow the user client application to show a map centred in a given position, with a given zoom and a set of pointer and areas (data managed by the system). So map data are not considered as an EIF.
 
 \begin{longtable}{ccccc}
 \toprule
@@ -215,29 +216,67 @@ The \emph{Function Points} method explains how to identify EIs function points t
  		\item An external interface file read by a transactional function
 	\end{itemize}
 	\item A \emph{data element type} (DET) is a unique user recognizable, non-repeated field
-\end{itemize}
+\end{itemize} 
+
+This section describes the EIs and related FTRs and DETs identified for the \emph{Power EnJoy system} grouped by the user category.
 
 \paragraph{Guest user}
 \begin{itemize}
-	\item register to the \emph{PowerEnjoySystem}
+	\item \textbf{Register} to the \emph{PowerEnjoySystem}: to be processed by the system only requires User ILF
 \end{itemize}
 
 \paragraph{Registered user}
 \begin{itemize}
-	\item authenticate to the \emph{PowerEnjoySystem}
-	\item see available cars
-	\item reserve a car (eventually with money saving option)
-	\item unlock a car
-	\item edit user info
+	\item \textbf{Authenticate} to the \emph{PowerEnjoySystem}: to be processed by the system only requires user data
+	\item \textbf{Edit user info}: to be processed by the system only requires user data
+	\item \textbf{See available cars}: to be processed by the system it requires cars info (data stored in the system, if recently updated, or retrieved from cars), charging stations and safe areas data and eventually data provided by GIS API to decode the position inserted by the user
+	\item \textbf{Reserve a car} (we consider the most complete case with money saving option enabled): to be processed by the system it requires cars info, access to active reservations data to instantiate a new one, charging stations data to provide the recommended destination and eventually data provided by GIS API to decode the position inserted by the user
+	\item \textbf{Unlock a car} to be processed by the system it requires cars info and access to rents data to instantiate a new one
+	\item \textbf{Start a rent} (user has ignited the car engine: system notified through the car event handler): to be processed by the system it only requires rents data
+	\item \textbf{End a rent} (user has turned engine off, has leaved the car and closed doors: system notified through the car event handler): to be processed by the system it requires to retrieve data from cars, requires to modify rents data, access to payments data to instantiate a new one and calculate the applicable fees and discount and the final total cost
 \end{itemize}
 
-\begin{longtable}{ccc}
+\paragraph{Customer care user}
+\begin{itemize}
+	\item ban or enable a user
+	\item tag a car as \emph{Not available}
+\end{itemize}
+
+\paragraph{Maintenance API}
+\begin{itemize}
+	\item retrieve the list of cars marked as Not Available along with the identifier used by the system to identify each car, the description of the problem paired with the current position of each car (GPS coordinates) and a software key to access each car
+	\item tag a car as \emph{Available}
+\end{itemize}
+
+\begin{longtable}{cccc}
 \toprule
-\textbf{EI}	&	Complexity  & \textbf{FPs}\\
+\multicolumn{1}{c}{} & 
+\multicolumn{3}{c}{\textbf{DET}}\\
 \midrule
-Register	&	Low & 7 \\
+\textbf{FTR} & 1-4 & 5-15 & 16+ \\
 \midrule
-\textbf{Total} & &  14\\
+0-1	&	Low	&	Low		&	Avg \\
+2	&	Low	&	Avg		&	High \\
+3+	&	Avg	&	High	&	High\\
+\bottomrule \\
+\caption{ Complexity for EI}
+\label{tbl:complexityEI}
+\end{longtable}
+
+\begin{longtable}{ccccc}
+\toprule
+\textbf{EI}	& FTR & DET & 	Complexity  & \textbf{FPs}\\
+\midrule
+Register & 1 & 5-15 &	Low & 3 \\
+Edit user info & 1 & 1-4 &	Low & 3 \\
+Authenticate &1 & 1-4 & Low & 3 \\
+See available cars & 3+ & 5-15 & High & 6 \\
+Reserve a car & 3+ & 5-15 & High & 6 \\
+Unlock a car & 2 & 5-15 & Avg & 4 \\
+Start a rent & 1 & 1-4 &	Low & 3 \\
+End a rent & 3+ & 5-15 & High & 6 \\
+\midrule
+\textbf{Total} & & & &  14\\
 \bottomrule \\
 \caption{Function points EIFs}
 \label{tbl:eifFP}
@@ -249,6 +288,17 @@ Register	&	Low & 7 \\
 The \emph{Function Points} method explains how to identify EOs function points through the table provided defining EO, FTR and DET \cite{FP}.
 
 An \textit{external output} (EO) is an elementary process that sends data or control information outside the application boundary. The primary intent of an external output is to present information to a user through processing logic other than, or in addition to, the retrieval of data or control information. The processing logic must contain at least one mathematical formula or calculation, create derived data, maintain one or more ILFs or alter the behavior of the system.
+
+\paragraph{Payment}
+\begin{itemize}
+	\item make a payment procedure
+\end{itemize}
+
+\paragraph{GIS API}
+\begin{itemize}
+	\item decode an address as GPS position
+	\item obtain a map reference
+\end{itemize}
 
 DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
 
@@ -272,8 +322,27 @@ DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
 	\item see information about a user
 	\item see rent history of a user
 	\item see payment history of a user
-	\item ban or enable a user
-	\item tag a car as \emph{Not available}
+\end{itemize}
+
+\paragraph{Car Event}
+\begin{itemize}
+	\item critical battery level
 \end{itemize}
 
 \subsubsection{Overall estimation}
+
+\begin{longtable}{cc}
+\toprule
+\textbf{Function Type Value}  & \textbf{FPs}\\
+\midrule
+Internal Logic Files & 49 \\
+External Interface Files & 7 \\
+External Inputs & 7 \\
+External Outputs & 7 \\
+External Inquiries & 7 \\
+\midrule
+\textbf{Total} & 14\\
+\bottomrule \\
+\caption{Function points EIFs}
+\label{tbl:eifFP}
+\end{longtable}

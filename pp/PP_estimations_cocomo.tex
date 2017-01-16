@@ -162,14 +162,41 @@ Therefore PERS is \textbf{NOMINAL}.
 	\item \textbf{Data Base Size - DATA} This cost driver attempts to capture the effect large test data requirements have on product development. \todo{the ratio of bytes in the testing database to SLOC in the program.}
 	\item \textbf{Product Complexity - CPLX} Complexity is divided into five areas: control operations, computational operations, device-dependent operations, data management operations, and user interface management operations.
 	\begin{itemize}
-		\item User interface management: simple use of widget set. NOMINAL
-		\item Data management operations: large operational database with many updates, possibly with triggers, multi-file structured inputs, data restructuring. HIGH
-		\item Device dependent Operations: I/O processing includes device selection, status checking and error processing. NOMINAL
-		\item Computational operations: Use of standard math, basic matrix and vector operations. NOMINAL
-		\item Control operations: Reentrant and recursive coding. Task synchronization, complex callbacks. VERY HIGH
+		\item User interface management: simple use of widget set. It is NOMINAL.
+		\item Data management operations: large operational database with many updates, possibly with triggers, multi-file structured inputs, data restructuring. It is HIGH.
+		\item Device dependent Operations: I/O processing includes device selection, status checking and error processing. It is NOMINAL.
+		\item Computational operations: Use of standard math, basic matrix and vector operations. It is NOMINAL.
+		\item Control operations: Reentrant and recursive coding. Task synchronization, complex callbacks. It is VERY HIGH.
 	\end{itemize}
+	Due to this analysis the CPLX parameter is \textbf{NOMINAL}.
+	\item \textbf{Documentation Match to Life Cycle Needs - DOCU} This cost driver is evaluated in terms of the suitability
+of the project's documentation. Since the documentation of the project is supposed to be right-sized to life cycle needs, this parameter is \textbf{NOMINAL}
 \end{itemize}
 
+\begin{longtable}{ccc}
+\multicolumn{3}{c}{\textbf{RCPX}}\\
+\toprule
+Cost Driver&Value&Numerical Value\\
+\midrule
+RELY&High&4\\
+DATA&&\\
+CPLX&Nominal&3\\
+DOCU&Nominal&3\\
+\midrule
+\multicolumn{2}{c}{\textbf{Average}}&\textbf{BOH}\\
+\bottomrule
+\end{longtable}
+
+Therefore PERS is \textbf{BOH}.\todo{complete}
+
+\paragraph{Developed for Reusability - RUSE} This cost driver accounts for the additional effort needed to construct components intended for reuse on current or future projects. This effort is consumed with creating more generic design of software, more elaborate documentation, and more extensive testing to ensure components are ready for use in other applications.
+
+Since some project components must cover general aspects of different possible software projects, this parameter is \textbf{NOMINAL}.
+
+\paragraph{Platform Difficulty - PDIF}
+\begin{itemize}
+	\item \textbf{Execution Time Constraint - TIME} This is a measure of the execution time constraint imposed upon a software system. The rating is expressed in terms of the percentage of available execution time expected to be used by the system or subsystem consuming the execution time resource. Since the system may have exceptional spikes of usage, the idle resource allocation should not exceed 70\% of available execution time. Therefore this parameter is \textbf{HIGH}.
+\end{itemize}
 \subsubsection{Effort equation}
 
 \subsubsection{Schedule estimation }

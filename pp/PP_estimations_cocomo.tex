@@ -104,6 +104,71 @@ $$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j} = 0.91+0.01\cdot 16.61 = 1.0761$$
 
 
 \subsubsection{Cost Drivers}
+Since we refer to the \emph{Early Design} model of COCOMO II, the cost drivers are obtained averaging their \emph{Post-Architecture} counterparts as shown in \autoref{tbl:costDriverConversion}.
+\begin{longtable}{cc}
+\toprule
+\specialcell{Early Design\\Cost Drivers} & \specialcell{Counterpart Combined Post-Architecture\\Cost Drivers}\\
+\midrule
+PERS&ACAP, PCAP, PCON\\
+RCPX&RELY, DATA, CPLX, DOCU\\
+RUSE&RUSE\\
+PDIF&TIME ,STOR, PVOL\\
+PREX&APEX, PLEX, LTEX\\
+FCIL&TOOL, SITE\\
+SCED&SCED\\
+\bottomrule\\
+\caption{\label{tbl:costDriverConversion}Cost drivers conversion}
+\end{longtable}
+
+\begin{longtable}{c|ccccccc}
+\toprule
+\specialcell{Cost\\Driver}&\specialcell{Extra\\Low}&\specialcell{Very\\Low}&Low&Nominal&High&\specialcell{Very\\High}&\specialcell{Extra\\High}\\
+\midrule
+PERS &2.12 &1.62 &1.26 &1.00 &0.83 &0.63 &0.50\\
+RCPX &0.49 &0.60 &0.83 &1.00 &1.33 &1.91 &2.72\\
+RUSE &-	   &-	 &0.95 &1.00 &1.07 &1.15 &1.24\\
+PDIF &-	   &-    &0.87 &1.00 &1.29 &1.81 &2.61\\
+PREX &1.59 &1.33 &1.22 &1.00 &0.87 &0.74 &0.62\\
+FCIL &1.43 &1.30 &1.10 &1.00 &0.87 &0.73 &0.62\\
+SCED &-	   &1.43 &1.14 &1.00 &1.00 &1.00 &-\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Personnel Capability - PERS}
+\begin{itemize}
+	\item \textbf{Analyst Capability - ACAP}: Analysts are personnel who work on requirements, high-level design and detailed design. Since we consider ourselves as good analysts, with the ability to communicate and cooperate, we consider this parameter as \textbf{HIGH}.
+	\item \textbf{Programmer Capability - PCAP}: This parameter reflect the capability of the programmers as a team rather than as individuals. Since all team members have already done with profit several team projects before, we consider this parameter as \textbf{HIGH}.
+	\item \textbf{Personnel Continuity - PCON}: The rating scale is in terms of the project’s annual personnel turnover. Since the team is composed of 3 members and the average turnover is 2 years, this parameter is \textbf{VERY LOW}.
+\end{itemize}
+
+\begin{longtable}{ccc}
+\multicolumn{3}{c}{\textbf{PERS}}\\
+\toprule
+Cost Driver&Value&Numerical Value\\
+\midrule
+ACAP&High&4\\
+PCAP&High&4\\
+PCON&Very Low&1\\
+\midrule
+\multicolumn{2}{c}{\textbf{Average}}&\textbf{3}\\
+\bottomrule
+\end{longtable}
+
+Therefore PERS is \textbf{NOMINAL}.
+
+\paragraph{Product Reliability and Complexity - RCPX}
+\begin{itemize}
+	\item \textbf{Required Software Reliability - RELY} This is the measure of the extent to which the software must perform its intended function over a period of time. If the effect of a software failure is only slight inconvenience then RELY is very low. Since a product failure will cause high financial loss to our client's core business, this parameter is \textbf{HIGH}.
+	\item \textbf{Data Base Size - DATA} This cost driver attempts to capture the effect large test data requirements have on product development. \todo{the ratio of bytes in the testing database to SLOC in the program.}
+	\item \textbf{Product Complexity - CPLX} Complexity is divided into five areas: control operations, computational operations, device-dependent operations, data management operations, and user interface management operations.
+	\begin{itemize}
+		\item User interface management: simple use of widget set. NOMINAL
+		\item Data management operations: large operational database with many updates, possibly with triggers, multi-file structured inputs, data restructuring. HIGH
+		\item Device dependent Operations: I/O processing includes device selection, status checking and error processing. NOMINAL
+		\item Computational operations: Use of standard math, basic matrix and vector operations. NOMINAL
+		\item Control operations: Reentrant and recursive coding. Task synchronization, complex callbacks. VERY HIGH
+	\end{itemize}
+\end{itemize}
 
 \subsubsection{Effort equation}
 

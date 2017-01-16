@@ -222,30 +222,36 @@ This section describes the EIs and related FTRs and DETs identified for the \emp
 
 \paragraph{Guest user}
 \begin{itemize}
-	\item \textbf{Register} to the \emph{PowerEnjoySystem}: to be processed by the system only requires User ILF
+	\item \textbf{Register} to the \emph{PowerEnjoySystem}: to be processed by the system only requires users data
 \end{itemize}
 
 \paragraph{Registered user}
 \begin{itemize}
-	\item \textbf{Authenticate} to the \emph{PowerEnjoySystem}: to be processed by the system only requires user data
-	\item \textbf{Edit user info}: to be processed by the system only requires user data
+	\item \textbf{Authenticate} to the \emph{PowerEnjoySystem}: to be processed by the system only requires users data
+	\item \textbf{Edit user info}: to be processed by the system only requires users data
 	\item \textbf{See available cars}: to be processed by the system it requires cars info (data stored in the system, if recently updated, or retrieved from cars), charging stations and safe areas data and eventually data provided by GIS API to decode the position inserted by the user
-	\item \textbf{Reserve a car} (we consider the most complete case with money saving option enabled): to be processed by the system it requires cars info, access to active reservations data to instantiate a new one, charging stations data to provide the recommended destination and eventually data provided by GIS API to decode the position inserted by the user
-	\item \textbf{Unlock a car} to be processed by the system it requires cars info and access to rents data to instantiate a new one
+	\item \textbf{Reserve a car} (we consider the most complete case with money saving option enabled): to be processed by the system it requires cars info, access to active reservations data to instantiate a reservation record, charging stations data to provide the recommended destination and eventually data provided by GIS API to decode the position inserted by the user
+	\item \textbf{Reservation expired} (triggered by reservation timer): to be processed by the system it requires active reservations info and payments data to instantiate a new payment record
+	\item \textbf{Unlock a car}: to be processed by the system it requires cars info and access to rents data to instantiate a new rent record
 	\item \textbf{Start a rent} (user has ignited the car engine: system notified through the car event handler): to be processed by the system it only requires rents data
-	\item \textbf{End a rent} (user has turned engine off, has leaved the car and closed doors: system notified through the car event handler): to be processed by the system it requires to retrieve data from cars, requires to modify rents data, access to payments data to instantiate a new one and calculate the applicable fees and discount and the final total cost
+	\item \textbf{End a rent} (user has turned engine off, has leaved the car and closed doors: system notified through the car event handler): to be processed by the system it requires to retrieve data from cars, requires to modify rents data and access to payments data to instantiate a new payment record and calculate the applicable fees and discount and the final total cost
 \end{itemize}
 
 \paragraph{Customer care user}
 \begin{itemize}
-	\item ban or enable a user
-	\item tag a car as \emph{Not available}
+	\item \textbf{Ban or enable a user} to be processed by the system it only requires users data
+	\item \textbf{Tag a car as \emph{Not available}} to be processed by the system it only requires cars data
 \end{itemize}
 
 \paragraph{Maintenance API}
 \begin{itemize}
 	\item retrieve the list of cars marked as Not Available along with the identifier used by the system to identify each car, the description of the problem paired with the current position of each car (GPS coordinates) and a software key to access each car
 	\item tag a car as \emph{Available}
+\end{itemize}
+
+\paragraph{Car Event}
+\begin{itemize}
+	\item critical battery level
 \end{itemize}
 
 \begin{longtable}{cccc}
@@ -268,13 +274,18 @@ This section describes the EIs and related FTRs and DETs identified for the \emp
 \textbf{EI}	& FTR & DET & 	Complexity  & \textbf{FPs}\\
 \midrule
 Register & 1 & 5-15 &	Low & 3 \\
+\midrule
 Edit user info & 1 & 1-4 &	Low & 3 \\
 Authenticate &1 & 1-4 & Low & 3 \\
 See available cars & 3+ & 5-15 & High & 6 \\
 Reserve a car & 3+ & 5-15 & High & 6 \\
+Reservation expired & 2 & 5-15 & Avg & 4 \\
 Unlock a car & 2 & 5-15 & Avg & 4 \\
 Start a rent & 1 & 1-4 &	Low & 3 \\
 End a rent & 3+ & 5-15 & High & 6 \\
+\midrule
+Ban or enable a user & 1 & 1-4 &	Low & 3 \\
+Tag a car as \emph{Not available} & 1 & 1-4 &	Low & 3 \\
 \midrule
 \textbf{Total} & & & &  14\\
 \bottomrule \\
@@ -324,11 +335,6 @@ DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
 	\item see payment history of a user
 \end{itemize}
 
-\paragraph{Car Event}
-\begin{itemize}
-	\item critical battery level
-\end{itemize}
-
 \subsubsection{Overall estimation}
 
 \begin{longtable}{cc}
@@ -336,7 +342,7 @@ DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
 \textbf{Function Type Value}  & \textbf{FPs}\\
 \midrule
 Internal Logic Files & 49 \\
-External Interface Files & 7 \\
+External Interface Files & 14 \\
 External Inputs & 7 \\
 External Outputs & 7 \\
 External Inquiries & 7 \\
@@ -346,3 +352,15 @@ External Inquiries & 7 \\
 \caption{Function points EIFs}
 \label{tbl:eifFP}
 \end{longtable}
+
+ $$SLOC = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor$$
+where 
+\begin{itemize}
+	\item I = \{ILF,EIF,EI,EO,EQ\}
+	\item $w_{ij}$ is the weight associated with the $j$-th function component of type $i$
+	\item $factor$ is the industry gearing distribution of J2EE SLOC/FP factor
+\end{itemize} 
+
+ $$\textrm{Lower bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor$$
+ 
+  $$\textrm{Upper Bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor$$

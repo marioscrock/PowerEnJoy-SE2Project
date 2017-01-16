@@ -296,61 +296,34 @@ This section describes the EOs and related FTRs and DETs identified for the \emp
 
 \paragraph{Payment API}
 \begin{itemize}
-	\item \textbf{Make a payment procedure}
+	\item \textbf{Make a payment procedure}: to be executed by the system through the payment API it requires data about the payment to be made and information about user's payment method. It also requires to modify user status if the payment procedure fails 
 \end{itemize}
 
 \paragraph{GIS API}
 \begin{itemize}
-	\item \textbf{Decode an address as GPS position}
-	\item \textbf{Obtain a map reference}
+	\item \textbf{Decode an address as GPS position}: to be executed by the system through the GIS API it requires the address to be decoded and access to location EIF related to GIS API
+	\item \textbf{Obtain a map reference}: to be executed by the system and to retrieve the reference through the GIS API it requires the GPS position of the user to center the map, the zoom and information about cars (data stored in the system if recently updated, or data retrieved from cars otherwise), safe areas and charging stations
 \end{itemize}
 
 \paragraph{Cars}
 \begin{itemize}
-	\item \textbf{Call car primitives}
+	\item \textbf{Car primitive}: to be executed by the system through the cars provided API it requires access to data about cars to identify car to communicate with and eventually to update fields related. Number of DET related may depend on the primitive called so we consider that EO of \emph{Average} difficulty
 \end{itemize}
 
-\begin{longtable}{cccc}
-\toprule
-\multicolumn{1}{c}{} & 
-\multicolumn{3}{c}{\textbf{DET}}\\
-\midrule
-\textbf{FTR} & 1-5 & 6-19 & 20+ \\
-\midrule
-0-1	&	Low	&	Low		&	Avg \\
-2-3	&	Low	&	Avg		&	High \\
-4+	&	Avg	&	High	&	High\\
-\bottomrule \\
-\caption{Complexity for EO and EQ}
-\label{tbl:complexityEO_EQ}
-\end{longtable}
-
-\begin{longtable}{cccc}
-\toprule
-Component				&	Low	&	Average	&	High \\
-\midrule
-External Inputs			&	3	&	4		&	6 \\
-External Outputs		&	4	&	5		&	7 \\
-External Inquiries		&	3	&	4		&	6 \\
-Internal Logic Files	&	7	&	10		&	15 \\
-External Interface Files&	5	&	7		&	10 \\
-\bottomrule \\
-\caption{Function component complexity weight assignment}
-\label{tbl:complexityWeight}
-\end{longtable}
+\clearpage 
 
 \begin{longtable}{ccccc}
 \toprule
 \textbf{EO}	& FTR & DET & 	Complexity  & \textbf{FPs}\\
 \midrule
-Make a payment procedure \\
+Make a payment procedure & 2-3 & 6-19 & Avg & 5\\
 \midrule
-Decode an address as GPS position  \\
-Obtain a map reference \\
+Decode an address as GPS position & 1 & 1-5 & Low & 4 \\
+Obtain a map reference & 4+ & 6-19 & Avg & 7\\
 \midrule
-Call car primitives \\
+Car primitive & 1 & - & Avg & 5  \\
 \midrule
-\textbf{Total} & & & &  42\\
+\textbf{Total} & & & &  21\\
 \bottomrule \\
 \caption{Function points EOs}
 \label{tbl:eoFP}
@@ -369,29 +342,35 @@ This section describes the EQs and related FTRs and DETs identified for the \emp
 
 \paragraph{Registered user}
 \begin{itemize}
-	\item \textbf{See rent history}
-	\item \textbf{See payment history}
+	\item \textbf{See personal information}: to be processed by the system it requires the userID and data about users
+	\item \textbf{See rent history}: to be processed by the system it requires the userID and data about rents
+	\item \textbf{See payment history}: to be processed by the system it requires the userID and data about payments
 \end{itemize}
 
 \paragraph{Customer care user}
 \begin{itemize}
-	\item \textbf{See information about a user}
-	\item \textbf{See rent history of a user}
-	\item \textbf{See payment history of a user}
+	\item \textbf{See all user IDs}:  to be processed by the system it requires data about users
+	\item \textbf{See information about a user}: to be processed by the system it requires the userID and data about users
+	\item \textbf{See rent history of a user}: to be processed by the system it requires the userID and data about rents
+	\item \textbf{See payment history of a user}: to be processed by the system it requires the userID and data about payments
 \end{itemize}
+
+\paragraph{Notes} Similiar EQs between users and customer care operator are considered separately because are requested from different server components and they also differs w.r.t information provided. \\
 
 \begin{longtable}{ccccc}
 \toprule
 \textbf{EQ}	& FTR & DET & 	Complexity  & \textbf{FPs}\\
 \midrule
-See own rent history\\
-See own payment history\\
+See own information (\emph{user}) & 1 & 6-19 & Low & 4\\
+See own rent history (\emph{user}) & 1 & 6-19 & Low & 4\\
+See own payment history (\emph{user}) & 1 & 6-19 & Low & 4\\
 \midrule
-See information about a user\\
-See rent history of a user\\
-See payment history of a user\\
+See all user IDs & 1 & 1-5 & Low & 4\\
+See information about a user & 1 & 6-19 & Low & 4\\
+See rent history of a user & 1 & 6-19 & Low & 4\\
+See payment history of a user & 1 & 6-19 & Low & 4\\
 \midrule
-\textbf{Total} & & & &  42\\
+\textbf{Total} & & & &  28\\
 \bottomrule \\
 \caption{Function points EQs}
 \label{tbl:eqFP}
@@ -401,21 +380,24 @@ See payment history of a user\\
 
 \subsubsection{Overall estimation}
 
+The following table summarizes FPs count identified through the analysis for each component.\\
 \begin{longtable}{cc}
 \toprule
 \textbf{Function Type Value}  & \textbf{FPs}\\
 \midrule
 Internal Logic Files & 49 \\
 External Interface Files & 14 \\
-External Inputs & 7 \\
-External Outputs & 7 \\
-External Inquiries & 7 \\
+External Inputs & 56 \\
+External Outputs &  21\\
+External Inquiries & 28 \\
 \midrule
-\textbf{Total} & 14\\
+\textbf{Total} & 168\\
 \bottomrule \\
 \caption{Function points EIFs}
 \label{tbl:eifFP}
 \end{longtable}
+
+Through the \emph{SLOC} estimation formula we can therefore estimate an upper bound and a lower bound for the size of the project. 
 
  $$SLOC = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor$$
 where 
@@ -425,6 +407,6 @@ where
 	\item $factor$ is the industry gearing distribution of J2EE SLOC/FP factor
 \end{itemize} 
 
- $$\textrm{Lower bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor = 42 \cdot 46 = 7 $$
+ $$\textrm{Lower bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor = 168 \cdot 46 = 7728 $$
  
-  $$\textrm{Upper Bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor = 42 \cdot 67 = 7 $$
+  $$\textrm{Upper Bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor = 168 \cdot 67 =11256 $$

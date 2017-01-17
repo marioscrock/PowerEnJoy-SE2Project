@@ -28,6 +28,7 @@ rasd/RASD_main.pdf
 dd/DD_main.pdf
 itpd/ITPD_main.pdf
 pp/PP_main.pdf
+inspection/Inspection_main.pdf
 *.synctex.gz
 
 # ignore DS_Store and files starting with ._ (for Mac)

@@ -1,6 +1,36 @@
 \section{Risk management}\label{sec:riskManagement}
-This section describe possible risks for the \emph{PowerEnJoy system} and some possible strategies to mitigate them.
+This section describe possible risks for the \emph{PowerEnJoy system} and some possible reactive and proactive strategies to mitigate them.
 \subsection{Project risks}
+\begin{longtable}{lp{0.8\linewidth}}
+\multicolumn{2}{c}{\textbf{Failure to achieve a deadline}}\\
+\toprule
+\textbf{Description}& Various contingencies could bring to fail to achieve deadlines. \\
+\midrule
+\textbf{Probability}&Moderate\\
+\midrule
+\textbf{Effects}&Moderate\\
+\midrule
+\textbf{Actions}& Planning the project schedule it is quite impossible to consider all possible issues that may arise during the project development, so it could be useful to allocate some extra time after each major phase of the project in order to avoid a tasks shift on the schedule due to a fail to achieve a deadline.\\
+\bottomrule
+\end{longtable}
+\begin{longtable}{lp{0.8\linewidth}}
+\multicolumn{2}{c}{\textbf{Change of requirements}}\\
+\toprule
+\textbf{Description}& Requirements may need some changes: not exhaustive requirements, misunderstood requirements or missing requirements. \\
+\midrule
+\textbf{Probability}&Moderate\\
+\midrule
+\textbf{Effects}&Moderate/Serious\\
+\midrule
+\textbf{Actions}& To avoid the need to change requirements it is really useful to meet all the project stakeholders from the beginning of the development of the project (for example also allowing some users to interact with mockups of the application during the requirements design phase). 
+
+The change of requirements during the development phase could bring to the need to change already implemented software and/or software design. The relevance on the project of that change must be evaluted: if the issue is serious and is customer fault it could be necessary to re-discuss project contract, schedule and estimated budget. 
+
+Anyway a modular and reusable thinking of the software architecture could help to be more reactive to the need of requirements change.\\
+\bottomrule
+\end{longtable}
+
+
 \subsection{Technical risks}
 \begin{longtable}{lp{0.8\linewidth}}
 \multicolumn{2}{c}{\textbf{Underestimation of requests' load}}\\
@@ -28,6 +58,20 @@ This section describe possible risks for the \emph{PowerEnJoy system} and some p
 \bottomrule
 \end{longtable}
 
+\begin{longtable}{lp{0.8\linewidth}}
+\multicolumn{2}{c}{\textbf{Difficulties during development phase}}\\
+\toprule
+\textbf{Description}& It could happen developers experience difficulties in the development of some specific features of the system due to the lack of experience. \\
+\midrule
+\textbf{Probability}&Low\\
+\midrule
+\textbf{Effects}&Moderate\\
+\midrule
+\textbf{Actions}& It may be required to think about asking consulting to external companies.\\
+\bottomrule
+\end{longtable}
+
+
 \subsection{Business risks}
 \begin{longtable}{lp{0.8\linewidth}}
 \multicolumn{2}{c}{\textbf{Competitors}}\\
@@ -43,7 +87,7 @@ This section describe possible risks for the \emph{PowerEnJoy system} and some p
 \end{longtable}
 
 \begin{itemize}
-\item Problemi J2EE
+
 \item Car sharing non sfonda -> difficoltà fondi per mantenimento software
 \item Necessità cambio fornitore automobili
 \item Security
@@ -57,9 +101,8 @@ This section describe possible risks for the \emph{PowerEnJoy system} and some p
 \item Bad external tasks
 \item Real-time shortfalls
 \item Capability shortfalls
+\item API downtime
+\item API changes
+\item Data loss > backup
 \end{itemize}
-Failure to achieve a deadline (milestone)\\
-API downtime\\
-API changes\\
-Aumentano requisiti > coinvolgere utenti in fase di sviluppo\\
-Data loss > backup
+

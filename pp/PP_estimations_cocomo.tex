@@ -1,18 +1,20 @@
 \subsection{Cost and effort estimation: COCOMO II} 
-COnstructive COst MOdel II (COCOMO II) is a model that allows one to estimate the cost, effort, and schedule when planning a new software development activity. COCOMO II is the latest major extension to the original \mbox{COCOMO 81} model published in 1981.
+COnstructive COst MOdel II (COCOMO II) is a model that allows one to estimate the cost, effort, and schedule when planning a new software development activity. COCOMO II.2000 is the latest major extension to the original \mbox{COCOMO 81} model published in 1981.
 
 It consists of three submodels, each one offering increased fidelity the further along one is in the project planning and design process \cite{COCOMO}.
 
-Since the system we are to develop is brand new and there is no previous system we have to adopt the \emph{Early design} submodel.
+Since the system we are to develop is brand new and there is no previous system we have to adopt the \emph{early design} submodel.
+
+\paragraph{Important note}All parameters and coefficients used in this section are formally defined in the \emph{COCOMO II.2000 Model Definition Manual} \cite{COCOMOManual}. Each cost driver and scale factor value is determined w.r.t. definition tables in the same manual that are not reported here.
 
 \paragraph{COCOMO effort equation}\label{par:cocomoEquation}This formula estimates the project effort in Person-Months (PM)
-$$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}EM_{i}$$
+$$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}C_{i}$$
 where 
 \begin{itemize}
 	\item $A=2.94$ approximates a productivity constant in PM/KSLOC (Person-Months/Kilo-Source Lines of Code)
 	\item $Size$ is the estimated size of the project in KSLOC, it can be deducted from Function Points analysis
 	\item $E$ is an aggregation of five Scale Factors which is computed as $$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j}$$
-	\item $EM$ is the Effort Multiplier derived from each Cost Driver
+	\item $C$ is the effort multiplier derived from each Cost Driver
 \end{itemize}
 
 \clearpage
@@ -261,14 +263,14 @@ SITE&High&4\\
 
 Therefore FCIL is \textbf{High}.
 
-\paragraph{Required Development Schedule - SCED}
-This rating measures the schedule constraint imposed on the project team developing the software. Since the schedule considers mandatory deadlines, this parameter is set to \textbf{NOMINAL}.
+\paragraph{Required Development Schedule - SCED}\label{par:sced}
+This rating measures the schedule constraint imposed on the project team developing the software. Since the schedule considers mandatory deadlines, there should not be any compression or expansion for the whole project (\emph{i.d. 100\% of nominal schedule)}, therefore this parameter is set to \textbf{NOMINAL}.
 
 \paragraph{Cost Drivers summary}
-In table is reported the value of each cost driver as determined in this section and the corresponding numerical valued as specified in \autoref{tbl:costDriverConversionValue}
+In \autoref{tbl:CDChosenValues} is reported the value of each cost driver as determined in this section and the corresponding numerical valued as specified in \autoref{tbl:costDriverConversionValue}.
 
 \begin{longtable}{ccc}
-Cost Driver & Value & Numerical Value\\
+\specialcell{Cost\\Driver} & Value & \specialcell{Numerical Value\\\emph{(Effort Multiplier)}}\\
 \midrule
 PERS&Nominal&1\\
 RCPX&High&1.33\\\
@@ -281,6 +283,31 @@ SCED&Nominal&1\\
 \caption{\label{tbl:CDChosenValues}Cost drivers chosen values}
 \end{longtable}
 
-\subsubsection{Effort equation}
 
-\subsubsection{Schedule estimation } 
+\subsubsection{Effort equation}
+The COCOMO II \hyperref[par:cocomoEquation]{effort equation} can now be computed as
+\begin{align*}
+PM &= A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}C_{i} \\
+&= 2.94 \cdot Size^{1.0761} \cdot (1 \cdot 1.33 \cdot 1 \cdot 1 \cdot 1.22 \cdot 0.87 \cdot 1)\\
+&= 2.94 \cdot Size^{1.0761} \cdot 1.4112\\
+\end{align*}
+
+Therefore
+$$PM_{min} = 2.94 \cdot 7.728^{1.0761} \cdot 1.4112 = 37$$
+
+$$PM_{max} = 2.94 \cdot 11.256^{1.0761} \cdot 1.4112 = 56$$
+\subsubsection{Schedule estimation} 
+According to the model definition, the duration D (in months) of the project can be estimated as
+$$D = 3.67 \cdot (PM_{NS})^F \cdot \frac{SCED\%}{100}$$
+where
+\begin{itemize}
+	\item $PM_{NS}$ is the Person-Months estimation without considering the SCED cost driver
+	\item $F = 0.28 + 0.2 \cdot (E-0.91)$
+	\item $E$ is the aggregation of scale factors previously determined
+	\item $SCED\%$ is the SCED nominal value percentage (see \hyperref[par:sced]{SCED paragraph})
+\end{itemize}
+
+Since the effort multiplier of SCED cost driver is $1$, in our case $$PM_{NS} = PM$$
+Since as previously specified $E = 1.0761$ we can compute $$F = 0.28+0.2 \cdot (1.0761-0.91) = 0.31322$$
+Therefore $$D_{min} = 3.67 \cdot 37^{0.31322} \cdot 1 = 11.373 \text{ months}$$
+$$D_{max} = 3.67 \cdot 56^{0.31322} \cdot 1 = 12.949 \text{ months}$$

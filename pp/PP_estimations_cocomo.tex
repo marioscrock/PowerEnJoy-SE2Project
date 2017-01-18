@@ -1,18 +1,20 @@
 \subsection{Cost and effort estimation: COCOMO II} 
-COnstructive COst MOdel II (COCOMO II) is a model that allows one to estimate the cost, effort, and schedule when planning a new software development activity. COCOMO II is the latest major extension to the original \mbox{COCOMO 81} model published in 1981.
+COnstructive COst MOdel II (COCOMO II) is a model that allows one to estimate the cost, effort, and schedule when planning a new software development activity. COCOMO II.2000 is the latest major extension to the original \mbox{COCOMO 81} model published in 1981.
 
 It consists of three submodels, each one offering increased fidelity the further along one is in the project planning and design process \cite{COCOMO}.
 
-Since the system we are to develop is brand new and there is no previous system we have to adopt the \emph{Early design} submodel.
+Since the system we are to develop is brand new and there is no previous system we have to adopt the \emph{early design} submodel.
+
+\paragraph{Important note}All parameters and coefficients used in this section are formally defined in the \emph{COCOMO II.2000 Model Definition Manual} \cite{COCOMOManual}. Each cost driver and scale factor value is determined w.r.t. definition tables in the same manual that are not reported here.
 
 \paragraph{COCOMO effort equation}\label{par:cocomoEquation}This formula estimates the project effort in Person-Months (PM)
-$$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}EM_{i}$$
+$$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}C_{i}$$
 where 
 \begin{itemize}
 	\item $A=2.94$ approximates a productivity constant in PM/KSLOC (Person-Months/Kilo-Source Lines of Code)
 	\item $Size$ is the estimated size of the project in KSLOC, it can be deducted from Function Points analysis
 	\item $E$ is an aggregation of five Scale Factors which is computed as $$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j}$$
-	\item $EM$ is the Effort Multiplier derived from each Cost Driver
+	\item $C$ is the effort multiplier derived from each Cost Driver
 \end{itemize}
 
 \clearpage
@@ -65,18 +67,18 @@ PMAT &
 \specialcell{SW-CMM\\Level 4\\\textbf{1.56}} & 
 \specialcell{SW-CMM\\Level 5\\\textbf{0.00}} \\
 \bottomrule
-\caption{\\\label{tbl:cocomoSF}\\COCOMO II scale factors values}
+\caption{\label{tbl:cocomoSF}COCOMO II scale factors values}
 \end{longtable}
 }
 
 \paragraph{Precedentedness - PREC} It is high if a product is similar to several projects previously developed by the team. Since we do not have ever develop such a big project, although we have largely understood the product objectives and there is a minimal need of innovative algorithms or innovative data processing architectures, we decide that
 \DadoCenter{PREC is \textbf{LOW}}
 
-\paragraph{Development Flexibility - FLEX} It is high if there are no specific constraints to conform to pre-established requirements and external interface specifications. The italian law establishes specific constraints regarding the characteristics and usage of car sharing systems, driving licenses and privacy policy. Requirements specified by the client do not excessively restrict the development process, some external APIs are used in order to fulfill the requirements.\\We decide that
+\paragraph{Development Flexibility - FLEX} It is high if there are no specific constraints to conform to pre-established requirements and external interface specifications. The italian law establishes specific constraints regarding the characteristics and usage of car sharing systems, driving licenses and privacy policy. Requirements specified by the client do not excessively restrict the development process, some external APIs should used in order to fulfill the requirements.\\We decide that
 \DadoCenter{FLEX is \textbf{NOMINAL}}
 
 \paragraph{Risk Resolution - RESL} It is high if the project has a good risk management plan, clear definition of budget and schedule, focus on architectural definition. The \hyperref[sec:riskManagement]{Risk Management Plan} identifies generally all critical risk items and determines actions in order to resolve them. As specified in the \hyperref[sec:schedule]{Schedule section} a relevant portion of development process is devoted to establishing architecture, given general product objectives.\\Therefore we decide that
-\DadoCenter{REL is \textbf{HIGH}}
+\DadoCenter{RESL is \textbf{HIGH}}
 
 \paragraph{Team Cohesion - TEAM} It is high if all project development team members are able to work in a team and share the same vision and commitment. As objectives, cultures, ages and backgrounds are the same for all team members we decide that
 \DadoCenter{TEAM is \textbf{VERY HIGH}}
@@ -160,7 +162,7 @@ Therefore PERS is \textbf{NOMINAL}.
 \paragraph{Product Reliability and Complexity - RCPX}
 \begin{itemize}
 	\item \textbf{Required Software Reliability - RELY} This is the measure of the extent to which the software must perform its intended function over a period of time. If the effect of a software failure is only slight inconvenience then RELY is very low. Since a product failure will cause high financial loss to our client's core business, this parameter is \textbf{HIGH}.
-	\item \textbf{Data Base Size - DATA} This cost driver attempts to capture the effect large test data requirements have on product development. \todo{the ratio of bytes in the testing database to SLOC in the program.}
+	\item \textbf{Data Base Size - DATA} This cost driver attempts to capture the effect large test data requirements have on product development. The rating is determined by calculating D/P, the ratio of bytes in the testing database to SLOC in the program. Given the project specifications we estimate a testing database size of 10Mb and the \hyperref[sec:FPResult]{FP analysis} estimates SLOC between 7728 and 11256, the D/P ratio is between 932 and 1357. Therefore this parameter is \textbf{HIGH}.
 	\item \textbf{Product Complexity - CPLX} Complexity is divided into five areas: control operations, computational operations, device-dependent operations, data management operations, and user interface management operations.
 	\begin{itemize}
 		\item User interface management: simple use of widget set. It is NOMINAL.
@@ -180,15 +182,15 @@ of the project's documentation. Since the documentation of the project is suppos
 Cost Driver&Value&Numerical Value\\
 \midrule
 RELY&High&4\\
-DATA&&\\
+DATA&High&4\\
 CPLX&Nominal&3\\
 DOCU&Nominal&3\\
 \midrule
-\multicolumn{2}{c}{\textbf{Total}}&\textbf{BOH}\\
+\multicolumn{2}{c}{\textbf{Total}}&\textbf{14}\\
 \bottomrule
 \end{longtable}
 
-Therefore PERS is \textbf{BOH}.\todo{complete}
+Therefore RCPX is \textbf{HIGH}.
 
 \paragraph{Developed for Reusability - RUSE} This cost driver accounts for the additional effort needed to construct components intended for reuse on current or future projects. This effort is consumed with creating more generic design of software, more elaborate documentation, and more extensive testing to ensure components are ready for use in other applications.
 
@@ -198,7 +200,7 @@ Since some project components must cover general aspects of different possible s
 \begin{itemize}
 	\item \textbf{Execution Time Constraint - TIME} This is a measure of the execution time constraint imposed upon a software system. The rating is expressed in terms of the percentage of available execution time expected to be used by the system or subsystem consuming the execution time resource. Since the system may have exceptional spikes of usage, the idle resource allocation should not exceed 70\% of available execution time. Therefore this parameter is \textbf{HIGH}.
 	\item \textbf{Main Storage Constraint - STOR} This rating represents the degree of main storage constraint imposed on a software system or subsystem. Since the system will not require an incremental disk space except for the database whose size is trivial w.r.t modern disk capacity, this parameter is \textbf{NOMINAL}.
-	\item \textbf{Platform Volatility - PVOL} "Platform" is used here to mean the complex of hardware and software (OS, DBMS, etc.) the software product calls on to perform its tasks. Our system will use a web server, a DBMS and some external APIs, we expect major releases of them every 6 months and minor releases every 2 weeks, therefore this parameter is \textbf{NOMINAL}.
+	\item \textbf{Platform Volatility - PVOL} \emph{Platform} is used here to mean the complex of hardware and software the product calls on to perform its tasks. Our system may use a web server, a DBMS and some external APIs, we expect major releases of them every 6 months and minor releases every 2 weeks, therefore this parameter is \textbf{NOMINAL}.
 \end{itemize}
 
 \begin{longtable}{ccc}
@@ -222,7 +224,7 @@ Therefore PDIF is \textbf{NOMINAL}.
 	
 	\item \textbf{Platform Experience - PLEX} This parameter reflect the ability to understand and use powerful platforms, including more graphic user interface, database, networking and so on. Since all members of the team have already deal (in different teams) with projects that relied on platforms similar to the ones that will be used for the PowerEnJoy project for an average period of 2 years, this parameter is set to \textbf{NOMINAL}.
 	
-	\item \textbf{Language and Tool Experience - LTEX} This is a measure of the level of programming language and software tool experience of the project team developing the software system or subsystem. All team members have quite good knowledge of many development best practices and software tools that will be used such as version control systems, integrated development environments, testing frameworks, development quality control software, etc. \todo{language used} This parameter is \textbf{HIGH}.
+	\item \textbf{Language and Tool Experience - LTEX} This is a measure of the level of programming language and software tool experience of the project team developing the software system or subsystem. All team members have quite good knowledge of many development best practices and software tools that will be used such as version control systems, integrated development environments, testing frameworks, development quality control software, etc. None of team members have any experience regarding J2EE. All these things considered, this parameter is \textbf{NOMINAL}.
 	
 \end{itemize}
 
@@ -233,9 +235,9 @@ Cost Driver&Value&Numerical Value\\
 \midrule
 APEX&Very Low&1\\
 PLEX&Nominal&3\\
-LTEX&High&4\\
+LTEX&Nominal&3\\
 \midrule
-\multicolumn{2}{c}{\textbf{Total}}&\textbf{8}\\
+\multicolumn{2}{c}{\textbf{Total}}&\textbf{7}\\
 \bottomrule
 \end{longtable}
 
@@ -243,7 +245,7 @@ Therefore PREX is \textbf{LOW}.
 
 \paragraph{Facilities - FCIL}
 \begin{itemize}
-	\item \textbf{Use of Software Tool - TOOL} Since strong, mature lifecycle tools, moderately integrated\todo{decide}
+	\item \textbf{Use of Software Tool - TOOL} Software development tools will be used during the whole development cycle (version control systems, integrated development environments, testing frameworks, development quality control software, bug report systems, virtual team desks, etc.), therefore this parameter is \textbf{NOMINAL}.
 	\item \textbf{Multisite Development - SITE} Since all team members and stakeholders live in the same metropolitan area, this parameter is \textbf{HIGH}.
 \end{itemize}
 
@@ -252,37 +254,60 @@ Therefore PREX is \textbf{LOW}.
 \toprule
 Cost Driver&Value&Numerical Value\\
 \midrule
-TOOL&&1\\
+TOOL&Nominal&3\\
 SITE&High&4\\
 \midrule
-\multicolumn{2}{c}{\textbf{Total}}&\textbf{}\\
+\multicolumn{2}{c}{\textbf{Total}}&\textbf{7}\\
 \bottomrule
 \end{longtable}
 
-Therefore FCIL is \textbf{BOH}.\todo{decide}
+Therefore FCIL is \textbf{High}.
 
-\paragraph{Required Development Schedule - SCED}
-This rating measures the schedule constraint imposed on the project team developing the
-software.
+\paragraph{Required Development Schedule - SCED}\label{par:sced}
+This rating measures the schedule constraint imposed on the project team developing the software. Since the schedule considers mandatory deadlines, there should not be any compression or expansion for the whole project (\emph{i.d. 100\% of nominal schedule)}, therefore this parameter is set to \textbf{NOMINAL}.
 
 \paragraph{Cost Drivers summary}
-In table is reported the value of each cost driver as determined in this section and the corresponding numerical valued as specified in \autoref{tbl:costDriverConversionValue}
+In \autoref{tbl:CDChosenValues} is reported the value of each cost driver as determined in this section and the corresponding numerical valued as specified in \autoref{tbl:costDriverConversionValue}.
 
 \begin{longtable}{ccc}
-Cost Driver & Value & Numerical Value\\
+\specialcell{Cost\\Driver} & Value & \specialcell{Numerical Value\\\emph{(Effort Multiplier)}}\\
 \midrule
 PERS&Nominal&1\\
-RCPX&BOH&\\
+RCPX&High&1.33\\\
 RUSE&Nominal&1\\
 PDIF&Nominal&1\\
 PREX&Low&1.22\\
-FCIL&BOH\\
-SCED&BOH\\
+FCIL&High&0.87\\
+SCED&Nominal&1\\
 \bottomrule
 \caption{\label{tbl:CDChosenValues}Cost drivers chosen values}
 \end{longtable}
 
 
 \subsubsection{Effort equation}
+The COCOMO II \hyperref[par:cocomoEquation]{effort equation} can now be computed as
+\begin{align*}
+PM &= A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}C_{i} \\
+&= 2.94 \cdot Size^{1.0761} \cdot (1 \cdot 1.33 \cdot 1 \cdot 1 \cdot 1.22 \cdot 0.87 \cdot 1)\\
+&= 2.94 \cdot Size^{1.0761} \cdot 1.4112\\
+\end{align*}
 
-\subsubsection{Schedule estimation } 
+Therefore
+$$PM_{min} = 2.94 \cdot 7.728^{1.0761} \cdot 1.4112 = 37$$
+
+$$PM_{max} = 2.94 \cdot 11.256^{1.0761} \cdot 1.4112 = 56$$
+\subsubsection{Schedule estimation} 
+According to the model definition, the duration D (in months) of the project can be estimated as
+$$D = 3.67 \cdot (PM_{NS})^F \cdot \frac{SCED\%}{100}$$
+where
+\begin{itemize}
+	\item $PM_{NS}$ is the Person-Months estimation without considering the SCED cost driver
+	\item $F = 0.28 + 0.2 \cdot (E-0.91)$
+	\item $E$ is the aggregation of scale factors previously determined
+	\item $SCED\%$ is the SCED nominal value percentage (see \hyperref[par:sced]{SCED paragraph})
+\end{itemize}
+
+Since the effort multiplier of SCED cost driver is $1$, in our case $$PM_{NS} = PM$$
+Since as previously specified $E = 1.0761$ we can compute $$F = 0.28+0.2 \cdot (1.0761-0.91) = 0.31322$$
+Therefore $$D_{min} = 3.67 \cdot 37^{0.31322} \cdot 1 = 11.373 \text{ months}$$
+$$D_{max} = 3.67 \cdot 56^{0.31322} \cdot 1 = 12.949 \text{ months}$$

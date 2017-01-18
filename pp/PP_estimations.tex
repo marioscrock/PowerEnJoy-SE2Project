@@ -43,7 +43,7 @@ according to its complexity. \\
 2	&	Low	&	Avg		&	High \\
 3+	&	Avg	&	High	&	High\\
 \bottomrule \\
-\caption{ Complexity for EI}
+\caption{Complexity for EI}
 \label{tbl:complexityEI}
 \end{longtable}
 
@@ -108,7 +108,7 @@ where $ I = \{ILF,EIF,EI,EO,EQ\}$ and $w_{ij}$ is the weight associated with the
 \label{tbl:sloc_fp_j2ee}
 \end{longtable}
 
-\paragraph{Notes} The \emph{Function Points} analysis described doesn't take into account aspects regarding the users interface.
+\paragraph{Notes} The \emph{Function Points} analysis described does not take into account aspects regarding the users interface.
 \clearpage
 
 \subsubsection{Internal Logic Files (ILFs)}
@@ -121,9 +121,9 @@ The \emph{Function Points} method explains how to identify ILFs function points 
 	\item A {record element type} (RET) is a user recognizable subgroup of data elements within an ILF or EIF
 \end{itemize}
 
-\paragraph{\emph{Notes}} Given that definitions, ILFs function points must be calculated independently from the technology chosen for the representation of data, omitting fields used by the system to manage data but non user recognizable (e.g. primary key generated to distinguish tuples in a relational database but without a meaning outside the actual representation)\\ 
+\paragraph{\emph{Notes}} Given that definitions, ILFs function points must be calculated independently from the technology chosen for the representation of data, omitting fields used by the system to manage data but non user recognizable (e.g. primary key generated to distinguish tuples in a relational database but without a meaning outside the actual representation).\\ 
 
-This section describes the ILFs and related RETs and DETs identified for the \emph{Power EnJoy system}.
+This section describes the ILFs and related RETs and DETs identified for the \emph{PowerEnJoy system}.
 
 \paragraph{User} The system need to store information about user's personal info (name and surname, date of birth and place of birth, address), user's login info (username and password), user's payment info (credit card number), user's driving license (driving license number), user's status (status and banned reason).
 
@@ -166,7 +166,7 @@ Car & 2 & 9 & Low & 7\\
 Charging Station & 1 & 3 & Low & 7 \\
 Safe Area & 2 & 3 & Low & 7 \\
 \midrule
-\textbf{Total} & & & & 49\\
+\textbf{Total} & & & & \textbf{49}\\
 \bottomrule \\
 \caption{Function points ILFs}
 \label{tbl:ilfFP}
@@ -181,13 +181,13 @@ An \emph{external interface file} (EIF) is a user identifiable group of logicall
 
 DET and RET are defined as described in the \hyperref[sec:ILFs]{ILFs section}.\\
 
-This section describes the EIFs and related RETs and DETs identified for the \emph{Power EnJoy system}.
+This section describes the EIFs and related RETs and DETs identified for the \emph{PowerEnJoy system}.
 
 \paragraph{Location} The system relies on data about mapping of location and GPS position of the GIS API.
 
 \paragraph{Car} The system relies on data provided by the car API: unique car identifier, GPS position, engine status (on, off), current number of passengers, maximum number of passengers, battery level (percentage), charging status (in charge, not in charge), door locking status (locked, unlocked), door closing status (open, closed).
 
-\paragraph{Notes} The system relies on data about maps provided by the GIS API but only needs a map reference to allow the user client application to show a map centred in a given position, with a given zoom and a set of pointer and areas (data managed by the system and already considered as ILF). So map data are not considered as an EIF.
+\paragraph{Notes} The system relies on data about maps provided by the GIS API but only needs a map reference to allow the user client application to show a map centred in a given position, with a given zoom and a set of pointer and areas (data managed by the system and already considered as ILF), therefore map data are not considered as an EIF.
 
 \begin{longtable}{ccccc}
 \toprule
@@ -196,7 +196,7 @@ This section describes the EIFs and related RETs and DETs identified for the \em
 Location			&	1	&	2		&	Low & 7 \\
 Car & 1 & 9 & Low & 7 \\
 \midrule
-\textbf{Total} & & & & 14\\
+\textbf{Total} & & & & \textbf{14}\\
 \bottomrule \\
 \caption{Function points EIFs}
 \label{tbl:eifFP}
@@ -218,23 +218,23 @@ The \emph{Function Points} method explains how to identify EIs function points t
 	\item A \emph{data element type} (DET) is a unique user recognizable, non-repeated field
 \end{itemize} 
 
-This section describes the EIs and related FTRs and DETs identified for the \emph{Power EnJoy system} grouped by the user category.
+This section describes the EIs and related FTRs and DETs identified for the \emph{PowerEnJoy system} grouped by the user category.
 
 \paragraph{Guest user}
 \begin{itemize}
-	\item \textbf{Register} to the \emph{PowerEnjoySystem}: to be processed by the system only requires users data to instatiate a new user record
+	\item \textbf{Register} to the \emph{PowerEnjoy system}: to be processed by the system only requires users data to instantiate a new user record
 \end{itemize}
 
 \paragraph{Registered user}
 \begin{itemize}
-	\item \textbf{Authenticate} to the \emph{PowerEnjoySystem}: to be processed by the system only requires users data to check inserted credentials
+	\item \textbf{Authenticate} to the \emph{PowerEnjoy system}: to be processed by the system only requires users data to check inserted credentials
 	\item \textbf{Edit user info}: to be processed by the system only requires users data to modify information stored by the system as requested
 	\item \textbf{See available cars}: to be processed by the system it requires cars info (data stored in the system if recently updated, or data retrieved from cars otherwise), charging stations and safe areas data to show it on the map, and eventually data provided by GIS API to decode the position inserted by the user
-	\item \textbf{Reserve a car} (we consider the most complete case with money saving option enabled): to be processed by the system it requires cars info, access to active reservations data to instantiate a reservation record, charging stations data to provide the recommended destination and eventually data provided by GIS API to decode the position inserted by the user
-	\item \textbf{Reservation expired} (triggered by reservation timer): to be processed by the system it requires active reservations info to delete the reservation and payments data to instantiate a new payment record
+	\item \textbf{Reserve a car} (we consider the most complete scenario with money saving option enabled): to be processed by the system it requires cars info, access to active reservations data to instantiate a reservation record, charging stations data to provide the recommended destination and eventually data provided by GIS API to decode the position inserted by the user
+	\item \textbf{Reservation expired}: to be processed by the system it requires active reservations info to delete the reservation and payments data to instantiate a new payment record
 	\item \textbf{Unlock a car}: to be processed by the system it requires active reservations data to check if the request is allowed for the user making it, requires cars info and access to rents data to instantiate a new rent record
-	\item \textbf{Start a rent} (user has ignited the car engine: system notified through the car event handler): to be processed by the system it requires rents data to insert start timestamp and location and car data to change car status
-	\item \textbf{End a rent} (user has turned engine off, has leaved the car and closed doors: system notified through the car event handler): to be processed by the system it requires to retrieve data from cars, requires to modify rents data and access to payments data to instantiate a new payment record and calculate the applicable fees and discount and the final total cost
+	\item \textbf{Start a rent} (the system is notified that the user has ignited the car engine): to be processed by the system it requires rents data to insert start timestamp and location and car data to change car status
+	\item \textbf{End a rent} (the system is notified that the user has turned engine off, has leaved the car and has closed doors): to be processed by the system it requires to retrieve data from cars, requires to modify rents data and access to payments data to instantiate a new payment record and calculate the applicable fees and discount and the final total cost
 \end{itemize}
 
 \paragraph{Customer care user}
@@ -251,7 +251,7 @@ This section describes the EIs and related FTRs and DETs identified for the \emp
 
 \paragraph{Car Event}
 \begin{itemize}
-	\item \textbf{Critical battery level} (system notified through the car event handler): to be processed by the system it only requires cars data to change car status, instantiate a new failures record and its fields
+	\item \textbf{Critical battery level}: to be processed by the system it only requires cars data to change car status as \emph{Not available}, instantiate a new failures record and its fields
 \end{itemize}
 
 \begin{longtable}{ccccc}
@@ -259,7 +259,6 @@ This section describes the EIs and related FTRs and DETs identified for the \emp
 \textbf{EI}	& FTR & DET & 	Complexity  & \textbf{FPs}\\
 \midrule
 Register & 1 & 5-15 &	Low & 3 \\
-\midrule
 Edit user info & 1 & 1-4 &	Low & 3 \\
 Authenticate &1 & 1-4 & Low & 3 \\
 See available cars & 3+ & 5-15 & High & 6 \\
@@ -268,16 +267,13 @@ Reservation expired & 2 & 5-15 & Avg & 4 \\
 Unlock a car & 3+ & 5-15 & High & 6 \\
 Start a rent & 2 & 1-4 &	Low & 3 \\
 End a rent & 3+ & 5-15 & High & 6 \\
-\midrule
 Ban or enable a user & 1 & 1-4 &	Low & 3 \\
 Tag a car as \emph{Not available} & 1 & 1-4 &	Low & 3 \\
-\midrule
 Retrieve \emph{Not available} cars & 2 & 5-15 & Avg & 4\\
 Tag a car as \emph{Available} & 1 & 1-4 &	Low & 3\\
-\midrule
 Critical battery level & 1 & 1-4 &	Low & 3\\
 \midrule
-\textbf{Total} & & & &  56\\
+\textbf{Total} & & & &  \textbf{56}\\
 \bottomrule \\
 \caption{Function points EIs}
 \label{tbl:eiFP}
@@ -292,7 +288,7 @@ An \textit{external output} (EO) is an elementary process that sends data or con
 
 DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
 
-This section describes the EOs and related FTRs and DETs identified for the \emph{Power EnJoy system} grouped by the user category.
+This section describes the EOs and related FTRs and DETs identified for the \emph{PowerEnJoy system} grouped by the user category.
 
 \paragraph{Payment API}
 \begin{itemize}
@@ -317,13 +313,11 @@ This section describes the EOs and related FTRs and DETs identified for the \emp
 \textbf{EO}	& FTR & DET & 	Complexity  & \textbf{FPs}\\
 \midrule
 Make a payment procedure & 2-3 & 6-19 & Avg & 5\\
-\midrule
 Decode an address as GPS position & 1 & 1-5 & Low & 4 \\
 Obtain a map reference & 4+ & 6-19 & Avg & 7\\
-\midrule
 Car primitive & 1 & - & Avg & 5  \\
 \midrule
-\textbf{Total} & & & &  21\\
+\textbf{Total} & & & &  \textbf{21}\\
 \bottomrule \\
 \caption{Function points EOs}
 \label{tbl:eoFP}
@@ -331,14 +325,14 @@ Car primitive & 1 & - & Avg & 5  \\
 
 
 \subsubsection{External Inquiries (EQs)}
-The \emph{Function Points} method explains how to identify EOs function points through the table provided defining EO, FTR and DET \cite{FP}.
+The \emph{Function Points} method explains how to identify EQs function points through the table provided defining EQ, FTR and DET \cite{FP}.
 
 An \textit{external inquiry} (EQ) is an elementary process that sends data or control information outside the application boundary. The primary intent of an external inquiry is to present information to a user through the retrieval of data or control information from an ILF of EIF. The processing logic contains no mathematical formulas or calculations, and creates no derived data. No ILF is maintained during the processing, nor is the behavior of the system
 altered.
 
 DET and FTR are defined as described in the \hyperref[sec:EIs]{EIs section}.\\
 
-This section describes the EQs and related FTRs and DETs identified for the \emph{Power EnJoy system} grouped by the user category.
+This section describes the EQs and related FTRs and DETs identified for the \emph{PowerEnJoy system} grouped by the user category.
 
 \paragraph{Registered user}
 \begin{itemize}
@@ -355,7 +349,7 @@ This section describes the EQs and related FTRs and DETs identified for the \emp
 	\item \textbf{See payment history of a user}: to be processed by the system it requires the userID and data about payments
 \end{itemize}
 
-\paragraph{Notes} Similiar EQs between users and customer care operator are considered separately because are requested from different server components and they also differs w.r.t information provided. \\
+\paragraph{Notes} Similiar EQs between users and customer care operator are considered separately because are requested from different server software components and they also differ in information retrieved as EQ result. \\
 
 \begin{longtable}{ccccc}
 \toprule
@@ -364,13 +358,12 @@ This section describes the EQs and related FTRs and DETs identified for the \emp
 See own information (\emph{user}) & 1 & 6-19 & Low & 4\\
 See own rent history (\emph{user}) & 1 & 6-19 & Low & 4\\
 See own payment history (\emph{user}) & 1 & 6-19 & Low & 4\\
-\midrule
 See all user IDs & 1 & 1-5 & Low & 4\\
 See information about a user & 1 & 6-19 & Low & 4\\
 See rent history of a user & 1 & 6-19 & Low & 4\\
 See payment history of a user & 1 & 6-19 & Low & 4\\
 \midrule
-\textbf{Total} & & & &  28\\
+\textbf{Total} & & & &  \textbf{28}\\
 \bottomrule \\
 \caption{Function points EQs}
 \label{tbl:eqFP}
@@ -391,22 +384,23 @@ External Inputs & 56 \\
 External Outputs &  21\\
 External Inquiries & 28 \\
 \midrule
-\textbf{Total} & 168\\
+\textbf{Total} & \textbf{168}\\
 \bottomrule \\
 \caption{Function points}
 \label{tbl:FP}
 \end{longtable}
 
-Through the \emph{SLOC} estimation formula we can therefore estimate an upper bound and a lower bound for the size of the project. 
+Through the \emph{SLOC} estimation formula we can therefore estimate an average and an upper bound for the size of the project. 
 
- $$SLOC = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor$$
+ $$SLOC = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot K$$
 where 
 \begin{itemize}
 	\item I = \{ILF,EIF,EI,EO,EQ\}
 	\item $w_{ij}$ is the weight associated with the $j$-th function component of type $i$
-	\item $factor$ is the industry gearing distribution of J2EE SLOC/FP factor
+	\item $K$ is the industry gearing distribution of J2EE $\frac{SLOC}{FP}$ factor
 \end{itemize} 
 
- $$\textrm{Lower bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor = 168 \cdot 46 = 7728 $$
- 
-  $$\textrm{Upper Bound \textbf{SLOC}} = (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot factor = 168 \cdot 67 =11256 $$
+ \begin{align*}
+ SLOC_{avg} &= (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot K = 168 \cdot 46 = 7728 \\ 
+  SLOC_{max} &= (\sum_{i \in I} \sum_{j \in i} w_{ij}) \cdot K = 168 \cdot 67 =11256
+  \end{align*}

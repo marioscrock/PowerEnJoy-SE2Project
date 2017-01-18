@@ -1,5 +1,47 @@
 \section{Risk management}\label{sec:riskManagement}
-This section describe possible risks for the \emph{PowerEnJoy system} and some possible strategies to mitigate them:
+This section describe possible risks for the \emph{PowerEnJoy system} and some possible strategies to mitigate them.
+\subsection{Project risks}
+\subsection{Technical risks}
+\begin{longtable}{lp{0.8\linewidth}}
+\multicolumn{2}{c}{\textbf{Underestimation of requests' load}}\\
+\toprule
+\textbf{Description}&Traffic and requests are much more than what has been estimated, resulting in high latency and possibly in service unavailability\\
+\midrule
+\textbf{Probability}&Low\\
+\midrule
+\textbf{Effects}&Serious\\
+\midrule
+\textbf{Actions}&Analyze the traffic through all component, consider an upgrade of hardware components, external API contracts and traffic plans. During the development use a modular software design to manage multiple requests in parallel and to improve scalability.\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{lp{0.8\linewidth}}
+\multicolumn{2}{c}{\textbf{Wrong external component specification}}\\
+\toprule
+\textbf{Description}&An external component is not compliant to its specification\\
+\midrule
+\textbf{Probability}&Low\\
+\midrule
+\textbf{Effects}&Serious\\
+\midrule
+\textbf{Actions}&Try to find a solution with the component's owner, if impossible find a different compatible component and consider to take legal proceedings.\\
+\bottomrule
+\end{longtable}
+
+\subsection{Business risks}
+\begin{longtable}{lp{0.8\linewidth}}
+\multicolumn{2}{c}{\textbf{Competitors}}\\
+\toprule
+\textbf{Description}&Competitors saturate the market with their car sharing services\\
+\midrule
+\textbf{Probability}&High\\
+\midrule
+\textbf{Effects}&Serious\\
+\midrule
+\textbf{Actions}&Make some market surveys in order to determine and implement some \emph{killer features}\\
+\bottomrule
+\end{longtable}
+
 \begin{itemize}
 \item Problemi J2EE
 \item Car sharing non sfonda -> difficoltà fondi per mantenimento software
@@ -16,4 +58,8 @@ This section describe possible risks for the \emph{PowerEnJoy system} and some p
 \item Real-time shortfalls
 \item Capability shortfalls
 \end{itemize}
-
+Failure to achieve a deadline (milestone)\\
+API downtime\\
+API changes\\
+Aumentano requisiti > coinvolgere utenti in fase di sviluppo\\
+Data loss > backup

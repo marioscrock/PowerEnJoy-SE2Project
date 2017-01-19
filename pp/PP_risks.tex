@@ -2,15 +2,15 @@
 This section describe possible risks for the \emph{PowerEnJoy system} and some possible reactive and proactive strategies to mitigate them.
 \paragraph{Note} Probability level in ascending order is: 
 \begin{enumerate}
-\item Low
-\item Moderate
-\item High
+\item \emph{Low}
+\item \emph{Moderate}
+\item \emph{High}
 \end{enumerate}
 Dangerousness level of effects in ascending order is: \begin{enumerate}
-\item Trivial
-\item Moderate
-\item Serious
-\item Catastrophic
+\item \emph{Trivial}
+\item \emph{Moderate}
+\item \emph{Serious}
+\item \emph{Catastrophic}
 \end{enumerate}
 
 \subsection{Project risks}
@@ -146,14 +146,11 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \midrule
 \textbf{Effects}&Serious\\
 \midrule
-\textbf{Actions}& Always try to provide as many functionality as possible: if the failure is not in a core functionality (e.g. payments API fails), keep the whole system online and operative, at the same time store the unprocessed payments for future proceeding.
+\textbf{Actions}& Always try to provide as many functionality as possible: if the failure is not in a core functionality, e.g. payments API fails, it would be useful to develop the system such that it is possible to keep the whole system online and operative and at the same time store the unprocessed payments for future proceeding.
 
 When it is possible take into account the usage of redundant APIs according to failure recovery paradigms. \\
 \bottomrule
 \end{longtable}
-
-
-
 
 \subsection{Business risks}
 \begin{longtable}{lp{0.8\linewidth}}
@@ -181,20 +178,4 @@ When it is possible take into account the usage of redundant APIs according to f
 \textbf{Actions}& A good study of feasibility would detect this risk.  This situation could be mitigate meeting the customer and re-discussing features and agreed requirements but could also bring to the end of the project development. \\
 \bottomrule
 \end{longtable}
-
-\begin{itemize}
-
-\item Car sharing non sfonda -> difficoltà fondi per mantenimento software
-\item Securityl
-\item Unrealistic schedule/budget
-\item Wrong functionality
-\item Wrong user interface (not usable)
-\item Goldplating -> Perfezionismo
-\item Requirements volatility
-\item Bad external components -> soprattutto difficulty interface with car
-\item Bad external tasks
-\item Real-time shortfalls
-\item Capability shortfalls
-\item API changes
-\end{itemize}
 

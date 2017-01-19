@@ -1,5 +1,18 @@
 \section{Risk management}\label{sec:riskManagement}
 This section describe possible risks for the \emph{PowerEnJoy system} and some possible reactive and proactive strategies to mitigate them.
+\paragraph{Note} Probability level in ascending order is: 
+\begin{enumerate}
+\item Low
+\item Moderate
+\item High
+\end{enumerate}
+Dangerousness level of effects in ascending order is: \begin{enumerate}
+\item Trivial
+\item Moderate
+\item Serious
+\item Catastrophic
+\end{enumerate}
+
 \subsection{Project risks}
 \begin{longtable}{lp{0.8\linewidth}}
 \multicolumn{2}{c}{\textbf{Failure to achieve a deadline}}\\
@@ -66,7 +79,7 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \midrule
 \textbf{Probability}&Low\\
 \midrule
-\textbf{Effects}&Serious\\
+\textbf{Effects}&Catastrophic\\
 \midrule
 \textbf{Actions}&It is convenient to store an updated backup copy of data possibly on a different location from the system database one.\\
 \bottomrule
@@ -112,7 +125,7 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \end{longtable}
 
 \begin{longtable}{lp{0.8\linewidth}}
-\multicolumn{2}{c}{\textbf{APIs bad behaviour}}\\
+\multicolumn{2}{c}{\textbf{External APIs bad behaviour}}\\
 \toprule
 \textbf{Description}& The system needs to interact with some external APIs that can not behave as expected. \\
 \midrule
@@ -123,6 +136,22 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \textbf{Actions}& External APIs interaction must be deeply tested during the development phase in order to identify possibly unexpected behaviours in this phase: company owner of the API service could be contacted to eventually ask to fix the behaviour or, if it is related to an open source project, a pull request may be proposed to fix the behaviour. \\
 \bottomrule
 \end{longtable}
+
+\begin{longtable}{lp{0.8\linewidth}}
+\multicolumn{2}{c}{\textbf{External APIs downtime}}\\
+\toprule
+\textbf{Description}& The external APIs the system has to interact with may be unreachable.\\
+\midrule
+\textbf{Probability}&Low/Moderate\\
+\midrule
+\textbf{Effects}&Serious\\
+\midrule
+\textbf{Actions}& Always try to provide as many functionality as possible: if the failure is not in a core functionality (e.g. payments API fails), keep the whole system online and operative, at the same time store the unprocessed payments for future proceeding.
+
+When it is possible take into account the usage of redundant APIs according to failure recovery paradigms. \\
+\bottomrule
+\end{longtable}
+
 
 
 
@@ -166,7 +195,6 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \item Bad external tasks
 \item Real-time shortfalls
 \item Capability shortfalls
-\item API downtime
 \item API changes
 \end{itemize}
 

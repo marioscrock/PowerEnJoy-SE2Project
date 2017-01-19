@@ -11,8 +11,8 @@ Since the system we are to develop is brand new and there is no previous system 
 $$PM = A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}C_{i}$$
 where 
 \begin{itemize}
-	\item $A=2.94$ approximates a productivity constant in PM/KSLOC (Person-Months/Kilo-Source Lines of Code)
-	\item $Size$ is the estimated size of the project in KSLOC, it can be deducted from Function Points analysis
+	\item $A=2.94$ approximates a productivity constant in $\frac{PM}{KiloSLOC}$
+	\item $Size$ is the estimated size of the project in KiloSLOC, it can be deducted from \hyperref[sec:FPResult]{Function Points analysis}
 	\item $E$ is an aggregation of five Scale Factors which is computed as $$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j}$$
 	\item $C$ is the effort multiplier derived from each Cost Driver
 \end{itemize}
@@ -107,9 +107,9 @@ $$E = 0.91 + 0.01 \cdot \sum_{j=1}^{5}{SF_j} = 0.91+0.01\cdot 16.61 = 1.0761$$
 
 \subsubsection{Cost Drivers}
 Since we refer to the \emph{Early Design} model of COCOMO II, the cost drivers are obtained averaging their \emph{Post-Architecture} counterparts as shown in \autoref{tbl:costDriverConversion}.
-\begin{longtable}{cc}
+\begin{longtable}{ll}
 \toprule
-\specialcell{Early Design\\Cost Drivers} & \specialcell{Counterpart Combined Post-Architecture\\Cost Drivers}\\
+\specialcell{Early Design\\Cost Drivers} & \specialcell{Combined Post-Architecture\\Cost Drivers}\\
 \midrule
 PERS&ACAP, PCAP, PCON\\
 RCPX&RELY, DATA, CPLX, DOCU\\
@@ -122,7 +122,7 @@ SCED&SCED\\
 \caption{\label{tbl:costDriverConversion}Cost drivers conversion}
 \end{longtable}
 
-\begin{longtable}{c|ccccccc}
+\begin{longtable}{l|ccccccc}
 \toprule
 \specialcell{Cost\\Driver}&\specialcell{Extra\\Low}&\specialcell{Very\\Low}&Low&Nominal&High&\specialcell{Very\\High}&\specialcell{Extra\\High}\\
 \midrule
@@ -266,21 +266,22 @@ Therefore FCIL is \textbf{High}.
 \paragraph{Required Development Schedule - SCED}\label{par:sced}
 This rating measures the schedule constraint imposed on the project team developing the software. Since the schedule considers mandatory deadlines, there should not be any compression or expansion for the whole project (\emph{i.d. 100\% of nominal schedule)}, therefore this parameter is set to \textbf{NOMINAL}.
 
+\clearpage
 \paragraph{Cost Drivers summary}
-In \autoref{tbl:CDChosenValues} is reported the value of each cost driver as determined in this section and the corresponding numerical valued as specified in \autoref{tbl:costDriverConversionValue}.
+In \autoref{tbl:CDChosenValues} is reported the value of each cost driver as determined in this section and the corresponding effort multiplier as specified in \autoref{tbl:costDriverConversionValue}.
 
-\begin{longtable}{ccc}
+\begin{longtable}{lcc}
 \specialcell{Cost\\Driver} & Value & \specialcell{Numerical Value\\\emph{(Effort Multiplier)}}\\
 \midrule
-PERS&Nominal&1\\
-RCPX&High&1.33\\\
-RUSE&Nominal&1\\
-PDIF&Nominal&1\\
+PERS&Nominal&1.00\\
+RCPX&High&1.33\\
+RUSE&Nominal&1.00\\
+PDIF&Nominal&1.00\\
 PREX&Low&1.22\\
 FCIL&High&0.87\\
-SCED&Nominal&1\\
+SCED&Nominal&1.00\\
 \bottomrule
-\caption{\label{tbl:CDChosenValues}Cost drivers chosen values}
+\caption{\label{tbl:CDChosenValues}Cost drivers effort multipliers}
 \end{longtable}
 
 
@@ -293,7 +294,7 @@ PM &= A \cdot Size^{E} \cdot \prod_{i \in CostDrivers}C_{i} \\
 \end{align*}
 
 Therefore
-$$PM_{min} = 2.94 \cdot 7.728^{1.0761} \cdot 1.4112 = 37$$
+$$PM_{avg} = 2.94 \cdot 7.728^{1.0761} \cdot 1.4112 = 37$$
 
 $$PM_{max} = 2.94 \cdot 11.256^{1.0761} \cdot 1.4112 = 56$$
 \subsubsection{Schedule estimation} 
@@ -304,10 +305,13 @@ where
 	\item $PM_{NS}$ is the Person-Months estimation without considering the SCED cost driver
 	\item $F = 0.28 + 0.2 \cdot (E-0.91)$
 	\item $E$ is the aggregation of scale factors previously determined
-	\item $SCED\%$ is the SCED nominal value percentage (see \hyperref[par:sced]{SCED paragraph})
+	\item $SCED\%$ is the SCED nominal value percentage, in our case is set to $100\%$ (see \hyperref[par:sced]{SCED paragraph})
 \end{itemize}
 
 Since the effort multiplier of SCED cost driver is $1$, in our case $$PM_{NS} = PM$$
 Since as previously specified $E = 1.0761$ we can compute $$F = 0.28+0.2 \cdot (1.0761-0.91) = 0.31322$$
-Therefore $$D_{min} = 3.67 \cdot 37^{0.31322} \cdot 1 = 11.373 \text{ months}$$
-$$D_{max} = 3.67 \cdot 56^{0.31322} \cdot 1 = 12.949 \text{ months}$$
+Therefore
+\begin{align*}
+D_{avg} &= 3.67 \cdot 37^{0.31322} \cdot 1 = 11.373 \text{ months}\\
+D_{max} &= 3.67 \cdot 56^{0.31322} \cdot 1 = 12.949 \text{ months}
+\end{align*}

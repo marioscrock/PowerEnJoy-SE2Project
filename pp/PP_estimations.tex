@@ -234,8 +234,8 @@ This section describes the EIs and related FTRs and DETs identified for the \emp
 	\item \textbf{See available cars}: to be processed by the system it requires cars info (data stored in the system if recently updated, or data retrieved from cars otherwise), charging stations and safe areas data to show it on the map, and eventually data provided by GIS API to decode the position inserted by the user
 	\item \textbf{Reserve a car} (we consider the most complete scenario with money saving option enabled): to be processed by the system it requires cars info, access to active reservations data to instantiate a reservation record, charging stations data to provide the recommended destination and eventually data provided by GIS API to decode the position inserted by the user
 	\item \textbf{Reservation expired}: to be processed by the system it requires active reservations info to delete the reservation and payments data to instantiate a new payment record
-	\item \textbf{Unlock a car}: to be processed by the system it requires active reservations data to check if the request is allowed for the user making it, requires cars info and access to rents data to instantiate a new rent record
-	\item \textbf{Start a rent} (the system is notified that the user has ignited the car engine): to be processed by the system it requires rents data to insert start timestamp and location and car data to change car status
+	\item \textbf{Unlock a car}: to be processed by the system it requires cars info and active reservations data to check if the request is allowed for the user making it
+	\item \textbf{Start a rent} (the system is notified that the user has ignited the car engine): to be processed by the system it requires rents data to create a new record rent (inserting start timestamp and location), car data to change car status and active reservations info to delete the reservation record
 	\item \textbf{End a rent} (the system is notified that the user has turned engine off, has leaved the car and has closed doors): to be processed by the system it requires to retrieve data from cars, requires to modify rents data and access to payments data to instantiate a new payment record and calculate the applicable fees and discount and the final total cost
 \end{itemize}
 
@@ -266,8 +266,8 @@ Authenticate &1 & 1-4 & Low & 3 \\
 See available cars & 3+ & 5-15 & High & 6 \\
 Reserve a car & 3+ & 5-15 & High & 6 \\
 Reservation expired & 2 & 5-15 & Avg & 4 \\
-Unlock a car & 3+ & 5-15 & High & 6 \\
-Start a rent & 2 & 1-4 &	Low & 3 \\
+Unlock a car & 2 & 1-4 &	Low & 3 \\
+Start a rent & 3+ & 5-15 & High & 6 \\
 End a rent & 3+ & 5-15 & High & 6 \\
 Ban or enable a user & 1 & 1-4 &	Low & 3 \\
 Tag a car as \emph{Not available} & 1 & 1-4 &	Low & 3 \\

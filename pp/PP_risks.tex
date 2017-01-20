@@ -23,24 +23,24 @@ Dangerousness level of effects in ascending order is: \begin{enumerate}
 \midrule
 \textbf{Effects}&Moderate\\
 \midrule
-\textbf{Actions}& Planning the project schedule it is quite impossible to consider all possible issues that may arise during the project development, so it could be useful to allocate some extra time after each major phase of the project in order to avoid a tasks shift on the schedule due to a fail to achieve a deadline.\\
+\textbf{Actions}& Considering in the project schedule all the issues that may arise during the project development is definitely a difficult challenge; allocating some extra time after each major phase of the project would help to avoid the shift of some tasks on the schedule because of a missed deadline.\\
 \bottomrule
 \end{longtable}
 
 \begin{longtable}{lp{0.8\linewidth}}
 \multicolumn{2}{c}{\textbf{Change of requirements}}\\
 \toprule
-\textbf{Description}& Requirements may need some changes for different causes: not exhaustive requirements, misunderstood requirements or missing requirements. \\
+\textbf{Description}& Requirements may need some changes for different reasons: not exhaustive requirements, misunderstood requirements or missing requirements. \\
 \midrule
 \textbf{Probability}&Moderate\\
 \midrule
 \textbf{Effects}&Moderate/Serious\\
 \midrule
-\textbf{Actions}& To avoid the need to change requirements it is really useful to meet all the project stakeholders from the beginning of the development of the project (for example also allowing some users to interact with mockups of the application during the requirements design phase). 
+\textbf{Actions}& To avoid the need to change requirements it would be really useful to start interacting with all the project stakeholders since the beginning of the project development (for example also allowing some users to interact with some sorts of mockups of the application during the requirements design phase). 
 
-The change of requirements during the development phase could bring to the need to change already implemented software and/or software design. The relevance on the project of that change must be evaluted. If the issue is serious and is customer fault it could be necessary to re-discuss project contract, schedule and estimated budget. 
+Changing requirements during the development phase may create the necessity to change already implemented software and/or software design. The relevance on the project of these changes must be evaluated. If the issue is serious and depends on misunderstandings with the customer during the requirements discussion, it could be necessary to re-discuss project contract, schedule and estimated budget. 
 
-Anyway a modular and reusable thinking of the software architecture could help to be more reactive to the need of change some requirements.\\
+Anyway a modular and reusable thinking of the software architecture would help to be more reactive to these kinds of situations.\\
 \bottomrule
 \end{longtable}
 
@@ -53,7 +53,7 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \midrule
 \textbf{Effects}&Serious\\
 \midrule
-\textbf{Actions}& In order to prevent serious effect multiple the project must be well documented in each phase, meetings must be organized to allow each member of the group to have a general knowledge of each part of the project and critic tasks must not be assigned to a single team member.\\
+\textbf{Actions}& In order to prevent serious effects the project must be well documented in each phase, meetings must be organized to allow each member of the group to have a general knowledge of each part of the project and critic tasks must not be assigned to a single team member.\\
 \bottomrule
 \end{longtable}
 
@@ -94,27 +94,27 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \midrule
 \textbf{Effects}&Serious\\
 \midrule
-\textbf{Actions}&Try to find a solution with the component's owner, if impossible find a different compatible component and consider to take legal proceedings.\\
+\textbf{Actions}&Try to find a solution with the component's owner, if impossible find a different compatible component and consider taking legal actions.\\
 \bottomrule
 \end{longtable}
 
 \begin{longtable}{lp{0.8\linewidth}}
 \multicolumn{2}{c}{\textbf{Difficulties during development phase}}\\
 \toprule
-\textbf{Description}& It could happen developers experience difficulties in the development of some specific features of the system due to the lack of experience. \\
+\textbf{Description}& Some members of the development team may experience difficulties in the development process of some specific features of the system due to the lack of previous experience. \\
 \midrule
 \textbf{Probability}&Low\\
 \midrule
 \textbf{Effects}&Moderate\\
 \midrule
-\textbf{Actions}& It may be required to think about asking consulting to external companies.\\
+\textbf{Actions}& It may be required to ask consulting to external companies.\\
 \bottomrule
 \end{longtable}
 
 \begin{longtable}{lp{0.8\linewidth}}
 \multicolumn{2}{c}{\textbf{Car supplier changes}}\\
 \toprule
-\textbf{Description}& It could happen the company for some reason needs to change the car supplier. Since our system relies on the car embedded system provided from our supplier it would be a considerable risk if the system must change the communication protocol used with cars. \\
+\textbf{Description}& The company for some reason may need to change the car supplier. Since our system relies on the car embedded system provided by our supplier it would be a considerable risk if the the communication protocol used with cars changed. \\
 \midrule
 \textbf{Probability}&Low\\
 \midrule
@@ -127,13 +127,13 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \begin{longtable}{lp{0.8\linewidth}}
 \multicolumn{2}{c}{\textbf{External APIs bad behaviour}}\\
 \toprule
-\textbf{Description}& The system needs to interact with some external APIs that can not behave as expected. \\
+\textbf{Description}& The system needs to interact with some external APIs that may not behave as expected. \\
 \midrule
 \textbf{Probability}&Low\\
 \midrule
 \textbf{Effects}&Moderate\\
 \midrule
-\textbf{Actions}& External APIs interaction must be deeply tested during the development phase in order to identify possibly unexpected behaviours in this phase: company owner of the API service could be contacted to eventually ask to fix the behaviour or, if it is related to an open source project, a pull request may be proposed to fix the behaviour. \\
+\textbf{Actions}& External APIs interaction must be deeply tested during the development phase in order to identify possibly unexpected behaviours in this phase: the company that developed the API could be contacted to eventually ask to fix the behaviour or, if it is related to an open source project, a pull request may be proposed to fix the behaviour. \\
 \bottomrule
 \end{longtable}
 
@@ -146,7 +146,7 @@ Anyway a modular and reusable thinking of the software architecture could help t
 \midrule
 \textbf{Effects}&Serious\\
 \midrule
-\textbf{Actions}& Always try to provide as many functionality as possible: if the failure is not in a core functionality, e.g. payments API fails, it would be useful to develop the project such that it is possible to keep the whole system online and operative and at the same time store the information about unprocessed payments for future proceeding.
+\textbf{Actions}& Always try to provide as many functionality as possible: if the failure is not in a core functionalities, e.g. payments API fails, it would be useful to develop the project such that it is possible to keep the whole system online and operative and at the same time store the information about unprocessed payments for future proceeding.
 
 When it is possible take into account the usage of redundant APIs according to failure recovery paradigms. \\
 \bottomrule
@@ -175,7 +175,7 @@ When it is possible take into account the usage of redundant APIs according to f
 \midrule
 \textbf{Effects}&Catastrophic\\
 \midrule
-\textbf{Actions}& A good study of feasibility would detect this risk.  This situation could be mitigate meeting the customer and re-discussing features and agreed requirements but could also bring to the end of the project development. \\
+\textbf{Actions}& A good study of feasibility would detect this risk.  This situation could be mitigated by meeting the customer and re-discussing features and agreed requirements; this discussion could also lead to the end of the project development. \\
 \bottomrule
 \end{longtable}
 

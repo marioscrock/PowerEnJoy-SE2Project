@@ -138,9 +138,9 @@ A car JPA class mapped to a car in the DB with its carStatus attribute that is n
 \midrule
 A msoStation parameter which does not identify any charging station in the DB & A ChargingStationNotFoundException is raised \\
 \midrule
-Proper startLocation, startTimestamp and car parameters, null msoStation & A new payment (paired with the user that has reserved the car) is inserted properly in the DB with endTimestamp, endLocation and moneySavingOption attributes set to null.\\
+Proper startLocation, startTimestamp and car parameters, null msoStation & The reservation associated to the car is removed, the car status is set to \emph{InUse}, a new rent (paired with the user that has reserved the car) is inserted properly in the DB with endTimestamp, endLocation and moneySavingOption attributes set to null.\\
 \midrule
-Proper \mbox{startLocation}, startTimestamp and car parameters, \mbox{msoStation} parameter valid and not null & A new payment (paired with the user that has reserved the car) is inserted properly in the DB with endTimestamp, endLocation attributes set to null.\\
+Proper \mbox{startLocation}, startTimestamp and car parameters, \mbox{msoStation} parameter valid and not null & The reservation associated to the car is removed, the car status is set to \emph{InUse}, a new rent (paired with the user that has reserved the car) is inserted properly in the DB with endTimestamp, endLocation attributes set to null.\\
 \bottomrule
 \caption{\label{tbk:createRentJPA}\emph{createRentJPA} test description}
 \end{longtable}
@@ -372,13 +372,12 @@ A userID which identifies a user in the DB without an active reservation & A NoR
 \midrule
 A position that correspond to a location further than 5 Km away from the reserved car & A NotEnoughCloseException is raised \\
 \midrule
-A userID which identifies a user in the DB with an active reservation and a position that correspond to a location closer than 5 Km to the reserved car & \begin{itemize}
-	\item \emph{union of the aforementioned methods' \mbox{outputs} in case of standard flow}
-	\item when the system is notified of the reserved car's engine ignition the rent is started
-	\end{itemize}
+A userID which identifies a user in the DB with an active reservation and a position that correspond to a location closer than 5 Km to the reserved car &
+\emph{union of the aforementioned methods' \mbox{outputs} in case of standard flow}
+(when the system is notified of the reserved car's engine ignition the \mbox{createRentJPA} method is called)
 \\
 \bottomrule
-\caption{\emph{carUnlock} test description}
+\caption{\emph{carUnlock} test description\label{tbl:carUnlock}}
 \end{longtable}
 
 \subsubsection{CustomerCareServer, DataProvider}

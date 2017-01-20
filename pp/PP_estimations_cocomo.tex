@@ -80,6 +80,8 @@ PMAT &
 \paragraph{Risk Resolution - RESL} It is high if the project has a good risk management plan, clear definition of budget and schedule, focus on architectural definition. The \hyperref[sec:riskManagement]{Risk Management Plan} identifies generally all critical risk items and determines actions in order to resolve them. As specified in the \hyperref[sec:schedule]{Schedule section} a relevant portion of development process is devoted to establishing architecture, given general product objectives.\\Therefore we decide that
 \DadoCenter{RESL is \textbf{HIGH}}
 
+\clearpage
+
 \paragraph{Team Cohesion - TEAM} It is high if all project development team members are able to work in a team and share the same vision and commitment. As objectives, cultures, ages and backgrounds are the same for all team members we decide that
 \DadoCenter{TEAM is \textbf{VERY HIGH}}
 
@@ -155,6 +157,7 @@ PCON&Very Low&1\\
 \midrule
 \multicolumn{2}{c}{\textbf{Total}}&\textbf{9}\\
 \bottomrule
+\caption{PERS aggregated value}
 \end{longtable}
 
 Therefore PERS is \textbf{NOMINAL}.
@@ -188,9 +191,11 @@ DOCU&Nominal&3\\
 \midrule
 \multicolumn{2}{c}{\textbf{Total}}&\textbf{14}\\
 \bottomrule
+\caption{RCPX aggregated value}
 \end{longtable}
 
 Therefore RCPX is \textbf{HIGH}.
+\clearpage
 
 \paragraph{Developed for Reusability - RUSE} This cost driver accounts for the additional effort needed to construct components intended for reuse on current or future projects. This effort is consumed with creating more generic design of software, more elaborate documentation, and more extensive testing to ensure components are ready for use in other applications.
 
@@ -214,6 +219,7 @@ PVOL&Nominal&3\\
 \midrule
 \multicolumn{2}{c}{\textbf{Total}}&\textbf{10}\\
 \bottomrule
+\caption{PDIF aggregated value}
 \end{longtable}
 
 Therefore PDIF is \textbf{NOMINAL}.
@@ -239,6 +245,7 @@ LTEX&Nominal&3\\
 \midrule
 \multicolumn{2}{c}{\textbf{Total}}&\textbf{7}\\
 \bottomrule
+\caption{PREX aggregated value}
 \end{longtable}
 
 Therefore PREX is \textbf{LOW}.
@@ -259,6 +266,7 @@ SITE&High&4\\
 \midrule
 \multicolumn{2}{c}{\textbf{Total}}&\textbf{7}\\
 \bottomrule
+\caption{FCIL aggregated value}
 \end{longtable}
 
 Therefore FCIL is \textbf{High}.
@@ -266,12 +274,11 @@ Therefore FCIL is \textbf{High}.
 \paragraph{Required Development Schedule - SCED}\label{par:sced}
 This rating measures the schedule constraint imposed on the project team developing the software. Since the schedule considers mandatory deadlines, there should not be any compression or expansion for the whole project (\emph{i.d. 100\% of nominal schedule)}, therefore this parameter is set to \textbf{NOMINAL}.
 
-\clearpage
 \paragraph{Cost Drivers summary}
 In \autoref{tbl:CDChosenValues} is reported the value of each cost driver as determined in this section and the corresponding effort multiplier as specified in \autoref{tbl:costDriverConversionValue}.
 
 \begin{longtable}{lcc}
-\specialcell{Cost\\Driver} & Value & \specialcell{Numerical Value\\\emph{(Effort Multiplier)}}\\
+\specialcell{Cost\\Driver} & Value & \specialcell{Numerical Value\\(\emph{Effort Multiplier})}\\
 \midrule
 PERS&Nominal&1.00\\
 RCPX&High&1.33\\
@@ -285,6 +292,7 @@ SCED&Nominal&1.00\\
 \end{longtable}
 
 
+\clearpage
 \subsubsection{Effort equation}
 The COCOMO II \hyperref[par:cocomoEquation]{effort equation} can now be computed as
 \begin{align*}
@@ -305,10 +313,10 @@ where
 	\item $PM_{NS}$ is the Person-Months estimation without considering the SCED cost driver
 	\item $F = 0.28 + 0.2 \cdot (E-0.91)$
 	\item $E$ is the aggregation of scale factors previously determined
-	\item $SCED\%$ is the SCED nominal value percentage, in our case is set to $100\%$ (see \hyperref[par:sced]{SCED paragraph})
+	\item $SCED\%$ is the SCED nominal value percentage, \\in our case is set to $100\%$ (see \hyperref[par:sced]{SCED paragraph})
 \end{itemize}
 
-Since the effort multiplier of SCED cost driver is $1$, in our case $$PM_{NS} = PM$$
+Since the effort multiplier of SCED cost driver is $1$, it results $$PM_{NS} = PM$$
 Since as previously specified $E = 1.0761$ we can compute $$F = 0.28+0.2 \cdot (1.0761-0.91) = 0.31322$$
 Therefore
 \begin{align*}

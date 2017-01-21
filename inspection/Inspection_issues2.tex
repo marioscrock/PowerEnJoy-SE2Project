@@ -1,1 +1,40 @@
- 
+\subsection*{[2.9] Class and Interface Declarations}
+\subsubsection*{[27] Check that the code is free of duplicates, long methods, big classes, breaking encapsulation, as well as if coupling and cohesion are adequate}\todo{coperti da overload in altre classi}
+
+\subsection*{[2.10] Initialization and Declarations}
+\subsubsection*{[31] Check that all object references are initialized before use}
+\begin{description}
+	\item[L 67:] the {\tt session} object passed as parameter in the constructor is referenced and used several times in the class but it has never checked not to be {\tt null}. This might cause a {\tt NullPointerException}.
+\end{description} 
+
+\subsubsection*{[33] Declarations appear at the beginning of blocks. The exception is a variable can be declared in a for loop.}
+If a block starts with a debug log operation, we consider the first instruction the next one. Variables not declared at the beginning of a block are the following:
+\begin{description}
+	\item[L 70, L 71:] in the constructor 
+	\item[L 207, L 214, L 224, L 237:] in the {\tt processSale} method 
+	\item[L 272, L 279:] in the {\tt getStoreOrgAddress} method 
+	\item[L 126:] in the {\tt isOpen} method 
+	\item[L 324:] in the {\tt checkPaymentMethodType} method  
+	\item[L 421, L 431:] in the {\tt makeCreditCardVo} method 
+\end{description}
+
+\subsection*{[2.14] Output Format}
+\subsubsection*{[42] Check that error messages are comprehensive and provide guidance as to how to correct the problem.}
+\begin{description}
+	\item[L 396:] in the {\tt processExternalPayment} method no error message is returned, marked as \emph{todo}.
+\end{description}
+
+\subsection*{[2.15] Computation, Comparisons and Assignments}
+\subsubsection*{[44] Check that the implementation avoids "brutish programming".}
+\begin{description}
+	\item[L 125:] the {\tt isOpen} method can be simplified by only returning the conjunction {\tt terminalState != null \&\&\\ terminalState.getDate("closedDate") == null} \todo{may be worse, but it works also against nullPE as the original}
+	\item[L 53, L 54, L 55:] it is better to define an enumeration than use three {\tt public static final int} variables to define the type of payment
+\end{description}
+
+\subsection*{[2.16] Exceptions}
+\subsubsection*{[53] Check that the appropriate action are taken for each catch block.}
+All {\tt catch} blocks only log the exception to the debugger. Moreover
+\begin{description}
+	\item[L 390:] in the {\tt processNoPayment} method the {\tt catch (GeneralException e)} block is empty
+	\item[L 407:] in the {\tt processExternalPayment} method the {\tt catch (GeneralException e)} block is empty
+\end{description}

@@ -1,0 +1,31 @@
+\section{List of Issues}
+\subsection*{[2.1] Naming Conventions}
+\subsubsection*{[1] All class names, interface names, method names, class variables, method variables, and constants used should have meaningful names and do what the name suggests}
+\begin{description}
+	\item[L 57:] The name of the {\tt CheckoutHelper} type variable {\tt ch} is not meaningful and difficult to understand out of the declaration context
+\end{description}
+
+\subsubsection*{[2] If one-character variables are used, they are used only for temporary “throwaway” variables}
+\begin{description}
+	\item[L 329:] The name chosen for the {\tt Iterator<GenericValue>} returned from {values.iterator()} is {\tt i}; although since this variable is only used inside a loop, it is not a problem
+	\item[L 331, 333:] The name chosen for the {\tt GenericValue} returned from {\tt i.next()} is {\tt v}; although since this variable is only used inside a loop, it is not a problem
+\end{description}
+
+\subsubsection*{[5] Method names should be verbs, with the first letter of each addition word capitalized}
+\begin{description}
+	\item[L 162:] The {\tt paidInOut(String type)} method name is not a verb which refers to the actions made inside it. Since it seems like it only stores the payment referred to a transaction into the log, it could be renamed {\tt logPayment(String type)}
+\end{description}
+
+\subsubsection*{[7] Constants are declared using all uppercase with words separated by an underscore}
+\begin{description}
+	\item[L 51:] The {\tt resource} constant is not uppercase
+	\item[L 52:] The {\tt module} constant is not uppercase
+	\item[L 324:] The {\tt externalCode} constant is not uppercase
+\end{description}
+
+\subsection{File Organization}
+
+\subsubsection*{[12] Blank lines and optional comments are used to separate sections}
+\begin{description}
+	\item[L 18,19:]
+\end{description}

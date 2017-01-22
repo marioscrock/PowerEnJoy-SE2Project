@@ -1,5 +1,6 @@
 \section{Other problems}
 \begin{description}
+	\item[L 61:] the {\tt partyId} variable is private and it is initialized in the constructor of the class to the value {\tt "\textunderscore NA\textunderscore"}. Even though it is used in in different methods of the class, it is never updated, and the class doesn't offer any setter method for it; if its value is not meant to be changed it should be converted to a constant, otherwise a setter for it should be added
 	\item[L 172:] missing space before {\tt +} character
 	\item[L 207, L 214, L 224, L 316:] the usage of the wildcard {\tt ? extends Object} is a symptom of bad development design and should be avoided (it may lead to runtime errors caused by wrong casting)
 	\item[L 421, L 431:] the usage of type {\tt Object} is a symptom of bad development design and should be avoided (it may lead to runtime errors caused by wrong casting)

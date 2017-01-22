@@ -97,7 +97,7 @@ Considering all the previous graphs, we have identified in \autoref{fig:highLeve
 		\item View and edit personal information
 		\item View rents and payments history
 	\end{itemize}
-	
+	\clearpage
 	\item Customer Care application
 	\begin{itemize}
 		\item View each user profile, including personal information, progress of the current rent, rent and payment history
@@ -206,6 +206,8 @@ An example of such an XML file is
 	
 </ChargingStations>
 \end{lstlisting}
+
+\clearpage
 
 \paragraph{Safe areas}Safe areas are also provided as XML file according to the \emph{GPX GPS Exchange Format} \cite{gpx} and they are composed by closed polygonal chains.
 
@@ -380,7 +382,8 @@ The following technologies were chosen for the implementation of the PowerEnJoy 
 \paragraph{Application Logic:} EJB were used to implement the Application Logic components since our application is developed using J2EE
 \paragraph{Application Server and Web Server:} GlassFish 4.1 was chosen since it offers containers both for the EJB and the JSP pages 
 \paragraph{Provided APIs:} all the API provided by this system are compliant with the REST paradigm so JAX-RS was used
-\paragraph{Data - Application Logic Communication:} JPA over JDBC was chosen as a mean to enable communication between the Application Logic and the DBMS
+\paragraph{Data - Application Logic Communication:} JPA over JDBC was chosen as a mean to enable communication between the Application Logic and the DBMS.
+
 \paragraph{Web Server - Application Logic Communication:} JNDI was chosen as a naming and directory service to allow the web servers to access the functionalities offered by the Application Logic
 \paragraph{DBMS:} MySQL was chosen as DBMS since it is the most popular and widespread and it has a lot of documentation and a big community of users; in combination with it we chose InnoDB which allows the usage of foreign keys
 \clearpage
@@ -416,12 +419,15 @@ The diagram in \autoref{fig:deployment} represents the mapping of the software c
 
 \clearpage
 \subsection{Runtime view}
+In this section we represent some runtime views of the supposed interactions between the components of the \emph{PowerEnJoy} system.
+
+\paragraph{Notes to read the diagram} When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated.
 
 \subsubsection{Map}
 \label{sec:mapRunView}
 The \autoref{fig:mapGeneration} shows how the map is combined with safe areas, charging stations and available cars nearby a location given by the user. The user interface allows the user to input a specific location or use the GPS position of his device; the GIS will then provide a reference to a map centred in that location and populated as specified.
 
-The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.\\
+The \emph{MapManager} component takes care of updating the battery level information of the car shown on the map which the system has not interacted with for the last two hours.
 
 \paragraph{Notes} The self-message \emph{setParameters} is used to represent CarHandler operations about retrieving from cars the updated battery level and update the cars JPA.
 
@@ -471,10 +477,10 @@ The following sequence diagrams show the interactions between the \mbox{Rent} \m
 \paragraph{Interactions not represented}
 \begin{itemize}
 	\item During the rent, at predetermined regular time intervals, \emph{CarUnlockManager} calls a primitive on the car through the \emph{CarHandler} component in order to retrieve the GPS position
-
-	\item When an attribute is modified in a JPA object the changes are reflected into the \emph{DataProviderComponent} in order to keep the database updated
 	
 	\item When the trigger method is called on \emph{CarHandler}, it uses the carJPA passed as parameter in order to enable on the correspondent car the triggers passed as parameters; this happens as specified in previous sections.
+	
+	\item The \emph{DataProvider} deletes the active reservation during the \emph{createRentJPA} method before creating the rent record and after having retrieved the user associated with the aforementioned reservation.
 	
 	\item The \emph{EventBroker} component calls the notify method on \emph{InUseCarHandler} when a notification is received by a car, as specified in previous sections.
 	
@@ -537,7 +543,7 @@ When a reservation expired is found, this component takes care of creating a pay
 
 \paragraph{Note}The extra time that could be granted to a reservation due to the timer interval and the system's latency is considered acceptable.
 
-\paragraph{Interactions not represented} An interaction by the \emph{ReservationTimer} with the \emph{DataProvider} component is required in order to delete a reservation and to ban a user if the payment is rejected.
+\paragraph{Interactions not represented} An interaction by the \emph{ReservationTimer} with the \emph{DataProvider} component is required in order to retrieve active reservations, to delete a reservation and to ban a user if the payment is rejected.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[angle=90,width=\linewidth]{sequenceDiagrams/ReserveTimer}

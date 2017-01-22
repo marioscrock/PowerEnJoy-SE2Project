@@ -250,11 +250,12 @@ This section describes the EIs and related FTRs and DETs identified for the \emp
 	\item \textbf{Retrieve \emph{Not Available} cars}: to be processed by the system it requires cars and failures data but also to retrieve from cars software keys to access them (so it can't be considered as a an EQ)
 	\item \textbf{Tag a car as \emph{Available}}: to be processed by the system it only requires cars data to change car status and mark the failure as fixed
 \end{itemize}
-
 \paragraph{Car Event}
 \begin{itemize}
 	\item \textbf{Critical battery level}: to be processed by the system it only requires cars data to change car status as \emph{Not available}, instantiate a new failures record and its fields
 \end{itemize}
+
+\clearpage
 
 \begin{longtable}{ccccc}
 \toprule
@@ -276,7 +277,7 @@ Tag a car as \emph{Available} & 1 & 1-4 &	Low & 3\\
 Critical battery level & 1 & 1-4 &	Low & 3\\
 \midrule
 \textbf{Total} & & & &  \textbf{56}\\
-\bottomrule 
+\bottomrule\\
 \caption{Function points EIs}
 \label{tbl:eiFP}
 \end{longtable}
@@ -352,8 +353,6 @@ This section describes the EQs and related FTRs and DETs identified for the \emp
 
 \paragraph{Notes} Similiar EQs between users and customer care operator are considered separately because are requested from different server software components and they also differ in information retrieved as EQ result. \\
 
-\clearpage
-
 \begin{longtable}{ccccc}
 \toprule
 \textbf{EQ}	& FTR & DET & 	Complexity  & \textbf{FPs}\\
@@ -371,6 +370,8 @@ See payment history of a user & 1 & 6-19 & Low & 4\\
 \caption{Function points EQs}
 \label{tbl:eqFP}
 \end{longtable}
+
+\clearpage
 
 \subsubsection{Overall estimation}
 \label{sec:FPResult}

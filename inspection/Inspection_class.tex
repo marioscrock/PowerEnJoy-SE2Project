@@ -27,10 +27,11 @@ For these reasons we will provide an high-level overview of the functionality ro
 
 The \emph{WebPosTransaction.java} class identifies a single transaction in the context of a \emph{WebPosSession}. The transaction is also related to a \emph{ShoppingCart} object, hold by the session, and its methods allow to manage the payment procedure also instantiating the order related to the cart checkout. \\
 
-In \autoref{fig:package} are shown relations between components in the \emph{webpos} package with respect to the \emph{WebPosTransaction.java} class:
+In \autoref{fig:package} are shown relations of other components in the \emph{webpos} package with respect to the \emph{WebPosTransaction.java} class:
 \begin{itemize}
-	\item Te \emph{WebPosEvents} class has a method \emph{completeSale} that after obtaining the current transaction through the \emph{getCurrentTransaction} method (exposed by the \emph{WebPosSession}) interacts with it calling the \emph{processSale} method\todo{ref sotto}
-	\item 
+	\item Te \emph{WebPosEvents} class has a method \emph{completeSale} that after obtaining the current transaction through the \emph{getCurrentTransaction} method (exposed by the \emph{WebPosSession}) interacts with it calling the \hyperref[method:processSale]{\emph{processSale}} method
+	\item The \emph{WebPosSession} class has a field \emph{webPosTransaction} that stores the current transaction related to the session
+	\item The \emph{WebPosSession} class has three methods that interacts with the transaction stored as a field: \emph{getCurrentTransaction}, \emph{setCurrentTransaction} and \emph{logout}
 \end{itemize}
 
 \begin{figure}[h]
@@ -41,6 +42,12 @@ In \autoref{fig:package} are shown relations between components in the \emph{web
 				\emph{WebPosTransaction.java} relations inside the \emph{webpos} package
 			}
 		\end{figure}
+
+The \emph{WebPosTransaction.java} is dependent on the \emph{WebPosSession} related:
+\begin{itemize}
+	\item A \emph{WebPosTransaction} object needs a \emph{WebPosSession} instance to be instantiated  through the constructor and stores it as a field
+	\item Many methods of the \emph{WebPosTransaction} class rely on methods (especially getters) of the \emph{WebPosSession} instance related
+\end{itemize}
 
 \subsection{Class Description}
 The class contains the logic to manage a transaction but the specified methods are supposed to be called from an higher level component holding the transaction object.
@@ -76,7 +83,7 @@ The main methods of the class (excluding getter methods and methods which functi
 	\item \texttt{public void} \textbf{closeTx}\texttt{()} \\
    \item \texttt{public void} \textbf{paidInOut}\texttt{(String type)} \\
    \item \texttt{public void} \textbf{modifyPrice}\texttt{(int cartLineIdx, BigDecimal price)} \\
-   \item \texttt{public BigDecimal} \textbf{processSale}\texttt{() throws GeneralException} \\
+   \item \label{method:processSale} \texttt{public BigDecimal} \textbf{processSale}\texttt{() throws GeneralException} \\
    \item \texttt{private synchronized GenericValue} \textbf{getStoreOrgAddress}\texttt{()} \\
    \item \texttt{public int} \textbf{checkPaymentMethodType}\texttt{(String paymentMethodTypeId)} \\
    \item \texttt{public String} \textbf{makeCreditCardVo}\texttt{(String cardNumber, String expDate, String firstName, String lastName)} \\

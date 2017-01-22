@@ -45,12 +45,19 @@ In \autoref{fig:package} are shown relations of other components in the \emph{we
 
 The \emph{WebPosTransaction.java} is dependent on the \emph{WebPosSession} related:
 \begin{itemize}
-	\item A \emph{WebPosTransaction} object needs a \emph{WebPosSession} instance to be instantiated  through the constructor and stores it as a field
+	\item A \emph{WebPosTransaction} object needs a \emph{WebPosSession} instance to be instantiated through the constructor
+	\item A \emph{WebPosTransaction} instance has as field a related \emph{WebPosSession} instance
 	\item Many methods of the \emph{WebPosTransaction} class rely on methods (especially getters) of the \emph{WebPosSession} instance related
 \end{itemize}
 
 \subsection{Class Description}
-The class contains the logic to manage a transaction but the specified methods are supposed to be called from an higher level component holding the transaction object.
+The class contains the logic to manage a transaction related to a web pos operation, but the specified methods are supposed to be called from an higher level component holding the transaction object.
+
+\paragraph{Notes} Some notes about concepts used inside the \emph{OFBiz} project:
+\begin{itemize}
+ 	\item An Entity is a relational data construct that contains any number of Fields and can be related to other entities \cite{OFBiz}. Entities are managed by the \emph{entity engine} to be used from java classes transparently from their actual implementation.
+ 	\item \emph{Generic Entity Value Object} Object that handles persistence for any defined entity (javadoc of \texttt{org.apache.ofbiz.entity.GenericValue})
+\end{itemize}
 
 \subsubsection{Fields}
 The main fields of the class (excluding constant \emph{final static} fields)  are \emph{private} fields:
@@ -60,30 +67,44 @@ The main fields of the class (excluding constant \emph{final static} fields)  ar
     \item \textbf{GenericValue txLog} instance of \\ \texttt{org.apache.ofbiz.entity.GenericValue}: persistent entity identifying a \emph{PosTerminalLog}, a logger where are stored logs about the transaction
     \item \textbf{String transactionId}: a string to store the identifier of the transaction
     \item \textbf{String orderId}: a string to store the identifier of the order related to the transaction
-    \item \textbf{String partyId}: a string to store the identifier of the party
-    \item \textbf{boolean isOpen}: a boolean value, set as \emph{true} if there exist a \emph{PosTerminalState} opened
+    \item \textbf{String partyId}: a string to store the identifier of the party, always set as not available (\emph{\_NA\_}) in the current  implementation
+    \item \textbf{boolean isOpen}: a boolean value, set as \texttt{true} if there exist a \emph{PosTerminalState} opened
     \item \textbf{int drawerIdx} (field not used in the current implementation of the class, the related getter always return 1)
     \item \textbf{GenericValue shipAddress} instance of \\ \texttt{org.apache.ofbiz.entity.GenericValue}: persistent entity identifying the \emph{PostalAddress} entity related to the shipping address
     \item \textbf{WebPosSession webPosSession} instance of \\ \texttt{org.apache.ofbiz.entity.GenericValue}: the current session managing the transaction
 \end{itemize}
-
-\paragraph{Notes} Some notes about concepts used inside the \emph{OFBiz} project:
-\begin{itemize}
- 	\item An Entity is a relational data construct that contains any number of Fields and can be related to other entities \cite{OFBiz}. Entities are managed by the \emph{entity engine} to be used from java classes transparently from their actual implementation.
-\end{itemize}
-
+\clearpage
 \subsubsection{Methods}
 
 The main methods of the class (excluding getter methods and methods which functionalities are based upon a unique call to a method external to the class) are \emph{public} methods:
 
 \begin{itemize}
 	\item \texttt{public} \textbf{WebPosTransaction}\texttt{(WebPosSession session)} constructor \\
+	The class constructor:
+	\begin{itemize}
+	 	\item set as field the \emph{WebPosSession} given as parameter
+	 	\item set the partyId field as \emph{\_NA\_}
+	 	\item create a new instance of \emph{CheckOutHelper} passing to its constructor the \texttt{org.apache.ofbiz.entity.}\emph{Delegator} and the \\ \texttt{org.apache.ofbiz.order.shoppingcart.}\emph{ShoppingCart} related to the session
+	 	\item update \emph{ShoppingCart} instance w.r.t. information about the session: set channel type as POS\_SALES\_CHANNEL, facility ID, terminal ID and, if the session is associated with a \emph{userLogin} entity, associates the party to the order identifying its role as SALES\_REP
+	 	\item set up the transaction logger
+	 \end{itemize}
 	\item \texttt{public boolean} \textbf{isOpen}\texttt{()} \\
-	\item \texttt{public GenericValue} \textbf{getTerminalState}\texttt{()} \\
-	\item \texttt{public void} \textbf{closeTx}\texttt{()} \\
-   \item \texttt{public void} \textbf{paidInOut}\texttt{(String type)} \\
-   \item \texttt{public void} \textbf{modifyPrice}\texttt{(int cartLineIdx, BigDecimal price)} \\
-   \item \label{method:processSale} \texttt{public BigDecimal} \textbf{processSale}\texttt{() throws GeneralException} \\
+This method returns \texttt{true} if the \emph{getTerminalState} method returns a terminal state  with \textit{closedDate} parameter \texttt{null}, that is if the terminal is open.
+	\item \texttt{public GenericValue} \textbf{getTerminalState}\texttt{()} \\This method returns the most recent \emph{PosTerminalState} entity associated to the \emph{terminalId} and \emph{transactionId}.
+	\item \texttt{public void} \textbf{closeTx}\texttt{()} \\ This method closes the transaction logger and calls the \emph{clear} method on the \textit{ShoppingCart} instance associated to the session.
+   \item \texttt{public void} \textbf{paidInOut}\texttt{(String type)} \\ This method logs the pos transaction as paid together with the \emph{type} string given as parameter and the current date. It also sets the current transaction of the section as \texttt{null}.
+   \item \texttt{public void} \textbf{modifyPrice}\texttt{(int cartLineIdx, BigDecimal price)} \\ This method modifies the price of the item identified by the \emph{cartLineIdx}, given as parameter, in the \emph{ShoppingCart} related to the session. The new price for the item is the \emph{price} given as parameter.
+   \item \label{method:processSale} \texttt{public BigDecimal} \textbf{processSale}\texttt{() throws GeneralException}\\
+   This method is the more complex of the class and involves many external object (as shown in \autoref{fig:processSale}), main purpose of the method can be sketched as:
+   \begin{itemize}
+   		\item attach the party ID to the cart (always \emph{\_NA\_} in the current implementation)
+    	\item validate payment methods
+    	\item store the order
+    	\item process the payment(s)
+   		\item save the TX Log
+   		\item get the change due and return it
+   \end{itemize}
+   \textbf{Note} This method contains \emph{todo} comments related to functionalities not already implemented
    \item \texttt{private synchronized GenericValue} \textbf{getStoreOrgAddress}\texttt{()} \\
    \item \texttt{public int} \textbf{checkPaymentMethodType}\texttt{(String paymentMethodTypeId)} \\
    \item \texttt{public String} \textbf{makeCreditCardVo}\texttt{(String cardNumber, String expDate, String firstName, String lastName)} \\

@@ -98,14 +98,14 @@ This method returns \texttt{true} if the \emph{getTerminalState} method returns 
    This method is the more complex of the class and involves many external object (as shown in \autoref{fig:processSale}), main purpose of the method can be sketched as:
    \begin{itemize}
    		\item attach the party ID to the cart (always \emph{\_NA\_} in the current implementation)
-    	\item validate payment methods
-    	\item store the order
-    	\item process the payment(s)
+    	\item validate payment methods (if it fails throws a \texttt{GeneralException})
+    	\item store the order (if it fails throws a \texttt{GeneralException})
+    	\item process the payment(s) (if it fails throws a \texttt{GeneralException})
    		\item save the TX Log
    		\item get the change due and return it
    \end{itemize}
    \textbf{Note} This method contains \emph{todo} comments related to functionalities not already implemented
-   \item \texttt{private synchronized GenericValue} \textbf{getStoreOrgAddress}\texttt{()} \\
-   \item \texttt{public int} \textbf{checkPaymentMethodType}\texttt{(String paymentMethodTypeId)} \\
-   \item \texttt{public String} \textbf{makeCreditCardVo}\texttt{(String cardNumber, String expDate, String firstName, String lastName)} \\
+   \item \texttt{private synchronized GenericValue} \textbf{getStoreOrgAddress}\texttt{()} \\ This \emph{synchronized} method returns the \emph{PostalAddress} entity of the facility location related to the session (to be used for tax calculation).
+   \item \texttt{public int} \textbf{checkPaymentMethodType}\texttt{(String paymentMethodTypeId)} \\ This method returns the int code related to the type of payment method (NO\_PAYMENT, INTERNAL\_PAYMENT, EXTERNAL\_PAYMENT) based upon the paymentMethodTypeId given as parameter.
+   \item \texttt{public String} \textbf{makeCreditCardVo}\texttt{(String cardNumber, String expDate, String firstName, String lastName)} \\ This method creates a \textit{generic entity \textbf{v}alue \textbf{o}bject} related to the credit card described through parameters given as input to the method and returns the \textit{paymentMethodId} related
 \end{itemize}

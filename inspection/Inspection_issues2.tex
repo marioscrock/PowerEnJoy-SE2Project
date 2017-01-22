@@ -1,6 +1,3 @@
-\subsection*{[2.9] Class and Interface Declarations}
-\subsubsection*{[27] Check that the code is free of duplicates, long methods, big classes, breaking encapsulation, as well as if coupling and cohesion are adequate}\todo{coperti da overload in altre classi}
-
 \subsection*{[2.10] Initialization and Declarations}
 \subsubsection*{[31] Check that all object references are initialized before use}
 \begin{description}
@@ -27,7 +24,6 @@ If a block starts with a debug log operation, we consider the first instruction 
 \subsection*{[2.15] Computation, Comparisons and Assignments}
 \subsubsection*{[44] Check that the implementation avoids "brutish programming".}
 \begin{description}
-	\item[L 125:] the {\tt isOpen} method can be simplified by only returning the conjunction {\tt terminalState != null \&\&\\ terminalState.getDate("closedDate") == null} \todo{may be worse, but it works also against nullPE as the original}
 	\item[L 53, L 54, L 55:] it is better to define an enumeration than use three {\tt public static final int} variables to define the type of payment
 \end{description}
 
@@ -36,5 +32,5 @@ If a block starts with a debug log operation, we consider the first instruction 
 All {\tt catch} blocks only log the exception to the debugger. Moreover
 \begin{description}
 	\item[L 390:] in the {\tt processNoPayment} method the {\tt catch (GeneralException e)} block is empty
-	\item[L 407:] in the {\tt processExternalPayment} method the {\tt catch (GeneralException e)} block is empty
+	\item[L 407:] in the {\tt processExternalPayment} method the \mbox{{\tt catch (GeneralException e)}} block is empty
 \end{description}

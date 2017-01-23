@@ -95,7 +95,7 @@ This method returns \texttt{true} if the \emph{getTerminalState} method returns 
    \item \texttt{public void} \textbf{paidInOut}\texttt{(String type)} \\ This method logs the pos transaction as paid together with the \emph{type} string given as parameter and the current date. It also sets the current transaction of the section as \texttt{null}.
    \item \texttt{public void} \textbf{modifyPrice}\texttt{(int cartLineIdx, BigDecimal price)} \\ This method modifies the price of the item identified by the \emph{cartLineIdx}, given as parameter, in the \emph{ShoppingCart} related to the session. The new price for the item is the \emph{price} given as parameter.
    \item \label{method:processSale} \texttt{public BigDecimal} \textbf{processSale}\texttt{() throws GeneralException}\\
-   This method is the more complex of the class and involves many external object (as shown in \autoref{fig:processSale}), main purpose of the method can be sketched as:
+   This method is the most complex of the class and involves many external object (as shown in \autoref{fig:processSale}), main purpose of the method can be sketched as:
    \begin{itemize}
    		\item attach the party ID to the cart
     	\item validate payment methods (if it fails throws a \texttt{GeneralException})
@@ -110,7 +110,7 @@ This method returns \texttt{true} if the \emph{getTerminalState} method returns 
    \item \texttt{public String} \textbf{makeCreditCardVo}\texttt{(String cardNumber, String expDate, String firstName, String lastName)} \\ This method creates a \textit{generic entity \textbf{v}alue \textbf{o}bject} related to the credit card described through parameters given as input to the method and returns the \textit{paymentMethodId} related
 \end{itemize}
 
-The \autoref{fig:processSale} shows method calls made by the \emph{ProcessSale} method: calls on \textit{java.util} classes has been omitted, calls on both static and not static methods are reported as well as other methods of the \emph{WebPosTransaction} class called.
+The \autoref{fig:processSale} shows method calls made by the \emph{ProcessSale} method: calls on \textit{java.util} classes have been omitted, calls on both static and not static methods are reported as well as other methods called on the \emph{WebPosTransaction} class.
 
 \begin{figure}[h]
 			\centering

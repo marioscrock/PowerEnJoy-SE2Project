@@ -1,0 +1,79 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{enumitem}	%enumerate
+\usepackage{fancyhdr}	%intestazioni e piè pagina
+\fancypagestyle{SE2}{% Software Engineering 2 Project Page Style
+	\pagestyle{fancy}	
+	%\fancyhead[LE,RO]{\slshape\rightmark}
+	%\fancyhead[LO,RE]{\slshape\leftmark}
+	%\fancyhead[L,R]{\slshape\rightmark}
+	\cfoot{} % get rid of the page number 
+	\fancyfoot[L]{\textbf{C}ode \textbf{I}nspection \textbf{D}ocument}
+	\fancyfoot[R]{\thepage}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{SE2}
+%\pagestyle{fancy}
+\usepackage{graphicx}	%immagini
+\usepackage[colorinlistoftodos]{todonotes}	%todo
+%numeri romani maiuscoli
+\newcommand{\RomanNumber}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\usepackage{hyperref} %link pdf
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\graphicspath{{./img/}} %extra root-path for images
+\usepackage[T1]{fontenc}
+%\usepackage[style=alphabetic]{biblatex}
+%\usepackage[babel]{csquotes}
+%\usepackage[bibstyle=authortitle,citestyle=verbose-trad1]{biblatex}
+%\bibliography{ITPD-main.bib}
+%
+\usepackage[toc,page]{appendix}
+\usepackage{eurosym}%\simbolo euro
+\usepackage{booktabs}%table rule
+\usepackage{longtable} %multiple page tables
+\usepackage{listings} 
+
+\begin{document}
+
+\include{Inspection_cover}
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\pagenumbering{Roman}
+\tableofcontents
+\listoffigures
+
+\hypersetup{
+	linkcolor=blue,
+	citecolor=blue,
+	urlcolor=blue
+}
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+\clearpage
+\pagenumbering{arabic}
+
+\include{Inspection_introduction}
+
+\include{Inspection_class}
+
+\include{Inspection_issues1}
+
+\include{Inspection_otherProblems}
+
+\include{Inspection_appendix}
+
+\end{document}

@@ -1,0 +1,141 @@
+\section{List of Issues}
+This section reports a list of the issues found in the \emph{WebPosTransaction} class, based on the \emph{Code Inspection Assignment} checklist \cite{Assignment}.
+\subsection*{[2.1] Naming Conventions}
+\subsubsection*{[1] All class names, interface names, method names, class variables, method variables, and constants used should have meaningful names and do what the name suggests}
+\begin{description}
+	\item[L 57:] The name of the {\tt CheckoutHelper} type variable {\tt ch} is not meaningful and difficult to understand out of the declaration context
+	\item[L 272:] The name of the {\tt List<GenericValue>} type variable {\tt fcp} is not meaningful and difficult to understand out of the declaration context
+	\item[L 421:] The name of the {\tt Map<String, Object>} type variable {\tt svcCtx} is not meaningful and difficult to understand out of the declaration context
+	\item[L 431:] The name of the {\tt Map<String, Object>} type variable {\tt svcRes} is not meaningful and difficult to understand out of the declaration context
+\end{description}
+
+\subsubsection*{[2] If one-character variables are used, they are used only for temporary “throwaway” variables}
+\begin{description}
+	\item[L 329:] The name chosen for the {\tt Iterator<GenericValue>} returned from {values.iterator()} is {\tt i}; although since this variable is only used inside a loop, it is not a problem
+	\item[L 331, 333:] The name chosen for the {\tt GenericValue} returned from {\tt i.next()} is {\tt v}; although since this variable is only used inside a loop, it is not a problem
+\end{description}
+
+\subsubsection*{[5] Method names should be verbs, with the first letter of each addition word capitalized}
+\begin{description}
+	\item[L 162:] The {\tt paidInOut(String type)} method name is not a verb which refers to the actions made inside it. \\Since it seems like it only stores the payment referred to a transaction into the log, it could be renamed {\tt logPayment(String type)}
+\end{description}
+
+\subsubsection*{[7] Constants are declared using all uppercase with words separated by an underscore}
+\begin{description}
+	\item[L 51:] The {\tt resource} constant is not uppercase
+	\item[L 52:] The {\tt module} constant is not uppercase
+	\item[L 324:] The {\tt externalCode} constant is not uppercase
+\end{description}
+
+\subsection*{[2.4] File Organization}
+
+\subsubsection*{[12] Blank lines and optional comments are used to separate sections}
+\begin{description}
+	\item[L 18,19:] There is a missing space between the {\tt License} section and the {\tt package} statements
+\end{description}
+
+\subsubsection*{[13] Where practical, line length does not exceed 80 characters}\label{subsec:lineLen}
+\begin{description}
+	\item[L 139:] The line is 169 characters long, three high-level breaks should be used, after {\tt "PosTerminalState",} , after {\tt "posTerminalId",} and after {\tt getTransactionId())),}
+	\item[L 143:] The line is 104 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt UtilDateTime.nowTimestamp(),}, so it should be broken
+	\item[L 199:] The line is 115 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt resource,} , so it should be broken
+	\item[L 214:] The line is 105 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt =} , so it should be broken
+	\item[L 226:] The line is 183 characters long, two high-level breaks should be used, after {\tt =} and after {\tt getProductStoreId(),}
+	\item[L 264:] The line is 128 characters long, one high-level break should be used after {\tt "Facility",} 
+	\item[L 274:] The line is 135 characters long, one high-level break should be used after {\tt "FacilityContactMechPurpose",} 
+	\item[L 316:] The line is 153 characters long, one high-level break should be used after {\tt "paymentMethodTypeId",}
+	\item[L 319:] The line is 140 characters long, one high-level break should be used after {\tt "ProductStorePaymentSetting",}
+	\item[L 362:] The line is 92 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt String refNum,} , so it should be broken
+	\item[L 374:] The line is 92 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt +} , so it should be broken
+	\item[L 386:] The line is 85 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt "] Amount : " +} , so it should be broken
+	\item[L 395:] The line is 111 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt String paymentMethodTypeId,} , so it should be broken
+	\item[L 403:] The line is 85 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt "] Amount : " +} , so it should be broken
+	\item[L 412:] The line is 112 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt String expDate,} , so it should be broken
+	\item[L 447:] The line is 116 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt paymentIndex +} , so it should be broken
+	\item[L 454:] The line is 90 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt String refNum,} , so it should be broken
+	\item[L 463:] The line is 86 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt String refNum,} , so it should be broken
+	\item[L 472:] The line is 86 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt String refNum,} , so it should be broken
+	\item[L 506:] The line is 83 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt code,} , so it should be broken
+	
+\end{description}
+Note that the comma should be the last character before each break.
+
+\subsubsection*{[14] When line length must exceed 80 characters, it does NOT exceed 120 characters}
+\begin{description}
+	\item[L 78:] The line is 86 characters long, since it is less than 120 characters long and there is no practical way to break it, in can be left as it is
+	\item[L 207:] The line is 86 characters long, since it is less than 120 characters long and there is no practical way to break it, in can be left as it is
+\end{description}
+
+\subsection*{[2.5] Wrapping Lines}
+\subsubsection*{[16] Higher-level breaks are used}
+\begin{description}
+	\item[L 282:] It is the only case in which line break is used. As stated \hyperref[subsec:lineLen]{before}, in many other cases these are not used while they should
+\end{description}
+
+\subsection*{[2.6] Comments}
+\subsubsection*{[18] Comments are used to adequately explain what the class, interface, methods, and blocks of code are doing}
+\begin{description}
+	\item[Entire class:] There are no comments explaining what the class does
+	\item[L 453, 462, 471:] There are unclear comments explaining the method beneath them
+	\item[L 81, 202, 205, 212, 222, 236, 245, 261, 332, 365, 388, 416:] There are superficial comments explaining the blocks of code beneath them 
+\end{description}
+
+\subsubsection*{[19] Commented out code contains a reason for being commented out and a date it can be removed from the source file if determined it is no longer needed.}
+\begin{description}
+	\item[L 332:] There is a commented line of code, with no date, nor explanation about the reasons it is commented
+\end{description}
+
+\subsection*{[2.7] Java Source Files}
+
+\subsubsection*{[20] Each Java source file contains a single public class or interface}
+\begin{description}
+	\item[Entire class:] The {\tt WebPosTransaction} class is the only one in the WebPosTransaction.java source file, but we noticed that it imports classes contained in the same source file, specifically both the {\tt ShoppingCart} and the {\tt CartPaymentInfo} classes are located in the ShoppingCart.java source file
+\end{description}
+
+\subsubsection*{[23] Check that the javadoc is complete}
+\begin{description}
+	\item[Entire class:] There is no javadoc in the entire class
+\end{description}
+
+\subsection*{[2.9] Class and Interface Declarations}
+\subsubsection*{[27] Check that the code is free of duplicates, long methods, big classes, breaking encapsulation, as well as if coupling and cohesion are adequate.}
+\begin{description}
+	\item[L 194:] the {\tt processSale} method (considering also further implementations described by \emph{todo}s) is too long and should be divided into different methods in order to decouple logic and improve readability
+\end{description}
+
+\subsection*{[2.10] Initialization and Declarations}
+\subsubsection*{[31] Check that all object references are initialized before use}
+\begin{description}
+	\item[L 67:] the {\tt session} object passed as parameter in the constructor is referenced and used several times in the class but it has never checked not to be {\tt null}. This might cause a {\tt NullPointerException}.
+\end{description} 
+
+\subsubsection*{[33] Declarations appear at the beginning of blocks. The exception is a variable can be declared in a for loop.}
+If a block starts with a debug log operation, we consider the first instruction the next one. Variables not declared at the beginning of a block are the following:
+\begin{description}
+	\item[L 70, L 71:] in the constructor 
+	\item[L 207, L 214, L 224, L 237:] in the {\tt processSale} method 
+	\item[L 272, L 279:] in the {\tt getStoreOrgAddress} method 
+	\item[L 126:] in the {\tt isOpen} method 
+	\item[L 324:] in the {\tt checkPaymentMethodType} method  
+	\item[L 421, L 431:] in the {\tt makeCreditCardVo} method 
+\end{description}
+
+\subsection*{[2.14] Output Format}
+\subsubsection*{[42] Check that error messages are comprehensive and provide guidance as to how to correct the problem.}
+\begin{description}
+	\item[L 396:] in the {\tt processExternalPayment} method no error message is returned, marked as \emph{todo}.
+\end{description}
+
+\subsection*{[2.15] Computation, Comparisons and Assignments}
+\subsubsection*{[44] Check that the implementation avoids "brutish programming".}
+\begin{description}
+	\item[L 53, L 54, L 55:] it is better to define an enumeration than use three {\tt public static final int} variables to define the type of payment
+\end{description}
+
+\subsection*{[2.16] Exceptions}
+\subsubsection*{[53] Check that the appropriate action are taken for each catch block.}
+All {\tt catch} blocks only log the exception to the debugger. Moreover
+\begin{description}
+	\item[L 390:] in the {\tt processNoPayment} method the {\tt catch (GeneralException e)} block is empty
+	\item[L 407:] in the {\tt processExternalPayment} method the \mbox{{\tt catch (GeneralException e)}} block is empty
+\end{description}

@@ -1,0 +1,12 @@
+\section{Other problems}
+\begin{description}
+	\item[L 61:] the {\tt partyId} variable is private and it is initialized in the constructor of the class to the value {\tt "\textunderscore NA\textunderscore"}. Even though it is used in in different methods of the class, it is never updated, and the class doesn't offer any setter method for it; if its value is not meant to be changed it should be converted to a constant, otherwise a setter for it should be added
+	\item[L 172:] missing space before {\tt +} character
+	\item[L 207, L 214, L 224, L 316:] the usage of the wildcard {\tt ? extends Object} is a symptom of bad development design and should be avoided (it may lead to runtime errors caused by wrong casting)
+	\item[L 421, L 431:] the usage of type {\tt Object} is a symptom of bad development design and should be avoided (it may lead to runtime errors caused by wrong casting)
+	\item[L 42:] the import of the package {\tt ShoppingCart.CartPaymentInfo} should be done right after the import of {\tt ShoppingCart} package
+	\item[L 375, L 402:] it is better to create a new variable instead of reusing a method's parameter
+	\item[L 239, L 242, L 243, L 397:]  complete \emph{todo} tasks
+	\item[L 416:] complete the task, not marked as \emph{todo}
+	\item[L 289, L 436, L440:] {\tt getStoreOrgAddress} and {\tt makeCreditCardVo} methods return {\tt null} values when an exception is raised during computation. This behavior should be avoided re-throwing an exception.
+\end{description}

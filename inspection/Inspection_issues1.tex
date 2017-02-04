@@ -17,7 +17,7 @@ This section reports a list of the issues found in the \emph{WebPosTransaction} 
 
 \subsubsection*{[5] Method names should be verbs, with the first letter of each addition word capitalized}
 \begin{description}
-	\item[L 162:] The {\tt paidInOut(String type)} method name is not a verb which refers to the actions made inside it. Since it seems like it only stores the payment referred to a transaction into the log, it could be renamed {\tt logPayment(String type)}
+	\item[L 162:] The {\tt paidInOut(String type)} method name is not a verb which refers to the actions made inside it. \\Since it seems like it only stores the payment referred to a transaction into the log, it could be renamed {\tt logPayment(String type)}
 \end{description}
 
 \subsubsection*{[7] Constants are declared using all uppercase with words separated by an underscore}
@@ -36,8 +36,8 @@ This section reports a list of the issues found in the \emph{WebPosTransaction} 
 
 \subsubsection*{[13] Where practical, line length does not exceed 80 characters}\label{subsec:lineLen}
 \begin{description}
-	\item[L 139:] The line is 169 characters long, three high-level breaks should be used, after {\tt "PosTerminalState",} , after {\tt "posTerminalId,} and after {\tt getTransactionId())),}
-	\item[L 143:] The line is 104 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt UtilDateTime.nowTimestamp(),} , so it should be broken
+	\item[L 139:] The line is 169 characters long, three high-level breaks should be used, after {\tt "PosTerminalState",} , after {\tt "posTerminalId",} and after {\tt getTransactionId())),}
+	\item[L 143:] The line is 104 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt UtilDateTime.nowTimestamp(),}, so it should be broken
 	\item[L 199:] The line is 115 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt resource,} , so it should be broken
 	\item[L 214:] The line is 105 characters long, even though it is less than 120 characters long, a high-level brake can be applied after {\tt =} , so it should be broken
 	\item[L 226:] The line is 183 characters long, two high-level breaks should be used, after {\tt =} and after {\tt getProductStoreId(),}
@@ -69,7 +69,7 @@ Note that the comma should be the last character before each break.
 \subsection*{[2.5] Wrapping Lines}
 \subsubsection*{[16] Higher-level breaks are used}
 \begin{description}
-	\item[L 282:] It is the only case in which line break is used. As stated in above in \autoref{subsec:lineLen} in many other cases these are not used while they should
+	\item[L 282:] It is the only case in which line break is used. As stated in above in \hyperref[subsec:lineLen]{before}, in many other cases these are not used while they should
 \end{description}
 
 \subsection*{[2.6] Comments}
@@ -82,7 +82,7 @@ Note that the comma should be the last character before each break.
 
 \subsubsection*{[19] Commented out code contains a reason for being commented out and a date it can be removed from the source file if determined it is no longer needed.}
 \begin{description}
-	\item[L 332:] There's a commented line of code, with no date, nor explanation about the reasons it is commented
+	\item[L 332:] There is a commented line of code, with no date, nor explanation about the reasons it is commented
 \end{description}
 
 \subsection*{[2.7] Java Source Files}

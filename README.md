@@ -1,9 +1,9 @@
-#PowerEnJoy#
-##Software Engineering 2 [@PoliMi](http://polimi.it "Politecnico di Milano")##
+# PowerEnJoy #
+## Software Engineering 2 [@PoliMi](http://polimi.it "Politecnico di Milano") ##
 
 Authors: Piantella, Scrocca, Vendra
 ***
-###Project goal and approach###
+### Project goal and approach ###
 The objective of this project is to apply in practice what we learn during lectures with the purpose of becoming  confident  with  software engineering  practices  and  able  to  address  new  software engineering issues in a rigorous way.
 The project includes five assignments:
 
@@ -13,7 +13,7 @@ The project includes five assignments:
 4. An assessment of the **effort and cost** required for the development of the project considered in the points above.
 5. A **code inspection** and **bug identification** activity.
 
-###The problem###
+### The problem ###
 We are to develop a digital management system for a car-sharing service that exclusively employs electric cars. First, the system should provide the functionality normally provided by car-sharing services. These include:
 * Users must be able to register to the system by providing their credentials and payment information. They receive back a password that can be used to access the system.
 * Registered users must be able to find the locations of available cars within a certain distance from their current location or from a specified address.
